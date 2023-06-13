@@ -1,0 +1,147 @@
+.sidePanel {
+    height:50px;
+    width: 95%;
+    background-color: #1c1f21;
+   margin: auto;
+    border-radius: .6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .Table{
+    position: relative;
+    
+  }
+  .sideIcon{
+    width: min(25px , 4vw);
+    height:  min(25px , 4vw);
+    background: transparent;
+    position: relative;
+  }
+  .sideIcon:hover{
+    cursor: pointer;
+    border-radius: 100px;
+  }
+
+  .categories{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: left;
+    margin-top: 40px;
+    
+  }
+  .profiles{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+  
+  }
+  .cat{
+    padding: 5px 20px;
+    background-color: #1C1E20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+
+  }
+  
+  .cat > p, .search > p{
+    font-size: min(2vw, 12px);
+  }
+  .search{
+    width: 300px;
+    height: 50px;
+    background-color: #1C1E20;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  .searchIcon{
+    width: 20px;
+    height: 18px;
+    background: transparent;
+    margin: 20px 0;
+    position: relative;
+    margin-left: 20px;
+  
+  }
+
+  .search > input{
+    width: 95%;
+    height: 75%;
+    background: transparent;
+    outline: none;
+    border: none;
+    margin-left: 10px;
+  }
+  .content{
+    width: 100%;
+  }
+
+
+  .TableHolder{
+    width: min(100vw, 1400px);
+    margin: auto;
+    overflow-x: auto;
+  }
+
+  .data td{
+    font-size: min(3vw, 12px);
+    text-align: center;
+
+  }
+
+  .data{
+    margin: auto;
+    width: 20%;
+  }
+
+  .headingNames th{
+    width: 20%;
+    padding: 12px 0;
+    background-color: #111115;
+    font-size: min(3vw, 15px);
+
+  }
+
+  .headingNames td{
+    font-size: min(3vw, 15px);
+  }
+  .subHeadings td {
+    padding: 14px;
+    font-size: min(3vw, 13px);
+
+  }
+
+  .subHeadings tr {
+    margin: auto;
+  }
+  .credecials td{
+    margin: 0;
+    padding:12px;
+  }
+  .subHeadings{
+    background: #111115;
+  }
+
+  .DownloadActions{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin: 20px auto 30px auto;
+    justify-content: space-between;
+  }
+  .buttons{
+    padding: 2px 18px;
+    background: #111115;
+    border-radius: 5px;
+  }

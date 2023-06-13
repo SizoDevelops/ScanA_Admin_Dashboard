@@ -1,0 +1,32 @@
+.container{
+    width: 280px;
+    height: 120px;
+    background-color: #1C1E20;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.profileImage{
+    background: #000;
+    width: 40%;
+    height: 100%;
+    margin-right: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: relative;
+    background-image: url("https://i.ibb.co/jD77YPm/IMG-20220723-195959.jpg");
+    background-position: center;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profileDetails > p{
+    font-size: 14px;
+    color:#68696A;
+}
