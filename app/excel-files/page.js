@@ -39,6 +39,24 @@ export default function ExcelPage() {
     </div> 
         <TableHeader/> 
       </div>
+      <div className={styles.content}>
+      <div className={styles.DownloadActions}>
+        <p className={styles.Date}>05-10 June 2023</p> 
+        <div className={styles.buttons}>
+            <p>Download</p>    
+        </div>
+    </div> 
+        <TableHeader/> 
+      </div>
+      <div className={styles.content}>
+      <div className={styles.DownloadActions}>
+        <p className={styles.Date}>05-10 June 2023</p> 
+        <div className={styles.buttons}>
+            <p>Download</p>    
+        </div>
+    </div> 
+        <TableHeader/> 
+      </div>
     </div>
   )
 }

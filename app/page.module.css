@@ -1,7 +1,7 @@
 .sidePanel {
   height: min(85vh, 800px);
-  width: 20% ;
-  background-color: #1c1f21;
+  width: min(5vw, 109px) ;
+  background-color: #111115;
   border-radius: .6rem;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@
 .searchContainer{
   width: 95%;
   height: 200px;
-  background-color: #1C1E20;
+  background-color: #111115;
   border-radius: .6rem;
   margin-right: 20px;
   margin-top: 20px;
@@ -60,6 +60,7 @@
 
 }
 .nav{
+  width: 90%;
   display: flex;
   margin-top: 20px;
   padding: 0;
@@ -131,7 +132,7 @@
 .cat{
   height: 50px;
   width: 100px;
-  background-color: #1C1E20;
+  background-color: #111115;
   display: flex;
   justify-content: center;
   align-items: center;

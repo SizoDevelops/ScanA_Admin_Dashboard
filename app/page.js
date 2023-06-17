@@ -41,8 +41,8 @@ export default function HomePage() {
         </div>
       </div>
     <div className={styles.profiles}>
-        <DashProfile />
-        <DashProfile/>
+        <DashProfile slug={"sizo-mhlongo"}/>
+        <DashProfile slug={"sizo-mhlongo1"}/>
         <DashProfile image={"https://i.ibb.co/2dxt41d/im.png"}/>
         <DashProfile/>
         <DashProfile image={"https://i.ibb.co/0csMj5v/Rectangle-353.png"}/>

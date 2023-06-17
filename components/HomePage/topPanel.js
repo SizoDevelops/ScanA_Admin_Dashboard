@@ -6,21 +6,21 @@ import Link from 'next/link'
 export default function TopPanel() {
   return (
     <div className={styles.sidePanel}>
-    <div className={styles.sideIcon}>
+    <Link href={"/"} className={styles.sideIcon}>
       <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/>
-    </div>
-    <div className={styles.sideIcon}>
+    </Link>
+    <Link href={"/"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
-    </div>
+    </Link>
     <Link href={"/excel-files"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/>
     </Link>
-    <div className={styles.sideIcon}>
+    <Link href={"/absentees"}className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
-    </div>
-    <div className={styles.sideIcon}>
+    </Link>
+    <Link href={"/"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_help.png"} alt="Folder Icon"/>
-    </div>
+    </Link>
 </div>
   )
 }

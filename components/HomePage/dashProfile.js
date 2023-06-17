@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from '../HomePageCSS/dashProfile.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
-export default function DashProfile({image}) {
+
+export default function DashProfile({image, slug}) {
   return (
-    <>
-      <div className={styles.container}>
+    <Link href={`/members/${slug}`} className={styles.Links}>
+      <div className={styles.container} >
         <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}>
 
         </div>
@@ -14,6 +16,6 @@ export default function DashProfile({image}) {
           <p>Teacher</p>
         </div>
       </div>
-    </>
+    </Link>
   )
 }

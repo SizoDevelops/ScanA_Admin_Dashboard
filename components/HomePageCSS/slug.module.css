@@ -1,0 +1,175 @@
+.Details{
+width: 100%;   
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.ImageHolder{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("https://i.ibb.co/kgYVkc0/IMG-20220723-195959.jpg");
+    background-position: center;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 10px;
+  }
+  
+  .DetailsHolder{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .Contacts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .DetailsHolder{
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  .DetailsContacts{
+    width: 30%;
+    margin-top: 20px;
+  }
+
+  .DetailsContacts h4{
+    font-size: min(5vw, 25px);
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+  }
+
+  .Contacts div p{
+    font-size: min(3vw, 12px);
+  }
+
+  .Details h4{
+    font-size: 30px;
+
+  }
+
+  .Details h4 span {
+    padding: 8px 2px;
+    background-color: #03a4ff;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+
+  .Contacts div p:first-child{
+    color: #68696A;
+  }
+  
+  .Buttons{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px;
+  }
+
+  .btn{
+    padding: 2px 20px;
+    display: flex;
+    background-color: #111115;
+    margin: 20px;
+    border-radius: 5px;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .BtnImage{
+    width: min(25px , 4vw);
+    height:  min(25px , 4vw);
+    background: transparent;
+    position: relative;
+    margin-right: 10px;
+  }
+
+  /* ./////////////////////////////// */
+
+  .Links{
+    width: 280px;
+    height: 140px;
+    background-color: #111115; 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.profileDetails{
+  width: 100%;
+}
+.AttendancePlan > p, .AttendancePlan > span{
+  margin: 0;
+  padding: 0;
+    font-size: 14px;
+    color:#68696A;
+}
+.AttendancePlan > span{
+  padding: 5px;
+  background-color: rgb(5, 83, 5);
+  border-radius: 5px;
+  color: #00fc61;
+}
+.Links{
+    text-decoration: none;
+    color: inherit;
+}
+
+.Links:visited{
+    color: inherit;
+}
+
+.Attendance{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.AttendancePlan{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+.Times{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 10px;
+}
+
+.checkInTimes p{
+  font-size: 14px;
+  color:#68696A;
+}
+
+.checkInTimes p:last-child{
+  color: aliceblue;
+}
