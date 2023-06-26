@@ -106,7 +106,6 @@
     margin: auto;
     width: 20%;
   }
-
   .headingNames th{
     width: 20%;
     padding: 12px 0;
@@ -122,22 +121,24 @@
    
   }
   .subHeadings td {
-    padding: 14px;
+    width: 100px;
     font-size: min(3vw, 13px);
-
+    margin: auto;
+    padding: 12px;
   }
 
   .subHeadings tr {
+    width: 100px;
     margin: auto;
+    text-align: center;
+ 
   }
   .credecials td{
-    margin: 0;
-    padding:12px;
+    text-align: left;
   }
 
-
   .subHeadings{
-
+    
     border-bottom: 1px solid #2e393a;
     border-right: 1px solid #2e393a;
   }

@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.title{
+    margin: 30px 20px;
+}
+
+.title p{
+    
+    text-align: center;
+    color: #656565;
+    
+}
+
+.CatCont p{
+    font-size: 13px;
+    width: fit-content;
+    text-align: center;
+    margin-left: 30px;
+}

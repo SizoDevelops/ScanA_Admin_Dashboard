@@ -1,6 +1,46 @@
 import React from 'react'
 import styles from '../../HomePageCSS/topPannel.module.css'
 import TableRows from './tableRows'
+
+const members = [
+  {
+    name: "MHLONGO S.M",
+    initial: "S.M",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
+  {
+    name: "MASEKO T.C",
+    initial: "T.C",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
+  {
+    name: "NDLELA Z",
+    initial: "Z",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
+  {
+    name: "MHLONGO S.M",
+    initial: "S.M",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
+
+]
 export default function TableHeader() {
   return (
     <div className={styles.TableHolder}>
@@ -94,10 +134,16 @@ export default function TableHeader() {
       </td>
      
     </tr>
-    <TableRows/>
-    <TableRows/>
-    <TableRows/>
-    <TableRows/>
+    {
+      members.map((item, index) => {
+        return(
+          <>
+             <TableRows memberName={item.name} timein={item.attendence.timein} timeout={item.attendence.timeout} initial={item.initial} absent={item.attendence.absent}/>
+          </>
+        )
+      })
+    }
+
 
 
 

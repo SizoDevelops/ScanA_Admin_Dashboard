@@ -9,7 +9,7 @@ export default function SidePanel() {
     <Link href={"/"} className={styles.sideIcon}>
       <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/>
     </Link>
-    <Link href={"/"} className={styles.sideIcon}>
+    <Link href={"/updates"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link>
     <Link href={"/excel-files"} className={styles.sideIcon}>
@@ -17,6 +17,9 @@ export default function SidePanel() {
     </Link>
     <Link href={"/absentees"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
+    </Link>
+    <Link href={"/settings"} className={styles.sideIcon}>
+    <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>
     </Link>
     <Link href={"/"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_help.png"} alt="Folder Icon"/>

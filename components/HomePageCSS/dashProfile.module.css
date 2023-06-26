@@ -12,14 +12,14 @@
 }
 
 .profileImage{
-    background: #000;
+    background: #03a4ff;
     width: 40%;
     height: 100%;
     margin-right: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     position: relative;
-    background-image: url("https://i.ibb.co/jD77YPm/IMG-20220723-195959.jpg");
+    background-image: url("");
     background-position: center;
     background-clip: border-box;
     background-repeat: no-repeat;

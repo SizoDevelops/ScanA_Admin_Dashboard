@@ -35,7 +35,7 @@ export default function Member({params}) {
               <div className={styles.BtnImage}>
                 <Image sizes='30' fill src={"/icons/QR.png"} alt="Folder Icon"/>
               </div>
-              <p>Send QR Code</p>
+              <p>Display QR Code</p>
             </div>
             <div className={styles.btn}>
               <div className={styles.BtnImage}>
