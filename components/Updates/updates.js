@@ -7,7 +7,7 @@ const Updates = () => {
             <div className={styles.details}>
                 <div className={styles.dates}>
                 <div className={styles.sideIcon}>
-                    <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
+                    <Image sizes="30" fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
                 </div>
                     <p>23 June 2023</p>
                 </div>
@@ -17,7 +17,7 @@ const Updates = () => {
             </div>
             <div className={styles.contentDet}>
                 <h3>This is the title of the Post</h3>
-                <p>This is the content of the post that needs to be done I'm thinking of including a heading or something.</p>
+                <p>This is the content of the post that needs to be done I`m thinking of including a heading or something.</p>
             </div>
 
             <div className={styles.DueDate} >

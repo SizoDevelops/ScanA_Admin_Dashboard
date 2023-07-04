@@ -23,8 +23,8 @@
 }
 
 .sideIcon{
-    width: min(25px , 4vw);
-    height:  min(25px , 4vw);
+    width: min(20px , 4vw);
+    height:  min(20px , 4vw);
     background: transparent;
     position: relative;
     margin-right: 10px;
@@ -66,7 +66,7 @@
 
   .contentDet p {
     color: #656565;
-    font-weight: 100;
+    font-weight: 400;
     font-size: min(13px, 3vw);
   }
 

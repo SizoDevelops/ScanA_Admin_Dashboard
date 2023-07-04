@@ -39,6 +39,33 @@ const members = [
       absent: false,
     }
   },
+  {
+    name: "MHLONGO S.M",
+    initial: "S.M",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
+  {
+    name: "MHLONGO S.M",
+    initial: "S.M",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
+  {
+    name: "MHLONGO S.M",
+    initial: "S.M",
+    attendence: {
+      timein: "07:00",
+      timeout: "15:00",
+      absent: false,
+    }
+  },
 
 ]
 export default function TableHeader() {
