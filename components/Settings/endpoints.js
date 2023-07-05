@@ -25,11 +25,11 @@ const endpoints = [
                 icon: "",
                 name: "Update Members"
             },
-            {
-                endpoint: "paused-attendance",
-                icon: "",
-                name: "Paused Attendency"
-            },
+            // {
+            //     endpoint: "paused-attendance",
+            //     icon: "",
+            //     name: "Paused Attendency"
+            // },
             {
                 endpoint: "permissions",
                 icon: "",
