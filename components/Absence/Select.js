@@ -17,14 +17,15 @@ export default function Selector({width, multi}) {
         control: (baseStyles, state) => ({
           ...baseStyles,
           width: !width ? "min(400px, 28vw)" : width,
-          height: "60px",
+   
           outline: "none",
           border: "none",
           borderRadius: "4px",
           backgroundColor: "#111115",
           border: "none",
           outline: "none",
-          color: "#ffffff"
+          color: "#ffffff",
+          fontSize: "min(15px, 3vw)"
         }),
   
       }}
@@ -36,7 +37,7 @@ export default function Selector({width, multi}) {
           primary25: '#03a4ff',
           primary: '#ffffff',
           neutral0: "#111115",
-         
+      
         },
       })}
   />

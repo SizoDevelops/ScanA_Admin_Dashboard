@@ -5,6 +5,7 @@ import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
 
 export default function HomePage() {
+
   return (
     <> 
     <div className={styles.container}>

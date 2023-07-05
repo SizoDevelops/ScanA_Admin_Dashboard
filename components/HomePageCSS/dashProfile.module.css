@@ -39,3 +39,11 @@
 .Links:visited{
     color: inherit;
 }
+
+@media (max-width: 1240px) {
+    .container{
+
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

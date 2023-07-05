@@ -12,7 +12,7 @@ const Page = () => {
                         <div className={styles.sideIcon}>
                         <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
                         </div>
-                        <p>Post an event</p>
+                        <p>Post a new update</p>
                 </div>
                 <div className={styles.content}>
                     <Updates/>

@@ -42,8 +42,7 @@
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
+    justify-content: space-evenly;
   }
   .profiles h3{
     text-align: center;
@@ -60,11 +59,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 15px;
     cursor: pointer;
+    margin: 5px;
   }
   
   .cat > p{
-    font-size: 12px;
+    font-size: min(12px, 2vw);
   }
   
+
+
+  @media (max-width: 1240px) {
+    .container{
+     flex-direction: column;
+     align-items: center;
+     margin: auto;
+     width: 95vw;
+    }
+
+    .categories{
+      display: flex;
+      flex-direction: row;
+      width: 90vw;
+      justify-content: left;
+      margin: auto;
+      margin-top: 20px;
+    }    
+  }

@@ -1,22 +1,24 @@
 .sidePanel {
-    height:50px;
-    width: 100%;
-    background-color: #111115;
-    margin: auto;
-    /* border-radius: .6rem; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 20px;
-  }
+  height:60px;
+  width: 95%;
+  background-color: #111115;
+  border-radius: .6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin:auto;
+  margin-top: 20px;
+  padding: 0;
+}
+
   .Table{
     position: relative;
     
   }
   .sideIcon{
-    width: min(25px , 4vw);
-    height:  min(25px , 4vw);
+    width: min(20px , 4vw);
+    height:  min(20px , 4vw);
     background: transparent;
     position: relative;
   }
