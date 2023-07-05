@@ -11,7 +11,7 @@ const endpoints = [
             },
             {
                 endpoint: "notifications",
-                icon: "/icons/notifica.png",
+                icon: "/icons/notification.png",
                 name: "Notifications"
             },
         ]
@@ -25,14 +25,14 @@ const endpoints = [
                 icon: "",
                 name: "Update Members"
             },
-            // {
-            //     endpoint: "paused-attendance",
-            //     icon: "",
-            //     name: "Paused Attendency"
-            // },
+            {
+                endpoint: "add-members",
+                icon: "/icons/addUser.png",
+                name: "Add Members"
+            },
             {
                 endpoint: "permissions",
-                icon: "",
+                icon: "/icons/permit.png",
                 name: "Permissions"
             },
         ]
@@ -43,8 +43,8 @@ const endpoints = [
         details: [
             {
                 endpoint: "school-details",
-                icon: "",
-                name: "Update Details"
+                icon: "/icons/school.png",
+                name: "School Details"
             },
 
         ]

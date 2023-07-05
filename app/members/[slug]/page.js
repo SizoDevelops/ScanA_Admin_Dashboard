@@ -28,6 +28,10 @@ export default function Member({params}) {
                 <p>Email Address</p>
                 <p>sizomhlongo@yahoo.com</p>
               </div>
+              <div>
+                <p>Member Code</p>
+                <p>DFRE3245</p>
+              </div>
             </div>
           </div>
  <div className={styles.Buttons}>
