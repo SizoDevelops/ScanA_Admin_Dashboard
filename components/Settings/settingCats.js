@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SettingsCSS/settingsCat.module.css'
 import Image from 'next/image';
-import endpoints from './endpoints';
+import Link from 'next/link';
 const SettingCats = ({title, points}) => {
     return (
         <div className={styles.Cat}>
@@ -11,12 +11,12 @@ const SettingCats = ({title, points}) => {
                 {
                     points.map((item, index) => {
                         return(
-                           <div className={styles.Container} key={item + index}>
+                           <Link href={'/settings/' + item.endpoint} className={styles.Container} key={item + index}>
                                 <div className={styles.Icon}>
-                                    <Image sizes='40' fill src={"/icons/re.png"} alt="Folder Icon"/>
+                                    <Image sizes='40' fill src={ item.icon !== "" ? item.icon : "/icons/re.png"} alt="Folder Icon"/>
                                 </div>
-                                <p>{item.name}</p>
-                            </div>
+                                <p className={styles.Name}>{item.name}</p>
+                            </Link>
  
                         )
                     })

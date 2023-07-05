@@ -6,12 +6,12 @@ const endpoints = [
 
             {
                 endpoint: "location",
-                icon: "",
-                name: "Location"
+                icon: "/icons/locate.png",
+                name: "Location",
             },
             {
                 endpoint: "notifications",
-                icon: "",
+                icon: "/icons/notifica.png",
                 name: "Notifications"
             },
         ]
@@ -46,11 +46,6 @@ const endpoints = [
                 icon: "",
                 name: "Update Details"
             },
-            {
-                endpoint: "school-details",
-                icon: "",
-                name: "Update Logo"
-            },
 
         ]
     },
@@ -68,12 +63,7 @@ const endpoints = [
                 icon: "",
                 name: "Attendency Policy"
             }
-            ,
-            {
-                endpoint: "data-policy",
-                icon: "",
-                name: "Data Policy"
-            }
+
         ]
     }
 

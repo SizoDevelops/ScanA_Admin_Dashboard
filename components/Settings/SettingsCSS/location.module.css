@@ -1,0 +1,75 @@
+.container{
+    width: min(98vw, 1080px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.intro{
+    width: 80%;
+    margin:30px auto;
+    text-align: center;
+    font-size: min(22px, 4vw);
+    color: #68696A;
+}
+.formHolder{
+    width: 100%;
+}
+.coordinates > input{
+    padding: 20px;
+    width: 100%;
+    color: #68696A;
+    background: #111115;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);
+}
+.submit{
+    padding: 20px;
+    width: 20%;
+    color: #68696A;
+    background: #111115;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);  
+    text-align: center;
+    cursor: pointer;
+   
+}
+.coordinates{
+    margin:30px auto;
+}
+
+.coordinates input:focus{
+    outline: 1px solid #494949;
+}
+.coordinates input::placeholder{
+    color:#65696e;
+}
+
+
+.instructions{
+    align-self: flex-start;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.instructions h3{
+    font-size: min(22px, 8vw);
+    color: #68696A;
+}
+.instruList{
+    color: #68696A;
+}
+
+.instruList li{
+    margin-bottom: 20px;
+}
+
+.instruList li a{
+    color: #bec4ca;
+    text-decoration: none;
+}

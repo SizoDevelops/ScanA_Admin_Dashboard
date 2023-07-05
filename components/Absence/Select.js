@@ -8,14 +8,15 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
-export default function Selector() {
+export default function Selector({width, multi}) {
   return (
     <Select
     options={options}
+    isMulti={multi}
     styles={{
         control: (baseStyles, state) => ({
           ...baseStyles,
-          width: "min(400px, 28vw)",
+          width: !width ? "min(400px, 28vw)" : width,
           height: "60px",
           outline: "none",
           border: "none",
