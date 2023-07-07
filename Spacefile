@@ -1,0 +1,7 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: scana-admin-dashboard
+    src: ./
+    engine: next
+    primary: true

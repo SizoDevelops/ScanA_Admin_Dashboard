@@ -8,7 +8,7 @@
 }
 .coordinates > input{
     padding: 20px;
-    width: 100%;
+    width: min(85vw, 1080px);
     color: #68696A;
     background: #111115;
     outline: none;

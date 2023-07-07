@@ -33,7 +33,8 @@
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
-    width: 120px;
+    width: 140px;
+    word-wrap: none;
   }
   
 
@@ -68,7 +69,7 @@
 }
 
 .profileDetails > p{
-    font-size: 14px;
+    font-size: min(14px, 3vw);
     color:#68696A;
 }
 
@@ -122,3 +123,10 @@
     margin-bottom: 10px;
     font-size: min(14px, 3vw);
 }
+.cat > p{
+    font-size: min(12px, 2.4vw);
+  }
+  .cat:active {
+    background: #68696A;
+  }
+  

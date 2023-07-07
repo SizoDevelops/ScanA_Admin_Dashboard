@@ -68,7 +68,9 @@
     font-size: min(12px, 2vw);
   }
   
-
+  .selector p{
+    font-size: min(10px, 4vw);
+  }
 
   @media (max-width: 1240px) {
     .container{

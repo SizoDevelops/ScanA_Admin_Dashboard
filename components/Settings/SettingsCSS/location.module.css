@@ -19,7 +19,7 @@
 }
 .coordinates > input{
     padding: 20px;
-    width: 100%;
+    width: min(85vw, 1080px);
     color: #68696A;
     background: #111115;
     outline: none;
@@ -58,11 +58,12 @@
     margin-bottom: 40px;
 }
 .instructions h3{
-    font-size: min(22px, 8vw);
+    font-size: min(22px, 5vw);
     color: #68696A;
 }
 .instruList{
     color: #68696A;
+    font-size: min(14vw, 3vw);
 }
 
 .instruList li{

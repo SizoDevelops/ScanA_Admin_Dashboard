@@ -27,8 +27,12 @@
 }
 
 .profileDetails > p{
-    font-size: 14px;
+    font-size: min(14px, 3vw);
     color:#68696A;
+}
+
+.profileDetails h4{
+    font-weight: 900;
 }
 
 .Links{

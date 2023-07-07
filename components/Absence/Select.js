@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Select from 'react-select';
+import styles from '../../app/page.module.css'
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -13,6 +14,7 @@ export default function Selector({width, multi}) {
     <Select
     options={options}
     isMulti={multi}
+    className={styles.Sele}
     styles={{
         control: (baseStyles, state) => ({
           ...baseStyles,
@@ -34,7 +36,7 @@ export default function Selector({width, multi}) {
         borderRadius: 0,
        
         colors: {
-          primary25: '#03a4ff',
+          primary25: '#68696a',
           primary: '#ffffff',
           neutral0: "#111115",
       

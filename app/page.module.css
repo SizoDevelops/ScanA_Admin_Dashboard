@@ -20,8 +20,8 @@
   position: relative;
 }
 .searchIcon{
-  width: 20px;
-  height: 20px;
+  width: min(20px, 4vw);
+  height: min(20px, 4vw);
   background: transparent;
   margin: 20px 0;
   position: relative;
@@ -137,12 +137,19 @@
   align-items: center;
   border-radius: 25px;
   cursor: pointer;
-  margin: 5px;
+  margin: 2px;
   padding: 5px;
 }
 
 .cat > p{
-  font-size: min(12px, 2vw);
+  font-size: min(12px, 2.4vw);
+}
+.cat:active {
+  background: #68696A;
+}
+
+.Sele {
+  font-size: min(12px, 2.4vw);
 }
 
 @media (max-width: 1240px) {

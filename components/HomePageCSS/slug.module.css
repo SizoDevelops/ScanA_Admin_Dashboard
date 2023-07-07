@@ -1,15 +1,14 @@
 .Details{
 width: 100%;   
-margin-top: 20px;
+margin-top: 10px;
 display: flex;
 flex-direction: column;
 }
 
 .container{
-    width: 100%;
+    width: min(1300px, 95vw);
     display: flex;
     flex-direction: row;
-
 }
 
 .ImageHolder{
@@ -25,28 +24,28 @@ flex-direction: column;
   }
   
   .DetailsHolder{
-    width: 100%;
+    width: min(1200px, 85vw);
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    flex-wrap: wrap;
+    margin-bottom: 60px;
   }
 
   .Contacts{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+    font-size: min(12px, 2vw);
+    margin-bottom: 10px;
   }
 
-  .DetailsHolder{
-    width: 100%;
-    margin-bottom: 60px;
-  }
 
   .DetailsContacts{
-    width: 40%;
+    width: min(650px, 98vw);
     margin-top: 20px;
+    font-size: min(12px, 2vw);
+    margin:auto;
   }
 
   .DetailsContacts h4{
@@ -57,11 +56,11 @@ flex-direction: column;
   }
 
   .Contacts div p{
-    font-size: min(3vw, 12px);
+    font-size: min(2.4vw, 12px);
   }
 
   .Details h4{
-    font-size: 30px;
+    font-size: min(30px, 10vw);
 
   }
 
@@ -75,24 +74,30 @@ flex-direction: column;
   .Contacts div p:first-child{
     color: #68696A;
   }
-  
+
   .Buttons{
-    width: 40%;
+    width: min(400px, 95vw);
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 40px;
+    justify-content: space-evenly;
   }
 
   .btn{
     padding: 2px 20px;
     display: flex;
     background-color: #111115;
-    margin: 20px;
+    width: fit-content;
     border-radius: 5px;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    font-size: min(12px, 3vw);
+    line-break:strict;
+    word-break: keep-all;
+    word-wrap: none;
+    margin: 0 10px;
   }
 
   .BtnImage{
@@ -147,6 +152,8 @@ flex-direction: column;
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
+
 }
 .AttendancePlan{
   display: flex;
@@ -166,10 +173,30 @@ flex-direction: column;
 }
 
 .checkInTimes p{
-  font-size: 14px;
+  font-size: min(12px, 3vw);
   color:#68696A;
 }
 
 .checkInTimes p:last-child{
   color: aliceblue;
+}
+
+
+@media (max-width: 1240px) {
+  .container{
+   flex-direction: column;
+   margin: auto;
+  }
+  .DetailsHolder{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .Contacts div{
+    margin: 5px;
+    font-size: 1vw;
+  }
+.Buttons{
+  padding-left: 0px;
+}
 }
