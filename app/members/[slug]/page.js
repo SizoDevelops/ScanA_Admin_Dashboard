@@ -1,10 +1,22 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import styles from "@/components/HomePageCSS/slug.module.css"
 import Image from 'next/image'
 import SidePanel from '@/components/HomePage/sidePanel'
 import AttendanceProfile from '@/components/HomePage/Members/memberAttendance'
+import { DataBaseFunc } from '@/components/DatabaseSchema'
+import { useParams } from 'next/navigation'
+
 
 export default function Member({params}) {
+    const router = useParams()
+    const [member, setMember] = useState()
+    const {MySchema} = DataBaseFunc()
+    useEffect(() => {
+      setMember(MySchema.members.find(members => members.id === router.slug))
+      
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
   return (
     <> 
     <div className={styles.container}>
@@ -14,38 +26,33 @@ export default function Member({params}) {
         <div className={styles.DetailsHolder}>
           <div className={styles.ImageHolder}></div>
           <div className={styles.DetailsContacts}>
-            <h4>MR S.M. MHLONGO</h4>
+            <h4>{member ? member.title : ""} {member ? member.initial : ""} {member ? member.last_name : ""}</h4>
             <div className={styles.Contacts}>
               <div>
                 <p>Role</p>
-                <p>Developer</p>
+                <p>{member ? member.position : ""}</p>
               </div>
               <div>
                 <p>Phone Number</p>
-                <p>+27 71 432 1234 </p>
+                <p>{member ? member.phone_numbers[0] : ""} </p>
               </div>
               <div>
                 <p>Email Address</p>
-                <p>sizomhlongo@yahoo.com</p>
+                <p>{member ? member.email : ""}</p>
               </div>
               <div>
                 <p>Member Code</p>
-                <p>DFRE3245</p>
+                <p>{member ? member.code : ""}</p>
               </div>
             </div>
           </div>
  <div className={styles.Buttons}>
-            <div className={styles.btn}>
-              <div className={styles.BtnImage}>
-                <Image sizes='30' fill src={"/icons/QR.png"} alt="Folder Icon"/>
-              </div>
-              <p>Display QR Code</p>
-            </div>
+
             <div className={styles.btn}>
               <div className={styles.BtnImage}>
               <Image sizes='30' fill src={"/icons/Pass.png"} alt="Folder Icon"/>
               </div>
-              <p>Send Passcode</p>
+              <p>Send Code</p>
             </div>
            
           </div>
@@ -73,3 +80,4 @@ export default function Member({params}) {
     </>
   )
 }
+

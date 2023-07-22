@@ -1,11 +1,12 @@
+"use client"
 import React from 'react'
 import styles from '../../app/page.module.css'
 import Image from 'next/image'
 import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
-
+import { DataBaseFunc } from '../DatabaseSchema'
 export default function HomePage() {
-
+const {MySchema} = DataBaseFunc()
   return (
     <> 
     <div className={styles.container}>
@@ -42,24 +43,18 @@ export default function HomePage() {
         </div>
       </div>
     <div className={styles.profiles}>
-        <DashProfile slug={"sizo-mhlongo"}/>
-        <DashProfile slug={"sizo-mhlongo1"}/>
-        <DashProfile image={"https://i.ibb.co/2dxt41d/im.png"}/>
-        <DashProfile/>
-        <DashProfile image={"https://i.ibb.co/0csMj5v/Rectangle-353.png"}/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
-        <DashProfile/>
+        {
+            MySchema.members.map((member, index) => {
+                return (
+                    <div key={member.last_name+index}>
+                        <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} data={member}/>
+                    </div>
+                    
+                )
+            })
+        }
+        
+     
     </div>
 
 

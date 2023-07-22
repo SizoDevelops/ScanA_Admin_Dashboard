@@ -1,13 +1,16 @@
+"use client"
 import TopPanel from '@/components/HomePage/topPanel'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@/components/HomePageCSS/topPannel.module.css'
-import Image from 'next/image'
 import TableHeader from '@/components/HomePage/Excel-Files/tableHeader'
 import Selector from '@/components/Absence/Select'
 
 export default function ExcelPage() {
-  return (
-    <div className={styles.Table}>
+
+ 
+  return ( 
+
+      <div className={styles.Table}>
         <TopPanel/>
 
         <div className={styles.SelectorCont}>
@@ -51,16 +54,19 @@ export default function ExcelPage() {
 
 
       <div className={styles.content}>
-      <div className={styles.DownloadActions}>
-        <p className={styles.Date}>05-10 June 2023</p> 
-        <div className={styles.buttons}>
-            <p>Download Data</p>    
-        </div>
-    </div> 
-        <TableHeader/> 
 
+   
+        <div className={styles.DownloadActions}>
+            <p className={styles.Date}>05-10 June 2023</p> 
+                <div className={styles.buttons}>
+                        <p>Download PDF</p>    
+                    </div>
+                </div> 
+               <TableHeader/> 
       </div>
 
     </div>
+ 
+    
   )
 }

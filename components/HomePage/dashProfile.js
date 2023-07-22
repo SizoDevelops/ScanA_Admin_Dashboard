@@ -3,7 +3,7 @@ import styles from '../HomePageCSS/dashProfile.module.css'
 import Link from 'next/link'
 
 
-export default function DashProfile({image, slug}) {
+export default function DashProfile({image, slug, title, initial, last_name, position, data}) {
   return (
     <Link href={`/members/${slug}`} className={styles.Links}>
       <div className={styles.container} >
@@ -17,8 +17,8 @@ export default function DashProfile({image, slug}) {
     
         </div>
         <div className={styles.profileDetails}>
-          <h4>MR S.M MHLONGO</h4>
-          <p>Teacher</p>
+          <h4>{`${title} ${initial} ${last_name}`}</h4>
+          <p>{`${position}`}</p>
         </div>
       </div>
     </Link>

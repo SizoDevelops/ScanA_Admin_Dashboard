@@ -91,7 +91,7 @@
 
 
   .TableHolder{
-    width: min(100vw, 1400px);
+    width: min(100vw, 1280px);
     margin: auto;
     overflow-x: auto;
     padding-bottom: 20px;
@@ -102,11 +102,13 @@
     font-size: min(3vw, 12px);
     text-align: center;
     padding:10px;
+
   }
 
   .data{
     margin: auto;
     width: 20%;
+
   }
   .headingNames th{
     width: 20%;
@@ -114,6 +116,7 @@
     background-color: #111115;
     border-bottom: 1px solid #2e393a;
     border-right: 1px solid #2e393a;
+    
     font-size: min(3vw, 15px);
 
   }
@@ -123,28 +126,32 @@
    
   }
   .subHeadings td {
-    width: 100px;
+    width: min(100px, 3vw);
     font-size: min(3vw, 13px);
-    margin: auto;
+    margin: 10px;
     padding: 12px;
+
   }
 
   .subHeadings tr {
-    width: 100px;
+    width: min(100px, 3vw);
     margin: auto;
-    text-align: center;
+    text-align: right;
  
   }
   .credecials td{
     text-align: left;
+    font-size: min(3vw, 12px);
   }
 
   .subHeadings{
-    
+
     border-bottom: 1px solid #2e393a;
     border-right: 1px solid #2e393a;
   }
-
+.subHeadings:nth-child(1){
+  border-left: 1px solid #2e393a;
+}
   .DownloadActions{
     display: flex;
     flex-direction: row;

@@ -1,10 +1,11 @@
-import HomePage from '@/components/HomePage/HomePage';
+
+import Home from '@/components/HomePage/Home/Home';
 import React from 'react';
 
 const Page = () => {
   return (
     <>
-      <HomePage/>
+      <Home/>
     </>
   );
 }

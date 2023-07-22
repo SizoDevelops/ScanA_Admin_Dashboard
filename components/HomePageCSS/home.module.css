@@ -1,0 +1,127 @@
+.NavBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    width: min(1440px, 100vw);
+}
+
+.navList{
+    display: flex;
+    flex-direction: inherit;
+    width: 50%;
+    justify-content: space-evenly;
+    margin: auto;
+    list-style: none;
+    cursor: pointer;
+    font-size: min(14px, 4vw);
+}
+
+.navList li:active{
+    color: #03a4ff;
+}
+
+.logoHolder{
+    margin-left: 30px;
+}
+
+.heroText{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.heroText h1{
+    font-size: min(75px, 5vw);
+}
+.heroText p{
+    font-size: min(15px, 3vw);
+    font-weight: 200px;
+    color: #68696A;
+    line-height: 24px;
+}
+
+.Button{
+    background-color: #68696a88;
+    font-size: min(14px, 4vw);
+    width: 240px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Button:active{
+    background: #ffffff;
+    color: #111115;
+}
+.Images{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+
+.image1{
+    width: 500px;
+    position: absolute;
+    background: transparent;
+    background-image: url("https://i.ibb.co/wBcXpQq/Scan-AImage1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 580px;
+    left: 60px;
+    z-index: 0;
+    border-radius: 10px;
+}
+.image2{
+    width: 500px;
+    position: absolute;
+    height: 580px;
+    background: transparent;
+    background-image: url("https://i.ibb.co/hFdgg37/Scan-AImage2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 330px;
+    left: 460px;
+    border-radius: 10px;
+}
+.image3{
+    width: 200px;
+    position: absolute;
+    height: 430px;
+    background-image: url("https://i.ibb.co/JcLWG2v/Scan-AImage3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 140px;
+    border-radius: 10px;
+    bottom: 300px;
+}
+.image4{
+    width: 200px;
+    position: absolute;
+    height: 430px;
+    background-image: url("https://i.ibb.co/yhxQPvJ/Scan-AImage4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 140px;
+    border-radius: 10px;
+    top: 430px;
+}
+
+.homeBody h3{
+    position: absolute;
+    top: 60px;
+    font-size: min(75px, 5vw);
+    left: 690px;
+}
