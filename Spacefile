@@ -6,3 +6,5 @@ micros:
     engine: next
     primary: true
     dev: npm run dev
+    presets:
+        api_keys: true

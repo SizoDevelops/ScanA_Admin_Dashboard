@@ -16,10 +16,15 @@
     list-style: none;
     cursor: pointer;
     font-size: min(14px, 4vw);
-}
 
-.navList li:active{
+}
+.navList li a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.navList li:active, .navList li a:active{
     color: #03a4ff;
+    text-decoration: none;
 }
 
 .logoHolder{
@@ -42,7 +47,7 @@
     line-height: 24px;
 }
 
-.Button{
+.Button a{
     background-color: #68696a88;
     font-size: min(14px, 4vw);
     width: 240px;
@@ -53,11 +58,18 @@
     align-items: center;
     border-radius: 5px;
     cursor: pointer;
+
 }
-.Button:active{
-    background: #ffffff;
+
+.Button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.Button a:active{
     color: #111115;
+    background: #ffffff;
 }
+
 .Images{
     display: flex;
     flex-direction: column;
