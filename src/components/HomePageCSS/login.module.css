@@ -60,7 +60,7 @@
 
 }
 
-.Steps input{
+.Steps .Inputs{
     padding: 20px;
     width: 95%;
     color: #68696A;
@@ -77,9 +77,9 @@
 }
 
 .LoginBtn{
-    background-color: #68696a88;
+    background-color: #111115;
     font-size: min(14px, 4vw);
-    width: 240px;
+    width: 140px;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -87,6 +87,9 @@
     border-radius: 5px;
     cursor: pointer;
     align-self: flex-end;
+    padding: 0;
+    border: none;
+
 }
 
 .LoginBtn:active{

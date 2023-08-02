@@ -8,6 +8,9 @@ export async function POST(request) {
     const body = await request.json();
 
     const user = await db.get(body.key)
- 
-    return NextResponse.json(user)
+    const members = user.members.concat(body.data)
+    const updateUser = await  db.update({members: members}, body.key)
+    
+
+    return NextResponse.json(updateUser)
 }

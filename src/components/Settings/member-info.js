@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from '../Settings/SettingsCSS/add-member.module.css'
-const MemberInfo = ({image}) => {
+const MemberInfo = ({title, position, code, initial, last_name, dlt}) => {
     return (
         <div className={styles.Links}>
         <div className={styles.containerProfile} >
           <div className={styles.profileDetails}>
-            <h4>MR S.M MHLONGO</h4>
-            <p>Teacher</p>
-            <p>KJFF232-FEF324</p>
+            <p className={styles.delete} onClick={() => dlt(code)}>Delete</p>
+            <h4>{title} {initial} {last_name}</h4>
+            <p>{position}</p>
+            <p>{code}</p>
           </div>
         </div>
       </div>

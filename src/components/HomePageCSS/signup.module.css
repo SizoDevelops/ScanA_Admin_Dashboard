@@ -21,6 +21,20 @@
     position: relative;
     width: 40%;
 }
+.Button{
+    background-color: #111115;
+    font-size: min(14px, 4vw);
+    width: 240px;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px auto;
+    border: none;
+    
+}
 
 .image1{
     width: 400px;
@@ -51,6 +65,7 @@
 .formHolder{
     position: relative;
     width: 50%;
+ 
 }
 
 .Steps {

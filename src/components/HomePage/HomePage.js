@@ -5,9 +5,37 @@ import Image from 'next/image'
 import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
 import { DataBaseFunc } from '../DatabaseSchema'
+import { getSession, signOut, useSession } from 'next-auth/react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+
 export default function HomePage() {
-const {MySchema} = DataBaseFunc()
-  return (
+  const [schema, setSchema] = useState({members: []})
+  const [loading, setLoading] = useState(true)
+  const {data: session} = useSession()
+
+
+  useEffect(() => {
+    const getUser = async() => {
+      const res = await fetch("api/user", {
+        method: "POST",
+        cache: 'no-cache',
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({key:session?.user.key})
+      })
+      const user = await res.json()
+      setSchema(user)
+      setLoading(false)
+    }
+
+    getUser()
+  }, [session])
+if(loading) {
+  return <>LOADING</>
+}
+else return (
     <> 
     <div className={styles.container}>
     <SidePanel />
@@ -18,7 +46,7 @@ const {MySchema} = DataBaseFunc()
     <div className={styles.imageHolder}></div>
     <div className={styles.name}>
       <p>Hello again</p>
-      <h4>MR S.M MHLONGO</h4>
+      <h4>{schema?.school_admin.admin_name.toUpperCase() || "User Name"}</h4>
     </div>
   </div>
   <div className={styles.searchBar}>
@@ -29,7 +57,7 @@ const {MySchema} = DataBaseFunc()
   </div>
 </div>
 <div className={styles.categories}>
-        <div className={styles.cat}>
+        <div className={styles.cat} onClick={signOut}>
           <p>All</p>
         </div>
         <div className={styles.cat}>
@@ -44,7 +72,7 @@ const {MySchema} = DataBaseFunc()
       </div>
     <div className={styles.profiles}>
         {
-            MySchema.members.map((member, index) => {
+            schema?.members.map((member, index) => {
                 return (
                     <div key={member.last_name+index}>
                         <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} data={member}/>
@@ -65,5 +93,6 @@ const {MySchema} = DataBaseFunc()
     </div>
 
     </>
-  )
+  ) 
 }
+

@@ -1,51 +1,173 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useReducer, useState } from 'react';
 import styles from "../Settings/SettingsCSS/add-member.module.css"
 import MemberInfo from './member-info';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+
+const voucher_codes = require('voucher-code-generator')
+
+const initialState = {
+    id: '',
+    title: '',
+    first_name: '',
+    last_name: '',
+    initial: '',
+    position: '',
+    email: '',
+    code: '',
+    phone_number: '',
+    attendance: {
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
+        friday: []
+    }
+}
+const formReducer = (state, action) => {
+    switch (action.type) {
+      case 'UPDATE_FIELD':
+        return {
+          ...state,
+          [action.field]: action.value,
+        };
+      case 'RESET_FORM':
+        return initialState;
+      default:
+        return state;
+    }
+  };
+  
 const AddMember = () => {
-    return (
-        <div className={styles.container}>
-            <div className={styles.addNew}>
-                <div className={styles.buttons}>
-                <div className={styles.Icon}>
-                            <Image sizes='30' fill src={"/icons/add.png"} alt="Folder Icon"/>
-                        </div>
-                </div>
-            </div>
-        
+    const [state, dispatch] = useReducer(formReducer,initialState)
+    const {data: session} = useSession()
+    const [userId, setUserId] = useState("")
+    const [userCode, setUserCode] = useState("")
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        const code = voucher_codes.generate({
+            count: 1,
+            length: 6,
+            prefix: session?.user.school_code + "-",
+            charset:"alphanumeric"
+        })[0].toUpperCase()
+
+
+        const id = voucher_codes.generate({
+            count: 1,
+            length: 10,
+            prefix: "user-",
+            
+        })[0].toUpperCase()
+
+        dispatch({ type: 'UPDATE_FIELD', field: "id", value: id });
+        dispatch({ type: 'UPDATE_FIELD', field: "code", value: code });
+
+
+          console.log('Form submitted:', users);
+
+    } , [session, users])
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        dispatch({ type: 'UPDATE_FIELD', field: name, value });
+      };
     
+      const handleSubmit = (event) => {
+
+        // Add your form submission logic here
+        if(users.length < 11){
+            setUsers(prep => [...prep, state])
+            handleReset(); 
+        }
+
+      };
+    
+      const handleReset = () => {
+        
+        dispatch({ type: 'RESET_FORM' });
+
+
+      };
+      const removeUser = (id) => {
+        setUsers(users.filter(item => item.code !== id))
+      }
+
+      const addToDB = async () => {
+       const data = {
+            data: users,
+            key: session?.user.key,
+
+        }
+
+        const user = await fetch('/api/update-users', {
+            method: "POST",
+            cache: 'no-cache',
+            headers: {
+                "Content-Type": "application.json"
+            },
+            body: JSON.stringify(data)
+        })
+
+        if(user) {
+            setUsers([])
+            alert("Done")
+        }
+      }
+    return (
+        <form className={styles.container} onSubmit={(e) => {
+            e.preventDefault()
+            if(users.length < 11){
+             handleSubmit()    
+            }
+            else{
+                alert("Cant Submit More Than 10 Members At Once")
+            }
+            }}>
+   
+        
+                <input type="hidden" name="id" value={userId} readOnly/>
+                <input type="hidden" name="code" value={userCode} readOnly/>
                 <div className={styles.memberInfo}>
             <div className={styles.coordinates}>
                     <p>Title*</p>
-                    <input type="text" placeholder='MR.'/>
+                    <input type="text" placeholder='MR.' name="title" value={state.title.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
                         <li>Enter the title of the member. (e.g. MR.)</li>
                     </ul>
             </div> 
             <div className={styles.coordinates}>
                     <p>Initials*</p>
-                    <input type="text" placeholder='S.M.'/>
+                    <input type="text" placeholder='S.M' name="initial" value={state.initial.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
-                        <li>Use proper initial conventions. (e.g. S.W.)</li>
+                        <li>Use proper initial conventions. (e.g. S.W)</li>
                     </ul>
             </div> 
         
             <div className={styles.coordinates}>
-                    <p>Full Name(s)*</p>
-                    <input type="text" placeholder='First Name(s)'/>
-                    <ul className={styles.listIns}>
-                        <li>Names should be seperated by space. (e.g. Sam Walter) </li>
-                        <li>The number of names should be equal the number of initials.</li>
-                    </ul>
+                    <p>First Name*</p>
+                    <input type="text" placeholder='First Name(s)' name="first_name" value={state.first_name.toUpperCase()} onChange={handleInputChange} required/>
             </div> 
 
             <div className={styles.coordinates}>
                     <p>Last Name*</p>
-                    <input type="text" placeholder='Last Name'/>
+                    <input type="text" placeholder='Last Name' name="last_name" value={state.last_name.toUpperCase()} onChange={handleInputChange} required/>
+            </div> 
+            <div className={styles.coordinates}>
+                    <p>Email Address*</p>
+                    <input type="email" placeholder='Email Address' name="email" value={state.email} onChange={handleInputChange} required/>
+                    <ul className={styles.listIns}>
+                        <li>The email address of the member</li>
+                        <li>This email will be used to send the login details to the user.</li>
+                        
+                       
+                    </ul>
             </div> 
             <div className={styles.coordinates}>
                     <p>Position*</p>
-                    <input type="text" placeholder='Developer'/>
+                    <input type="text" placeholder='Developer' name="position" value={state.position.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
                         <li>Position of the member</li>
                        
@@ -53,22 +175,28 @@ const AddMember = () => {
             </div> 
         </div>
 
-
+        <div className={styles.addNew}>
+                <div className={styles.buttons}>
+                <button type="submit" className={styles.Icon}>
+                            <Image sizes='30' fill src={"/icons/add.png"} alt="Folder Icon"/>
+                        </button>
+                </div>
+            </div>
        
 <div className={styles.Profiles}>
 
-            <MemberInfo/>
-            <MemberInfo/>
-            <MemberInfo/>
-            <MemberInfo/>
-
+            {
+                users.map((item, index) => (
+                    <MemberInfo key={item.id} position={item.position} code={item.code} title={item.title} last_name={item.last_name} initial={item.initial} dlt={removeUser}/>
+                ))
+            }
 </div>
             <div className={styles.addNew}>
-                <div className={styles.btn}>
+                <div className={styles.btn} onClick={addToDB}>
                     <p>Confirm</p>
                 </div>
             </div>
-        </div>
+        </form>
     );
 }
 

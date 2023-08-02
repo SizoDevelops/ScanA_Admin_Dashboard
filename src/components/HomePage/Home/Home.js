@@ -6,6 +6,7 @@ import styles from '../../HomePageCSS/home.module.css'
 import Link from 'next/link';
 
 const Home = () => {
+
     return (
         <div>
             <NavBar/>

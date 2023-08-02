@@ -1,10 +1,29 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../../HomePageCSS/signup.module.css'
 import NavBar from './NavBar';
-import MultiStep from 'react-multistep'
+import { useFormik, Form, Formik, Field, ErrorMessage } from 'formik';
+import { validate } from '@/lib/validate';
+import { signIn } from 'next-auth/react';
+import { useEffect } from 'react';
+const voucher_codes = require('voucher-code-generator')
+
+const schoolCode = voucher_codes.generate({
+    count: 1,
+    length: 5,
+    prefix: "SCNA-",
+    charset: "alphaberical"
+})[0].toUpperCase()
+const userCode = voucher_codes.generate({
+        count: 1,
+        length: 5,
+        prefix: schoolCode + "-",
+        charset:"alphabetic"
+    })[0].toUpperCase()
 
 const SignUp = () => {
+const [data, setData] = useState({})
+
     return (
         <div>
            <NavBar/>
@@ -18,14 +37,141 @@ const SignUp = () => {
                 <div className={styles.image2}></div>
            </div>
 
-           <div className={styles.formHolder}>
-           <MultiStep  activeStep={0} prevButton={{title:"Previous", style:{background:"#111115", padding: "10px", border: "1px solid #68696A", margin:"10px", borderRadius: "5px", cursor: "pointer", width: "100px"}}} nextButton={{title:"Next", style:{background:"#111115", padding: "10px", border: "1px solid #68696A", margin:"10px", borderRadius: "5px", cursor: "pointer", width: "100px"}}}>
-                <StepOne title='School Details'/>
-                <StepTwo title='Location Details'/>
-                <StepThree title='Your Details'/>
+        <Formik
 
-        </MultiStep>
-           </div>
+            initialValues={{
+                school_name: '',
+                school_slogan: '',
+                school_email: '',
+                school_number: '',
+                school_address: {
+                    line_one: '',
+                    line_two: '',
+                    province: '',
+                    city: '',
+                    zip_code:''
+                },
+                members: [],
+                school_admin: {
+                    admin_name: '',
+                    admin_email: '',
+
+                },
+                password: '',
+                confirm_password: ''
+            }}
+
+            validate={validate}
+
+            onSubmit= {async values => {
+                values.members = [],
+                values.school_code = schoolCode
+                values.school_admin.admin_code = userCode
+
+                setData(values)
+
+                await fetch("api/signup", {
+                    method: "POST",
+                    cache: "no-cache",
+                    headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(data),
+                }).then(data => data.json())
+                .then(data => {
+                    if(data === "User Already Exists"){
+                        alert(data)
+                        signIn(undefined, {callbackUrl:'/dashboard'})
+                    }
+                    else{  signIn(undefined, {callbackUrl:'/dashboard'}) }
+                }).catch(err => {
+                    console.log(err)
+                }) 
+
+            }}
+    
+        >
+
+       {
+        ({isSubmiting, touched, errors, handleSubmit}) => (
+           <Form className={styles.formHolder} onSubmit={handleSubmit}>
+
+        <div className={styles.Steps}>
+            <h2>School Details</h2>
+
+            <label htmlFor='school_name'>School Name</label>
+            <Field type="text" name='school_name' placeholder="School-Name Secondary School" styles={touched.school_name && errors.school_name ? {border: "1px solid #ff0000"} : {border: "none"}}/>
+         
+             <ErrorMessage name="school_name" />
+            <label htmlFor='school_slogan'>School Slogan</label>
+            <Field type="text" name='school_slogan' placeholder="We breathe and breed prosperity."/>
+            
+
+            <label htmlFor='school_email'>Email Address</label>
+            <Field name='school_email' type="email" placeholder="schoolname@emaildomain.co.za"/>
+            <ErrorMessage name="school_email" />
+
+            <label htmlFor='school_number'>Phone Number</label>
+            <Field type="text" name='school_number' placeholder="+27732456789"/>
+
+            <ErrorMessage name="school_number" />
+        </div>
+  
+
+        <div className={styles.Steps}>
+        <h2>School Address</h2>
+            <label htmlFor='school_address.line_one'>Address Line 1</label>
+            <Field type="text" name='school_address.line_one' placeholder="23 Vilakazi Street"/>
+
+            <ErrorMessage name="school_address.line_one" />
+
+
+            <label htmlFor='school_address.line_two'>Address Line 2</label>
+            <Field type="text" name='school_address.line_two' placeholder="New Stand"/>
+            <ErrorMessage name="school_two" />
+
+
+            <label htmlFor='school_address.province'>Province</label>
+            <Field type="text" name='school_address.province' placeholder="Mpumalanga"/>
+            <ErrorMessage name="province" />
+
+            <label htmlFor='school_address.city'>Town/City</label>
+            <Field type="text" name='school_address.city' placeholder="Piet Retief"/>
+            <ErrorMessage name="city" />
+
+            <label htmlFor='school_address.zip_code'>Zip Code</label>
+            <Field type="text" name='school_address.zip_code' placeholder="2380"/>
+            <ErrorMessage name="zip_code" />
+        </div>
+
+
+        <div className={styles.Steps}>
+        <h2>Admin (Your) Details</h2>
+            <label htmlFor='school_admin.admin_name'>Full Name</label>
+            <Field type="text" name='school_admin.admin_name' placeholder='Sizo Mauritius Mhlongo' />
+            <ErrorMessage name="school_admin.admin_name" />
+
+            <label htmlFor='school_admin.admin_email'>Your Email</label>
+            <Field type="email" name='school_admin.admin_email' placeholder="myname@gmail.com"/>
+            <ErrorMessage name="admin_email" />
+
+            <label htmlFor='password'>Password</label>
+            <Field type="password" name='password'/>
+            <ErrorMessage name="password" />
+
+            <label htmlFor='confirm_password'>Confirm Password</label>
+            <Field type="password" name='confirm_password' />
+            <ErrorMessage name="confirm_password" />
+        
+        </div>
+
+        <button type="submit" className={styles.Button} disabled={isSubmiting} >Submit</button>
+           </Form>
+
+)
+}
+
+           </Formik>
             </div>
          
            </div>
@@ -38,54 +184,49 @@ export default SignUp;
 
 
 
-const StepOne =() => {
-    return(
-         <form className={styles.Steps}>
-            <label htmlFor='Name'>Name</label>
-            <input type="text" name='Name'/>
-            <label htmlFor='Slogan'>School Slogan</label>
-            <input type="text" name='Slogan'/>
-            <label htmlFor='Email'>Email Address</label>
-            <input type="text" name='Email'/>
-            <label htmlFor='Number'>Phone Number</label>
-            <input type="text" name='Number'/>
-        </form>
-   
-    )
-}
 
-const StepTwo =() => {
+
+const StepTwo =({formik}) => {
+    
     return(
-         <form className={styles.Steps}>
+         <div className={styles.Steps}>
             <label htmlFor='Line1'>Address Line 1</label>
-            <input type="text" name='Line1'/>
+            <Field type="text" name='Line1'/>
             <label htmlFor='Line2'>Address Line 2</label>
-            <input type="text" name='Name'/>
+            <Field type="text" name='Name'/>
             <label htmlFor='Province'>Province</label>
-            <input type="text" name='Province'/>
+            <Field type="text" name='Province'/>
             <label htmlFor='Town City'>Town/City</label>
-            <input type="text" name='Town/City'/>
+            <Field type="text" name='Town/City'/>
             <label htmlFor='Zip Code'>Zip Code</label>
-            <input type="text" name='Zip Code'/>
-        </form>
+            <Field type="text" name='Zip Code'/>
+        </div>
    
     )
 }
 
-const StepThree =() => {
+const StepThree =({formik}) => {
     return(
-         <form className={styles.Steps}>
+         <div className={styles.Steps}>
             <label htmlFor='Name'>Full Name</label>
-            <input type="text" name='Name' placeholder='Sizo Mauritius Mhlongo'/>
+            <Field type="text" name='Name' placeholder='Sizo Mauritius Mhlongo'/>
             <label htmlFor='Email'>Email Address</label>
-            <input type="text" name='Slogan'/>
+            <Field type="text" name='Slogan'/>
             <label htmlFor='Confirm Email'>Confirm Email Address</label>
-            <input type="text" name='Confirm Email'/>
+            <Field type="text" name='Confirm Email'/>
             <label htmlFor='Password'>Password</label>
-            <input type="text" name='password'/>
+            <Field type="text" name='password'/>
             <label htmlFor='Number'>Confirm Password</label>
-            <input type="text" name='Confirm Password'/>
-        </form>
+            <Field type="text" name='Confirm Password'/>
+        
+        </div>
    
+    )
+}
+
+
+const StepFour = () => {
+    return (
+        <button type="submit" className={styles.Button}>Submit</button>
     )
 }
