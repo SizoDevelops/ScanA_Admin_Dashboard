@@ -1,38 +1,23 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../../app/page.module.css'
 import Image from 'next/image'
 import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
-import { DataBaseFunc } from '../DatabaseSchema'
-import { getSession, signOut, useSession } from 'next-auth/react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useDatabase } from '../features/dbContext'
+import { useSelector } from 'react-redux'
+
 
 export default function HomePage() {
-  const [schema, setSchema] = useState({members: []})
-  const [loading, setLoading] = useState(true)
-  const {data: session} = useSession()
 
+  const { loading } = useDatabase()
+  const schema = useSelector(state => state.Database.value)
 
-  useEffect(() => {
-    const getUser = async() => {
-      const res = await fetch("api/user", {
-        method: "POST",
-        cache: 'no-cache',
-        headers: {
-          "Content-Type": 'application/json'
-        },
-        body: JSON.stringify({key:session?.user.key})
-      })
-      const user = await res.json()
-      setSchema(user)
-      setLoading(false)
-    }
+  const f = () => {
+    console.log(schema)
+  }
 
-    getUser()
-  }, [session])
-if(loading) {
+if(schema.school_name === "") {
   return <>LOADING</>
 }
 else return (
@@ -57,7 +42,7 @@ else return (
   </div>
 </div>
 <div className={styles.categories}>
-        <div className={styles.cat} onClick={signOut}>
+        <div className={styles.cat} onClick={f}>
           <p>All</p>
         </div>
         <div className={styles.cat}>
@@ -72,7 +57,7 @@ else return (
       </div>
     <div className={styles.profiles}>
         {
-            schema?.members.map((member, index) => {
+            schema.members.map((member, index) => {
                 return (
                     <div key={member.last_name+index}>
                         <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} data={member}/>

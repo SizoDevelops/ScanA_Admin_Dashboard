@@ -52,7 +52,7 @@
 
 .memberInfo{
     display: flex;
-    width: 90%;
+    width: 80%;
     flex-direction: column;
     margin: auto;
 }
@@ -159,6 +159,8 @@
 .profileDetails > p{
     font-size: min(14px, 3vw);
     color:#68696A;
+    text-transform: uppercase;
+
 }
 .Profiles{
     margin-top: 30px;
@@ -178,7 +180,7 @@
     font-size: min(10px, 3vw);
     padding: 5px;
     background: #171a1d;
-    width: 40px;
+    width: 60px;
     text-align: center;
     position: absolute;
     right: 8px;

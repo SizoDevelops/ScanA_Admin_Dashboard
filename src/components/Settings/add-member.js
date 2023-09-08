@@ -17,6 +17,8 @@ const initialState = {
     email: '',
     code: '',
     phone_number: '',
+    block_user: false,
+    pause_register: false,
     attendance: {
         monday: [],
         tuesday: [],
@@ -45,7 +47,7 @@ const AddMember = () => {
     const [userId, setUserId] = useState("")
     const [userCode, setUserCode] = useState("")
     const [users, setUsers] = useState([])
-
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         const code = voucher_codes.generate({
             count: 1,
@@ -58,7 +60,7 @@ const AddMember = () => {
         const id = voucher_codes.generate({
             count: 1,
             length: 10,
-            prefix: "user-",
+            prefix: "scana-user-",
             
         })[0].toUpperCase()
 
@@ -96,6 +98,7 @@ const AddMember = () => {
       }
 
       const addToDB = async () => {
+        setLoading(true)
        const data = {
             data: users,
             key: session?.user.key,
@@ -113,9 +116,11 @@ const AddMember = () => {
 
         if(user) {
             setUsers([])
-            alert("Done")
+            setLoading(false)
         }
       }
+
+    
     return (
         <form className={styles.container} onSubmit={(e) => {
             e.preventDefault()
@@ -166,6 +171,16 @@ const AddMember = () => {
                     </ul>
             </div> 
             <div className={styles.coordinates}>
+                    <p>Phone Number*</p>
+                    <input type="text" placeholder='Phone Number' name="phone_number" value={state.phone_number} onChange={handleInputChange} required/>
+                    <ul className={styles.listIns}>
+                        <li>The phone number of the member</li>
+                        <li>For convenience</li>
+                        
+                       
+                    </ul>
+            </div> 
+            <div className={styles.coordinates}>
                     <p>Position*</p>
                     <input type="text" placeholder='Developer' name="position" value={state.position.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
@@ -192,8 +207,8 @@ const AddMember = () => {
             }
 </div>
             <div className={styles.addNew}>
-                <div className={styles.btn} onClick={addToDB}>
-                    <p>Confirm</p>
+                <div className={styles.btn} onClick={addToDB} aria-disabled={loading}>
+                    <p>{loading ? "Uploading..." : "Confirm"}</p>
                 </div>
             </div>
         </form>

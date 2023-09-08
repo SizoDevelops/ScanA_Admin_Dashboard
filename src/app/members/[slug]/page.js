@@ -6,18 +6,21 @@ import SidePanel from '@/components/HomePage/sidePanel'
 import AttendanceProfile from '@/components/HomePage/Members/memberAttendance'
 import { DataBaseFunc } from '@/components/DatabaseSchema'
 import { useParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { useDatabase } from '@/components/features/dbContext'
+import { useSelector } from 'react-redux'
 
 
 export default function Member({params}) {
-    const router = useParams()
-    const [member, setMember] = useState()
-    const {MySchema} = DataBaseFunc()
-    useEffect(() => {
-      setMember(MySchema.members.find(members => members.id === router.slug))
-      
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-  return (
+  const router = useParams()
+  const { loading } = useDatabase()
+  const member = useSelector(state => state.Database.value.members.filter(item => item.id === router.slug)[0])
+
+  
+if(loading) {
+  return <>LOADING</>
+}
+else return (
     <> 
     <div className={styles.container}>
     <SidePanel />
@@ -34,7 +37,7 @@ export default function Member({params}) {
               </div>
               <div>
                 <p>Phone Number</p>
-                <p>{member ? member.phone_numbers[0] : ""} </p>
+                <p>{member ? member.phone_number : "No Number"} </p>
               </div>
               <div>
                 <p>Email Address</p>

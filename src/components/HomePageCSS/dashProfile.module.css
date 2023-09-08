@@ -9,6 +9,7 @@
     cursor: pointer;
     margin-right: 20px;
     margin-bottom: 20px;
+    padding-right: 5px;
 }
 
 .profileImage{
@@ -33,6 +34,7 @@
 
 .profileDetails h4{
     font-weight: 900;
+    font-size: min(14px, 4vw);
 }
 
 .Links{

@@ -4,6 +4,7 @@ import SidePanel from '@/components/HomePage/sidePanel';
 import Image from 'next/image';
 import Updates from '@/components/Updates/updates';
 const Page = () => {
+    
     return (
         <div className={styles.container}>
             <SidePanel/>

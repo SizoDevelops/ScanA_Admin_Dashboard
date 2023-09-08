@@ -14,6 +14,7 @@ export async function POST(request) {
         "school_email": body.school_email, 
         "school_code": body.school_code 
     })
+
     
     if (user.count > 0 && (await bcrypt.compare(body.password, user.items[0].password))) {
         const { password, ...userWithoutPass } = user.items[0];

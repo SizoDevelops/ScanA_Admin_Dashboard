@@ -9,7 +9,7 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
-export default function Selector({width, multi}) {
+export default function Selector({width, multi, options}) {
   return (
     <Select
     options={options}

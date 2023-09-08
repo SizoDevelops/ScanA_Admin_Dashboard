@@ -21,9 +21,9 @@ const endpoints = [
         description: "These setting will update how the app functions and other specific app features.",
         details: [
             {
-                endpoint: "update-members",
+                endpoint: "manage-members",
                 icon: "",
-                name: "Update Members"
+                name: "Manage Members"
             },
             {
                 endpoint: "add-members",
