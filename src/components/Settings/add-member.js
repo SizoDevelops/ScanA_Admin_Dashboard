@@ -207,7 +207,14 @@ const AddMember = () => {
             }
 </div>
             <div className={styles.addNew}>
-                <div className={styles.btn} onClick={addToDB} aria-disabled={loading}>
+                <div className={styles.btn} onClick={() => {
+                    if(users.length > 0){
+                        addToDB()
+                    }
+                    else {
+                        alert("Please add users")
+                    }
+                }} >
                     <p>{loading ? "Uploading..." : "Confirm"}</p>
                 </div>
             </div>

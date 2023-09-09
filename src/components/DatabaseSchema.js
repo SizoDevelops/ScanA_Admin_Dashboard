@@ -188,7 +188,7 @@ export const DataBaseFunc = () => {
                                 timein: "07:28",
                                 date: "12 June 2023",
                                 timeout: "-",
-                                absent: false,
+                                absent: true,
                                 initial: "S.M",
                             },
                         ],

@@ -42,7 +42,33 @@ else return (
   </div>
 </div>
 <div className={styles.categories}>
-        <div className={styles.cat} onClick={f}>
+        <div className={styles.cat} onClick={async () => {
+          await fetch("/api/sign-register", {
+            method: "POST",
+            cache: 'no-cache',
+            headers: {
+                "Content-Type": "application.json"
+            },
+            body: JSON.stringify({
+              "key":"SCNA-AABAB",
+              "id": "SCANA-USER-HLPYUDMYGZ",
+             "currentDay": "monday",
+              "attend": {
+                "week": 1,
+                "timein": "-",
+                "timeout": "-",
+                "initial": "S.M",
+                "absent": false,
+                "date" : "07 Sep 23",
+                "day": "monday"
+              }
+            
+            })
+          }).then(data => data.json())
+          .then(c => console.log(c))
+
+          
+        }}>
           <p>All</p>
         </div>
         <div className={styles.cat}>
