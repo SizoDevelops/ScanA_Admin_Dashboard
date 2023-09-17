@@ -5,7 +5,6 @@ import styles from '../../HomePageCSS/login.module.css'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { signIn, useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 
 const Login = () => {
 return (
@@ -39,6 +38,8 @@ const StepOne =() => {
         school_code: '',
         school_email: '',
         password: '',
+        redirect: true,
+        callbackURL: '/'
       },
       validationSchema: Yup.object({
        school_code: Yup.string().required('Required'),

@@ -44,6 +44,10 @@ const [data, setData] = useState({})
                 school_slogan: '',
                 school_email: '',
                 school_number: '',
+                coordinates: {
+                    latitude: "",
+                    longitude: ""
+                },
                 school_address: {
                     line_one: '',
                     line_two: '',
@@ -64,6 +68,10 @@ const [data, setData] = useState({})
             validate={validate}
 
             onSubmit= {async values => {
+                values.coordinates = {
+                    latitude: "",
+                    longitude: ""
+                }
                 values.members = [],
                 values.school_code = schoolCode
                 values.school_admin.admin_code = userCode

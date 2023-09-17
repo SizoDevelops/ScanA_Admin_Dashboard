@@ -1,6 +1,4 @@
-"use client"
 
-import React, { useEffect } from 'react';
 import NavBar from './NavBar';
 import styles from '../../HomePageCSS/home.module.css'
 import Link from 'next/link';

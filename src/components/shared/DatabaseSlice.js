@@ -8,6 +8,10 @@ const DatabaseSlice = createSlice({
         school_slogan: '',
         school_email: '',
         school_number: '',
+        coordinates: {
+            latitude: "",
+            longitute: ""
+        },
         school_address: {
             line_one: '',
             line_two: '',

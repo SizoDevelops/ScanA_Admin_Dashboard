@@ -6,16 +6,20 @@ import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
 import { useDatabase } from '../features/dbContext'
 import { useSelector } from 'react-redux'
+import { signOut } from 'next-auth/react'
 
 
 export default function HomePage() {
 
-  const { loading } = useDatabase()
   const schema = useSelector(state => state.Database.value)
 
-  const f = () => {
-    console.log(schema)
-  }
+
+useEffect(() => {
+  
+  //  signOut()
+}, [schema])
+
+
 
 if(schema.school_name === "") {
   return <>LOADING</>
@@ -43,29 +47,7 @@ else return (
 </div>
 <div className={styles.categories}>
         <div className={styles.cat} onClick={async () => {
-          await fetch("/api/sign-register", {
-            method: "POST",
-            cache: 'no-cache',
-            headers: {
-                "Content-Type": "application.json"
-            },
-            body: JSON.stringify({
-              "key":"SCNA-AABAB",
-              "id": "SCANA-USER-HLPYUDMYGZ",
-             "currentDay": "monday",
-              "attend": {
-                "week": 1,
-                "timein": "-",
-                "timeout": "-",
-                "initial": "S.M",
-                "absent": false,
-                "date" : "07 Sep 23",
-                "day": "monday"
-              }
-            
-            })
-          }).then(data => data.json())
-          .then(c => console.log(c))
+          
 
           
         }}>
@@ -86,7 +68,7 @@ else return (
             schema.members.map((member, index) => {
                 return (
                     <div key={member.last_name+index}>
-                        <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} data={member}/>
+                        <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} schema={member}/>
                     </div>
                     
                 )

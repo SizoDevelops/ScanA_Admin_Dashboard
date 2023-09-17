@@ -9,11 +9,13 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
-export default function Selector({width, multi, options}) {
+export default function Selector({width, multi, options, onChange, defaultV}) {
   return (
     <Select
     options={options}
     isMulti={multi}
+    defaultValue={defaultV}
+    onChange={onChange}
     className={styles.Sele}
     styles={{
         control: (baseStyles, state) => ({
@@ -27,7 +29,7 @@ export default function Selector({width, multi, options}) {
           border: "none",
           outline: "none",
           color: "#ffffff",
-          fontSize: "min(15px, 3vw)"
+          fontSize: "min(12px, 2.4vw)"
         }),
   
       }}

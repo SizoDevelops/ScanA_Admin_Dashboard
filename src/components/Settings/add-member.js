@@ -16,6 +16,7 @@ const initialState = {
     position: '',
     email: '',
     code: '',
+    password: '',
     phone_number: '',
     block_user: false,
     pause_register: false,

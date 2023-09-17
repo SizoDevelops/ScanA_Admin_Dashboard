@@ -35,7 +35,7 @@ return (
             <p className={styles.Name}>{`${title} ${initial} ${last_name}`}</p>
 
             <div className={styles.Option}>
-                <p onClick={async() =>{ 
+                {/* <p onClick={async() =>{ 
                   
                   await updateUser({key: keyID, id: id, pause_register:!paused})
                   dispatch(updateMember({pause_register:!paused}))
@@ -45,7 +45,7 @@ return (
                   
                   await updateUser({key: keyID, id: id, block_user: !blocked})
                   dispatch(updateMember({block_user: !blocked}))
-                  }}>{blocked ? "Unblock User" :"Block User"}</p>
+                  }}>{blocked ? "Unblock User" :"Block User"}</p> */}
 
                 <p onClick={async() =>{ 
                   

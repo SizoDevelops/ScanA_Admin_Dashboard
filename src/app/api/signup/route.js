@@ -31,6 +31,10 @@ export async function POST(request) {
     school_email,
     school_number,
     school_logo,
+    coordinates:{
+      longitude: "",
+      latitude: "",
+    },
     school_address: { line_one, line_two, province, city, zip_code },
     members:[],
     school_admin:{
@@ -52,7 +56,7 @@ if(schoolSearch.count < 1){
 
   return NextResponse.json(result)
 }
-  
+
 else {
   return NextResponse.json("User Already Exists")
 }

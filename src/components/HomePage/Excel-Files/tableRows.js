@@ -1,27 +1,27 @@
 import React from 'react'
 import styles from '../../HomePageCSS/topPannel.module.css'
 import TableData from './tableData'
-import { DataBaseFunc } from '@/components/DatabaseSchema'
 
-export default function TableRows({memberName, timein, timeout, initialIn, initialOut, absent,data}) {
+
+export default function TableRows({memberName, data, currentWeek}) {
 
   return (
     <tr className={styles.data}>
 
-    <td colSpan={1} style={{whiteSpace: "nowrap"}}>
+    <td colSpan={1} style={{whiteSpace: "nowrap"}} className={styles.names}>
        {memberName}
       </td>
         <React.Fragment>
 
-        <TableData  absent={data.monday[0].absent} timein={data.monday[0].timein} timeout={data.monday[0].timeout} initialIn={data.monday[0].initial} initialOut={data.monday[0].initial}/>
+        <TableData  absent={data.monday  ? data.monday.find(item => item.week === currentWeek)?.absent : "-"} timein={data.monday ? data.monday.find(item => item.week === currentWeek)?.timein : "-"} timeout={ data.monday ? data.monday.find(item => item.week === currentWeek)?.timeout : "-"} initialIn={data.monday ? data.monday.find(item => item.week === currentWeek)?.initial : "-"} initialOut={data.monday ? data.monday.find(item => item.week === currentWeek)?.initial : "-"}/>
 
-        <TableData  absent={data.tuesday[0].absent} timein={data.tuesday[0].timein} timeout={data.tuesday[0].timeout} initialIn={data.tuesday[0].initial} initialOut={data.tuesday[0].initial}/>
+        <TableData  absent={data.tuesday ? data.tuesday.find(item => item.week === currentWeek)?.absent : "-"} timein={data.tuesday ? data.tuesday.find(item => item.week === currentWeek)?.timein : "-"} timeout={data.tuesday ? data.tuesday.find(item => item.week === currentWeek)?.timeout : "-"} initialIn={data.tuesday ? data.tuesday.find(item => item.week === currentWeek)?.initial : "-"} initialOut={data.tuesday ? data.tuesday.find(item => item.week === currentWeek)?.initial : "-"}/>
 
-        <TableData  absent={data.wednesday[0].absent} timein={data.wednesday[0].timein} timeout={data.wednesday[0].timeout} initialIn={data.wednesday[0].initial} initialOut={data.wednesday[0].initial}/>
+        <TableData  absent={data.wednesday ? data.wednesday.find(item => item.week === currentWeek)?.absent : "-"} timein={ data.wednesday ? data.wednesday.find(item => item.week === currentWeek)?.timein : "-"} timeout={data.wednesday ? data.wednesday.find(item => item.week === currentWeek)?.timeout : "-"} initialIn={data.wednesday ? data.wednesday.find(item => item.week === currentWeek)?.initial : "-"} initialOut={data.wednesday ? data.wednesday.find(item => item.week === currentWeek)?.initial : "-"}/>
 
-        <TableData  absent={data.thursday[0].absent} timein={data.thursday[0].timein} timeout={data.thursday[0].timeout} initialIn={data.thursday[0].initial} initialOut={data.thursday[0].initial}/>
+        <TableData  absent={data.thursday? data.thursday.find(item => item.week === currentWeek)?.absent : "-" } timein={data.thursday ? data.thursday.find(item => item.week === currentWeek)?.timein : "-"} timeout={data.thursday ? data.thursday.find(item => item.week === currentWeek)?.timeout : "-"} initialIn={data.thursday ? data.thursday.find(item => item.week === currentWeek)?.initial : "-"} initialOut={data.thursday ? data.thursday.find(item => item.week === currentWeek)?.initial : "-"}/>
         
-        <TableData  absent={data.friday[0].absent} timein={data.friday[0].timein} timeout={data.friday[0].timeout} initialIn={data.friday[0].initial} initialOut={data.friday[0].initial}/>
+        <TableData  absent={data.friday ? data.friday.find(item => item.week === currentWeek)?.absent: "-"} timein={data.friday  ? data.friday.find(item => item.week === currentWeek)?.timein : "-"} timeout={data.friday ? data.friday.find(item => item.week === currentWeek)?.timeout : "-"} initialIn={data.friday ? data.friday.find(item => item.week === currentWeek)?.initial : "-"} initialOut={data.friday ? data.friday.find(item => item.week === currentWeek)?.initial : "-"}/>
   
         </React.Fragment>
 

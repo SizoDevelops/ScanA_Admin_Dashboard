@@ -14,7 +14,9 @@
 
   .Table{
     position: relative;
-    
+    width: fit-content;
+    margin: auto;
+  
   }
   .sideIcon{
     width: min(20px , 4vw);
@@ -113,12 +115,15 @@
   .headingNames th{
     width: 20%;
     padding: 12px 0;
-    background-color: #111115;
     border-bottom: 1px solid #2e393a;
     border-right: 1px solid #2e393a;
-    
+    border-top: 1px solid #2e393a;
     font-size: min(3vw, 15px);
 
+  }
+
+  .headingNames th:first-child{
+    border-left: 1px solid #2e393a;
   }
 
   .headingNames td{
@@ -132,6 +137,9 @@
     padding: 12px;
 
   }
+  .headers td{
+    font-weight: 800;
+  }
 
   .subHeadings tr {
     width: min(100px, 3vw);
@@ -143,13 +151,19 @@
     text-align: left;
     font-size: min(3vw, 12px);
   }
+.names{
+  border-bottom: 1px solid #2e393a;
+  border-right: 1px solid #2e393a;
+  border-left: 1px solid #2e393a;
+}
+
 
   .subHeadings{
 
     border-bottom: 1px solid #2e393a;
     border-right: 1px solid #2e393a;
   }
-.subHeadings:nth-child(1){
+.subHeadings:first-child{
   border-left: 1px solid #2e393a;
 }
   .DownloadActions{

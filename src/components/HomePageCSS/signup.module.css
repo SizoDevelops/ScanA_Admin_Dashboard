@@ -35,6 +35,9 @@
     border: none;
     
 }
+.Button:active{
+    background: #68696A;
+}
 
 .image1{
     width: 400px;

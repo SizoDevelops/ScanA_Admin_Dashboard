@@ -20,7 +20,7 @@
 .coordinates > input{
     padding: 20px;
     width: min(85vw, 1080px);
-    color: #68696A;
+    color: #adb0b3;
     background: #111115;
     outline: none;
     border: none;
@@ -39,6 +39,10 @@
     text-align: center;
     cursor: pointer;
    
+}
+.submit:active{
+    background: #68696A;
+    color: #111115;
 }
 .coordinates{
     margin:30px auto;
@@ -63,11 +67,12 @@
 }
 .instruList{
     color: #68696A;
-    font-size: min(14vw, 3vw);
+    font-size: min(14px, 3vw);
 }
 
 .instruList li{
     margin-bottom: 20px;
+
 }
 
 .instruList li a{

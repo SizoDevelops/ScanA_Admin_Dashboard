@@ -1,34 +1,25 @@
 "use client"
 import Login from '@/components/HomePage/Home/Login';
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 const Page = () => {
     const {data: session} = useSession()
-    const [loading, setLoading] = useState(true)
-  
-    useEffect(() => {
-      setLoading(true)
-      if(session){
-        setLoading(false)
-      }
-    }, [session])
+
+    const router = useRouter()
+
   
   
-    if(loading){
-      <>Loading</>
+  if(session && session.user){
+          router.push("/")
     }
-    else {
-        if(session && session.user){
-      redirect("/", "replace")
-    }
-    else return (
+  else return (
       <>
         <Login/>
       </>
     );
-    }
+
 }
 
 export default Page;

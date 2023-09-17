@@ -31,10 +31,6 @@ export const DatabaseProvider = ({children}) => {
         }).then(data => data.json())
         .then(data => {
             dispatch(setSchool(data))
-            for(var i = 0; i < data.members.length; i++){
-                const member = data.members[i]
-                setAttendance(member.id, member.initial)
-            }
             
         }).finally(() => {
             
@@ -107,10 +103,12 @@ export const DatabaseProvider = ({children}) => {
                 initial: initial,
                 absent: false,
                 date : date,
-                day: day
+                day: day,
+                code: ""
             } 
         }
 
+        if(userID && session?.user.key){  
         await fetch("/api/sign-register", {
             method: "POST",
             cache: "no-cache",
@@ -119,8 +117,8 @@ export const DatabaseProvider = ({children}) => {
             },
             body: JSON.stringify(data)
         })
-
-        console.log(data)
+        }
+     
       }
 
 

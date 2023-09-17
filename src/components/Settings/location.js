@@ -1,7 +1,31 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import styles from "@/components/Settings/SettingsCSS/location.module.css"
+import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 const Location = () => {
+    const {data: session} = useSession()
+    const [latitude, setLat] = useState("")
+    const [longitude, setLong] = useState("")
+    const schema = useSelector(state => state.Database.value)
+
+    const setLocation = async (data) =>{
+        await fetch("/api/set-location", {
+            method: "POST",
+            cache: "force-cache",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+    useEffect(() => {
+        setLat(schema?.coordinates.latitude)
+        setLong(schema?.coordinates.longitude)
+    }, [schema])
+
     return (
         <div className={styles.container}>
             <h2 className={styles.intro}>Please enter the longitude and latitude in the boxes below, make sure it`s precise or follow the instructions below to get your coordinates.</h2>
@@ -10,14 +34,25 @@ const Location = () => {
             <div className={styles.formHolder}>
                 <div className={styles.coordinates}>
                     <p>Latitude</p>
-                    <input type="text" placeholder='-26.057660268343795'/>
+                    <input type="text" placeholder='-26.057660268343795' value={latitude} onChange={e => setLat(e.target.value)}/>
                 </div>
                 <div className={styles.coordinates}>
                     <p>Longitude</p>
-                    <input type="text" placeholder=' 28.023167203109832'/>
+                    <input type="text" placeholder=' 28.023167203109832' value={longitude} onChange={e => setLong(e.target.value)}/>
                 </div>
 
-                <div className={styles.submit}>Save</div>
+                <div className={styles.submit} onClick={() => {
+                    if(!latitude || !longitude){
+                        alert("Please Supply Both Coordinates.")
+                    }
+                    else {
+                        setLocation({
+                            key: session?.user.key,
+                            latitude: latitude,
+                            longitude: longitude
+                        })
+                    }
+                }}>Save</div>
             </div>
 
 

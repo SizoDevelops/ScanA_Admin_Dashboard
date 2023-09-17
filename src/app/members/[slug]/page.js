@@ -15,8 +15,29 @@ export default function Member({params}) {
   const router = useParams()
   const { loading } = useDatabase()
   const member = useSelector(state => state.Database.value.members.filter(item => item.id === router.slug)[0])
-
+  const {data: session} = useSession()
+  const url = useParams()
+  function getCurrentWeek() {
+    const today = new Date();
+    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000));
+    const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
+    return currentWeek;
+  }
   
+  const sendEmail = async (data) => {
+
+    await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+  }
+
+
+
 if(loading) {
   return <>LOADING</>
 }
@@ -51,7 +72,15 @@ else return (
           </div>
  <div className={styles.Buttons}>
 
-            <div className={styles.btn}>
+            <div className={styles.btn} onClick={() =>{
+              sendEmail({
+                name: `${member.title} ${member.last_name}`,
+                page: 'http://localhost:3001',
+                user: member.email,
+                code: session?.user.key,
+                user_code: member.code
+              })
+            }}>
               <div className={styles.BtnImage}>
               <Image sizes='30' fill src={"/icons/Pass.png"} alt="Folder Icon"/>
               </div>
@@ -64,19 +93,11 @@ else return (
         <h4><span></span>Attendance History</h4>
 
         <div className={styles.Attendance}>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
-          <AttendanceProfile/>
+          <AttendanceProfile absent={member.monday  ? member.monday.find(item => item.week === getCurrentWeek())?.absent : "-"} timein={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.timein : "-"} timeout={ member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.timeout : "-"} initialIn={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.initial : "-"} initialOut={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.initial : "-"}/>
         </div>
       </div>
 
-
+   
       
     </div>
 

@@ -9,11 +9,11 @@ const endpoints = [
                 icon: "/icons/locate.png",
                 name: "Location",
             },
-            {
-                endpoint: "notifications",
-                icon: "/icons/notification.png",
-                name: "Notifications"
-            },
+            // {
+            //     endpoint: "notifications",
+            //     icon: "/icons/notification.png",
+            //     name: "Notifications"
+            // },
         ]
     },
     {
@@ -30,11 +30,11 @@ const endpoints = [
                 icon: "/icons/addUser.png",
                 name: "Add Members"
             },
-            {
-                endpoint: "permissions",
-                icon: "/icons/permit.png",
-                name: "Permissions"
-            },
+            // {
+            //     endpoint: "permissions",
+            //     icon: "/icons/permit.png",
+            //     name: "Permissions"
+            // },
         ]
     },
     {  

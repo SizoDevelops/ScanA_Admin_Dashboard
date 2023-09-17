@@ -7,14 +7,17 @@ export default function TableData({timein, timeout, initialIn, initialOut, absen
             <thead>
                 <tr className={styles.credecials}>
                   {
-                    absent ? <td>Absent</td>
+                    absent === true ? <td>Absent</td>
                     :
-                    <>
+                    absent === false ? 
+                     <>
                         <td>{timein}</td>
                         <td>{initialIn}</td>
                         <td>{timeout}</td>
                         <td>{initialOut}</td> 
                     </>
+                    :
+                    <td>Unsigned</td>
                   }
             
                 </tr>
