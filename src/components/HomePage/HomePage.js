@@ -7,6 +7,7 @@ import SidePanel from '@/components/HomePage/sidePanel'
 import { useDatabase } from '../features/dbContext'
 import { useSelector } from 'react-redux'
 import { signOut } from 'next-auth/react'
+import Loader from '../shared/Loader'
 
 
 export default function HomePage() {
@@ -22,7 +23,7 @@ useEffect(() => {
 
 
 if(schema.school_name === "") {
-  return <>LOADING</>
+  return <Loader/>
 }
 else return (
     <> 

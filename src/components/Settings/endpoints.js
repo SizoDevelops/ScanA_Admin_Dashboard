@@ -9,11 +9,11 @@ const endpoints = [
                 icon: "/icons/locate.png",
                 name: "Location",
             },
-            // {
-            //     endpoint: "notifications",
-            //     icon: "/icons/notification.png",
-            //     name: "Notifications"
-            // },
+            {
+                endpoint: "attendance",
+                icon: "/icons/notification.png",
+                name: "Mark Attendance"
+            },
         ]
     },
     {

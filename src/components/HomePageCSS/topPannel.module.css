@@ -16,6 +16,7 @@
     position: relative;
     width: fit-content;
     margin: auto;
+    
   
   }
   .sideIcon{
@@ -37,6 +38,19 @@
     justify-content: left;
     margin-top: 40px;
     
+  }
+
+  .TableHolder h1{
+
+    text-align: center;
+  }
+
+
+  .para{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
   }
   .profiles{
     margin-top: 50px;
@@ -99,7 +113,10 @@
     padding-bottom: 20px;
 
   }
-
+.arrive td{
+  width: 50%;
+  
+}
   .data td{
     font-size: min(3vw, 12px);
     text-align: center;

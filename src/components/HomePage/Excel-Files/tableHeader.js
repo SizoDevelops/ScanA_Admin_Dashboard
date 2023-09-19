@@ -42,7 +42,8 @@ export default function TableHeader({chunks, week, position, ref}) {
   return (
     <div className={styles.TableHolder} ref={ref}>
  
-
+    <h1>Attendance Register</h1>
+    <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the school.</p>
         <table className={styles.headings}>
   <thead>
     <tr className={styles.headingNames}>
@@ -56,12 +57,13 @@ export default function TableHeader({chunks, week, position, ref}) {
   </thead>
   <tbody>
     <tr className={styles.headingNames}>
-    <td className={styles.names} style={{background:"#111115"}}>
-     
+    <td className={styles.names} style={{fontSize: "12px", textAlign: "center"}}>
+      <p>SURNAME & INITIALS</p>
       </td>
       <td className={styles.subHeadings}>
         <table>
-            <thead>
+            <thead className={styles.head}>
+       
                 <tr className={styles.headers}>
                 <td>in</td>
                 <td>initial</td>

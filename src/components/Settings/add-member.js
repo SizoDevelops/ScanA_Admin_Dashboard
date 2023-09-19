@@ -69,13 +69,11 @@ const AddMember = () => {
         dispatch({ type: 'UPDATE_FIELD', field: "code", value: code });
 
 
-          console.log('Form submitted:', users);
-
     } , [session, users])
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        dispatch({ type: 'UPDATE_FIELD', field: name, value });
+        dispatch({ type: 'UPDATE_FIELD', field: name, value: value.toUpperCase() });
       };
     
       const handleSubmit = (event) => {

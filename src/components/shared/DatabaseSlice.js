@@ -8,6 +8,14 @@ const DatabaseSlice = createSlice({
         school_slogan: '',
         school_email: '',
         school_number: '',
+        attendance: {
+            currentWeek: 0,
+            friday: "",
+            monday: "",
+            thursday: "",
+            tuesday: "",
+            wednesday: ""
+          },
         coordinates: {
             latitude: "",
             longitute: ""

@@ -44,6 +44,14 @@ const [data, setData] = useState({})
                 school_slogan: '',
                 school_email: '',
                 school_number: '',
+                attendance: {
+                    currentWeek: "",
+                    friday: "",
+                    monday: "",
+                    thursday: "",
+                    tuesday: "",
+                    wednesday: ""
+                  },
                 coordinates: {
                     latitude: "",
                     longitude: ""
@@ -68,11 +76,6 @@ const [data, setData] = useState({})
             validate={validate}
 
             onSubmit= {async values => {
-                values.coordinates = {
-                    latitude: "",
-                    longitude: ""
-                }
-                values.members = [],
                 values.school_code = schoolCode
                 values.school_admin.admin_code = userCode
 
@@ -88,10 +91,9 @@ const [data, setData] = useState({})
                 }).then(data => data.json())
                 .then(data => {
                     if(data === "User Already Exists"){
-                        alert(data)
-                        signIn(undefined, {callbackUrl:'/dashboard'})
+                        signIn()
                     }
-                    else{  signIn(undefined, {callbackUrl:'/dashboard'}) }
+                    else{  signIn() }
                 }).catch(err => {
                     console.log(err)
                 }) 

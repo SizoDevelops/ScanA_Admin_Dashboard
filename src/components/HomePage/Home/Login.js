@@ -38,8 +38,7 @@ const StepOne =() => {
         school_code: '',
         school_email: '',
         password: '',
-        redirect: true,
-        callbackURL: '/'
+        redirect: false,
       },
       validationSchema: Yup.object({
        school_code: Yup.string().required('Required'),
@@ -63,7 +62,7 @@ const StepOne =() => {
             <label htmlFor='Password' >Password</label>
             {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : <></>}
             <input type="password" className={styles.Inputs} name='Password' {...formik.getFieldProps("password")}/>
-            <input type="submit" className={styles.LoginBtn} value="Login"/>
+            <input type="submit" className={styles.LoginBtn} disabled={formik.isSubmitting} value={formik.isSubmitting ? "Checking..." : "Login"}/>
         </form>
    
     )

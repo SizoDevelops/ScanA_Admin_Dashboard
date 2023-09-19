@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { setSchool, updateMember } from "../shared/DatabaseSlice";
 import { useDispatch} from "react-redux";
-
+const voucher_codes = require("voucher-code-generator")
 
 
 
@@ -42,7 +42,7 @@ export const DatabaseProvider = ({children}) => {
     useEffect(() => {
         if(session){
       getUser({key:session?.user.key}) 
-      
+      // setAttendance()
         }
 
     }, [session])
@@ -62,13 +62,6 @@ export const DatabaseProvider = ({children}) => {
         setLoading(false)
       }
 
-      function getCurrentWeek() {
-        const today = new Date();
-        const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-        const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000));
-        const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
-        return currentWeek;
-      }
 
       function getCurrentDayOfWeek() {
         const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -77,48 +70,142 @@ export const DatabaseProvider = ({children}) => {
         const currentDay = daysOfWeek[dayOfWeek];
         return currentDay;
       }
-
-      function getCurrentDate() {
+      function getCurrentWeek() {
         const today = new Date();
-        const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zeros if necessary
-        const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (months are 0-based) and pad with leading zeros if necessary
-        const year = today.getFullYear(); // Get the year
-      
-        return `${day}/${month}/${year}`;
+        const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+        const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000));
+        const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
+        return currentWeek;
       }
+    
 
-      const setAttendance = async (userID, initial) => {
+      const setAttendance = async () => {
+        setLoading(true)
         const day = getCurrentDayOfWeek()
-        const date = getCurrentDate()
-        const week = getCurrentWeek()
+    
+        const monday = voucher_codes.generate({
+          count: 1,
+          length: 8,
+          prefix: "SCNA-",
+          charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
+      })[0].toUpperCase()
+        const tuesday = voucher_codes.generate({
+          count: 1,
+          length: 8,
+          prefix: "SCNA-",
+          charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
+      })[0].toUpperCase()
+        const wednesday = voucher_codes.generate({
+          count: 1,
+          length: 8,
+          prefix: "SCNA-",
+          charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
+      })[0].toUpperCase()
+        const thursday = voucher_codes.generate({
+          count: 1,
+          length: 8,
+          prefix: "SCNA-",
+          charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
+      })[0].toUpperCase()
+        const friday = voucher_codes.generate({
+          count: 1,
+          length: 8,
+          prefix: "SCNA-",
+          charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
+      })[0].toUpperCase()
+      
+      let data;
 
-        const data = {
-            key: session?.user.key,
-            id: userID,
-            current_day: day,
-            attend: {
-                week: week,
-                timein: "-",
-                timeout: "-",
-                initial: initial,
-                absent: false,
-                date : date,
-                day: day,
-                code: ""
-            } 
+    if(day === "tuesday") {
+        data  = {
+          key: session?.user.key,
+          currentWeek: getCurrentWeek(),
+          monday: null,
+          tuesday,
+          wednesday,
+          thursday,
+          friday
         }
+       }
+       else if (day === "wednesday") {
+        data  = {
+           key: session?.user.key,
+           currentWeek: getCurrentWeek(),
+          monday:null,
+          tuesday:null,
+          wednesday,
+          thursday,
+          friday
+        }
+       }
+       else if(day === "thursday"){
+        data  = {
+          key: session?.user.key,
+          currentWeek: getCurrentWeek(),
+          monday:null,
+          tuesday:null,
+          wednesday:null,
+          thursday,
+          friday
+        }
+       }
+       else if(day === "friday"){
+        data  = {
+          key: session?.user.key,
+          currentWeek: getCurrentWeek(),
+          monday:null,
+          tuesday:null,
+          wednesday:null,
+          thursday:null,
+          friday
+        }
+       }
+       else if(day==="monday") {
+        data  = {
+          key: session?.user.key,
+          currentWeek: getCurrentWeek(),
+          monday,
+          tuesday,
+          wednesday,
+          thursday,
+          friday
+        }
+       }
+       else if(day === "sunday") {
+        data  = {
+          key: session?.user.key,
+          currentWeek: getCurrentWeek(),
+          monday,
+          tuesday,
+          wednesday,
+          thursday,
+          friday
+        }
+       }
+       else {
+        data  = {
+          key: session?.user.key,
+          currentWeek: getCurrentWeek() + 1,
+          monday,
+          tuesday,
+          wednesday,
+          thursday,
+          friday
+        }
+       }
+    
 
-        if(userID && session?.user.key){  
-        await fetch("/api/sign-register", {
+        if(session?.user.key){  
+        await fetch("/api/set-attendance", {
             method: "POST",
             cache: "no-cache",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        })
+        }).then(setLoading(false))
         }
-     
+       
       }
 
 

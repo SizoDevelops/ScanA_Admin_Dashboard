@@ -6,6 +6,8 @@ import TableHeader from '@/components/HomePage/Excel-Files/tableHeader'
 import Selector from '@/components/Absence/Select'
 import { useSelector } from 'react-redux'
 import { usePDF } from 'react-to-pdf'
+import Loader from '@/components/shared/Loader'
+import { useDatabase } from '@/components/features/dbContext'
 
 export default function ExcelPage() {
   const [member, setMembers] = useState([{value: "All", label: "ALL"}])
@@ -15,6 +17,10 @@ export default function ExcelPage() {
   const [sWeek, selectedWeek] = useState({value: getCurrentWeek(), label: getCurrentWeek()})
   const [sPosition, selectedPosition] = useState({value: "", label: ""})
   const { toPDF, targetRef } = usePDF({filename: `Week-${sWeek.value}-Attendance.pdf`});
+  const {loading} = useDatabase()
+ 
+ 
+ 
   const membersCopy = members.sort((a,b) => {
         if (a.last_name < b.last_name) {
       return -1;
@@ -69,7 +75,11 @@ export default function ExcelPage() {
   }
 
  
-  return ( 
+  if(loading) {
+    return <Loader/>
+  }
+
+  else return ( 
 
       <div className={styles.Table}>
         <TopPanel/>
@@ -116,7 +126,7 @@ export default function ExcelPage() {
                         <p>Download PDF</p>    
                     </div>
                 </div> 
-                <div ref={targetRef} style={{background: "#fff", color: "#000", height: "100vh", paddingTop: "40px"}}>
+                <div ref={targetRef} style={{background: "#fff", color: "#000", height: "fit-content", padding: "20px", paddingTop: "40px"}}>
                   <TableHeader   week={sWeek.value} position={sPosition.value}/> 
                 </div>
       </div>

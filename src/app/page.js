@@ -7,9 +7,6 @@ import React, { useEffect, useState } from 'react';
 const Page = () => {
   const {data: session} = useSession()
 
-  useEffect(() => {
-    // signOut()
-  },[])
 
       if(session && session.user){
     return (

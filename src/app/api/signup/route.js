@@ -31,6 +31,14 @@ export async function POST(request) {
     school_email,
     school_number,
     school_logo,
+    attendance: {
+      currentWeek: "",
+      friday: "",
+      monday: "",
+      thursday: "",
+      tuesday: "",
+      wednesday: ""
+    },
     coordinates:{
       longitude: "",
       latitude: "",

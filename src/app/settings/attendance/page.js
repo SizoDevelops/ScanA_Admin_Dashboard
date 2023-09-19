@@ -1,10 +1,10 @@
-import Notifications from '@/components/Settings/notifications';
+import Attendance from '@/components/Settings/attendance';
 import React from 'react';
 
 const Page = () => {
     return (
         <>
-            <Notifications/>
+            <Attendance/>
         </>
     );
 }

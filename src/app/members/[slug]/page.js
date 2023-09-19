@@ -9,6 +9,7 @@ import { useParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useDatabase } from '@/components/features/dbContext'
 import { useSelector } from 'react-redux'
+import Loader from '@/components/shared/Loader'
 
 
 export default function Member({params}) {
@@ -38,10 +39,11 @@ export default function Member({params}) {
 
 
 
-if(loading) {
-  return <>LOADING</>
-}
-else return (
+  if(loading) {
+    return <Loader/>
+  }
+
+  else return (
     <> 
     <div className={styles.container}>
     <SidePanel />
@@ -75,7 +77,7 @@ else return (
             <div className={styles.btn} onClick={() =>{
               sendEmail({
                 name: `${member.title} ${member.last_name}`,
-                page: 'http://localhost:3001',
+                page: 'https://scana-dashboard.netlify.app',
                 user: member.email,
                 code: session?.user.key,
                 user_code: member.code
