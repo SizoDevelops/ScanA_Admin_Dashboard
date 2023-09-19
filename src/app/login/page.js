@@ -3,8 +3,8 @@ import Login from '@/components/HomePage/Home/Login';
 import { useDatabase } from '@/components/features/dbContext';
 import Loader from '@/components/shared/Loader';
 import { useSession } from 'next-auth/react';
-import { redirect, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import {useRouter } from 'next/navigation';
+
 
 const Page = () => {
     const {data: session} = useSession()
@@ -14,7 +14,7 @@ const Page = () => {
 
   
     if(loading) {
-      return <Loaderr/>
+      return <Loader/>
     }
 
     else {

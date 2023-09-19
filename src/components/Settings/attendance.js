@@ -42,7 +42,7 @@ const Attendance = () => {
         <div className={styles.container}>
          <div className={styles.formHolder} ref={targetRef}>
             <h2 className={styles.heading}>{getCurrentMonthAndYear()}</h2>
-            <p className={styles.details}>Scan the code for the day. If scanning doesn't work try entering the code.</p>
+            <p className={styles.details}>Scan the code for the day. If scanning does not work try entering the code.</p>
              <div className={styles.Grid}>
                 <div className={styles.QRCont} style={schema?.monday ? {display: "flex"} : {display: "none"}}>
                     <h2 className={styles.day}>MONDAY</h2>
@@ -180,7 +180,7 @@ const Attendance = () => {
 
 
              </div> 
-             <p className={styles.details}>These QR Codes and Codes are for this week only make sure you don't forget to scan and sign the register.</p>  
+             <p className={styles.details}>These QR Codes and Codes are for this week only make sure you do not forget to scan and sign the register.</p>  
                
             </div>
 
