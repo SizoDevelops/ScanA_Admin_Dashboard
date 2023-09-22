@@ -184,7 +184,7 @@ const Attendance = () => {
                
             </div>
 
-            <div className={styles.submit} onClick={() => toPDF()}>Save</div>
+            <span className={styles.submit} onClick={() => toPDF()}>Save</span>
         </div>
     );
 }

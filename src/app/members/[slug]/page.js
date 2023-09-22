@@ -95,7 +95,8 @@ export default function Member({params}) {
         <h4><span></span>Attendance History</h4>
 
         <div className={styles.Attendance}>
-          <AttendanceProfile absent={member.monday  ? member.monday.find(item => item.week === getCurrentWeek())?.absent : "-"} timein={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.timein : "-"} timeout={ member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.timeout : "-"} initialIn={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.initial : "-"} initialOut={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.initial : "-"}/>
+          
+          {/* <AttendanceProfile absent={member.monday  ? member.monday.find(item => item.week === getCurrentWeek())?.absent : "-"} timein={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.timein : "-"} timeout={ member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.timeout : "-"} initialIn={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.initial : "-"} initialOut={member.monday ? member.monday.find(item => item.week === getCurrentWeek())?.initial : "-"}/> */}
         </div>
       </div>
 
