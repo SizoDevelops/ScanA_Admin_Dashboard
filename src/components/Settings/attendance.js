@@ -11,7 +11,7 @@ import Loader from '../shared/Loader';
 
 const Attendance = () => {
     const {setAttendance, loading} = useDatabase()
-    const { Canvas } = useQRCode();
+    const { SVG } = useQRCode();
     const { toPDF, targetRef } = usePDF({filename: `Week-QRCODES.pdf`});
     const schema = useSelector(state => state.Database.value.attendance)
     
@@ -48,12 +48,12 @@ const Attendance = () => {
                     <h2 className={styles.day}>MONDAY</h2>
                     <div className={styles.QRCode}>
                         <h2>SCAN QR</h2>
-                   {schema?.monday ?  <Canvas
+                   {schema?.monday ?  <SVG
                          text={schema?.monday}
                                 options={{
-                                    errorCorrectionLevel: 'M',
-                                    margin: 3,
-                                    scale: 4,
+                                    errorCorrectionLevel: 'H',
+                                    margin: 2,
+                                    scale: 1,
                                     width: 200,
                                     color: {
                                     dark: '#111115',
@@ -74,7 +74,7 @@ const Attendance = () => {
                     <h2 className={styles.day}>TUESDAY</h2>
                     <div className={styles.QRCode}>
                         <h2>SCAN QR</h2>
-                    {schema?.tuesday ?  <Canvas
+                    {schema?.tuesday ?  <SVG
                          text={schema?.tuesday}
                                 options={{
                                     errorCorrectionLevel: 'M',
@@ -100,7 +100,7 @@ const Attendance = () => {
                     <h2 className={styles.day}>WEDNESDAY</h2>
                     <div className={styles.QRCode}>
                         <h2>SCAN QR</h2>
-                    {schema?.wednesday ? <Canvas
+                    {schema?.wednesday ? <SVG
                          text={schema?.wednesday}
                                 options={{
                                     errorCorrectionLevel: 'M',
@@ -126,7 +126,7 @@ const Attendance = () => {
                     <h2 className={styles.day}>THURSDAY</h2>
                     <div className={styles.QRCode}>
                         <h2>SCAN QR</h2>
-                   {schema?.thursday ? <Canvas
+                   {schema?.thursday ? <SVG
                          text={schema?.thursday}
                                 options={{
                                     errorCorrectionLevel: 'M',
@@ -152,7 +152,7 @@ const Attendance = () => {
                     <h2 className={styles.day}>FRIDAY</h2>
                     <div className={styles.QRCode}>
                         <h2>SCAN QR</h2>
-                   {schema?.friday ? <Canvas
+                   {schema?.friday ? <SVG
                          text={schema?.friday}
                                 options={{
                                     errorCorrectionLevel: 'M',
