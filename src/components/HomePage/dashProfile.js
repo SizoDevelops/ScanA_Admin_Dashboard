@@ -10,7 +10,7 @@ export default function DashProfile({image, slug, title, initial, last_name, pos
         <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}>
 
           {
-            !image ? <p style={{position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: "100%", fontSize: "15px", textAlign: 'center', height: "50%"}}>No Image Found</p> 
+            !image ? <p style={{position: "absolute", left: "50%", top: "55%", transform: "translate(-50%, -50%)", width: "90%", fontSize: "12px", textAlign: 'center', height: "50%", textTransform: "uppercase"}}>{position}</p> 
             :
              <></>
           }

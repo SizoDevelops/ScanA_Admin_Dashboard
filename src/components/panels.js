@@ -12,7 +12,7 @@ useEffect(() => {
                 setScreenWidth(screen.width)
             }
     })
-    console.log(screenWidth)
+  
     },[screenWidth])
     return (
         <>

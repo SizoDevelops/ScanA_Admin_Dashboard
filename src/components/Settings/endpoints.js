@@ -1,7 +1,7 @@
 const endpoints = [
     {
         title: "App Settings",
-        description: "These setting will update how the app functions and other specific app features.",
+        description: "These setting will update and generate registration QR codes",
         details: [
 
             {
@@ -18,7 +18,7 @@ const endpoints = [
     },
     {
         title: "Member Details",
-        description: "These setting will update how the app functions and other specific app features.",
+        description: "These setting will update members which includes deleting and adding new members.",
         details: [
             {
                 endpoint: "manage-members",

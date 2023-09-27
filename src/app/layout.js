@@ -7,6 +7,7 @@ export const metadata = {
   description: 'By Sizo Develops',
 }
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

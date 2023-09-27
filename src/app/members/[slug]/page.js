@@ -1,10 +1,8 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+
 import styles from "@/components/HomePageCSS/slug.module.css"
 import Image from 'next/image'
 import SidePanel from '@/components/HomePage/sidePanel'
-import AttendanceProfile from '@/components/HomePage/Members/memberAttendance'
-import { DataBaseFunc } from '@/components/DatabaseSchema'
 import { useParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useDatabase } from '@/components/features/dbContext'

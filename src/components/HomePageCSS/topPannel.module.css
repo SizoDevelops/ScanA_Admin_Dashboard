@@ -117,8 +117,9 @@
   width: 50%;
   
 }
+
   .data td{
-    font-size: min(3vw, 12px);
+    font-size: min(3vw, 14px);
     text-align: center;
     padding:10px;
 
@@ -144,7 +145,7 @@
   }
 
   .headingNames td{
-    font-size: min(3vw, 15px);
+    font-size: min(3vw, 14px);
    
   }
   .subHeadings td {
@@ -166,7 +167,7 @@
   }
   .credecials td{
     text-align: left;
-    font-size: min(3vw, 12px);
+    font-size: min(3vw, 14px);
   }
 .names{
   border-bottom: 1px solid #2e393a;

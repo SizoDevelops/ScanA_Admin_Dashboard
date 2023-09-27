@@ -30,11 +30,13 @@
 .profileDetails > p{
     font-size: min(14px, 3vw);
     color:#68696A;
+    text-transform: uppercase;
 }
 
 .profileDetails h4{
     font-weight: 900;
     font-size: min(14px, 4vw);
+    text-transform: uppercase;
 }
 
 .Links{

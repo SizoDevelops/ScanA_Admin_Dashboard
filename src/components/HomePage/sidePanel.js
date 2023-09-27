@@ -12,7 +12,7 @@ export default function SidePanel() {
     <Link href={"/updates"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link>
-    <Link href={"/excel-files"} className={styles.sideIcon}>
+    <Link href={"/attendance-register"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/>
     </Link>
     <Link href={"/absentees"} className={styles.sideIcon}>

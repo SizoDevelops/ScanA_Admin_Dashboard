@@ -8,7 +8,7 @@ export default function TableRows({memberName, data, currentWeek}) {
   return (
     <tr className={styles.data}>
 
-    <td colSpan={1} style={{whiteSpace: "nowrap"}} className={styles.names}>
+    <td colSpan={1} style={{whiteSpace: "nowrap", textTransform: "uppercase", textAlign: "left"}} className={styles.names}>
        {memberName}
       </td>
         <React.Fragment>
