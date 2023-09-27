@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function TopPanel() {
   return (
     <div className={styles.sidePanel}>
-    <Link href={"/"} className={styles.sideIcon}>
+    <Link href={"/"} replace className={styles.sideIcon}>
       <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/>
     </Link>
     <Link href={"/updates"} className={styles.sideIcon}>
