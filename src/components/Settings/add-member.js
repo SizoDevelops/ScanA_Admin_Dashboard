@@ -18,6 +18,8 @@ const initialState = {
     code: '',
     password: '',
     phone_number: '',
+    reason: '',
+    date: '',
     block_user: false,
     pause_register: false,
     attendance: {

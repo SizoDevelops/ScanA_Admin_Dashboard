@@ -4,7 +4,6 @@ import styles from '../../app/page.module.css'
 import Image from 'next/image'
 import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
-import { useDatabase } from '../features/dbContext'
 import { useSelector } from 'react-redux'
 import { signOut } from 'next-auth/react'
 import Loader from '../shared/Loader'
@@ -68,7 +67,7 @@ else return (
         {
             schema.members.map((member, index) => {
                 return (
-                    <div key={member.last_name+index}>
+                    <div key={member.last_name+index} style={{}}>
                         <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} schema={member}/>
                     </div>
                     

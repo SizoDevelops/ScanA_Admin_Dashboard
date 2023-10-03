@@ -88,7 +88,8 @@
   border-radius: 100%;
   width: 80px;
   height: 80px;
-  background-image: url("https://i.ibb.co/jD77YPm/IMG-20220723-195959.jpg");
+  background: #03a4ff;
+  /* background-image: url("https://i.ibb.co/jD77YPm/IMG-20220723-195959.jpg"); */
   background-position: center;
   background-clip: border-box;
   background-repeat: no-repeat;

@@ -1,6 +1,6 @@
 "use client"
 
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { setSchool, updateMember } from "../shared/DatabaseSlice";
 import { useDispatch} from "react-redux";
@@ -30,8 +30,8 @@ export const DatabaseProvider = ({children}) => {
           body: JSON.stringify(dat)
         }).then(data => data.json())
         .then(data => {
-            dispatch(setSchool(data))
-            
+          if(data) dispatch(setSchool(data))
+          
         }).finally(() => {
             
             setLoading(false)
