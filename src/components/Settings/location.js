@@ -8,6 +8,7 @@ const Location = () => {
     const {data: session} = useSession()
     const [latitude, setLat] = useState("")
     const [longitude, setLong] = useState("")
+    const [distance, setDistance] =useState(200)
     const schema = useSelector(state => state.Database.value)
 
     const setLocation = async (data) =>{
@@ -24,6 +25,7 @@ const Location = () => {
     useEffect(() => {
         setLat(schema?.coordinates.latitude)
         setLong(schema?.coordinates.longitude)
+        setDistance(schema?.coordinates.distance)
     }, [schema])
 
     return (
@@ -40,6 +42,10 @@ const Location = () => {
                     <p>Longitude</p>
                     <input type="text" placeholder=' 28.023167203109832' value={longitude} onChange={e => setLong(e.target.value)}/>
                 </div>
+                <div className={styles.coordinates}>
+                    <p>Distance</p>
+                    <input type="number" placeholder=' 200' value={distance} onChange={e => setDistance(e.target.value)}/>
+                </div>
 
                 <div className={styles.submit} onClick={() => {
                     if(!latitude || !longitude){
@@ -49,7 +55,8 @@ const Location = () => {
                         setLocation({
                             key: session?.user.key,
                             latitude: latitude,
-                            longitude: longitude
+                            longitude: longitude,
+                            distance: distance <= 0 ? 200 : distance
                         })
                     }
                 }}>Save</div>

@@ -54,7 +54,8 @@ const [data, setData] = useState({})
                   },
                 coordinates: {
                     latitude: "",
-                    longitude: ""
+                    longitude: "",
+                    distance: 200
                 },
                 school_address: {
                     line_one: '',

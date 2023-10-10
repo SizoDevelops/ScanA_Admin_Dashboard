@@ -43,7 +43,7 @@ export default function TableHeader({chunks, week, position, ref}) {
     <div className={styles.TableHolder} ref={ref}>
  
     <h1>Attendance Register</h1>
-    <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the school.</p>
+    <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the organisation.</p>
         <table className={styles.headings}>
   <thead>
     <tr className={styles.headingNames}>
@@ -57,7 +57,7 @@ export default function TableHeader({chunks, week, position, ref}) {
   </thead>
   <tbody>
     <tr className={styles.headingNames}>
-    <td className={styles.names} style={{fontSize: "12px", textAlign: "center"}}>
+    <td className={styles.names} style={{fontSize: "14px", textAlign: "center"}}>
       <p>SURNAME & INITIALS</p>
       </td>
       <td className={styles.subHeadings}>

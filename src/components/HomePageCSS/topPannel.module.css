@@ -136,7 +136,9 @@
     border-bottom: 1px solid #2e393a;
     border-right: 1px solid #2e393a;
     border-top: 1px solid #2e393a;
-    font-size: min(3vw, 15px);
+    font-size: min(3vw, 14px);
+    width: 400px;
+    text-align: center;
 
   }
 
@@ -145,8 +147,8 @@
   }
 
   .headingNames td{
-    font-size: min(3vw, 14px);
-   
+    font-size: min(3vw, 16px);
+ 
   }
   .subHeadings td {
     width: min(100px, 3vw);
@@ -167,7 +169,7 @@
   }
   .credecials td{
     text-align: left;
-    font-size: min(3vw, 14px);
+    font-size: min(3vw, 15px);
   }
 .names{
   border-bottom: 1px solid #2e393a;

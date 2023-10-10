@@ -129,6 +129,7 @@
 .containerProfile{
     width: 280px;
     height: 140px;
+    padding-top: 20px;
     background-color: #111115; 
     border-radius: 10px;
     display: flex;

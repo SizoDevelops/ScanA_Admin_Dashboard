@@ -37,7 +37,7 @@ export default function Member({params}) {
 
 
 
-  if(loading) {
+  if(!member || !member.code) {
     return <Loader/>
   }
 
@@ -48,13 +48,13 @@ export default function Member({params}) {
       <div className={styles.Details}>
         <h4><span></span>Details</h4>
         <div className={styles.DetailsHolder}>
-          <div className={styles.ImageHolder}></div>
+          <div className={styles.ImageHolder}>No Image</div>
           <div className={styles.DetailsContacts}>
             <h4>{member ? member.title : ""} {member ? member.initial : ""} {member ? member.last_name : ""}</h4>
             <div className={styles.Contacts}>
               <div>
                 <p>Role</p>
-                <p>{member ? member.position : ""}</p>
+                <p>{member ? member.position : "Loading Position"}</p>
               </div>
               <div>
                 <p>Phone Number</p>
@@ -62,11 +62,11 @@ export default function Member({params}) {
               </div>
               <div>
                 <p>Email Address</p>
-                <p>{member ? member.email : ""}</p>
+                <p>{member ? member.email : "No Email Provided"}</p>
               </div>
               <div>
                 <p>Member Code</p>
-                <p>{member ? member.code : ""}</p>
+                <p>{member ? member.code : "Loading Code"}</p>
               </div>
             </div>
           </div>

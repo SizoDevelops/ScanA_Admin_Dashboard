@@ -15,12 +15,16 @@ flex-direction: column;
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    background-image: url("https://i.ibb.co/kgYVkc0/IMG-20220723-195959.jpg");
+    /* background-image: url("https://i.ibb.co/kgYVkc0/IMG-20220723-195959.jpg"); */
     background-position: center;
+    background: #03a4ff;
     background-clip: border-box;
     background-repeat: no-repeat;
     background-size: cover;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .DetailsHolder{

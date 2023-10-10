@@ -18,7 +18,8 @@ const DatabaseSlice = createSlice({
           },
         coordinates: {
             latitude: "",
-            longitute: ""
+            longitute: "",
+            distance: 200
         },
         school_address: {
             line_one: '',

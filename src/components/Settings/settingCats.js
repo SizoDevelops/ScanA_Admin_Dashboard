@@ -11,11 +11,13 @@ const SettingCats = ({title, points}) => {
                 {
                     points.map((item, index) => {
                         return(
-                           <Link href={'/settings/' + item.endpoint} prefetch={false} className={styles.Container} key={item + index}>
+                           <Link href={'/settings/' + item.endpoint} prefetch={false} legacyBehavior  key={item + index}>
+                                <div className={styles.Container}>
                                 <div className={styles.Icon}>
                                     <Image sizes='40' fill src={ item.icon !== "" ? item.icon : "/icons/re.png"} alt="Folder Icon"/>
                                 </div>
                                 <p className={styles.Name}>{item.name}</p>
+                                </div>
                             </Link>
  
                         )
