@@ -16,7 +16,7 @@ export default function ExcelPage() {
   const members= [...schema]
   const [sWeek, selectedWeek] = useState({value: getCurrentWeek(), label: getCurrentWeek()})
   const [sPosition, selectedPosition] = useState({value: "", label: ""})
-  const { toPDF, targetRef } = usePDF({filename: `Week-${sWeek.value}-Attendance.pdf`});
+  const { toPDF, targetRef } = usePDF({filename: `Week ${sWeek.value} Attendance For ${sPosition.value ? sPosition.value.toLowerCase().slice(0, 1).toUpperCase()+sPosition.value.toLowerCase().slice(1) + "(s)" : "All Stuff Members"}.pdf`});
   const {loading} = useDatabase()
  
  
@@ -126,7 +126,7 @@ export default function ExcelPage() {
                         <p>Download PDF</p>    
                     </div>
                 </div> 
-                <div ref={targetRef} style={{background: "#fff", color: "#000", height: "fit-content", padding: "20px", paddingTop: "40px"}}>
+                <div ref={targetRef}  style={{background: "#fff", color: "#000", height: "fit-content", padding: "20px", paddingTop: "40px"}}>
                   <TableHeader   week={sWeek.value} position={sPosition.value}/> 
                 </div>
       </div>
