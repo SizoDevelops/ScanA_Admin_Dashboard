@@ -8,6 +8,8 @@ import { useSession } from 'next-auth/react'
 import { useDatabase } from '@/components/features/dbContext'
 import { useSelector } from 'react-redux'
 import Loader from '@/components/shared/Loader'
+import Modal from "@/components/HomePage/Modal"
+import { useEffect, useState } from "react"
 
 
 export default function Member({params}) {
@@ -15,15 +17,14 @@ export default function Member({params}) {
   const { loading } = useDatabase()
   const member = useSelector(state => state.Database.value.members.filter(item => item.id === router.slug)[0])
   const {data: session} = useSession()
-  const url = useParams()
-  function getCurrentWeek() {
-    const today = new Date();
-    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-    const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000));
-    const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
-    return currentWeek;
-  }
-  
+  const [errCode, setCode] = useState("")
+  useEffect(() => {
+    if(window){
+      window.addEventListener("click", () => {
+        setCode("")
+      })
+    }
+  })
   const sendEmail = async (data) => {
 
     await fetch("/api/send-email", {
@@ -32,6 +33,13 @@ export default function Member({params}) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
+    }).then(data => data.json())
+    .then(data => {
+ 
+      setCode(data)
+    })
+    .catch((err) => {
+      setCode(err.message)
     })
   }
 
@@ -42,8 +50,14 @@ export default function Member({params}) {
   }
 
   else return (
-    <> 
+    <>
+    
     <div className={styles.container}>
+
+      {
+        errCode.length < 1 ? <></> : <Modal errCode={errCode}/>
+        }
+      
     <SidePanel />
       <div className={styles.Details}>
         <h4><span></span>Details</h4>

@@ -35,7 +35,7 @@ else return (
     <div className={styles.imageHolder}></div>
     <div className={styles.name}>
       <p>Hello again</p>
-      <h4>{schema?.school_admin.admin_name.toUpperCase() || "User Name"}</h4>
+      <h4>{schema?.school_admin?.admin_name.toUpperCase() || "User Name"}</h4>
     </div>
   </div>
   <div className={styles.searchBar}>

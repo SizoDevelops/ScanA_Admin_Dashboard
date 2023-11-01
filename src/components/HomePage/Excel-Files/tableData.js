@@ -4,8 +4,8 @@ export default function TableData({timein, timeout, initialIn, initialOut, absen
   return (
     <td className={styles.subHeadings}>
         <table>
-            <thead>
-                <tr className={styles.credecials}>
+          <tbody>
+          <tr className={styles.credecials}>
                   {
                     absent === true ? <td style={{width: "400px", wordWrap:"unset", wordBreak: "keep-all", textAlign: "center", textTransform: "capitalize"}}>{reason}</td>
                     :
@@ -21,9 +21,10 @@ export default function TableData({timein, timeout, initialIn, initialOut, absen
                   }
             
                 </tr>
-            </thead>
-   
+          </tbody>
         </table>
+               
+        
    
       </td>
   )

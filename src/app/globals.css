@@ -4,6 +4,7 @@
 
 * {
   user-select: none;
+  color: #ffffff;
 }
 body{
   width: min(100vw, 1440px);
@@ -18,18 +19,22 @@ body{
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 9px;
+
 }
 
+
 ::-webkit-scrollbar-track {
-  background: #f1f1f121;
+
+  background: #1C1E20;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4d5257;
+  background: #1C1E20;
+  cursor: pointer;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #1C1E20;
+  background: #f1f1f121;
 }
 
 

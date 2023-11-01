@@ -34,8 +34,9 @@ export async function POST(request) {
         name: body.name,
         intro: 'Welcome to Scan A! We\'re very excited to have you on board.',
         dictionary: {
-          Company_Code: body.code,
-          User_Code: body.user_code
+          "Company Code": body.code,
+          "User Code": body.user_code,
+          "Password": "Create your own password. Make sure your don't lose it."
       },
         action: {
             instructions: 'To get started with Scan A, please click here:',
@@ -74,17 +75,17 @@ var emailBody = mailGenerator.generate(email)
     },
   });
 
-  transporter.verify(function (error, success) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Server is ready to take our messages");
-    }
-  });
+  // transporter.verify(function (error, success) {
+  //   if (error) {
+  //    return NextResponse.json("Unable to send email. Please try again.")
+  //   } else {
+  //     return NextResponse.json("Email Sent Successfully")
+  //   }
+  // });
 
  transporter.sendMail(message, function (err, info) {
     return NextResponse.json(info)
  });
 
- return NextResponse.json(null)
+ return NextResponse.json("Email Sent Successfully")
 }
