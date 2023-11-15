@@ -14,10 +14,7 @@
 
   .Table{
     position: relative;
-    width: fit-content;
-    margin: auto;
-    color: #000;
-  
+    width: 100vw; 
   }
   .sideIcon{
     width: min(20px , 4vw);
@@ -40,19 +37,7 @@
     
   }
 
-  .TableHolder h1{
-    color: #000;
-    text-align: center;
-  }
 
-
-  .para{
-    width: 50%;
-    text-align: center;
-    margin: auto;
-    margin-bottom: 30px;
-    color: #000;
-  }
   .profiles{
     margin-top: 50px;
     display: flex;
@@ -102,28 +87,24 @@
     border: none;
     margin-left: 10px;
   }
-  .content{
-    width: 100%;
-  }
 
 
   .TableHolder{
-    width: min(100vw, 1280px);
     margin: auto;
-    overflow-x: auto;
+    overflow-x:scroll;
     padding-bottom: 20px;
-
+    width: 100vw;
   }
 .arrive td{
   width: 50%;
-  color: #000;
+ 
   
 }
 
   .data td{
     font-size: min(3vw, 14px);
     text-align: center;
-    color: #000;
+    color: #0066ff;
     padding:10px;
 
   }
@@ -133,46 +114,11 @@
     width: 20%;
 
   }
-  .headingNames th{
-    width: 20%;
-    padding: 12px 0;
-    border-bottom: 1px solid #2e393a;
-    border-right: 1px solid #2e393a;
-    border-top: 1px solid #2e393a;
-    font-size: min(3vw, 14px);
-    width: 400px;
-    text-align: center;
-    color: #000;
 
-  }
 
-  .headingNames th:first-child{
-    border-left: 1px solid #2e393a;
-  }
 
-  .headingNames td{
-    font-size: min(3vw, 16px);
-    color: #000;
- 
-  }
-  .subHeadings td {
-    width: min(100px, 3vw);
-    font-size: min(3vw, 13px);
-    margin: 10px;
-    padding: 12px;
-    color: #000;
-
-  }
-  .headers td{
-    font-weight: 800;
-  }
-
-  .subHeadings tr {
-    width: min(100px, 3vw);
-    margin: auto;
-    text-align: right;
-    color: #000;
- 
+  .headers span{
+    padding: 5px;
   }
   .credecials td{
     text-align: left;

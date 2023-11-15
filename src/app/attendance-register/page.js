@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import TopPanel from '@/components/HomePage/topPanel'
 import React, { useEffect, useState } from 'react'
@@ -8,16 +9,21 @@ import { useSelector } from 'react-redux'
 import { usePDF } from 'react-to-pdf'
 import Loader from '@/components/shared/Loader'
 import { useDatabase } from '@/components/features/dbContext'
-
+import * as XLSX from 'xlsx';
 export default function ExcelPage() {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   const [member, setMembers] = useState([{value: "All", label: "ALL"}])
   const [week,setWeek] = useState([])
+  const [years, setYears] = useState([])
   const schema = useSelector(state => state.Database.value.members)
   const members= [...schema]
   const [sWeek, selectedWeek] = useState({value: getCurrentWeek(), label: getCurrentWeek()})
   const [sPosition, selectedPosition] = useState({value: "", label: ""})
-  const { toPDF, targetRef } = usePDF({filename: `Week ${sWeek.value} Attendance For ${sPosition.value ? sPosition.value.toLowerCase().slice(0, 1).toUpperCase()+sPosition.value.toLowerCase().slice(1) + "(s)" : "All Stuff Members"}.pdf`});
+  const [year, selectedYear] = useState({value: currentYear, label: currentYear})
   const {loading} = useDatabase()
+ 
+
  
  
  
@@ -39,7 +45,7 @@ export default function ExcelPage() {
     })
 
     const Weeks = []
-    
+    const Years = []
     membersCopy.forEach(elem => {
           for(const key in elem.attendance){
             if (elem.attendance.hasOwnProperty(key)) {
@@ -48,6 +54,9 @@ export default function ExcelPage() {
                   value.forEach(item => {
                     if(!Weeks.find(i => i.value === item.week))
                     Weeks.push({value: item.week, label: item.week})
+                  if(!Years.find(i => i.value === parseInt(item.date.slice(0, 4)))) {
+                    Years.push({value: parseInt(item.date.slice(0, 4)), label: item.date.slice(0, 4)})
+                  }
                   })
                 }
               }
@@ -64,6 +73,7 @@ export default function ExcelPage() {
    })])
 
    setWeek(Weeks.sort((a,b) => a.value - b.value))
+   setYears(Years.sort((a,b) => a.value - b.value))
   },[schema])
 
   function getCurrentWeek() {
@@ -73,6 +83,35 @@ export default function ExcelPage() {
     const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
     return currentWeek;
   }
+
+
+  const   exportToExcel = () => {
+    // Get the HTML table element by its ID
+    const table = document.getElementById('data-table');
+
+    // Convert the HTML table to a worksheet
+     const ws = XLSX.utils.table_to_sheet(table)
+    ws['!cols'] = [
+      { wch: 30 }, // Width for the first column (Name)
+      { wch: 25 }, // Width for Monday
+      { wch: 25 }, // Width for Tuesday
+      { wch: 25 }, // Width for Wednesday
+      { wch: 25 }, // Width for Thursday
+      { wch: 25 }, // Width for Friday
+    ];
+  
+
+    // Apply styles to each cell
+
+    Object.keys(ws).forEach(cell => {
+      if (cell !== '!ref' && typeof ws[cell].v === 'string') {
+        ws[cell].v = ws[cell].v.split(/-/g).join('  ').replace("-", "  "); // Add double space between words
+      }
+    });
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'AttendanceSheet');
+    XLSX.writeFile(wb, `UserAttendance_Week_${sWeek.value}_${year.value}.xlsx`);
+  };
 
  
   if(loading) {
@@ -93,6 +132,10 @@ export default function ExcelPage() {
     <div className={styles.selector}>
         <p>Week</p>
         <Selector options={week} onChange={selectedWeek} defaultV={sWeek}/>
+    </div>
+    <div className={styles.selector}>
+        <p>Year</p>
+        <Selector options={years} onChange={selectedYear} defaultV={year}/>
     </div>
 
 
@@ -121,14 +164,15 @@ export default function ExcelPage() {
 
    
         <div  className={styles.DownloadActions}>
-            <p className={styles.Date}>{"Week " + sWeek.value}</p> 
-                <div className={styles.buttons} onClick={() => toPDF()}>
-                        <p>Download PDF</p>    
+            <p className={styles.Date}>{"Week " + sWeek.value + " - " +year.value}</p> 
+                <div className={styles.buttons} onClick={exportToExcel}>
+                        <p>Download Excel</p>   
+
                     </div>
                 </div> 
-                <div ref={targetRef}  style={{background: "#fff", color: "#000", height: "fit-content", padding: "20px", paddingTop: "40px"}}>
-                  <TableHeader   week={sWeek.value} position={sPosition.value}/> 
-                </div>
+                <table   id="data-table"  className={styles.TableHolder}>
+                  <TableHeader   week={sWeek.value} position={sPosition.value} year={year.value}/> 
+                </table>
       </div>
 
     </div>

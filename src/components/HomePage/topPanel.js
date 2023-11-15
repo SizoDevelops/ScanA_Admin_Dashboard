@@ -9,15 +9,15 @@ export default function TopPanel() {
     <Link href={"/"} replace className={styles.sideIcon}>
       <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/>
     </Link>
-    <Link href={"/updates"} className={styles.sideIcon}>
+    {/* <Link href={"/updates"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
-    </Link>
+    </Link> */}
     <Link href={"/attendance-register"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/>
     </Link>
-    <Link href={"/absentees"}className={styles.sideIcon}>
+    {/* <Link href={"/absentees"}className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
-    </Link>
+    </Link> */}
     <Link href={"/settings"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>
     </Link>

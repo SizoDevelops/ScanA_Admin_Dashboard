@@ -1,20 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-import React, { useEffect } from 'react'
-import styles from '../../HomePageCSS/topPannel.module.css'
-import TableRows from './tableRows'
-import { DataBaseFunc } from '@/components/DatabaseSchema'
+import React, { useEffect, useRef } from 'react'
+import styles from '../../HomePageCSS/table.module.css'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-export default function TableHeader({chunks, week, position, ref}) {
+
+export default function TableHeader({week, position, year}) {
 
   const [memberArray, setMembers] = useState([])
   const schema = useSelector(state => state.Database.value.members)
   const members= [...schema]
-  
-
-
 
   function compareFn(a, b) {
     if (a.last_name < b.last_name) {
@@ -39,114 +36,165 @@ export default function TableHeader({chunks, week, position, ref}) {
   
   }, [position, schema])
 
-  return (
-    <div className={styles.TableHolder} ref={ref}>
+
+
  
-    <h1>Attendance Register</h1>
-    <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the organisation.</p>
-        <table className={styles.headings}>
-  <thead>
-    <tr className={styles.headingNames}>
-      <th>Members</th>
-      <th>Monday</th>
-      <th>Tuesday</th>
-      <th>Wednesday</th>
-      <th>Thursday</th>
-      <th>Friday</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr className={styles.headingNames}>
-    <td className={styles.names} style={{fontSize: "14px", textAlign: "center"}}>
-      <p>SURNAME & INITIALS</p>
-      </td>
-      <td className={styles.subHeadings}>
-        <table>
-            <thead className={styles.head}>
-       
-                <tr className={styles.headers}>
-                <td>in</td>
-                <td>initial</td>
-                <td>out</td>
-                <td>initial</td> 
-                </tr>
-            </thead>
-   
-        </table>
-   
-      </td>
-      <td className={styles.subHeadings}>
-        <table>
-            <thead>
-            <tr className={styles.headers}>
-                <td>in</td>
-                <td>initial</td>
-                <td>out</td>
-                <td>initial</td> 
-                </tr>
-            </thead>
-   
-        </table>
-   
-      </td>
-      <td className={styles.subHeadings}>
-        <table>
-            <thead>
-            <tr className={styles.headers}>
-                <td>in</td>
-                <td>initial</td>
-                <td>out</td>
-                <td>initial</td> 
-                </tr>
-            </thead>
-   
-        </table>
-   
-      </td>
-      <td className={styles.subHeadings}>
-        <table>
-            <thead>
-            <tr className={styles.headers}>
-                <td>in</td>
-                <td>initial</td>
-                <td>out</td>
-                <td>initial</td> 
-                </tr>
-            </thead>
-   
-        </table>
-   
-      </td>
-      <td className={styles.subHeadings}>
-        <table>
-            <thead>
-            <tr className={styles.headers}>
-                <td>in</td>
-                <td>initial</td>
-                <td>out</td>
-                <td>initial</td> 
-                </tr>
-            </thead>
-   
-        </table>
-   
-      </td>
-     
-    </tr>
-      {
-        memberArray.map((item, index) => {
-            return(
 
-              <React.Fragment key={item+index}>
-                <TableRows memberName={item.last_name + " " + item.initial} data={item.attendance} currentWeek={week}/>
-              </React.Fragment>
-            )
-          })
-      }
+  return (
+    <div className={styles.TableHolder} >
+  
+   
 
-  </tbody>
-        </table>
+
+<UserAttendanceTable userData={memberArray} week={week} year={year}/>
     </div>
     
   )
 }
+
+
+const UserAttendanceTable = ({ userData, week, year }) => {
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    const generateTableRows = () => {
+      const rows = userData.map(user => (
+        <tr className={styles.subHeadings}  key={user.id}>
+          <td>{user.last_name} {user.initial}</td>
+          <td>{getAttendanceDetails(user, 'monday')}</td>
+          <td>{getAttendanceDetails(user, 'tuesday')}</td>
+          <td>{getAttendanceDetails(user, 'wednesday')}</td>
+          <td>{getAttendanceDetails(user, 'thursday')}</td>
+          <td>{getAttendanceDetails(user, 'friday')}</td>
+        </tr>
+      ));
+      setTableData(rows);
+    };
+
+    const getAttendanceDetails = (user, day) => {
+      const regex = new RegExp(year);
+      const dayData = user.attendance[day];
+      if (dayData) {
+        const attendanceDetails = dayData.filter(entry =>  regex.test(entry.date) && entry.week === week)
+        
+     
+        
+        if(attendanceDetails.length > 0){
+        return  attendanceDetails.map(entry => (
+       
+            <div key={entry.date} className={styles.headers}>
+              {
+                      entry.absent === true ? <span style={{width: "350px", wordWrap:"unset", wordBreak: "keep-all", textAlign: "center", textTransform: "capitalize"}}>{entry.reason}</span>
+                      :
+                   
+                       <div>
+                          <span>{entry.timein}</span>
+                          <span style={{display: "none"}}>{"-"}</span>
+                          <span>{entry.initial}</span>
+                           <span style={{display: "none"}}> {"-"}  </span>
+                          <span>{entry.timeout}</span>
+                           <span style={{display: "none"}}>  {"-"} </span>
+                          <span>{entry.initial}</span> 
+                      </div>
+                  
+                    }
+            </div>
+    
+
+          )); 
+        }
+        else return 'Not Signed';
+       
+      }
+      return 'Not Signed';
+    };
+
+    generateTableRows();
+  }, [userData, week,year]);
+
+  return (
+    <table className={styles.table}>
+    
+      <thead className={styles.head}>
+        <tr>
+         <td colspan="6" className={styles.title}>
+       <h1>Attendance Register</h1>
+        </td> 
+        </tr>
+        
+      <tr>
+      <td colspan="6">
+        <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the organisation.</p>
+        </td>
+      </tr>
+   
+
+        <tr className={styles.headingNames}>
+          <th>Member Name</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+        </tr>
+        <tr className={styles.header}>
+          <th></th>
+          <th>
+            <td>In</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Out</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+
+          </th>
+          <th>
+            <td>In</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Out</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+
+          </th>
+          <th>
+            <td>In</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Out</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+
+          </th>
+          <th>
+            <td>In</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Out</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+
+          </th>
+          <th>
+            <td>In</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Out</td>
+            <span style={{display: "none"}}> {"-"}  </span>
+            <td>Initial</td>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>{tableData}</tbody>
+    </table>
+  );
+};
+
+
+

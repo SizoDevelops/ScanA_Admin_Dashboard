@@ -4,10 +4,16 @@ import NavBar from './NavBar';
 import styles from '../../HomePageCSS/login.module.css'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { signIn, useSession } from 'next-auth/react';
+
+import { signIn, useSession} from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
 
 const Login = () => {
-return (
+  const {data: session} = useSession()
+  const router = useRouter()
+if(session) router.push("/")
+else return (
         <div>
         <NavBar/>
         <div className={styles.container}>
@@ -33,36 +39,38 @@ return (
 export default Login;
 
 const StepOne =() => {
-    const formik = useFormik({
-      initialValues: {
-        school_code: '',
-        school_email: '',
-        password: '',
-        redirect: false,
-      },
-      validationSchema: Yup.object({
-       school_code: Yup.string().required('Required'),
-        school_email: Yup.string().email("Invalid Email Address").required('Required'),
-        password: Yup.string().min(8,"Password Must Be Greater Than 8 Characters").required("Required")
-      }),
-      onSubmit: values => {
-        signIn("credentials", values)
-      }
-    });
+    const [isSubmitting, setSubmitting] = useState(false)
+    const [password, setPassword] = useState("")
+    const [code, setCode] = useState("")
+    const [email, setEmail] = useState("")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitting(true)
+
+
+   await signIn("credentials", {
+      school_code: code,
+      school_email: email,
+      password,
+      redirect: true,
+      callbackUrl: "/"
+   })
+
+  }
 
     return(
-         <form className={styles.Steps} onSubmit={formik.handleSubmit}>
-            <label htmlFor='School Code'>School Code</label>
-            {formik.errors.school_code && formik.touched.school_code ? <span>{formik.errors.school_code}</span> : <></>}
-            <input type="text" className={styles.Inputs} name='School Code' {...formik.getFieldProps("school_code")}/>
+         <form className={styles.Steps} onSubmit={handleSubmit}>
+            <label htmlFor='School Code'>Company Code</label>
+            <input type="text" value={code} className={styles.Inputs} placeholder='Enter the company code from your email' name='School Code' onChange={e => setCode(e.target.value)}/>
 
             <label htmlFor='Email'>Email Address</label>
-            {formik.errors.school_email && formik.touched.school_email? <span>{formik.errors.school_email}</span> : <></>}
-            <input type="email" className={styles.Inputs} name='email' {...formik.getFieldProps("school_email")}/>
+           
+            <input type="email" value={email} className={styles.Inputs} placeholder='Enter the email you used to register' name='email'   onChange={e => setEmail(e.target.value)}/>
             <label htmlFor='Password' >Password</label>
-            {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : <></>}
-            <input type="password" className={styles.Inputs} name='Password' {...formik.getFieldProps("password")}/>
-            <input type="submit" className={styles.LoginBtn} disabled={formik.isSubmitting} value={formik.isSubmitting ? "Checking..." : "Login"}/>
+         
+            <input type="password" value={password} className={styles.Inputs} onChange={e => setPassword(e.target.value)}  name='Password'/>
+            <input type="submit" className={styles.LoginBtn}  value={isSubmitting ? "Checking..." : "Login"}/>
         </form>
    
     )

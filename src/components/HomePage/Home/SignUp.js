@@ -112,8 +112,8 @@ const [data, setData] = useState({})
 
             <label htmlFor='school_name'>School Name</label>
             <Field type="text" name='school_name' placeholder="School-Name Secondary School" styles={touched.school_name && errors.school_name ? {border: "1px solid #ff0000"} : {border: "none"}}/>
-         
-             <ErrorMessage name="school_name" />
+
+             <ErrorMessage name="school_name" component={<span style={{fontSize: "10px", color: "pink", marginBottom: "10px"}}></span>}/>
             <label htmlFor='school_slogan'>School Slogan</label>
             <Field type="text" name='school_slogan' placeholder="We breathe and breed prosperity."/>
             

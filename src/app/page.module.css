@@ -56,6 +56,7 @@
   border-radius: .6rem;
   margin-right: 20px;
   margin-top: 20px;
+  position: relative;
 }
 
 .container {
@@ -88,8 +89,8 @@
   border-radius: 100%;
   width: 80px;
   height: 80px;
-  background: #03a4ff;
-  /* background-image: url("https://i.ibb.co/jD77YPm/IMG-20220723-195959.jpg"); */
+  background: #0f0f14;
+  background-image: url("https://i.ibb.co/Bch295F/Frame-169.png");
   background-position: center;
   background-clip: border-box;
   background-repeat: no-repeat;
@@ -143,7 +144,13 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
+.logOut{
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  cursor: pointer;
+  
+}
 .cat {
   width: min(100px, 30vw);
   background-color: #111115;

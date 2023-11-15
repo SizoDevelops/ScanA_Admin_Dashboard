@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../app/page.module.css'
 import Image from 'next/image'
 import DashProfile from '@/components/HomePage/dashProfile'
@@ -12,16 +12,25 @@ import Loader from '../shared/Loader'
 export default function HomePage() {
 
   const schema = useSelector(state => state.Database.value)
+  const [users, setUsers] = useState([{}])
+  const [search, setSearch] = useState("")
 
 
 useEffect(() => {
-  
-  //  signOut()
-}, [schema])
+  setUsers(schema.members)
+  const members = []
+  schema.members.forEach(elem => {
+    if(elem.last_name.includes(search.toUpperCase()) || elem.first_name.includes(search.toUpperCase()) || elem.position.includes(search.toUpperCase()) || elem.title.includes(search.toUpperCase()) || elem.initial.includes(search.toUpperCase())){
+        members.push(elem)
+        setUsers(members)
+    }
+  });
+}, [schema, search])
 
 
 
-if(schema.school_name === "") {
+
+if(schema.school_name === "" || !users) {
   return <Loader/>
 }
 else return (
@@ -34,19 +43,22 @@ else return (
   <div className={styles.nameHolder}>
     <div className={styles.imageHolder}></div>
     <div className={styles.name}>
-      <p>Hello again</p>
+      <p>Hello</p>
       <h4>{schema?.school_admin?.admin_name.toUpperCase() || "User Name"}</h4>
+    </div>
+    <div className={styles.logOut} onClick={signOut}>
+      <h4>Log Out</h4>
     </div>
   </div>
   <div className={styles.searchBar}>
     <div className={styles.searchIcon}>
       <Image alt="Search Icon" src="/icons/iconamoon_search.png" sizes='20' fill/>
     </div>
-    <input type='text' placeholder='Search'/>
+    <input type='text' placeholder='Search' onChange={(e) => setSearch(e.target.value)}/>
   </div>
 </div>
 <div className={styles.categories}>
-        <div className={styles.cat} onClick={async () => {
+        {/* <div className={styles.cat} onClick={async () => {
           
 
           
@@ -61,11 +73,11 @@ else return (
         </div>
         <div className={styles.cat}>
           <p>Non-Teaching</p>
-        </div>
+        </div> */}
       </div>
     <div className={styles.profiles}>
         {
-            schema.members.map((member, index) => {
+            users.map((member, index) => {
                 return (
                     <div key={member.last_name+index} style={{}}>
                         <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} schema={member}/>
@@ -73,6 +85,7 @@ else return (
                     
                 )
             })
+          
         }
         
      

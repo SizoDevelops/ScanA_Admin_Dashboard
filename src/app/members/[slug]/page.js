@@ -14,10 +14,10 @@ import { useEffect, useState } from "react"
 
 export default function Member({params}) {
   const router = useParams()
-  const { loading } = useDatabase()
+  const { loadingCode,errCode, sendEmail, setCode } = useDatabase()
   const member = useSelector(state => state.Database.value.members.filter(item => item.id === router.slug)[0])
   const {data: session} = useSession()
-  const [errCode, setCode] = useState("")
+
   useEffect(() => {
     if(window){
       window.addEventListener("click", () => {
@@ -25,23 +25,7 @@ export default function Member({params}) {
       })
     }
   })
-  const sendEmail = async (data) => {
-
-    await fetch("/api/send-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(data => data.json())
-    .then(data => {
- 
-      setCode(data)
-    })
-    .catch((err) => {
-      setCode(err.message)
-    })
-  }
+  
 
 
 
@@ -62,7 +46,7 @@ export default function Member({params}) {
       <div className={styles.Details}>
         <h4><span></span>Details</h4>
         <div className={styles.DetailsHolder}>
-          <div className={styles.ImageHolder}>No Image</div>
+          <div className={styles.ImageHolder}></div>
           <div className={styles.DetailsContacts}>
             <h4>{member ? member.title : ""} {member ? member.initial : ""} {member ? member.last_name : ""}</h4>
             <div className={styles.Contacts}>
@@ -86,8 +70,8 @@ export default function Member({params}) {
           </div>
  <div className={styles.Buttons}>
 
-            <div className={styles.btn} onClick={() =>{
-              sendEmail({
+            <div className={styles.btn} onClick={async () =>{
+             await sendEmail({
                 name: `${member.title} ${member.last_name}`,
                 page: `https://scana.netlify.app?code=${session?.user.key}&usercode=${member.code}`,
                 user: member.email,
@@ -98,13 +82,13 @@ export default function Member({params}) {
               <div className={styles.BtnImage}>
               <Image sizes='30' fill src={"/icons/Pass.png"} alt="Folder Icon"/>
               </div>
-              <p>Send Code</p>
+              <p>{loadingCode ? "Sending..." : "Send Code"}</p>
             </div>
            
           </div>
 
         </div>
-        <h4><span></span>Attendance History</h4>
+        {/* <h4><span></span>Attendance History</h4> */}
 
         <div className={styles.Attendance}>
           

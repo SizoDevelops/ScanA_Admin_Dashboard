@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import { signOut, useSession } from "next-auth/react";
@@ -17,10 +18,12 @@ export const useDatabase = () => {
 
 export const DatabaseProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
+    const [loadingCode, setCodeLoading] = useState(false)
     const {data: session} = useSession()
     const dispatch = useDispatch()
-
+    const [errCode, setCode] = useState("")
     const getUser = async(dat) => {
+        // setLoading(true)
         await fetch("/api/user", {
           method: "POST",
           cache: 'no-cache',
@@ -31,7 +34,7 @@ export const DatabaseProvider = ({children}) => {
         }).then(data => data.json())
         .then(data => {
           if(data) dispatch(setSchool(data))
-          
+          setLoading(false)
         }).finally(() => {
             
             setLoading(false)
@@ -40,10 +43,12 @@ export const DatabaseProvider = ({children}) => {
       }
 
     useEffect(() => {
-        
-        getUser({key:session?.user.key}) 
-
-
+        if(session){
+          getUser({key:session?.user.key}) 
+        }
+        else {
+          setLoading(false)
+        }
     }, [session])
   
     const updateUser = async (data) => {
@@ -207,7 +212,25 @@ export const DatabaseProvider = ({children}) => {
        
       }
 
-
+      const sendEmail = async (data) => {
+        setCodeLoading(true)
+        await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then(data => data.json())
+        .then(data => {
+     
+          setCode(data)
+          setCodeLoading(false)
+        })
+        .catch((err) => {
+          setCode(err.message)
+          setCodeLoading(false)
+        })
+      }
       
 
    
@@ -216,8 +239,11 @@ export const DatabaseProvider = ({children}) => {
     const value = {
         loading,
         updateUser,
-        setAttendance
-
+        setAttendance,
+        sendEmail,
+        errCode,
+        setCode,
+        loadingCode
          
     };
 
