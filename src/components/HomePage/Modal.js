@@ -17,7 +17,7 @@ export default function Modal({errCode}) {
 }
 }
 function Success({errCode}) {
-  const router = useRouter()
+ 
   const {setCode} = useDatabase()
   return (
     <div className={styles.modalCont} >
@@ -31,7 +31,6 @@ function Success({errCode}) {
       <h3 className={styles.title}>{errCode.title}</h3>
         <p className={styles.para}>{errCode.message}</p>
         <div className={styles.Button} onClick={() => {setCode({title: "", message: "", type: ""})
-          router.push("/login")
       }}>
             OK
         </div>

@@ -12,7 +12,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 const Login = () => {
   const {data: session} = useSession()
   const router = useRouter()
-if(session) router.push("/")
+if(session) router.push("/dashboard")
 else return (
         <div>
         <NavBar/>

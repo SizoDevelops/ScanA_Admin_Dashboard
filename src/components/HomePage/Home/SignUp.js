@@ -58,6 +58,7 @@ const userCode = voucher_codes.generate({
 const SignUp = () => {
 const [userData, setData] = useState({})
 const {sendSignUp, errCode,setCode} = useDatabase()
+ const router = useRouter()
 const [loading, setLoading ] = useState(false)
   function areSomeFieldsEmpty(obj) {
     for (let key in obj) {
@@ -116,7 +117,9 @@ const [loading, setLoading ] = useState(false)
                     if(data === "User Already Exists"){
                         // Show User Already Exists Error
                         setCode({title: "User Already Registered!", message: "This user email has already been used please try a new email or login instead.", type: "Error"})
+                        router.push("/dashboard")
                         setLoading(false)
+                       
                         return;
             
                     }
@@ -133,6 +136,7 @@ const [loading, setLoading ] = useState(false)
                             code: data.school_code,
                             user_mail: data.school_email
                           })
+                          router.push("/dashboard")
                           setLoading(false)
                           resetForm()
                  

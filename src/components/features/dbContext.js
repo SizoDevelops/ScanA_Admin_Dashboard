@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { setSchool} from "../shared/DatabaseSlice";
 import { useDispatch} from "react-redux";
@@ -34,8 +34,16 @@ export const DatabaseProvider = ({children}) => {
         }).then(data => data.json())
         .then(data => {
           if(data) dispatch(setSchool(data))
+          else {
+            signOut()
+            setLoading(false)
+          }
           setLoading(false)
-        }).finally(() => {
+        })
+        .catch(err => {
+          setLoading(false)
+        })
+        .finally(() => {
             
             setLoading(false)
         })

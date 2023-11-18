@@ -14,20 +14,9 @@ import { useEffect, useState } from "react"
 
 export default function Member({params}) {
   const router = useParams()
-  const { loadingCode,errCode, sendEmail, setCode } = useDatabase()
+  const { loadingCode,errCode, sendEmail} = useDatabase()
   const member = useSelector(state => state.Database.value.members.filter(item => item.id === router.slug)[0])
   const {data: session} = useSession()
-
-  useEffect(() => {
-    if(window){
-      window.addEventListener("click", () => {
-        setCode("")
-      })
-    }
-  })
-  
-
-
 
   if(!member || !member.code) {
     return <Loader/>
@@ -39,7 +28,7 @@ export default function Member({params}) {
     <div className={styles.container}>
 
       {
-        errCode.length < 1 ? <></> : <Modal errCode={errCode}/>
+        errCode.message.length < 1 ? <></> : <Modal errCode={errCode}/>
         }
       
     <SidePanel />
