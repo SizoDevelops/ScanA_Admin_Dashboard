@@ -12,7 +12,7 @@ const Home = () => {
                 <div className={styles.heroText}>
                     <h1>The best solution for stuff attendance.</h1>
                     <p>Streamlining school management for efficiency and success. Join ScanA for seamless attendance, smart scheduling, and effective communication - Empowering school staff, revolutionizing education.</p>
-                    <div className={styles.Button}><Link href={"/signup"}>Register your school</Link></div>
+                    <div className={styles.Button}><Link href={"/signup"} >Register your school</Link></div>
                 </div>
 
 

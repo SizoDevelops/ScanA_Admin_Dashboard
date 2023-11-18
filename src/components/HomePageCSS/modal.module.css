@@ -1,22 +1,29 @@
 .container{
     width: min(600px, 90vw);
-    height: 260px;
-    background: #026096;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
+    height: 330px;
+    background: #ffffff;
+    border-radius: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
-
-.container div {
-    margin-top: 30px;
-    background-color: #03a4ff;
-    width: 60px;
+.modalCont{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00578a8e;
+    z-index: 900;
+}
+.container .Button {
+    margin-top: 40px;
+    background-color: #0582ff;
+    width: 80%;
     height: 20px;
     padding: 10px;
     display: flex;
@@ -26,9 +33,34 @@
     cursor: pointer;
 }
 
-.container div:hover{
-    background-color: #b3e3ff;
+.container .Button:hover{
+    background-color: #74c7f7;
 }
-.container div:active{
+.container .Button:active{
     background-color: #00578a;
+}
+.para{
+    color: #111115;
+    font-size: 14px;
+}
+.title{
+    color: #111115;
+    font-size: 16px;
+}
+.IconHolder {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Icon{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    position: relative;
+
 }

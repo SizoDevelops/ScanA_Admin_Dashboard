@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { setSchool, updateMember } from "../shared/DatabaseSlice";
+import { setSchool} from "../shared/DatabaseSlice";
 import { useDispatch} from "react-redux";
 const voucher_codes = require("voucher-code-generator")
 
@@ -21,7 +21,7 @@ export const DatabaseProvider = ({children}) => {
     const [loadingCode, setCodeLoading] = useState(false)
     const {data: session} = useSession()
     const dispatch = useDispatch()
-    const [errCode, setCode] = useState("")
+    const [errCode, setCode] = useState({title: "" , message: "", type: ""})
     const getUser = async(dat) => {
         // setLoading(true)
         await fetch("/api/user", {
@@ -223,11 +223,30 @@ export const DatabaseProvider = ({children}) => {
         }).then(data => data.json())
         .then(data => {
      
-          setCode(data)
+          setCode({title: data, message: "The email has been successfully sent to the user.", type: "Success"})
           setCodeLoading(false)
         })
         .catch((err) => {
-          setCode(err.message)
+          setCode({title: err.message,message: "Looks like we were unable to send the email to the user please try again.", type: "Error"})
+          setCodeLoading(false)
+        })
+      }
+      const sendSignUp = async (data) => {
+        setCodeLoading(true)
+        await fetch("/api/send-signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then(data => data.json())
+        .then(data => {
+     
+          setCode({title: data, message: "The email has been successfully sent to the user.", type: "Success"})
+          setCodeLoading(false)
+        })
+        .catch((err) => {
+          setCode({title: err.message,message: "Looks like we were unable to send the email to the user please try again.", type: "Error"})
           setCodeLoading(false)
         })
       }
@@ -243,7 +262,8 @@ export const DatabaseProvider = ({children}) => {
         sendEmail,
         errCode,
         setCode,
-        loadingCode
+        loadingCode,
+        sendSignUp
          
     };
 

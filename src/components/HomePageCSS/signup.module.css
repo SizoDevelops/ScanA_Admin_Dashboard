@@ -68,7 +68,16 @@
 .formHolder{
     position: relative;
     width: 50%;
- 
+
+}
+.formHolder span{
+    font-size: 10px;
+    margin-bottom: 20px;
+    color: pink;
+}
+
+.formHolder input::placeholder{
+    font-size: 13px;
 }
 
 .Steps {
@@ -80,7 +89,7 @@
 .Steps input{
     padding: 20px;
     width: 90%;
-    color: #68696A;
+    color: white;
     background: #111115;
     outline: none;
     border: none;

@@ -42,6 +42,7 @@ export async function POST(request) {
     coordinates:{
       longitude: "",
       latitude: "",
+      distance: 200
     },
     school_address: { line_one, line_two, province, city, zip_code },
     members:[],
@@ -53,13 +54,11 @@ export async function POST(request) {
     password: await bcrypt.hash(body.password, 10),
   }
 
-   const schoolSearch = await db.fetch({
-    "school_email": school_email, 
-    "school_admin.admin_email": admin_email
-})
+   const schoolSearch = await db.fetch([{"school_email": school_email}, 
+    {"school_admin.admin_email": admin_email}])
 
 if(schoolSearch.count < 1){
-  const school = db.insert(data, school_code);
+  const school = await db.insert(data, school_code);
   const {password, ...result} = school;
 
   return NextResponse.json(result)

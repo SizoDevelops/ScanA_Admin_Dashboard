@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { signIn, useSession} from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 
 const Login = () => {
@@ -41,6 +41,8 @@ export default Login;
 const StepOne =() => {
     const [isSubmitting, setSubmitting] = useState(false)
     const [password, setPassword] = useState("")
+  
+
     const [code, setCode] = useState("")
     const [email, setEmail] = useState("")
 
