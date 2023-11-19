@@ -15,7 +15,8 @@ const Page = () => {
       // Redirect the user to the login page if not authenticated
       router.push('/'); // Replace '/login' with your login page route
     }
-  }, [status, session, router]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status, session]);
 
   if (status === "loading") {
     return <Loader />;
