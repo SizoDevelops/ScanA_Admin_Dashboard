@@ -72,14 +72,14 @@ const [loading, setLoading ] = useState(false)
 
 
     return (
-        <div>
+        <body className={styles.Body}>
            <NavBar/>
            <div className={styles.container}>
            {
         errCode.message.length < 1 ? <></> : <Modal errCode={errCode}/>
         }
             <div className={styles.textHolder}>
-            <h1>Register Your School</h1>
+            <h1>Register Your <span>School</span></h1>
            </div>
             <div className={styles.BodyCont}>
                   <div className={styles.Images}>
@@ -136,7 +136,7 @@ const [loading, setLoading ] = useState(false)
                             code: data.school_code,
                             user_mail: data.school_email
                           })
-                          router.push("/dashboard")
+                          router.push("/dashboard") 
                           setLoading(false)
                           resetForm()
                  
@@ -236,7 +236,7 @@ const [loading, setLoading ] = useState(false)
          
            </div>
     
-        </div>
+        </body>
     );
 }
 function Span() {

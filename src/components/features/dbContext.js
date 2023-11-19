@@ -44,7 +44,6 @@ export const DatabaseProvider = ({children}) => {
           setLoading(false)
         })
         .finally(() => {
-            
             setLoading(false)
         })
 

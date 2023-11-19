@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-
-.container{
-    background: #ffffff;
-    color: #111115;
-
-}
-
 .NavBar{
     display: flex;
     flex-direction: row;
@@ -28,7 +20,7 @@
 }
 .navList li a{
     text-decoration: none;
-    color: #111115;
+    color: #ffffff;
 }
 .navList li:active, .navList li a:active{
     color: #03a4ff;
@@ -47,21 +39,16 @@
 
 .heroText h1{
     font-size: min(75px, 5vw);
-    font-family: 'Inter', sans-serif;
-}
-
-.heroText h1 span{
-    color: #03a4ff;
 }
 .heroText p{
     font-size: min(15px, 3vw);
     font-weight: 200px;
-    color: #575858;
+    color: #68696A;
     line-height: 24px;
 }
 
 .Button a{
-    background-color: #03a4ff;
+    background-color: #68696a88;
     font-size: min(14px, 4vw);
     width: 240px;
     height: 50px;
@@ -82,9 +69,7 @@
     color: #111115;
     background: #ffffff;
 }
-.Button a:hover{
-    background-color: #008ddf;
-}
+
 .Images{
     display: flex;
     flex-direction: column;
@@ -99,7 +84,7 @@
     width: 500px;
     position: absolute;
     background: transparent;
-    background-image: url("https://i.ibb.co/XkDxFwq/Light-Dash.png");
+    background-image: url("https://i.ibb.co/wBcXpQq/Scan-AImage1.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -113,7 +98,7 @@
     position: absolute;
     height: 580px;
     background: transparent;
-    background-image: url("https://i.ibb.co/6JC28LS/Light-Dash-One.png");
+    background-image: url("https://i.ibb.co/hFdgg37/Scan-AImage2.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -125,7 +110,7 @@
     width: 200px;
     position: absolute;
     height: 430px;
-    background-image: url("https://i.ibb.co/st6W3wB/LightApp.png");
+    background-image: url("https://i.ibb.co/JcLWG2v/Scan-AImage3.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -137,17 +122,16 @@
     width: 200px;
     position: absolute;
     height: 430px;
-    background-image: url("https://i.ibb.co/d0RnC4s/Light-App-One.png");
+    background-image: url("https://i.ibb.co/yhxQPvJ/Scan-AImage4.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     right: 140px;
     border-radius: 10px;
     top: 430px;
-
 }
 
-.homeBody h2{
+.homeBody h3{
     position: absolute;
     top: 60px;
     font-size: min(75px, 5vw);

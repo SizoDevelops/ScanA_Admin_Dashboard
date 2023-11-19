@@ -14,15 +14,16 @@ const Login = () => {
   const router = useRouter()
 if(session) router.push("/dashboard")
 else return (
-        <div>
+        <body className={styles.Body}>
         <NavBar/>
         <div className={styles.container}>
          <div className={styles.textHolder}>
-         <h1>Login to ScanA</h1>
+         <h1>Login to <span>ScanA</span></h1>
         </div>
          <div className={styles.BodyCont}>
                <div className={styles.Images}>
              <div className={styles.image1}></div>
+             <div className={styles.image2}></div>
         </div>
 
         <div className={styles.formHolder}>
@@ -32,7 +33,7 @@ else return (
       
         </div>
  
-     </div>
+     </body>
     );
 }
 
@@ -64,14 +65,14 @@ const StepOne =() => {
     return(
          <form className={styles.Steps} onSubmit={handleSubmit}>
             <label htmlFor='School Code'>Company Code</label>
-            <input type="text" value={code} className={styles.Inputs} placeholder='Enter the company code from your email' name='School Code' onChange={e => setCode(e.target.value)}/>
+            <input type="text" value={code} className={styles.Inputs} required placeholder='Enter the company code from your email' name='School Code' onChange={e => setCode(e.target.value)}/>
 
             <label htmlFor='Email'>Email Address</label>
            
-            <input type="email" value={email} className={styles.Inputs} placeholder='Enter the email you used to register' name='email'   onChange={e => setEmail(e.target.value)}/>
+            <input type="email" value={email} className={styles.Inputs} required placeholder='Enter the email you used to register' name='email'   onChange={e => setEmail(e.target.value)}/>
             <label htmlFor='Password' >Password</label>
          
-            <input type="password" value={password} className={styles.Inputs} onChange={e => setPassword(e.target.value)}  name='Password'/>
+            <input type="password" value={password} className={styles.Inputs} required onChange={e => setPassword(e.target.value)}  name='Password'/>
             <input type="submit" className={styles.LoginBtn}  value={isSubmitting ? "Checking..." : "Login"}/>
         </form>
    

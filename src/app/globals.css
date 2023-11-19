@@ -4,18 +4,15 @@
 
 * {
   user-select: none;
-  color: #ffffff;
 }
 body{
   width: min(100vw, 1440px);
-  background: #040408;
   margin: auto;
   padding: 0;
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
-  color: #fff;
 }
 
 ::-webkit-scrollbar {
