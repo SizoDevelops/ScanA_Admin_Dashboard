@@ -7,6 +7,8 @@ import { validate } from '@/lib/validate';
 import { useDatabase } from '@/components/features/dbContext';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Modal from '../Modal';
+import Loader from '@/components/shared/Loader';
+import { useSession } from 'next-auth/react';
 const voucher_codes = require('voucher-code-generator')
 
 const schoolCode = voucher_codes.generate({
@@ -59,6 +61,7 @@ const SignUp = () => {
 const [userData, setData] = useState({})
 const {sendSignUp, errCode,setCode} = useDatabase()
  const router = useRouter()
+ const {data: session, status} = useSession()
 const [loading, setLoading ] = useState(false)
   function areSomeFieldsEmpty(obj) {
     for (let key in obj) {
@@ -69,7 +72,10 @@ const [loading, setLoading ] = useState(false)
     return false; // No empty or falsy fields found
   }
   
-
+  if(status === "loading") {
+    return <Loader/>
+  }
+  else if(session) router.push("/")
 
     return (
         <body className={styles.Body}>

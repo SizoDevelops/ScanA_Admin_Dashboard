@@ -80,7 +80,10 @@
     font-size: min(16px, 3vw);
     margin-bottom: 20px;
 }
-
+.Links a{
+    color: #111115;
+    font-weight: bold;
+}
 .Steps label{
     margin-bottom: 10px;
 }

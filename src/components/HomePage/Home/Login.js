@@ -2,17 +2,19 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 import styles from '../../HomePageCSS/login.module.css'
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
 import { signIn, useSession} from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import Loader from '@/components/shared/Loader';
+import Link from 'next/link';
 
 
 const Login = () => {
-  const {data: session} = useSession()
+  const {data: session, status} = useSession()
   const router = useRouter()
-if(session) router.push("/dashboard")
+if(status === "loading") {
+  return <Loader/>
+}
+else if(session) router.push("/dashboard")
 else return (
         <body className={styles.Body}>
         <NavBar/>
@@ -28,6 +30,7 @@ else return (
 
         <div className={styles.formHolder}>
             <StepOne/>
+            <p className={styles.Links}>Do not have an account? <Link href={"/signup"}>Sign Up</Link></p>
         </div>
          </div>
       
@@ -42,16 +45,12 @@ export default Login;
 const StepOne =() => {
     const [isSubmitting, setSubmitting] = useState(false)
     const [password, setPassword] = useState("")
-  
-
     const [code, setCode] = useState("")
     const [email, setEmail] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
-
-
    await signIn("credentials", {
       school_code: code,
       school_email: email,

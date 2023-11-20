@@ -31,7 +31,7 @@
 }
 .Button{
     background-color: #03a4ff;
-    font-size: min(14px, 4vw);
+    font-size: min(15px, 4vw);
     width: 240px;
     height: 50px;
     display: inline-flex;
@@ -41,7 +41,7 @@
     cursor: pointer;
     margin: 0px auto;
     border: none;
-    
+    color: #FFFFFF;
 }
 .Button:active{
     background: #a9d4ff;

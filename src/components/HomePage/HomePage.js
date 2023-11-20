@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import styles from '../../app/page.module.css'
+import styles from '@/components/HomePageCSS/homePage.module.css'
 import Image from 'next/image'
 import DashProfile from '@/components/HomePage/dashProfile'
 import SidePanel from '@/components/HomePage/sidePanel'
