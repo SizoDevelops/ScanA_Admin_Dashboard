@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '@/app/page.module.css'
+import styles from '@/components/HomePageCSS/homePage.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
