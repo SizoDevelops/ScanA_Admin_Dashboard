@@ -2,27 +2,47 @@ import React from 'react'
 import styles from '@/components/HomePageCSS/homePage.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IoIosHelpCircleOutline } from "react-icons/io";
+import { IoSettingsOutline } from "react-icons/io5";
+import { BsFolder } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
+import { RiFileExcel2Line } from "react-icons/ri";
+import { IconContext } from "react-icons";
 
 export default function SidePanel() {
   return (
     <div className={styles.sidePanel}>
-    <Link href={"/"} replace className={styles.sideIcon}>
-      <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/>
+    <Link href={"/"} replace >
+      {/* <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/> */}
+
+    <BsFolder className={styles.sideIcon}/>
+ 
+      
     </Link>
     {/* <Link href={"/updates"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={"/attendance-register"} className={styles.sideIcon}>
-    <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/>
+    <Link href={"/attendance-register"}>
+    {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
+
+   
+    <RiFileExcel2Line className={styles.sideIcon}/>
+  
     </Link>
     {/* <Link href={"/absentees"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={"/settings"} className={styles.sideIcon}>
-    <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>
+    <Link href={"/settings"} >
+    {/* <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/> */}
+
+    <IoSettingsOutline className={styles.sideIcon}/>
+  
     </Link>
-    <Link href={"/"} className={styles.sideIcon}>
-    <Image sizes='30' fill src={"/icons/carbon_help.png"} alt="Folder Icon"/>
+    <Link href={"/"} >
+    {/* <Image sizes='30' fill src={"/icons/carbon_help.png"} alt="Folder Icon"/> */}
+
+    <IoIosHelpCircleOutline className={styles.sideIcon}/>
+
     </Link>
 </div>
   )

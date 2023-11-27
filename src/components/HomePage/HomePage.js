@@ -7,6 +7,9 @@ import SidePanel from '@/components/HomePage/sidePanel'
 import { useSelector } from 'react-redux'
 import { signOut } from 'next-auth/react'
 import Loader from '../shared/Loader'
+import { IconContext } from 'react-icons'
+import { FiSearch } from "react-icons/fi";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 
 export default function HomePage() {
@@ -46,13 +49,18 @@ else return (
       <p>Hello</p>
       <h4>{schema?.school_admin?.admin_name.toUpperCase() || "User Name"}</h4>
     </div>
-    <div className={styles.logOut} onClick={signOut}>
-      <h4>Log Out</h4>
+    <div title="Log Out"  onClick={signOut}>
+    <IconContext.Provider value={{color: "#03a4ff", style: { verticalAlign: 'middle' }}}>
+    <RiLogoutCircleLine className={styles.logOut}/>
+    </IconContext.Provider>
     </div>
   </div>
   <div className={styles.searchBar}>
     <div className={styles.searchIcon}>
-      <Image alt="Search Icon" src="/icons/iconamoon_search.png" sizes='20' fill/>
+      {/* <Image alt="Search Icon" src="/icons/iconamoon_search.png" sizes='20' fill/> */}
+      <IconContext.Provider value={{color: "#03a4ff", style: { verticalAlign: 'middle' }}}>
+    <FiSearch />
+    </IconContext.Provider>
     </div>
     <input type='text' placeholder='Search' onChange={(e) => setSearch(e.target.value)}/>
   </div>

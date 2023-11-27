@@ -2,7 +2,7 @@
 
 import React from "react";
 import Select from "react-select";
-import styles from "../../app/page.module.css";
+import styles from  "@/components/HomePageCSS/homePage.module.css"
 
 export default function Selector({
   width,
@@ -39,8 +39,8 @@ export default function Selector({
 
         colors: {
           primary25: "#68696a",
-          primary: "#ffffff",
-          neutral0: "#111115",
+          primary: "#68696a",
+          neutral0: "#FFFFFF",
         },
       })}
     />

@@ -120,7 +120,7 @@ export default function ExcelPage() {
 
   else return ( 
 
-      <div className={styles.Table}>
+      <body className={styles.Table}>
         <TopPanel/>
 
         <div className={styles.SelectorCont}>
@@ -175,7 +175,7 @@ export default function ExcelPage() {
                 </table>
       </div>
 
-    </div>
+    </body>
  
     
   )
