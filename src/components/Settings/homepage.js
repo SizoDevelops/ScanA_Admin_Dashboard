@@ -5,11 +5,13 @@ import Menu from './menu';
 
 const Settings = () => {
     return (
-        <div className={styles.container}>
-        <SidePanel/>
+        <body className={styles.container}>
+           <div className={styles.panel}>
+         <SidePanel />
+      </div>
         <Menu/>
 
-        </div>
+        </body>
     );
 }
 

@@ -1,15 +1,16 @@
 .sidePanel {
     height: 100%;
-    width: 15vw;
-    background-color: #acd7f5;
-    background-color: #111115;
+    width: 200px;
+    /* background-color: #acd7f5;
+    background-color: #111115; */
     border-radius: 0px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 60px;
-    padding-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     /* margin-top: 10px; */
     /* margin-left: 10px; */
     /* margin-right: 20px; */
@@ -20,21 +21,27 @@
 
   .panel{
     height: 100vh;
-    width: 20vw;
+    width: 250px;
     position:sticky;
     overflow: hidden;
     top: 0;
+    /* background-color: #acd7f5; */
+    background-color: #111115; 
   }
   .sidePanel a{
     display: inline-flex;
     justify-content: left;
     align-items: center;
-    width: 100%;
-    font-size: 15px;
-    color: #FFFFFF;
+    width: 95%;
+    font-size: 13px;
+    padding-left: 5px;
+    color: #c9c5c5;
     text-decoration: none;
   }
-
+  .sidePanel a:hover{
+    background: #6b6a6a4b;
+    border-radius: .6rem;
+  }
   .sidePanel a p {
     margin-left: 5px;
    }
@@ -44,7 +51,7 @@
     background: transparent;
     margin: 20px 0;
     position: relative;
-    fill: #FFFFFF;
+    /* fill: #FFFFFF; */
     stroke: #FFFFFF;
   }
   
@@ -55,7 +62,7 @@
     margin: 20px 0;
     position: relative;
     margin-left: 20px;
-    fill: #111115;
+    stroke: #111115;
   }
   
   .searchBar>input {
@@ -78,11 +85,10 @@
   }
   
   .searchContainer {
-    width: 82vw;
+    width: 100%;
     height: 200px; 
     /* background-color: #acd7f5; */
-    background-color: #fafafa;
-    border-radius: 10px;
+    background-color: #ffffff;
     /* margin-top: 10px; */
     position: sticky;
     top: 0px;
@@ -95,16 +101,18 @@
     display: flex;
     flex-direction: row;
     color: #111115;
-    background-color: #fafafa;
+    background-color: #f8f8f8;
   }
   
   .nav {
-    width: 90%;
+    width: 100%;
     display: flex;
     margin-top: 20px;
     padding: 0;
     margin: 0;
     flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
   }
   
   .nameHolder {
@@ -146,7 +154,8 @@
   .logOut{
     width: 25px;
     height: 25px;
-    fill: rgb(253, 100, 100);
+    stroke: rgb(253, 100, 100);
+    cursor: pointer;
 
     }
   .searchBar {
@@ -174,7 +183,7 @@
   .profiles {
     width: min(600px, 70vw);
     margin: auto;
-    margin-top: 50px;
+    margin-top: 0px;
     display: grid;
      justify-content: center; /* Center the grid horizontally */
     grid-template-columns: repeat(4, 1fr); /* Initially, 4 columns */
@@ -237,11 +246,14 @@
       margin: auto;
       width: 98vw;
     }
-  
+    .sidePanel a{
+      display: block;
+      width: fit-content;
+    }
     .sidePanel {
       height: 60px;
-      width: 100%;
-      /* border-radius: .6rem; */
+      width: 98%;
+      border-radius: .6rem;
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
@@ -250,14 +262,16 @@
       margin-top: 10px;
       padding: 0;
       position: relative;
+      background: #111115;
     }
     .panel{
-      width: 95vw;
+      width: 100vw;
       height: fit-content;
       align-items: center;
       position: relative;
+      background: transparent;
     }
-    .sidePanel a{
+    .sidePanel a p{
       display: none;
     }
     .searchContainer {
@@ -265,6 +279,7 @@
       margin: auto;
       margin-top: 20px;
       position: relative;
+      border-radius: .6rem;
     }
   
     .categories {

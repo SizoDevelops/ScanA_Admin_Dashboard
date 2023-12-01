@@ -123,7 +123,8 @@ const AddMember = () => {
 
     
     return (
-        <form className={styles.container} onSubmit={(e) => {
+        <body className={styles.container}>
+        <form className={styles.Form}  onSubmit={(e) => {
             e.preventDefault()
             if(users.length < 11){
              handleSubmit()    
@@ -220,6 +221,7 @@ const AddMember = () => {
                 </div>
             </div>
         </form>
+        </body>
     );
 }
 

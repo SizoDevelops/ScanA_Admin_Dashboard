@@ -39,10 +39,10 @@ if(schema.school_name === "" || !users) {
 else return (
 
     <body className={styles.container}>
-      <div className={styles.panel}>
+    
+     <div className={styles.panel}>
          <SidePanel />
       </div>
-   
       <div className={styles.nav}>
         
 <div className={styles.searchContainer}>
@@ -52,18 +52,26 @@ else return (
       <p>Hello</p>
       <h4>{schema?.school_admin?.admin_name.toUpperCase() || "User Name"}</h4>
     </div>
-    <div title="Log Out"  onClick={signOut}>
+    <div title="Log Out" onClick={signOut}>
     {/* <IconContext.Provider value={{color: "#03a4ff", style: { verticalAlign: 'middle' }}}>
     <RiLogoutCircleLine className={styles.logOut}/>
     </IconContext.Provider> */}
+    
+    <svg className={styles.logOut} fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
+</svg>
     </div>
+   
   </div>
   <div className={styles.searchBar}>
-    <div className={styles.searchIcon}>
+    <div >
       {/* <Image alt="Search Icon" src="/icons/iconamoon_search.png" sizes='20' fill/> */}
       {/* <IconContext.Provider value={{color: "#03a4ff", style: { verticalAlign: 'middle' }}}>
     <FiSearch />
     </IconContext.Provider> */}
+    <svg className={styles.searchIcon} fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+</svg>
     </div>
     <input type='text' placeholder='Search' onChange={(e) => setSearch(e.target.value)}/>
   </div>

@@ -1,8 +1,21 @@
 .container{
     display: flex;
     flex-direction: row;
+    background: #ffffff;
+    color: #111115;
+    width: 100vw;
 }
 
+
+  .panel{
+    height: 100vh;
+    width: 250px;
+    position:sticky;
+    overflow: hidden;
+    top: 0;
+    /* background-color: #acd7f5; */
+    background-color: #111115; 
+  }
 .title{
     margin: 30px 20px;
 }
@@ -29,4 +42,11 @@
      margin: auto;
      width: 95vw;
     }
+    .panel{
+        width: 100vw;
+        height: fit-content;
+        align-items: center;
+        position: relative;
+        background: transparent;
+      }
 }

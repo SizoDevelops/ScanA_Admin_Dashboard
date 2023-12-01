@@ -1,16 +1,30 @@
+.sidePanel a{
+  display: block;
+  width: fit-content;
+}
 .sidePanel {
-  height:60px;
-  width: 95%;
-  background-color: #acd7f5;
-  
+  height: 60px;
+  width: 98%;
   border-radius: .6rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin:auto;
-  margin-top: 20px;
+  margin: auto;
+  margin-top: 10px;
   padding: 0;
+  position: relative;
+  background: #111115;
+}
+.panel{
+  width: 100vw;
+  height: fit-content;
+  align-items: center;
+  position: relative;
+  background: transparent;
+}
+.sidePanel a p{
+  display: none;
 }
 .content{
   width: min(1440px, 100vw);
@@ -18,7 +32,7 @@
 }
   .Table{
     position: relative;
-    width: min(1440px, 100vw);
+    width: min(1440px, 95vw);
     margin: auto;
     background-color: #fafafa;
     color: #111115
@@ -28,8 +42,7 @@
     height: min(25px, 5vw);
     background: transparent;
     position: relative;
-    fill: #03a4ff;
-    stroke: #03a4ff;
+    stroke: #ffffff;
   }
   
   .sideIcon:hover{
@@ -99,13 +112,7 @@
   }
 
 
-  .TableHolder{
-    margin: auto;
-    overflow-x:scroll;
-    padding-bottom: 20px;
- width: min(100vw, 1440px);
-    margin: auto;       
-  }
+
 .arrive td{
   width: 50%;
  
@@ -130,6 +137,7 @@
 
   .headers span{
     padding: 5px;
+ color: #00850b;
   }
   .credecials td{
     text-align: left;

@@ -23,14 +23,14 @@
   .table{
     width: 1240px;
     margin: auto;
-
+    
   }
 
   .TableHolder{
     margin: auto;
     overflow-x:auto;
     padding-bottom: 20px;
-    width: 100vw;
+    width: min(1440px, 95vw);
     position: relative;
   }
 

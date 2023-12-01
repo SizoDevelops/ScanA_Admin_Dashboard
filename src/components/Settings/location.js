@@ -29,7 +29,7 @@ const Location = () => {
     }, [schema])
 
     return (
-        <div className={styles.container}>
+        <body className={styles.container}>
             <h2 className={styles.intro}>Please enter the longitude and latitude in the boxes below, make sure it`s precise or follow the instructions below to get your coordinates.</h2>
 
 
@@ -43,7 +43,7 @@ const Location = () => {
                     <input type="text" placeholder=' 28.023167203109832' value={longitude} onChange={e => setLong(e.target.value)}/>
                 </div>
                 <div className={styles.coordinates}>
-                    <p>Distance</p>
+                    <p>Proximity (Distance)</p>
                     <input type="number" placeholder=' 200' value={distance} onChange={e => setDistance(e.target.value)}/>
                 </div>
 
@@ -72,7 +72,7 @@ const Location = () => {
                     <li><strong><i>Left-Click</i></strong> on the coordinates to copy them.</li>
                 </ul>
             </div>
-        </div>
+        </body>
     );
 }
 

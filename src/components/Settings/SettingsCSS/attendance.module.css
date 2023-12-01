@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 30px;
+    background: #fff;
 }
 
 
@@ -53,7 +54,7 @@
 .submit{
     padding: 20px;
     width: 20%;
-    color: #68696A;
+    color: #a8a9aa;
     background: #111115;
     outline: none;
     border: none;

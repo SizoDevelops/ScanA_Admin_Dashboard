@@ -33,13 +33,14 @@ const Attendance = () => {
       useEffect(() => {
         setAttendance()
         
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       },[schema])
 
     if(loading){
         return <Loader/>
     }
     else return (
-        <div className={styles.container}>
+        <body className={styles.container}>
          <div className={styles.formHolder} ref={targetRef}>
             <h2 className={styles.heading}>{getCurrentMonthAndYear()}</h2>
             <p className={styles.details}>Scan the code for the day. If scanning does not work try entering the code.</p>
@@ -184,8 +185,8 @@ const Attendance = () => {
                
             </div>
 
-            <div className={styles.submit} onClick={() => toPDF()}>Save</div>
-        </div>
+            <div className={styles.submit} onClick={() => toPDF()}>Download PDF</div>
+        </body>
     );
 }
 

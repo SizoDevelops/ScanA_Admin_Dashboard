@@ -84,17 +84,17 @@ const UserAttendanceTable = ({ userData, week, year }) => {
        
             <div key={entry.date} className={styles.headers}>
               {
-                      entry.absent === true ? <span style={{width: "350px", wordWrap:"unset", wordBreak: "keep-all", textAlign: "center", textTransform: "capitalize"}}>{entry.reason}</span>
+                      entry.absent === true ? <span style={{width: "350px", wordWrap:"unset", wordBreak: "keep-all", textAlign: "center", textTransform: "capitalize", color: "red"}}>{entry.reason}</span>
                       :
                    
                        <div>
-                          <span>{entry.timein}</span>
+                          <span style={{color:"#00850b"}}>{entry.timein}</span>
                           <span style={{display: "none"}}>{"-"}</span>
-                          <span>{entry.initial}</span>
+                          <span style={{color:"#00850b"}}>{entry.initial}</span>
                            <span style={{display: "none"}}> {"-"}  </span>
-                          <span>{entry.timeout}</span>
+                          <span style={{color:"#00850b"}}>{entry.timeout}</span>
                            <span style={{display: "none"}}>  {"-"} </span>
-                          <span>{entry.initial}</span> 
+                          <span style={{color:"#00850b"}}>{entry.initial}</span> 
                       </div>
                   
                     }
