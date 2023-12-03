@@ -1,0 +1,111 @@
+.Container{
+    width: min(90vw, 1080px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.profileImage{
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    border-radius: 10px;
+    position: relative;
+    background-image: url("");
+    background-position: center;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.Profile{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.details input{
+    background-color: transparent;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: min(16px, 3vw);
+    color: #68696A;
+    font-weight: 700;
+}
+
+.details input:focus {
+    background-color: #111115;
+    outline-color: #68696A;
+}
+
+.Icon{
+    width: min(25px , 4vw);
+    height:  min(25px , 4vw);
+    background: transparent;
+    position: relative;
+  }
+  .Icon:hover{
+    cursor: pointer;
+    border-radius: 100px;
+  }
+
+  .Data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+
+  /* //////////////////////////// */
+
+  .coordinates > input{
+    padding: 20px;
+    width: 90%;
+    color: #68696A;
+    background: #111115;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);
+    margin-bottom: 10px;
+}
+
+.formHolder{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.coordinates input:focus{
+    outline: 1px solid #494949;
+}
+.coordinates input::placeholder{
+    color:#65696e;
+}
+.submit{
+    padding: 20px;
+    width: 20%;
+    color: #68696A;
+    background: #111115;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);  
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.listIns li{
+    color: #68696A;
+    margin-bottom: 10px;
+    font-size: min(14px, 3vw);
+}

@@ -14,7 +14,8 @@ const SettingCats = ({title, points}) => {
                            <Link href={'/settings/' + item.endpoint} prefetch={false} legacyBehavior  key={item + index}>
                                 <div className={styles.Container}>
                                 <div className={styles.Icon}>
-                                    <Image sizes='40' fill src={ item.icon !== "" ? item.icon : "/icons/re.png"} alt="Folder Icon"/>
+                                    {/* <Image sizes='40' fill src={ item.icon !== "" ? item.icon : "/icons/re.png"} alt="Folder Icon"/> */}
+                                    {item.icon}
                                 </div>
                                 <p className={styles.Name}>{item.name}</p>
                                 </div>

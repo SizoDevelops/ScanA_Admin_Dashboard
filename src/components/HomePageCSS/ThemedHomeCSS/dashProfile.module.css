@@ -1,0 +1,58 @@
+.container{
+    width: 280px;
+    height: 120px;
+    background-color: #111115; 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding-right: 5px;
+    
+}
+
+.profileImage{
+    background: #03a4ff;
+    width: 40%;
+    height: 100%;
+    margin-right: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: relative;
+    background-image: url("");
+    background-position: center;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profileDetails > p{
+    font-size: min(14px, 3vw);
+    color:#68696A;
+    text-transform: uppercase;
+}
+
+.profileDetails h4{
+    font-weight: 900;
+    font-size: min(14px, 4vw);
+    text-transform: uppercase;
+}
+
+.Links{
+    text-decoration: none;
+    color: inherit;
+}
+
+.Links:visited{
+    color: inherit;
+}
+
+@media (max-width: 1240px) {
+    .container{
+
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

@@ -3,18 +3,19 @@ import React, { useState } from 'react';
 import NavBar from './NavBar';
 import styles from '../../HomePageCSS/login.module.css'
 import { signIn, useSession} from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+
 import Loader from '@/components/shared/Loader';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 
 const Login = () => {
   const {data: session, status} = useSession()
-  const router = useRouter()
+
 if(status === "loading") {
   return <Loader/>
 }
-else if(session) router.push("/dashboard")
+else if(session) redirect("/dashboard")
 else return (
         <body className={styles.Body}>
         <NavBar/>

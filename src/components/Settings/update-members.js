@@ -9,7 +9,6 @@ import { useDatabase } from '../features/dbContext';
 
 const UpdateMembers = () => {
   const {data: session} = useSession()
-  const { loading } = useDatabase()
   const schema = useSelector(state => state.Database.value.members)
   const members= [...schema]
 
@@ -24,47 +23,49 @@ const UpdateMembers = () => {
   }
 
   const membersCopy = members.sort(compareFn)
+
   
 return (
-        <div className={styles.Cont}>
+       <body className={styles.container}>
+         <div className={styles.Cont}>
 
-        <div className={styles.container}>
-            <div className={styles.categories}>
-        <div className={styles.cat}>
-          <p>All</p>
+      
+<div className={styles.categories}>
+<div className={styles.cat}>
+<p>All</p>
+</div>
+<div className={styles.cat}>
+<p>Admin</p>
+</div>
+<div className={styles.cat}>
+<p>Teaching</p>
+</div>
+<div className={styles.cat}>
+<p>Non-Teaching</p>
+</div>
+</div> 
+<div className={styles.profiles}>
+{
+membersCopy.map((member, index) => {
+    return (
+        <div key={member.last_name+index}>
+            <MemberProfile keyID={session?.user.key} id={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} data={member}
+              paused={member.pause_register} blocked={member.block_user}
+            />
         </div>
-        <div className={styles.cat}>
-          <p>Admin</p>
-        </div>
-        <div className={styles.cat}>
-          <p>Teaching</p>
-        </div>
-        <div className={styles.cat}>
-          <p>Non-Teaching</p>
-        </div>
-      </div> 
-        </div>
-       <div className={styles.profiles}>
-        {
-            membersCopy.map((member, index) => {
-                return (
-                    <div key={member.last_name+index}>
-                        <MemberProfile keyID={session?.user.key} id={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} data={member}
-                          paused={member.pause_register} blocked={member.block_user}
-                        />
-                    </div>
-                    
-                )
-            })
-        }
+        
+    )
+})
+}
 
-       </div>
-       <ul className={styles.listIns}>
-                        <li>Hover over a profile to see the options.</li>
-                        <li>Some actions here are irreversable so be careful.</li>
-                    </ul>
-            
-        </div>
+</div>
+<ul className={styles.listIns}>
+            <li>Hover over a profile to see the options.</li>
+            <li>Some actions here are irreversable so be careful.</li>
+        </ul>
+
+</div>
+       </body>
     );
 }
 
