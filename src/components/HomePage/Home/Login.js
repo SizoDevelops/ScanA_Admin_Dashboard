@@ -3,19 +3,18 @@ import React, { useState } from 'react';
 import NavBar from './NavBar';
 import styles from '../../HomePageCSS/login.module.css'
 import { signIn, useSession} from 'next-auth/react';
-
+import { redirect, useRouter } from 'next/navigation';
 import Loader from '@/components/shared/Loader';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 
 const Login = () => {
   const {data: session, status} = useSession()
-
+  const router = useRouter()
 if(status === "loading") {
   return <Loader/>
 }
-else if(session) redirect("/dashboard")
+else if (status === "authenticated") redirect(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
 else return (
         <body className={styles.Body}>
         <NavBar/>

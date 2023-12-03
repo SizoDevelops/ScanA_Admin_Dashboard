@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import { Form, Formik, Field, ErrorMessage} from 'formik';
 import { validate } from '@/lib/validate';
 import { useDatabase } from '@/components/features/dbContext';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import Modal from '../Modal';
 import Loader from '@/components/shared/Loader';
 import { useSession } from 'next-auth/react';
@@ -75,7 +75,7 @@ const [loading, setLoading ] = useState(false)
   if(status === "loading") {
     return <Loader/>
   }
-  else if(session) router.push("/")
+  else if(status === "authenticated") redirect(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
 
     return (
         <body className={styles.Body}>
