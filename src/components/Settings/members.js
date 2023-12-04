@@ -7,7 +7,7 @@ import { deleteUser, updateMember } from '../shared/DatabaseSlice'
 
 
 
-export default function MemberProfile({image,title, initial, last_name, position, id, keyID, paused, blocked}) {
+export default function MemberProfile({image,title, initial, last_name, position, id, keyID, paused, blocked, persal, subjects}) {
   const {updateUser} = useDatabase()
   const dispatch = useDispatch()
   const {loading} = useDatabase()
@@ -19,7 +19,7 @@ return (
         <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}>
 
           {
-            !image ? <p style={{position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: "100%", fontSize: "15px", textAlign: 'center', height: "50%"}}>No Image Found</p> 
+            !image ? <p style={{position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: "100%", fontSize: "14px", textAlign: 'center', height: "30%"}}>No Image Found</p> 
             :
              <></>
           }
@@ -27,7 +27,14 @@ return (
         </div>
         <div className={styles.profileDetails}>
           <h4>{`${title} ${initial} ${last_name}`}</h4>
-          <p>{`${position}`}</p>
+
+          <p>{`Position: ${position}`}</p>
+          <p>{`Persal: ${persal || "N/A"}`}</p>
+          <p>{`Subjects: `}</p>
+          <ol>
+            <li>English Fal</li>
+            <li>English Fal</li>
+          </ol>
         </div>
       </div>
 
@@ -35,13 +42,13 @@ return (
             <p className={styles.Name}>{`${title} ${initial} ${last_name}`}</p>
 
             <div className={styles.Option}>
-                {/* <p onClick={async() =>{ 
+                <p onClick={async() =>{ 
                   
                   await updateUser({key: keyID, id: id, pause_register:!paused})
                   dispatch(updateMember({pause_register:!paused}))
                   
-                  }}>{ paused ? "Resume Registry Recording" :  "Pause Registry Recording"}</p>
-                <p onClick={async() => {
+                  }}>Update Profile</p>
+                {/* <p onClick={async() => {
                   
                   await updateUser({key: keyID, id: id, block_user: !blocked})
                   dispatch(updateMember({block_user: !blocked}))

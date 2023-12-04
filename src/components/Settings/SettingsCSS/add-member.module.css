@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     background: #f5f5f5;
+
     color: #111115;
 }
 .Form{
@@ -16,7 +17,7 @@
 }
 .coordinates > input{
     padding: 20px;
-    width: 95%;
+    width: 85%;
     color: #111115;
     background: #f7f7f7;
     outline: 1px solid #03a4ff;
@@ -57,12 +58,17 @@
 }
 
 .memberInfo{
-    display: flex;
-    width: 80%;
-    flex-direction: column;
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
     margin: auto;
+    justify-content: center;
 }
-
+@media(max-width: 690px){
+    .memberInfo{
+        grid-template-columns: 1fr;
+    }
+}
 .Icon{
     width: min(30px , 8vw);
     height:  min(30px , 8vw);
@@ -137,6 +143,7 @@
     height: 140px;
     padding-top: 20px;
     background-color: #ffffff; 
+    box-shadow: 2px 2px 5px 2px #000000;
     border-radius: 10px;
     display: flex;
     flex-direction: row;

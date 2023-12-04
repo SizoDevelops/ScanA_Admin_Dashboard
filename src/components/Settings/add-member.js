@@ -14,6 +14,7 @@ const initialState = {
     last_name: '',
     initial: '',
     position: '', 
+    persal: '',
     email: '',
     code: '',
     password: '',
@@ -28,7 +29,8 @@ const initialState = {
         wednesday: [],
         thursday: [],
         friday: []
-    }
+    },
+    subjects: []
 }
 const formReducer = (state, action) => {
     switch (action.type) {
@@ -140,14 +142,14 @@ const AddMember = () => {
                 <div className={styles.memberInfo}>
             <div className={styles.coordinates}>
                     <p>Title*</p>
-                    <input type="text" placeholder='MR.' name="title" value={state.title.toUpperCase()} onChange={handleInputChange} required/>
+                    <input type="text" placeholder='eg. MR.' name="title" value={state.title.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
                         <li>Enter the title of the member. (e.g. MR.)</li>
                     </ul>
             </div> 
             <div className={styles.coordinates}>
                     <p>Initials*</p>
-                    <input type="text" placeholder='S.M' name="initial" value={state.initial.toUpperCase()} onChange={handleInputChange} required/>
+                    <input type="text" placeholder='Initial(s)' name="initial" value={state.initial.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
                         <li>Use proper initial conventions. (e.g. S.W)</li>
                     </ul>
@@ -184,9 +186,17 @@ const AddMember = () => {
             </div> 
             <div className={styles.coordinates}>
                     <p>Position*</p>
-                    <input type="text" placeholder='Developer' name="position" value={state.position.toUpperCase()} onChange={handleInputChange} required/>
+                    <input type="text" placeholder='e.g Teacher or HOD' name="position" value={state.position.toUpperCase()} onChange={handleInputChange} required/>
                     <ul className={styles.listIns}>
                         <li>Position of the member</li>
+                       
+                    </ul>
+            </div> 
+            <div className={styles.coordinates}>
+                    <p>Persal Number</p>
+                    <input type="text" placeholder='Persal Number' name="persal" value={state.persal.toUpperCase()} onChange={handleInputChange}/>
+                    <ul className={styles.listIns}>
+                        <li>Enter the persal Number if available</li>
                        
                     </ul>
             </div> 
