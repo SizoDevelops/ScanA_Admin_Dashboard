@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '@/components/HomePageCSS/topPannel.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 // import { IoIosHelpCircleOutline } from "react-icons/io";
 // import { IoSettingsOutline } from "react-icons/io5";
 // import { BsFolder } from "react-icons/bs";
@@ -10,9 +11,11 @@ import Link from 'next/link'
 // import { IconContext } from "react-icons";
 
 export default function TopPanel() {
+  const {data: session, status} = useSession()
+
   return (
     <div className={styles.sidePanel}>
-    <Link href={"/"} replace>
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}`} replace>
 
       <div >
       {/* <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/> */}
@@ -27,7 +30,7 @@ export default function TopPanel() {
     {/* <Link href={"/updates"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={"/attendance-register"}>
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/attendance-register`}>
    
     <div>
  {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -42,7 +45,7 @@ export default function TopPanel() {
     {/* <Link href={"/absentees"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={"/settings"} >
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/settings`} >
 
     <div>
     {/* <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavBar from './NavBar';
 import styles from '../../HomePageCSS/login.module.css'
 import { signIn, useSession} from 'next-auth/react';
-import { redirect, useRouter } from 'next/navigation';
+import { redirect, useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Loader from '@/components/shared/Loader';
 import Link from 'next/link';
 
@@ -11,6 +11,7 @@ import Link from 'next/link';
 const Login = () => {
   const {data: session, status} = useSession()
   const router = useRouter()
+
 if(status === "loading") {
   return <Loader/>
 }
@@ -47,7 +48,16 @@ const StepOne =() => {
     const [password, setPassword] = useState("")
     const [code, setCode] = useState("")
     const [email, setEmail] = useState("")
-
+    const params = useSearchParams()
+    const encodedCallbackUrl = params.get("callbackUrl")
+    let decodedUrl; 
+    if(encodedCallbackUrl){
+      decodedUrl = decodeURIComponent(encodedCallbackUrl); 
+    }
+    else{
+      decodedUrl = "/"
+    }
+    
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
@@ -56,7 +66,8 @@ const StepOne =() => {
       school_email: email,
       password,
       redirect: true,
-      callbackUrl: "/"
+      callbackUrl: decodedUrl
+      
    })
 
   }

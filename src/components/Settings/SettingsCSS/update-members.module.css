@@ -5,11 +5,14 @@
     align-items: flex-start;
     justify-content: left;
     margin: auto;
+    position: relative;
 }
 
 .container{
     background: #f5f5f5;
- 
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 .categories{
     margin: auto;
@@ -23,9 +26,11 @@
   .profiles{
     margin-top: 50px;
     display: flex;
+    min-height: 400px;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
   }
   .searchBar {
     background-color: #dadada;
@@ -166,4 +171,102 @@
   .cat:active {
     background: #68696A;
   }
-  
+/* Modal Styles */
+
+.modalContainer {
+    width: 100vw;
+    position: absolute;
+    height: 100vh;
+    background: #003f64;
+    top: 0;
+    left: 0;
+    transform: translate(-0%, -0%);
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.modal{
+    width: min(90vw, 1080px);
+    height: fit-content;
+    min-height: 400px;
+    background: #ffffff;
+    border-radius: 5px;
+
+}
+.btn p {
+    color: #111115;
+}
+.btn{
+    margin: auto;
+    width: 200px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: #03a4ff;
+}
+.Form{
+    width: min(98vw, 1080px);
+}
+.coordinates{
+
+    width: 100%;
+}
+.coordinates > input{
+    padding: 20px;
+    width: 85%;
+    color: #111115;
+    background: #fdfdfd;
+    outline: 1px solid #03a4ff;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);
+    margin-bottom: 20px;
+}
+
+.formHolder{
+    width: 100%;
+}
+
+.coordinates input:focus{
+    outline: 1px solid #494949;
+}
+.memberInfo p{
+    font-size: min(13px, 3vw);
+    color: #68696A;
+  }
+.coordinates input::placeholder{
+    color:#65696e;
+}
+.submit{
+    padding: 20px;
+    width: 20%;
+    color: #68696A;
+    background: #111115;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);  
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.listIns li{
+    color: #68696A;
+    margin-bottom: 10px;
+    font-size: min(14px, 3vw);
+}
+.memberInfo{
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    justify-content: center;
+}
+@media(max-width: 1180px){
+    .memberInfo{
+        grid-template-columns: 1fr;
+    }
+}

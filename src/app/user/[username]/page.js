@@ -13,7 +13,7 @@ useEffect(() => {
   setLoader(false)
 },[])
 if(status === "loading" || loading) return <Loader/>
-else if(status === "authenticated" && `${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}` !== params.slug) redirect("/_error")
+else if(status === "authenticated" && `${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}` !== params.username) redirect("/_error")
 else  return (
     <HomePage/>
   )

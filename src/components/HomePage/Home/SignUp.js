@@ -123,7 +123,7 @@ const [loading, setLoading ] = useState(false)
                     if(data === "User Already Exists"){
                         // Show User Already Exists Error
                         setCode({title: "User Already Registered!", message: "This user email has already been used please try a new email or login instead.", type: "Error"})
-                        router.push("/dashboard")
+                        router.push("/login")
                         setLoading(false)
                        
                         return;
@@ -142,7 +142,7 @@ const [loading, setLoading ] = useState(false)
                             code: data.school_code,
                             user_mail: data.school_email
                           })
-                          router.push("/dashboard") 
+                          router.push("/") 
                           setLoading(false)
                           resetForm()
                  

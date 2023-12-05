@@ -1,13 +1,17 @@
+"use client"
 import React from 'react'
 import styles from '@/components/HomePageCSS/homePage.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 
 
 export default function SidePanel() {
+  const {data: session, status} = useSession()
+
   return (
     <div className={styles.sidePanel}>
-    <Link href={"/"} replace>
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}`} replace>
 
       <div >
       {/* <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/> */}
@@ -22,7 +26,7 @@ export default function SidePanel() {
     {/* <Link href={"/updates"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={"/attendance-register"}>
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/attendance-register`}>
    
     <div>
  {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -37,7 +41,7 @@ export default function SidePanel() {
     {/* <Link href={"/absentees"} className={styles.sideIcon}>
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={"/settings"} >
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/settings`} >
 
     <div>
     {/* <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>
