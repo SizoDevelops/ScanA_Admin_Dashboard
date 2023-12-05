@@ -16,7 +16,7 @@
     width: 100%;
 }
 .coordinates > input{
-    padding: 20px;
+    padding: 10px;
     width: 85%;
     color: #111115;
     background: #f7f7f7;
@@ -36,6 +36,7 @@
 }
 .coordinates input::placeholder{
     color:#65696e;
+    font-size: 12px;
 }
 .submit{
     padding: 20px;
@@ -126,7 +127,7 @@
     left: 30%;
     display: none;
     border-radius: 2px;
-    box-shadow: 2px 2px 5px 2px #000000;
+    box-shadow: 2px 2px 5px 2px #e2e2e2;
 }
 
 .Links:hover > .options{
@@ -143,7 +144,7 @@
     height: 140px;
     padding-top: 20px;
     background-color: #ffffff; 
-    box-shadow: 2px 2px 5px 2px #000000;
+    box-shadow: 2px 2px 5px 2px #d4d4d4;
     border-radius: 10px;
     display: flex;
     flex-direction: row;

@@ -1,6 +1,6 @@
 import { Deta } from 'deta'
 import { NextResponse } from 'next/server';
-
+const _ = require('lodash');
 const deta = Deta(process.env.DETA_PROJECT_KEY)
 const db = deta.Base("schools_db")
 
@@ -10,11 +10,11 @@ export async function POST(request) {
     const user = await db.get(body.key)
 
     // Users that match the ID which should be one user
-    const updated_user = user.members.find(elem => elem.id === body.id)
+    const updated_user = user.members.find(elem => elem.id === body.user_details.id)
 //  Delete User From Users
 if(body.delete_user === true){
     // Return users that don't match the ID
-    const newUsers = user.members.filter(users => users.id !== body.id)
+    const newUsers = user.members.filter(users => users.id !== body.user_details.id)
     // Updates the users list in the DB
     const updateUser = await  db.update({members: newUsers}, body.key)
    
@@ -22,38 +22,9 @@ if(body.delete_user === true){
 }
 
 // Update User Details
-const userDetails = {
-    title: updated_user.title,
-    initial: updated_user.initial,
-    first_name: updated_user.first_name,
-    last_name: updated_user.last_name,
-    email: updated_user.email,
-    position: updated_user.position,
-    phone_number: updated_user.phone_number,
-    persal: updated_user.persal,
-    subjects: updated_user.subjects
-}
-const compareObjects = (obj1, obj2) => {
-    const keys1 = Object.keys(obj1) // This return a list of the object keys
-    const keys2 = Object.keys(obj2) // Object two list of keys
 
-    // Check if number of keys is equal
-    if(keys1.length !== keys2.length) return false;
-    
-    // Check if key exists in both objects
-
-    for(const key in keys1){
-        if(obj1[key] !== obj2[key]) return false;
-
-
-        // If every key is the same return true
-        return true;
-    }
-}
-
-
-if(compareObjects(body.user_details, userDetails)){
-    return;
+if(_.isEqual(body.user_details, updated_user)){
+    return NextResponse.json("User Details Unchanged")
 }
 else {
     // Change User
@@ -67,9 +38,9 @@ else {
     updated_user.persal = body.user_details.persal
     updated_user.subjects  = body.user_details.subjects
     }
-    const members = user.members.filter(item => item.id !== body.id)
+    const members = user.members.filter(item => item.id !== body.user_details.id)
     const newM = members.concat([updated_user])
     const updateUser = await  db.update({members: newM}, body.key)
 
-    return NextResponse.json(updateUser)
+    return NextResponse.json("User Updated")
 }

@@ -99,7 +99,7 @@ else return (
             users.map((member, index) => {
                 return (
                     <div key={member.last_name+index} style={{}}>
-                        <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} schema={member} image={"https://i.ibb.co/0csMj5v/Rectangle-353.png"} center={schema?.school_name}/>
+                        <DashProfile slug={member.id} title={member.title} last_name={member.last_name} position={member.position} initial={member.initial} schema={member} image={"https://i.ibb.co/0csMj5v/Rectangle-353.png"} center={schema?.school_name} persal={member.persal}/>
                     </div>
                     
                 )

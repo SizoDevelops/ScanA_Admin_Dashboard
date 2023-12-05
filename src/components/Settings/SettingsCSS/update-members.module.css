@@ -9,7 +9,7 @@
 }
 
 .container{
-    background: #f5f5f5;
+    background: #fcfbfb;
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -175,12 +175,11 @@
 
 .modalContainer {
     width: 100vw;
-    position: absolute;
-    height: 100vh;
-    background: #003f64;
+    position: relative;
+    height: fit-content;
+
     top: 0;
     left: 0;
-    transform: translate(-0%, -0%);
     display: flex;
     justify-content: center;
     padding: 40px 0;
@@ -189,22 +188,31 @@
 .modal{
     width: min(90vw, 1080px);
     height: fit-content;
-    min-height: 400px;
-    background: #ffffff;
-    border-radius: 5px;
 
+    border-radius: 5px;
+    position: relative;
 }
 .btn p {
-    color: #111115;
+    color: #fcfcfc;
+    
 }
 .btn{
     margin: auto;
     width: 200px;
     cursor: pointer;
+    background: #03a4ff;
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: min(16px, 3vw);  
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
 }
 
 .btn:hover {
-    color: #03a4ff;
+    color: #8d8d8d;
 }
 .Form{
     width: min(98vw, 1080px);
@@ -214,15 +222,19 @@
     width: 100%;
 }
 .coordinates > input{
-    padding: 20px;
+    padding: 10px;
     width: 85%;
     color: #111115;
     background: #fdfdfd;
     outline: 1px solid #03a4ff;
     border: none;
-    border-radius: 5px;
-    font-size: min(16px, 3vw);
+    border-radius: 0;
+    font-size: min(15px, 3vw);
     margin-bottom: 20px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
 }
 
 .formHolder{
@@ -230,14 +242,24 @@
 }
 
 .coordinates input:focus{
-    outline: 1px solid #494949;
+    outline: none;
 }
 .memberInfo p{
-    font-size: min(13px, 3vw);
+    font-size: min(12px, 3vw);
     color: #68696A;
   }
 .coordinates input::placeholder{
-    color:#65696e;
+    color:#919191;
+    font-size: 12px;
+}
+.closeModal{
+    color:#111115;
+    font-size: 25px;
+    font-weight: bolder;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 .submit{
     padding: 20px;
@@ -252,11 +274,15 @@
     cursor: pointer;
     margin-top: 30px;
 }
-
+.addNew{
+    width: 100%;
+    justify-content: center;
+    display: grid;
+}
 .listIns li{
     color: #68696A;
     margin-bottom: 10px;
-    font-size: min(14px, 3vw);
+    font-size: min(12px, 3vw);
 }
 .memberInfo{
     display: grid;

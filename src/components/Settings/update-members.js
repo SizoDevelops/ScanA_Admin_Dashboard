@@ -5,18 +5,26 @@ import MemberProfile from "./members";
 import styles from "../Settings/SettingsCSS/update-members.module.css";
 import { useSession } from "next-auth/react";
 import { useSelector } from "react-redux";
-import { useDatabase } from "../features/dbContext";
+import { useModal } from "./modalCont";
+import { Field, Form, Formik } from "formik";
+import { validate } from "./validate";
 
 
 const formReducer = (state, action) => {
-  switch (action) {
-    case "UPDATE FIELD":
+  switch (action.type) {
+    case "UPDATE_FIELD":
       return {
         ...state,
         [action.field]: action.value,
       };
+      case "SET_STATE":
+        return action.payload;
+      case "UPDATE":
+        return{
+          [action.field]: action.value
+        }
     default:
-      break;
+      return state;
   }
 }
 
@@ -24,23 +32,10 @@ const UpdateMembers = () => {
   const { data: session } = useSession();
   const schema = useSelector((state) => state.Database.value.members);
   const members = [...schema];
+
   const [search, setSearch] = useState("");
   const [membersArray, setMembers] = useState([]);
-const [users, setUsers] = useState([])
-const [state, dispatch] = useReducer(formReducer, {
-  title: session?.user.title,
-  initial: session?.user.initial,
-  first_name: session?.user.first_name,
-  last_name: session?.user.last_name,
-  email: session?.user.email,
-  position: session?.user.position,
-  phone_number: session?.user.phone_number,
-  persal: session?.user.persal,
-  subjects: session?.user.subjects
-})
-
-
-
+  const {userData} = useModal()
 
   function compareFn(a, b) {
     if (a.last_name < b.last_name) {
@@ -58,36 +53,23 @@ const [state, dispatch] = useReducer(formReducer, {
     const members = [];
     membersCopy.forEach((elem) => {
       if (
-        elem.last_name.includes(search.toUpperCase()) ||
-        elem.first_name.includes(search.toUpperCase()) ||
-        elem.position.includes(search.toUpperCase()) ||
-        elem.title.includes(search.toUpperCase()) ||
-        elem.initial.includes(search.toUpperCase())
+        elem.last_name.includes(search) ||
+        elem.first_name.includes(search) ||
+        elem.position.includes(search) ||
+        elem.title.includes(search) ||
+        elem.initial.includes(search)
       ) {
         members.push(elem);
         setMembers(members);
       }
     });
-  }, [search, membersCopy]);
+  }, [search, schema]);
 
-  const handleInputChange = (e) => {
-    const [
-      title,
-      initial,
-      first_name,
-      last_name,
-      email,
-      phone_number,
-      persal,
-      subjects,
-    ] = e.target;
-
-
-  };
+ 
 
   return (
     <body className={styles.container}>
-      <div className={styles.Cont}>
+      {userData.id !== ""? <Modal/> : (<div className={styles.Cont}>
         <div className={styles.categories}>
           <div className={styles.searchBar}>
 
@@ -131,8 +113,7 @@ const [state, dispatch] = useReducer(formReducer, {
                   position={member.position}
                   initial={member.initial}
                   data={member}
-                  paused={member.pause_register}
-                  blocked={member.block_user}
+                  persal={member.persal}
                 />
               </div>
             );
@@ -142,134 +123,125 @@ const [state, dispatch] = useReducer(formReducer, {
           <li>Hover over a profile to see the options.</li>
           <li>Some actions here are irreversable so be careful.</li>
         </ul>
-      </div>
-
-      <div className={styles.modalContainer}>
-        <div className={styles.modal}>
-          <form
-            className={styles.Form}
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <div className={styles.memberInfo}>
-              <div className={styles.coordinates}>
-                <p>Title*</p>
-                <input
-                  type="text"
-                  placeholder="eg. MR."
-                  name="title"
-                  defaultValue={state.title}
-                  onChange={handleInputChange}
-                  required
-                />
-                <ul className={styles.listIns}>
-                  <li>Enter the title of the member. (e.g. MR.)</li>
-                </ul>
-              </div>
-              <div className={styles.coordinates}>
-                <p>Initials*</p>
-                <input
-                  type="text"
-                  placeholder="Initial(s)"
-                  name="initial"
-                  onChange={handleInputChange}
-                  required
-                />
-                <ul className={styles.listIns}>
-                  <li>Use proper initial conventions. (e.g. S.W)</li>
-                </ul>
-              </div>
-
-              <div className={styles.coordinates}>
-                <p>First Name*</p>
-                <input
-                  type="text"
-                  placeholder="First Name(s)"
-                  name="first_name"
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className={styles.coordinates}>
-                <p>Last Name*</p>
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="last_name"
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className={styles.coordinates}>
-                <p>Email Address*</p>
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  onChange={handleInputChange}
-                  required
-                />
-                <ul className={styles.listIns}>
-                  <li>The email address of the member</li>
-                  <li>
-                    This email will be used to send the login details to the
-                    user.
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.coordinates}>
-                <p>Phone Number*</p>
-                <input
-                  type="text"
-                  placeholder="Phone Number"
-                  name="phone_number"
-                  onChange={handleInputChange}
-                  required
-                />
-                <ul className={styles.listIns}>
-                  <li>The phone number of the member</li>
-                  <li>For convenience</li>
-                </ul>
-              </div>
-              <div className={styles.coordinates}>
-                <p>Position*</p>
-                <input
-                  type="text"
-                  placeholder="e.g Teacher or HOD"
-                  name="position"
-                  onChange={handleInputChange}
-                  required
-                />
-                <ul className={styles.listIns}>
-                  <li>Position of the member</li>
-                </ul>
-              </div>
-              <div className={styles.coordinates}>
-                <p>Persal Number</p>
-                <input
-                  type="text"
-                  placeholder="Persal Number"
-                  name="persal"
-                  onChange={handleInputChange}
-                />
-                <ul className={styles.listIns}>
-                  <li>Enter the persal Number if available</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className={styles.addNew}>
-              <div className={styles.btn} onClick={() => {}}>
-                <p>{true ? "Uploading..." : "Confirm"}</p>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
+      </div>)}
     </body>
   );
 };
+
+const Modal = () => {
+const {userData, updateUser, setUserData} = useModal()
+const {data: session} = useSession()
+  return (
+    <div className={styles.modalContainer}>
+        <div className={styles.modal}>
+          <span className={styles.closeModal} onClick={() => {
+            setUserData({id:""})
+          }}>
+            &times;
+          </span>
+        <Formik
+            initialValues={userData}
+            validate={validate}
+            onSubmit={async (values, {resetForm, setSubmitting }) => {
+                await updateUser({
+                  key: session?.user.key,
+                  user_details: values
+                })
+                  setUserData(values)
+                // resetForm(userData)
+            }}
+        >
+        {({
+         isSubmitting,
+         errors,
+         touched
+       }) => (
+        <Form className={styles.Form} >
+   
+        
+                 <Field type="hidden" name="id" />
+                 <Field type="hidden" name="code"  />
+                <div className={styles.memberInfo}>
+            <div className={styles.coordinates}>
+                    <p>{errors.title && touched.title ? <span style={{color: "red"}}>{errors.title}</span> : "Title*"}</p>
+                    <Field type="text" placeholder='eg. MR.' name="title" style={errors.title && touched.title ? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <ul className={styles.listIns}>
+                        <li>Enter the title of the member. (e.g. MR.)</li>
+                    </ul>
+            </div> 
+            <div className={styles.coordinates}>
+                    <p>{errors.initial && touched.initial ? <span style={{color: "red"}}>{errors.initial}</span> : "Initials*"}</p>
+                    <Field type="text" placeholder='Initial(s)' name="initial" style={errors.initial && touched.initial? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <ul className={styles.listIns}>
+                        <li>Use proper initial conventions. (e.g. S.W)</li>
+                    </ul>
+            </div> 
+        
+            <div className={styles.coordinates}>
+            
+                    <p>{errors.first_name && touched.first_name ? <span style={{color: "red"}}>{errors.first_name}</span> : "First Name*"}</p>
+                    <Field type="text" placeholder='First Name(s)' name="first_name" style={errors.first_name && touched.first_name ? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+            </div> 
+
+            <div className={styles.coordinates}>
+                    <p>{errors.last_name && touched.last_name ? <span style={{color: "red"}}>{errors.last_name}</span> : "Last Name*"}</p>
+                    <Field type="text" placeholder='Last Name' name="last_name" style={errors.last_name && touched.last_name ? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+            </div> 
+            <div className={styles.coordinates}>
+        
+                    <p>{errors.email && touched.email ? <span style={{color: "red"}}>{errors.email}</span> : "Email Address*"}</p>
+                    <Field type="email" placeholder='Email Address' name="email" style={errors.email && touched.email? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <ul className={styles.listIns}>
+                        <li>The email address of the member</li>
+                        <li>This email will be used to send the login details to the user.</li>
+                        
+                       
+                    </ul>
+            </div> 
+            <div className={styles.coordinates}>
+                
+                    <p>{errors.phone_number && touched.phone_number? <span style={{color: "red"}}>{errors.phone_number}</span> : "Phone Number"}</p>
+                    <Field type="text" placeholder='Phone Number' name="phone_number" style={errors.phone_number && touched.phone_number? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <ul className={styles.listIns}>
+                        <li>The phone number of the member</li>
+                        <li>For convenience</li>
+                        
+                       
+                    </ul>
+            </div> 
+            <div className={styles.coordinates}>
+   
+                    <p>{errors.position && touched.position? <span style={{color: "red"}}>{errors.position}</span> : "Position*"}</p>
+                    <Field type="text" placeholder='e.g Teacher or HOD' name="position" style={errors.position && touched.position? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <ul className={styles.listIns}>
+                        <li>Position of the member</li>
+                       
+                    </ul>
+            </div> 
+            <div className={styles.coordinates}>
+               
+                    <p>{errors.persal && touched.persal? <span style={{color: "red"}}>{errors.persal}</span> : "Persal Number"}</p>
+                    <Field type="text" placeholder='Persal Number' name="persal" style={errors.persal && touched.persal? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <ul className={styles.listIns}>
+                        <li>Enter the persal Number if available</li>
+                       
+                    </ul>
+            </div> 
+            
+        </div>
+       
+            <div className={styles.addNew}>
+                <button type="submit" className={styles.btn}  >
+                    <p>{isSubmitting ? "Uploading..." : "Confirm"}</p>
+                </button>
+            </div>
+        </Form>
+       )}
+       </Formik>
+        </div>
+      </div>
+  )
+}
+
 
 export default UpdateMembers;

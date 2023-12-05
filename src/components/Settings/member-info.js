@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../Settings/SettingsCSS/add-member.module.css'
-const MemberInfo = ({title, position, code, initial, last_name, dlt}) => {
+const MemberInfo = ({title, position, code, initial, last_name, dlt,key}) => {
     return (
         <div className={styles.Links}>
         <div className={styles.containerProfile} >

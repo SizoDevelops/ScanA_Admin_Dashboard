@@ -4,16 +4,19 @@ import styles from '../Settings/SettingsCSS/update-members.module.css'
 import { useDatabase } from '../features/dbContext'
 import { useDispatch } from 'react-redux'
 import { deleteUser, updateMember } from '../shared/DatabaseSlice'
+import { useModal } from './modalCont'
 
 
 
-export default function MemberProfile({image,title, initial, last_name, position, id, keyID, paused, blocked, persal, subjects}) {
+export default function MemberProfile({image,title, initial, last_name, position, id, keyID, data, blocked, persal, subjects}) {
   const {updateUser} = useDatabase()
   const dispatch = useDispatch()
+  const {setUserData} = useModal()
   const {loading} = useDatabase()
   
 
 return (
+  
     <div className={styles.Links}>
       <div className={styles.containerProfile} >
         <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}>
@@ -44,9 +47,8 @@ return (
             <div className={styles.Option}>
                 <p onClick={async() =>{ 
                   
-                  await updateUser({key: keyID, id: id, pause_register:!paused})
-                  dispatch(updateMember({pause_register:!paused}))
-                  
+                  setUserData(data)
+             
                   }}>Update Profile</p>
                 {/* <p onClick={async() => {
                   
@@ -56,7 +58,7 @@ return (
 
                 <p onClick={async() =>{ 
                   
-                  await updateUser({key: keyID, id: id, delete_user: true})
+                  await updateUser({key: keyID, user_details:{id}, delete_user: true})
                   dispatch(deleteUser({delete_user: true}))
                   }}>{"Delete User Information"}</p>
             </div>

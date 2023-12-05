@@ -1,11 +1,14 @@
+"use client"
 import React from 'react'
 import styles from '../HomePageCSS/dashProfile.module.css'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 
 
 export default function DashProfile({image, slug, title, initial, last_name, position, center, persal, }) {
+  const {data: session} = useSession()
   return (
-    <Link href={`/members/${slug}`} className={styles.Links}>
+    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/members/${slug}`} className={styles.Links}>
         {/* <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}></div>
         <div className={styles.profileDetails}>
           <h4>{`Name: ${title} ${initial} ${last_name}`}</h4>
