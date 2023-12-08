@@ -1,9 +1,10 @@
 .Container{
-    width: min(90vw, 1080px);
+    width: min(90vw, 1180px);
     margin: auto;
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+    background: #ffffff;
 }
 
 .profileImage{
@@ -23,6 +24,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 20px;
+    margin-left: 10px;
 }
 
 .details{
@@ -30,27 +32,40 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
-
+.adminStyles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
 .details input{
     background-color: transparent;
     padding: 15px;
+    width: 300px;
     border: none;
+    margin-left: 10px;
     outline: none;
     font-size: min(16px, 3vw);
-    color: #68696A;
-    font-weight: 700;
+    color: #111115;
+    border-radius: 5px;
 }
-
+.details input::placeholder{
+    color:#68696A;
+    font-size: small;
+    font-weight: 100;
+}
 .details input:focus {
-    background-color: #111115;
-    outline-color: #68696A;
+    outline: 1px solid ;
+    outline-color: #03a4ff;
 }
 
-.Icon{
-    width: min(25px , 4vw);
-    height:  min(25px , 4vw);
+.Icon svg{
+    width: min(20px , 4vw);
+    height:  min(20px , 4vw);
     background: transparent;
     position: relative;
+    fill: #03a4ff;
   }
   .Icon:hover{
     cursor: pointer;
@@ -68,22 +83,24 @@
   /* //////////////////////////// */
 
   .coordinates > input{
-    padding: 20px;
-    width: 90%;
-    color: #68696A;
-    background: #111115;
-    outline: none;
+    padding: 16px;
+    width: 85%;
+    color: #111115;
+    background: #ffffff;
+    outline: 1px solid #03a4ff;
     border: none;
     border-radius: 5px;
     font-size: min(16px, 3vw);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .formHolder{
     width: 100%;
     margin-top: 40px;
 }
-
+.coordinates p {
+    color: #111115;
+}
 .coordinates input:focus{
     outline: 1px solid #494949;
 }
@@ -93,8 +110,8 @@
 .submit{
     padding: 20px;
     width: 20%;
-    color: #68696A;
-    background: #111115;
+    color: #ffffff;
+    background: #03a4ff;
     outline: none;
     border: none;
     border-radius: 5px;

@@ -10,24 +10,6 @@ import { Field, Form, Formik } from "formik";
 import { validate } from "./validate";
 
 
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "UPDATE_FIELD":
-      return {
-        ...state,
-        [action.field]: action.value,
-      };
-      case "SET_STATE":
-        return action.payload;
-      case "UPDATE":
-        return{
-          [action.field]: action.value
-        }
-    default:
-      return state;
-  }
-}
-
 const UpdateMembers = () => {
   const { data: session } = useSession();
   const schema = useSelector((state) => state.Database.value.members);

@@ -103,10 +103,10 @@ const UserAttendanceTable = ({ userData, week, year }) => {
 
           )); 
         }
-        else return 'Not Signed';
+        else return '';
        
       }
-      return 'Not Signed';
+      return '';
     };
 
     generateTableRows();
