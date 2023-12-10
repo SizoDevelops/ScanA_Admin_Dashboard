@@ -84,10 +84,9 @@ var emailBody = mailGenerator.generate(email)
  async function sendEmail() {
   try {
     const info = await transporter.sendMail(message);
-    console.log(info)
     return NextResponse.json("Email Sent Successfully")
   } catch (error) {
-    return NextResponse.json(error)
+    return NextResponse.json("Oops We Could\'nt Send Email")
   }
 }
 let value = await sendEmail()
