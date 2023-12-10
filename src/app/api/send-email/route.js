@@ -53,7 +53,7 @@ export async function POST(request) {
 var emailBody = mailGenerator.generate(email)
 
   const message = {
-    from: "portfoliowebs@gmail.com",
+    from: process.env.EMAIL_FROM,
     to: body.user,
     subject: "SCAN A",
     html: emailBody,
@@ -64,10 +64,9 @@ var emailBody = mailGenerator.generate(email)
   };
   var transporter = nodemailer.createTransport({
     service: 'gmail',
-    secure: true,
     auth: {
-      user: 'portfoliowebs@gmail.com',
-      pass: 'tiwutwxzhamuaapg'
+      user: process.env.USER,
+      pass: process.env.PASS
     },
     tls: {
       // do not fail on invalid certs
@@ -75,17 +74,25 @@ var emailBody = mailGenerator.generate(email)
     },
   });
 
-  // transporter.verify(function (error, success) {
-  //   if (error) {
-  //    return NextResponse.json("Unable to send email. Please try again.")
-  //   } else {
-  //     return NextResponse.json("Email Sent Successfully")
-  //   }
-  // });
+  transporter.verify(function (error, success) {
+    if (error) {
+     console.log(error)
+    } else {
+      console.log("Success")
+    }
+  });;
+ async function sendEmail() {
+  try {
+    const info = await transporter.sendMail(message);
+    console.log(info)
+    return NextResponse.json("Email Sent Successfully")
+  } catch (error) {
+    return NextResponse.json(error)
+  }
+}
+let value = await sendEmail()
 
- transporter.sendMail(message, function (err, info) {
-    return NextResponse.json(info)
- });
+return value;
 
- return NextResponse.json("Email Sent Successfully")
+
 }

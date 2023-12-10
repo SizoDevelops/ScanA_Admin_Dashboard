@@ -14,7 +14,6 @@ export async function POST(request) {
         return NextResponse.json("User Details Unchanged")
     }
     else {
-        user.shool_name = body.user.school_name
         user.school_slogan = body.user.school_slogan
         user.school_email = body.user.school_email
         user.school_number = body.user.school_number

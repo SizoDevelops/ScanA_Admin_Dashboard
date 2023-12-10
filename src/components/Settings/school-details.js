@@ -15,7 +15,7 @@ const SchoolDetails = () => {
     return (
       <body className={styles.Container}>
         <Formik
-          initialValues={schema || {}}
+          initialValues={schema}
           validate={validate}
           onSubmit={ async (values) => {
           
@@ -32,7 +32,7 @@ const SchoolDetails = () => {
             });
           }}
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, isSubmitting }) => (
             <Form>
               <div className={styles.adminStyles}>
                 <div className={styles.Profile}>
@@ -309,15 +309,6 @@ const SchoolDetails = () => {
                     name="school_address.line_one"
                   />
 
-                  <ErrorMessage
-                    name="school_address.line_two"
-                    component={"p"}
-                  />
-                  <Field
-                    type="text"
-                    placeholder="Address Line 2 (Optional)"
-                    name="school_address.line_two"
-                  />
 
                   <ErrorMessage
                     name="school_address.province"
@@ -347,7 +338,7 @@ const SchoolDetails = () => {
                   />
                 </div>
 
-                <button type="submit" className={styles.submit}>Save</button>
+                <button type="submit" className={styles.submit}>{isSubmitting ? "Saving..." : "Save"}</button>
               </div>
             </Form>
           )}
