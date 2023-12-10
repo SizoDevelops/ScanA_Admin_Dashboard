@@ -74,19 +74,19 @@ var emailBody = mailGenerator.generate(email)
     },
   });
 
-  transporter.verify(function (error, success) {
-    if (error) {
-     console.log(error)
-    } else {
-      console.log("Success")
-    }
-  });;
+  // transporter.verify(function (error, success) {
+  //   if (error) {
+  //    console.log(error)
+  //   } else {
+  //     console.log("Success")
+  //   }
+  // });;
  async function sendEmail() {
   try {
     const info = await transporter.sendMail(message);
     return NextResponse.json("Email Sent Successfully")
   } catch (error) {
-    return NextResponse.json("Oops We Could\'nt Send Email")
+    return NextResponse.json(error.message)
   }
 }
 let value = await sendEmail()
