@@ -97,7 +97,7 @@ const SignUp = () => {
         setLoading(false);
         setCode({
           title: "Something Went Wrong!",
-          message: "Please try registering again.",
+          message: "Please check your connection and try registering again.",
           type: "Error"
         });
       }

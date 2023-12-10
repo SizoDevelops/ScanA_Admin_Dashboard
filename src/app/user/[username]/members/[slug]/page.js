@@ -9,7 +9,7 @@ import { useDatabase } from '@/components/features/dbContext'
 import { useSelector } from 'react-redux'
 import Loader from '@/components/shared/Loader'
 import Modal from "@/components/HomePage/Modal"
-import { useEffect, useState } from "react"
+
 
 
 export default function Member({params}) {
@@ -25,17 +25,22 @@ export default function Member({params}) {
   else return (
     <>
     
-    <div className={styles.container}>
+    <body className={styles.container}>
 
       {
         errCode.message.length < 1 ? <></> : <Modal errCode={errCode}/>
         }
       
-    <SidePanel />
+      <div className={styles.panel}>
+         <SidePanel />
+      </div>
+
       <div className={styles.Details}>
-        <h4><span></span>Details</h4>
+  
         <div className={styles.DetailsHolder}>
-          <div className={styles.ImageHolder}></div>
+        {/* <h4><span></span>Details</h4> */}
+        <div>
+        
           <div className={styles.DetailsContacts}>
             <h4>{member ? member.title : ""} {member ? member.initial : ""} {member ? member.last_name : ""}</h4>
             <div className={styles.Contacts}>
@@ -56,6 +61,8 @@ export default function Member({params}) {
                 <p>{member ? member.code : "Loading Code"}</p>
               </div>
             </div>
+        </div>
+         
           </div>
  <div className={styles.Buttons}>
 
@@ -87,7 +94,7 @@ export default function Member({params}) {
 
    
       
-    </div>
+    </body>
 
     </>
   )

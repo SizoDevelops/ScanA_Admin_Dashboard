@@ -63,5 +63,11 @@
     height: 25px;
     border-radius: 100%;
     position: relative;
-
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.Icon svg{
+    width: 100px;
+    height: 100%;
 }

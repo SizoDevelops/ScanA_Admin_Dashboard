@@ -1,14 +1,17 @@
 .Details{
-width: 100%;   
-margin-top: 10px;
+width: 100%;  
 display: flex;
 flex-direction: column;
+position: sticky;
+top: 0;
 }
 
 .container{
-    width: min(1300px, 95vw);
+    width: 100vw;
     display: flex;
     flex-direction: row;
+    background: #f8f8f8;
+    color: #111115;
 }
 
 .ImageHolder{
@@ -29,14 +32,21 @@ flex-direction: column;
   }
   
   .DetailsHolder{
-    width: min(1200px, 85vw);
+    width: 100%;
+    height: 200px; 
+    /* background-color: #acd7f5; */
+    background-color: #ffffff;
+    /* margin-top: 10px; */
+    position: sticky;
+    padding-left: 10px;
+    top: 0px;
+    z-index: 2;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    margin-bottom: 60px;
+    flex-direction: column;
   }
 
   .Contacts{
+    width: min(900px, 98vw);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -45,9 +55,16 @@ flex-direction: column;
     margin-bottom: 10px;
   }
 
-
+  .panel{
+    height: 100vh;
+    width: 250px;
+    position:sticky;
+    overflow: hidden;
+    top: 0;
+    /* background-color: #acd7f5; */
+    background-color: #111115; 
+  }
   .DetailsContacts{
-    width: min(650px, 98vw);
     margin-top: 20px;
     font-size: min(12px, 2vw);
     margin:auto;
@@ -57,21 +74,21 @@ flex-direction: column;
   .DetailsContacts h4{
     font-size: min(5vw, 25px);
     padding: 0;
-    margin: 0;
-    margin-top: 10px;
+    margin: 10px;
+
   
   }
 
   .Contacts div p{
-    font-size: min(2.4vw, 12px);
+    font-size: min(2vw, 12px);
   }
 
-  .Details h4{
+  .DetailsHolder h4{
     font-size: min(30px, 10vw);
 
   }
 
-  .Details h4 span {
+  .DetailsHolder h4 span {
     padding: 8px 2px;
     background-color: #03a4ff;
     border-radius: 3px;
@@ -84,6 +101,9 @@ flex-direction: column;
 
   .Buttons{
     width: min(400px, 95vw);
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -94,7 +114,8 @@ flex-direction: column;
   .btn{
     padding: 2px 20px;
     display: flex;
-    background-color: #111115;
+    background-color: #03a4ff;
+    color: #FFFFFF;
     width: fit-content;
     border-radius: 5px;
     flex-direction: row;
@@ -194,14 +215,46 @@ flex-direction: column;
 
 
 @media (max-width: 1240px) {
-  .container{
-   flex-direction: column;
-   margin: auto;
-  }
-  .DetailsHolder{
+  .container {
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    width: 98vw;
+  }
+  .sidePanel a{
+    display: block;
+    width: fit-content;
+  }
+  .sidePanel {
+    height: 60px;
+    width: 98%;
+    border-radius: .6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    margin-top: 10px;
+    padding: 0;
+    position: relative;
+    background: #111115;
+  }
+  .panel{
+    width: 100vw;
+    height: fit-content;
+    align-items: center;
+    position: relative;
+    background: transparent;
+  }
+  .sidePanel a p{
+    display: none;
+  }
+  .DetailsHolder {
+    width: 98%;
+    margin: auto;
+    margin-top: 20px;
+    position: relative;
+    border-radius: .6rem;
   }
   .Contacts div{
     margin: 5px;

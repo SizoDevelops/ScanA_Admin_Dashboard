@@ -53,9 +53,9 @@ export async function POST(request) {
 var emailBody = mailGenerator.generate(email)
 
 const message = {
-  from: process.env.EMAIL_FROM,
-  to: body.user,
-  subject: "SCAN A",
+   from: `ScanA Team <${process.env.EMAIL_FROM}>`,
+    to: body.user,
+    subject: "ScanA Login Details",
   html: emailBody,
   headers: {
     'X-Entity-Ref-ID': "newmail", // Set the X-Entity-Ref-ID header
