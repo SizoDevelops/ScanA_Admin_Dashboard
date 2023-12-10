@@ -9,56 +9,14 @@ const db = deta.Base("schools_db");
 export async function POST(request) {
   const body = await request.json();
 
-  const {
-    school_code,
-    school_name,
-    school_slogan,
-    school_email,
-    school_number,
-    school_logo,
-    school_address: { line_one, line_two, province, city, zip_code },
-    members:[],
-    school_admin:{
-      admin_name,
-      admin_code,
-      admin_email
-    },
-  } = body;
-  const data = {
-    school_code,
-    school_name,
-    school_slogan,
-    school_email,
-    school_number,
-    school_logo,
-    attendance: {
-      currentWeek: "",
-      friday: "",
-      monday: "",
-      thursday: "",
-      tuesday: "",
-      wednesday: ""
-    },
-    coordinates:{
-      longitude: "",
-      latitude: "",
-      distance: 200
-    },
-    school_address: { line_one, line_two, province, city, zip_code },
-    members:[],
-    school_admin:{
-        admin_name,
-        admin_code,
-        admin_email
-    },
-    password: await bcrypt.hash(body.password, 10),
-  }
+   const schoolSearch = await db.fetch([{"school_email": body.school_email}])
 
-   const schoolSearch = await db.fetch([{"school_email": school_email}, 
-    {"school_admin.admin_email": admin_email}])
+  const data = body.data
 
+  data.password = await bcrypt.hash(body.password, 10);
 if(schoolSearch.count < 1){
-  const school = await db.insert(data, school_code);
+  const {confirm_password, ...user} = data
+  const school = await db.insert(user, data.school_code);
   const {password, ...result} = school;
 
   return NextResponse.json(result)

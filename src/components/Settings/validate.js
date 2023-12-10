@@ -35,5 +35,7 @@ if(!values.position){
 if(/[\D]/g.test(values.persal)){
     errors.persal = "Invalid Persal"
 }
+
+//  Validate Update School
     return errors;
 }

@@ -32,7 +32,7 @@ const DatabaseSlice = createSlice({
         school_admin: {
             admin_name: '',
             admin_email: '',
-
+            admin_code: ''
         }}
     },
     reducers:{

@@ -6,12 +6,13 @@ import { signIn, useSession} from 'next-auth/react';
 import { redirect, useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Loader from '@/components/shared/Loader';
 import Link from 'next/link';
+import { useDatabase } from '@/components/features/dbContext';
+import Modal from '../Modal';
 
 
 const Login = () => {
   const {data: session, status} = useSession()
-  const router = useRouter()
-
+  const { errCode, setCode } = useDatabase();
 if(status === "loading") {
   return <Loader/>
 }
@@ -20,6 +21,7 @@ else return (
         <body className={styles.Body}>
         <NavBar/>
         <div className={styles.container}>
+        {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
          <div className={styles.textHolder}>
          <h1>Login to <span>ScanA</span></h1>
         </div>
@@ -30,7 +32,7 @@ else return (
         </div>
 
         <div className={styles.formHolder}>
-            <StepOne/>
+            <StepOne setCode={setCode}/>
             <p className={styles.Links}>Do not have an account? <Link href={"/signup"}>Sign Up</Link></p>
         </div>
          </div>
@@ -43,10 +45,11 @@ else return (
 
 export default Login;
 
-const StepOne =() => {
+const StepOne =({setCode}) => {
     const [isSubmitting, setSubmitting] = useState(false)
     const [password, setPassword] = useState("")
-    const [code, setCode] = useState("")
+    const [code, setUserCode] = useState("")
+    
     const [email, setEmail] = useState("")
     const params = useSearchParams()
     const encodedCallbackUrl = params.get("callbackUrl")
@@ -65,17 +68,23 @@ const StepOne =() => {
       school_code: code,
       school_email: email,
       password,
-      redirect: true,
-      callbackUrl: decodedUrl
-      
+      redirect: false,
+   }).then(err => {
+    setSubmitting(false)
+    setCode({
+      title: "Incorrect Credentials",
+      message: "The you credentials entered may be incorrect please re-check and retry.",
+      type: "Error"
+    });
    })
 
   }
 
     return(
          <form className={styles.Steps} onSubmit={handleSubmit}>
+           
             <label htmlFor='School Code'>Company Code</label>
-            <input type="text" value={code} className={styles.Inputs} required placeholder='Enter the company code from your email' name='School Code' onChange={e => setCode(e.target.value)}/>
+            <input type="text" value={code} className={styles.Inputs} required placeholder='Enter the company code from your email' name='School Code' onChange={e => setUserCode(e.target.value)}/>
 
             <label htmlFor='Email'>Email Address</label>
            
