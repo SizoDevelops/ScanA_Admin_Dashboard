@@ -34,15 +34,17 @@
     position: relative;
     width: min(1440px, 95vw);
     margin: auto;
-    background-color: #fafafa;
+    background-color: #ffffff;
     color: #111115
   }
-  .sideIcon {
+  .sideIcon svg {
     width: min(25px, 5vw);
     height: min(25px, 5vw);
     background: transparent;
+    margin: 20px 0;
     position: relative;
-    stroke: #ffffff;
+    fill: #FFFFFF;
+    
   }
   
   .sideIcon:hover{

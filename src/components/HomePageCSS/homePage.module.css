@@ -45,14 +45,14 @@
   .sidePanel a p {
     margin-left: 5px;
    }
-  .sideIcon {
+  .sideIcon svg {
     width: min(25px, 5vw);
     height: min(25px, 5vw);
     background: transparent;
     margin: 20px 0;
     position: relative;
-    /* fill: #FFFFFF; */
-    stroke: #FFFFFF;
+    fill: #FFFFFF;
+    
   }
   
   .searchIcon {

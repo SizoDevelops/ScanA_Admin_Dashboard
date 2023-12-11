@@ -1,10 +1,10 @@
 export const metadata = {
-    title: 'Attendance-Register | ScanA',
+    title: 'School Updates | ScanA',
     description: 'By Sizo Develops',
   }
   
   
-  export default function AttendanceRegisterLayout({ children }) {
+  export default function SchoolUpdatesLayout({ children }) {
     return (
       <html lang="en">
 
