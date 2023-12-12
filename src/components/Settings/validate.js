@@ -3,8 +3,8 @@ export const validate = (values) => {
 
     if(!values.title){
         errors.title = "Required"
-    } else if (values.title.length > 2 || /[\d\W]/g.test(values.title)){
-        errors.title = "Incorrect format e.g (MR)"
+    } else if (values.title.length > 3 || /[\d\W]/g.test(values.title)){
+        errors.title = "Incorrect format e.g (MRS)"
     }
 
     if(!values.initial){

@@ -2,6 +2,7 @@ import React from 'react'
 import SidePanel from '../sidePanel'
 import styles from '@/components/HomePageCSS/schoolsUpdates.module.css'
 import Message from './Message'
+import Upcoming from './Upcoming'
 export default function SchoolUpdatesHome() {
   return (
     <>
@@ -55,7 +56,12 @@ export default function SchoolUpdatesHome() {
         </div>
         {/* Events Timeline */}
         <div className={styles.Timeline}>
-            Timeline
+            <div className={styles.upcoming}>
+                <Upcoming/>
+            </div>
+            <div className={styles.recent}>
+                <Upcoming/>
+            </div>
         </div>  
     </div>
     </>

@@ -58,9 +58,9 @@ const UserAttendanceTable = ({ userData, week, year }) => {
 
   useEffect(() => {
     const generateTableRows = () => {
-      const rows = userData.map(user => (
+      const rows = userData.map((user, index) => (
         <tr className={styles.subHeadings}  key={user.id}>
-          <td>{user.last_name} {user.initial}</td>
+          <td className={styles.userName}>{(index + 1) +". "}{user.last_name} {user.initial}</td>
           <td>{getAttendanceDetails(user, 'monday')}</td>
           <td>{getAttendanceDetails(user, 'tuesday')}</td>
           <td>{getAttendanceDetails(user, 'wednesday')}</td>
@@ -76,9 +76,6 @@ const UserAttendanceTable = ({ userData, week, year }) => {
       const dayData = user.attendance[day];
       if (dayData) {
         const attendanceDetails = dayData.filter(entry =>  regex.test(entry.date) && entry.week === week)
-        
-     
-        
         if(attendanceDetails.length > 0){
         return  attendanceDetails.map(entry => (
        
