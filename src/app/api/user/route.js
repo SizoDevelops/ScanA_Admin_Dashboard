@@ -8,6 +8,5 @@ export async function POST(request) {
     const body = await request.json();
 
     const user = await db.get(body.key)
- 
     return NextResponse.json(user)
 }
