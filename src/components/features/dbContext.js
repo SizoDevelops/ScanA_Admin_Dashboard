@@ -22,6 +22,11 @@ export const DatabaseProvider = ({children}) => {
     const {data: session} = useSession()
     const dispatch = useDispatch()
     const [errCode, setCode] = useState({title: "" , message: "", type: ""})
+    const [meetingModal, setMeeting] = useState(false)
+
+
+
+
     const getUser = async(dat) => {
         // setLoading(true)
         await fetch("/api/user", {
@@ -270,7 +275,9 @@ export const DatabaseProvider = ({children}) => {
         errCode,
         setCode,
         loadingCode,
-        sendSignUp
+        sendSignUp,
+        meetingModal,
+        setMeeting
          
     };
 

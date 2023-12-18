@@ -3,305 +3,50 @@
 
 export const DataBaseFunc = () => {
     const MySchema = {
-             code: "WDWDA",
-             name: "",
-             logo: "",
-             email: "",
-             phone_numbers: [""],
-             address: {
-                 line_one: "",
-                 line_two: "",
-                 province: "",
-                 city: "",
-                 postal_code: ""
-             },
-             
-             members: [
-                 {
-                     code: "WDWDA-DWDW242",
-                     id: "Isizulu-udw",
-                     title: "MR",
-                     first_name: "SIZO",
-                     last_name: "MHLONG",
-                     middle_name: "MAURITIUS",
-                     initial: "S.M",
-                     position: "Developer",
-                     profile_image: "",
-                     email: "sizomhlongo@gmail.com",
-                     phone_numbers: ["+27 71 234 5678"],
-                     attendance: {
-                        monday:[
-                            {   
-                                week: 1,
-                                day: "monday",
-                                date: "11 June 2023",
-                                timein: "07:28",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        tuesday:[
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "12 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        wednesday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "03:28",
-                                date: "11 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        thursday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "14 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        friday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "15 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                    }
-                 },
-                 {
-                     code: "WDWDA-DWDW242",
-                     id: "Isizulu-udwe",
-                     title: "MR",
-                     first_name: "THEMBINKOSI",
-                     last_name: "MASEKO",
-                     middle_name: "COLLEN",
-                     initial: "T.C",
-                     position: "Teacher",
-                     profile_image: "",
-                     email: "sizomhlongo@gmail.com",
-                     phone_numbers: ["+27 71 234 5678"],
-                     attendance: {
-                        monday:[
-                            {   
-                                week: 1,
-                                day: "monday",
-                                date: "11 June 2023",
-                                timein: "07:28",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        tuesday:[
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "12 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        wednesday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "03:28",
-                                date: "11 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        thursday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "14 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        friday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "15 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                    }
-                 },
-                 {
-                     code: "WDWDA-DWDW241",
-                     id: "Isizulu-uww",
-                     title: "MR",
-                     first_name: "SIZO",
-                     last_name: "MHLONGO",
-                     middle_name: "MAURITIUS",
-                     initial: "S.H",
-                     position: "Developer",
-                     profile_image: "",
-                     email: "sizomhlongo@gmail.com",
-                     phone_numbers: ["+27 71 234 5678"],
-                     attendance: {
-                        monday:[
-                            {   
-                                week: 1,
-                                day: "monday",
-                                date: "11 June 2023",
-                                timein: "07:28",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        tuesday:[
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "12 June 2023",
-                                timeout: "-",
-                                absent: true,
-                                initial: "S.M",
-                            },
-                        ],
-                        wednesday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "03:28",
-                                date: "11 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        thursday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "14 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        friday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "15 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                    }
-                 },
-                 {
-                     code: "WDWDA-DWDW247",
-                     id: "Isizulu-edw",
-                     title: "MR",
-                     first_name: "SIZO",
-                     last_name: "MHLONGO",
-                     middle_name: "MAURITIUS",
-                     initial: "S.P",
-                     position: "Developer",
-                     profile_image: "",
-                     email: "sizomhlongo@gmail.com",
-                     phone_numbers: ["+27 71 234 5678"],
-                     attendance: {
-                        monday:[
-                            {   
-                                week: 1,
-                                day: "monday",
-                                date: "11 June 2023",
-                                timein: "07:28",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        tuesday:[
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "12 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        wednesday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "03:28",
-                                date: "11 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        thursday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "14 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                        friday: [
-                            {
-                                week: 1,
-                                day: "monday",
-                                timein: "07:28",
-                                date: "15 June 2023",
-                                timeout: "-",
-                                absent: false,
-                                initial: "S.M",
-                            },
-                        ],
-                    }
-                 },
-             ],
-             admins: [""],
-             semi_admins: [""]
-         
-        }
+            id: "SCNA-ICHSS-WDWDWDWD", // Unique identifier for the chat session
+            participants: ["SCNA-SDWDW", "SCNA-WDWDWD"], // Array of user IDs participating in the chat
+            createdAt: 123324121244, // Date and time the chat session was created
+          
+            // Messages
+            messages: [
+              {
+                id: String, // Unique identifier for each message
+                sender: String, // User ID of the message sender
+                recipient: String, // User ID of the message recipient (null if sent to all participants)
+                content: String, // Message text
+                timestamp: Date, // Date and time the message was sent
+                read: Boolean, // Whether the message is read by the recipient
+                reactions: { // Object containing emojis and user IDs who reacted
+                  thumbsUp: [String], // Array of user IDs who upvoted
+                  thumbsDown: [String], // Array of user IDs who downvoted
+                  // Add other emoji reactions as needed
+                },
+              },
+            ],
+          
+            // Additional data (optional)
+            unreadCount: { // Object mapping user IDs to their unread message count
+              user1: 2,
+              user2: 0,
+            },
+            lastMessage: { // Object containing details of the most recent message
+              id: String,
+              sender: String,
+              content: String,
+              timestamp: Date,
+            },
+          };
+          
+          // Example usage:
+          const myChat = {
+            id: "chat123",
+            participants: ["user1", "user2"],
+            messages: [
+              // ... individual messages ...
+            ],
+            // ... other chat details ...
+          };
+          
      
   
 

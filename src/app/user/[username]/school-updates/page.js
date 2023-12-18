@@ -4,6 +4,7 @@ import SchoolUpdatesHome from '@/components/HomePage/School-Updates/SchoolUpdate
 export default function Page() {
   return (
     <body className={styles.container}>
+      
         <SchoolUpdatesHome/>
     </body>
   )

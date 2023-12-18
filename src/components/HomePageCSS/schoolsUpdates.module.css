@@ -1,7 +1,8 @@
 .container{
     background: #FFFFFF;
     color: #111115;
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     width: 100vw;
     margin: auto;
     position: relative;
