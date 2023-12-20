@@ -73,3 +73,19 @@
     width: 25px;
     height: 25px;
 }
+
+.Interactions span{
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+}
+.Interactions span p{
+    font-size: min(12px, 2vw);
+ 
+}
+
+.Interactions span svg{
+    margin-right: 5px;
+    width:  14px;
+    height: 14px;
+}

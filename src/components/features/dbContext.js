@@ -22,7 +22,7 @@ export const DatabaseProvider = ({children}) => {
     const {data: session} = useSession()
     const dispatch = useDispatch()
     const [errCode, setCode] = useState({title: "" , message: "", type: ""})
-    const [meetingModal, setMeeting] = useState(false)
+    const [meetingModal, setMeeting] = useState("")
 
 
 
