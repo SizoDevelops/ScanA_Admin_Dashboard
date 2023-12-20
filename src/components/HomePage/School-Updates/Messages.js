@@ -4,8 +4,10 @@ import { Form, Formik } from 'formik'
 import Message from './Message'
 import { Button } from '@mui/material'
 import Reply from './Reply'
+import { useDatabase } from '@/components/features/dbContext'
 
 export default function Messages() {
+  const {setMeeting} = useDatabase()
   return (
     <div className={styles.cont}>
        <div className={styles.Left}>
@@ -58,7 +60,7 @@ export default function Messages() {
     </div>
            <span className={styles.Line}>
             <i></i>
-            <small>Replies</small>
+            <small>Comments</small>
             <i></i>
           </span>
     </div>
@@ -66,12 +68,17 @@ export default function Messages() {
     {/* Replies */}
       <div className={styles.Replies}>
           <Reply />
+          <Reply />
+          <Reply />
+          <Reply />
+          <Reply />
 
       </div>
 
        </div>
        
         <div className={styles.Right}>
+            <Button className={styles.close} variant="outlined" color='error' onClick={() => setMeeting("")}>Close</Button>
             <p className={styles.RightHeader}>Recent Discussions</p>
             <Message/>
             <Message/>

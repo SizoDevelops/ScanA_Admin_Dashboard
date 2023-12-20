@@ -1,0 +1,35 @@
+.container{
+    width: min(600px, 95vw);
+    margin-bottom: 10px;
+}
+
+.Image{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: #f0efef;
+}
+
+.Image svg {
+    fill: #111115
+}
+
+.username{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.username p, .username small{
+    font-size: min(12px, 2vw);
+    padding: 0;
+    margin: 0;
+}
+
+.message{
+    font-size: min(14px, 3vw);
+    line-height: 30px;
+}

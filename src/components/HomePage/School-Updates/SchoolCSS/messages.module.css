@@ -53,8 +53,7 @@
 }
 
 .Header{
-    position: sticky;
-    top: 0; 
+
     padding: 10px 0;
     background: #FFFFFF;
 }
@@ -91,3 +90,9 @@
     color: #03a4ff;
 }
 
+.close{
+    position: fixed !important;
+    right: 10px !important;
+    z-index: 1;
+    top: 10px !important;
+}
