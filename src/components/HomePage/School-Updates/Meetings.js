@@ -43,11 +43,7 @@ export default function Meetings() {
     };
   return (
     <React.Fragment className={styles.cont}>
-        <Button
-        onClick={() => setMeeting("")}
-        className={styles.Close}
-        variant='text'
-        > Close </Button>
+        <Button className={styles.Close} variant="contained" color='primary' onClick={() => setMeeting("")}>Back</Button>
         <Formik
 
         >
@@ -147,6 +143,7 @@ OR
   className={styles.text}
   label="Type Your Agenda Here."
   multiline
+  minRows={6}
 />
   </div>
                      

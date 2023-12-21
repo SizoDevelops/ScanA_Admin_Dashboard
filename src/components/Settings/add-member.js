@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { validate } from './validate';
+import { useSelector } from 'react-redux';
 
 const voucher_codes = require('voucher-code-generator')
 
@@ -40,12 +41,13 @@ const AddMember = () => {
     const {data: session} = useSession()
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
+    const schema = useSelector(state => state.Database.value)
 
     const fillHiddenFieldValue = (values) => {
         const code = voucher_codes.generate({
             count: 1,
             length: 6,
-            prefix: session?.user.school_code + "-",
+            prefix: schema.school_code + "-",
             charset:"alphanumeric"
         })[0].toUpperCase()
 

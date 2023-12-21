@@ -78,7 +78,7 @@ export default function Messages() {
        </div>
        
         <div className={styles.Right}>
-            <Button className={styles.close} variant="outlined" color='error' onClick={() => setMeeting("")}>Close</Button>
+        <Button className={styles.close} variant="contained" color='primary' onClick={() => setMeeting("Categories")}>Back</Button>
             <p className={styles.RightHeader}>Recent Discussions</p>
             <Message/>
             <Message/>

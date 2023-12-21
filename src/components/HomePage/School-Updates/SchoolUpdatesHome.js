@@ -7,10 +7,19 @@ import Upcoming from './Upcoming'
 import Meetings from './Meetings'
 import { useDatabase } from '@/components/features/dbContext'
 import Messages from './Messages'
+import { Fab } from '@mui/material'
+import Categories from './Categories'
+
+
+
 export default function SchoolUpdatesHome() {
 const {meetingModal, setMeeting} = useDatabase()
+
+
+
   if(meetingModal === "Meetings") return <Meetings/>
   else if(meetingModal === "Messages") return <Messages/>
+  else if(meetingModal === "Categories") return <Categories/>
   else return (
     <>
     <div className={styles.panel}>
@@ -52,7 +61,7 @@ const {meetingModal, setMeeting} = useDatabase()
             <p><strong>Internal meetings</strong> to discuss the inner workings of your business</p>
         </div>
         {/* Schedule Posts */}
-        <div className={styles.createPosts} onClick={() => setMeeting("Messages")}>
+        <div className={styles.createPosts} onClick={() => setMeeting("Categories")}>
         <div className={styles.header}>
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
   <path d="M42 34V16H14V34H42ZM42 6C43.0609 6 44.0783 6.42143 44.8284 7.17157C45.5786 7.92172 46 8.93913 46 10V34C46 35.0609 45.5786 36.0783 44.8284 36.8284C44.0783 37.5786 43.0609 38 42 38H14C12.9391 38 11.9217 37.5786 11.1716 36.8284C10.4214 36.0783 10 35.0609 10 34V10C10 8.93913 10.4214 7.92172 11.1716 7.17157C11.9217 6.42143 12.9391 6 14 6H16V2H20V6H36V2H40V6H42ZM6 42H34V46H6C4.93913 46 3.92172 45.5786 3.17157 44.8284C2.42143 44.0783 2 43.0609 2 42V18H6V42ZM38 30H30V22H38V30Z" fill="#04A3FF"/>
@@ -60,6 +69,8 @@ const {meetingModal, setMeeting} = useDatabase()
             <h4>Discussions Forums</h4>
             </div>
             <p><strong>A school public forum</strong> when everyone can discuss and raise important points about our school.</p>
+
+          
         </div>
         {/* Events Timeline */}
         <div className={styles.Timeline}>
