@@ -7,7 +7,6 @@ import Upcoming from './Upcoming'
 import Meetings from './Meetings'
 import { useDatabase } from '@/components/features/dbContext'
 import Messages from './Messages'
-import { Fab } from '@mui/material'
 import Categories from './Categories'
 
 
@@ -16,11 +15,13 @@ export default function SchoolUpdatesHome() {
 const {meetingModal, setMeeting} = useDatabase()
 
 
-
-  if(meetingModal === "Meetings") return <Meetings/>
-  else if(meetingModal === "Messages") return <Messages/>
-  else if(meetingModal === "Categories") return <Categories/>
-  else return (
+return(
+  <>
+    {
+  meetingModal === "Meetings" ? <Meetings/>
+  : meetingModal === "Messages" ? <Messages/> 
+  : meetingModal === "Categories" ? <Categories/>
+  : (
     <>
     <div className={styles.panel}>
          <SidePanel />
@@ -85,3 +86,5 @@ const {meetingModal, setMeeting} = useDatabase()
     </>
   )
 }
+  </>
+  )}

@@ -32,7 +32,9 @@
     width: min(1440px, 95vw);
     height: 100vh;
   }
-  
+  .newsLetter{
+    cursor: pointer;
+  }
   .newsLetter{
     border: 1px solid #03a4ff;
     border-radius: 5px;
@@ -106,6 +108,7 @@
     grid-column: 1;
     grid-row: 2;
     padding: 10px;
+    cursor: pointer;
   }
   .Meetings .header{
     display: inline-flex;
@@ -132,6 +135,7 @@
     grid-column: 1;
     grid-row: 3;
     padding: 10px;
+    cursor: pointer;
   }
   .createPosts .header{
     display: inline-flex;
