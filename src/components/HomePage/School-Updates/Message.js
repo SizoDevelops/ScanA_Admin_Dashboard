@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '@/components/HomePage/School-Updates/SchoolCSS/message.module.css'
 export default function Message() {
   return (
-    <React.Fragment className={styles.Container}>
+    <div className={styles.Container}>
          <div className={styles.cont}>
         <div className={styles.message}>
         <div className={styles.profile}>
@@ -49,7 +49,7 @@ export default function Message() {
       <p>3</p>
       </span>
     </div>
-    </React.Fragment>
+    </div>
  
   )
 }

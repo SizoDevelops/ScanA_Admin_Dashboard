@@ -8,7 +8,7 @@ export default function Categories() {
     const {setMeeting} = useDatabase()
     const [show, setDisplay] = useState(false)
   return (
-    <React.Fragment calssName={styles.Cont}>
+    <div calssName={styles.Cont}>
              {
              show ? <CreatePost display={setDisplay} /> : <></>}
   
@@ -49,6 +49,6 @@ export default function Categories() {
 </svg></Fab>
         </div>
     </div>
-    </React.Fragment>
+    </div>
   )
 }
