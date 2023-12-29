@@ -35,7 +35,7 @@ export default function Meetings() {
     const [file, setFile] = useState("")
   return (
     <div className={styles.cont}>
-        <Button className={styles.Close} variant="contained" color='primary' onClick={() => setMeeting("")}>Back</Button>
+        <Button className={styles.Close} variant="contained" color='primary' onClick={() => setMeeting({name: "", catergory: ""})}>Back</Button>
         <Formik
             initialValues={{
               title: "",

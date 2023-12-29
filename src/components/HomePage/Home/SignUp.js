@@ -109,6 +109,7 @@ const SignUp = () => {
     school_email: "",
     school_number: "",
     school_meetings: [],
+    posts: [],
     attendance: {
       currentWeek: "",
       friday: "",

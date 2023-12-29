@@ -9,6 +9,7 @@ const DatabaseSlice = createSlice({
         school_email: '',
         school_number: '',
         school_meetings: [],
+        posts: [],
         attendance: {
             currentWeek: 0,
             friday: "",
