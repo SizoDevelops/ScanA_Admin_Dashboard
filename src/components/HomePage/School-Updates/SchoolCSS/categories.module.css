@@ -1,10 +1,9 @@
 
 .container{
-    width: min(912px, 98vw);
-    display: grid;
+    width: 90%;
+    display: inline-flex;
     justify-content: center;
     margin: auto;
-    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     align-items: center;
     padding: 40px;
@@ -17,7 +16,7 @@
     border-radius: 5px;
     min-height: 250px;
     padding: 10px;
-
+    position: relative;
 }
 
 .container div p:hover{
@@ -35,17 +34,21 @@
     width: 80%;
     color: #FFFFFF;
     margin: 10px auto;
-    font-size: min(16px, 4vw)
+    font-size: min(13px, 3vw)
 }
 
 .container div ul li{
-    font-size: min(14px, 3vw);
+    font-size: min(12px, 2vw);
     margin-bottom: 10px;
 }
 
 .btn{
     float: right !important;
     z-index: 1 !important;
+    bottom: 5px !important;
+    position: absolute !important;
+    right: 5px !important;
+
 }
 .close{
     position: fixed !important;

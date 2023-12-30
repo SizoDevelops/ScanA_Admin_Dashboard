@@ -16,7 +16,8 @@ export default function CreatePost({display}) {
             title: "",
             user: {
               name: user.school_name,
-              position: "School"
+              position: "School",
+              id: user.school_code
             },
             description: "",
             post_content: "",

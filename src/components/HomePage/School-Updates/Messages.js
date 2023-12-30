@@ -5,9 +5,11 @@ import Message from './Message'
 import { Button } from '@mui/material'
 import Reply from './Reply'
 import { useDatabase } from '@/components/features/dbContext'
+import { useSelector } from 'react-redux'
 
 export default function Messages() {
   const {setMeeting} = useDatabase()
+  const user = useSelector(state => state.Database.value)
   return (
     <div className={styles.cont}>
        <div className={styles.Left}>

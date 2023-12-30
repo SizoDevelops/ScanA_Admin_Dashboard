@@ -19,6 +19,7 @@ export default function Categories() {
             <p onClick={() =>  setMeeting({name: "Messages", category: "General School Information"})}>General School Information:</p>
             <ul>
                 <li><strong>Announcements and news</strong>: Share school-wide announcements, upcoming events, and important updates.</li>
+                <li><strong>Announcements and news</strong>: Share school-wide announcements, upcoming events, and important updates.</li>
             </ul>
 
             <Fab color="primary" className={styles.btn} onClick={() => {
