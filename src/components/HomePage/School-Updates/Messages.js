@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './SchoolCSS/messages.module.css'
 import { Form, Formik } from 'formik'
 import Message from './Message'
@@ -9,19 +9,33 @@ import { useSelector } from 'react-redux'
 
 export default function Messages() {
   const {setMeeting} = useDatabase()
-  const user = useSelector(state => state.Database.value)
+  const user = useSelector(state => state.Database.value.posts)
+  const {meetingModal} = useDatabase()
+const posts = [...user]
+
+const sortedPosts = posts.filter(item => item.category !== meetingModal.category).sort((a,b) => {
+  if(a.date < b.date){
+    return -1;
+  }
+  else if(a.date > b.date){
+    return 1;
+  }
+  else return 0;
+})
+const date = new Date(sortedPosts[0]?.date_created);
+
   return (
     <div className={styles.cont}>
        <div className={styles.Left}>
         <div className={styles.Header}>
 
 
-       <h3>Title of the post</h3> 
+       <h3>{sortedPosts[0]?.title}</h3> 
 
-       <h5>This is the Description Of the Post</h5>
+       <h5>{sortedPosts[0]?.description}</h5>
 
-            <small className={styles.Date}>17 Jan 2024</small>
-            <p>That`s a great idea! Building a platform for schools to engage with parents and other stakeholders through updates, discussions, and problem-solving can significantly improve communication and collaboration within the school community. Here are some key elements to consider when building such a platform</p>
+            <small className={styles.Date}>{`${date.toDateString()}`}</small>
+            <p>{sortedPosts[0]?.post_content.split(" ").slice(0, 40).join(" ")}</p>
 
             <div className={styles.Interactions}>
       <span>
@@ -82,11 +96,11 @@ export default function Messages() {
         <div className={styles.Right}>
         <Button className={styles.close} variant="contained" color='primary' onClick={() => setMeeting({name:"Categories", category: ""})}>Back</Button>
             <p className={styles.RightHeader}>Recent Discussions</p>
-            <Message/>
-            <Message/>
-            <Message/>
-            <Message/>
-            <Message/>
+              {
+                sortedPosts.map((post, index) => (
+                  <Message key={index} post={post}/>
+                ))
+              }
         </div>
     </div>
   )

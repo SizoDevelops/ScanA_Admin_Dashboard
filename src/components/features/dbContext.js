@@ -23,7 +23,7 @@ export const DatabaseProvider = ({children}) => {
     const dispatch = useDispatch()
     const [errCode, setCode] = useState({title: "" , message: "", type: ""})
     const [meetingModal, setMeeting] = useState({name: "", category: ""})
-
+    const [visiblePost, setVisiblePost] = useState("")
 
 
 

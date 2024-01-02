@@ -4,11 +4,13 @@
     display: inline flex;
    margin-top: 20px;
    cursor: pointer;
+   justify-content: left;
+   gap: 20px;
 }
 
 .message{
     border: 1px solid #03a4ff;
-    width: 60%;
+    width: 350px;
     display: flex;
     flex-direction: column;
     padding: 5px 10px;
@@ -67,6 +69,7 @@
 }
 .time p{
     text-align: left;
+    font-size: min(12px, 2vw);
 }
 
 .time svg{
