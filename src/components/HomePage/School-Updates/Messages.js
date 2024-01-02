@@ -6,14 +6,14 @@ import { Button } from '@mui/material'
 import Reply from './Reply'
 import { useDatabase } from '@/components/features/dbContext'
 import { useSelector } from 'react-redux'
+import CreatePost from './CreatePost'
 
 export default function Messages() {
-  const {setMeeting} = useDatabase()
   const user = useSelector(state => state.Database.value.posts)
   const [selected, setIndex] = useState(0)
-  const {meetingModal} = useDatabase()
+  const {meetingModal, setMeeting} = useDatabase()
 const posts = [...user]
-
+const [show, setDisplay] = useState(false)
 const sortedPosts = posts.filter(item => item.category === meetingModal.category).sort((a,b) => {
   if(a.date_created > b.date_created){
     return -1;
@@ -24,8 +24,17 @@ const sortedPosts = posts.filter(item => item.category === meetingModal.category
   else return 0;
 })
 const date = new Date(sortedPosts[selected]?.date_created);
-  if(sortedPosts.length === 0){
-    return (<div style={{display:"flex", justifyContent: "center", alignItems: "center"}}><h1>Your Posts Will Appear Here.</h1></div>)
+  if(sortedPosts.length === 0 && !show){
+    return (<div style={{display:"flex", justifyContent: "center", alignItems: "center", height: "100vh", width: "100vw", position: 'relative'}}>
+        <Button className={styles.close} variant="contained" color='primary' onClick={() => setMeeting({name:"Categories", category: ""})}>Back</Button>
+      <h2>{`Create posts in the`} {<span onClick={() => {
+      setDisplay(true)
+      setMeeting({name: "Messages", category: meetingModal.category})
+    }
+    } style={{color: "#03a4ff", cursor: "pointer"}}>{meetingModal.category}</span>} {`category and they appear here.`}</h2></div>)
+  }
+  else if(show){
+    return <CreatePost display={setDisplay}/>
   }
   return (
     <div className={styles.cont}>

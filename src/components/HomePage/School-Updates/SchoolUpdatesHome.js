@@ -93,14 +93,18 @@ return(
         <div className={styles.Timeline}>
             <div className={styles.upcoming}>
                 {
-                  sortedMeetings.slice(0,3).filter(meeting => meeting.date > Date.now()).map((item, index) => (
+                  sortedMeetings.filter(meeting => meeting.date > Date.now()).slice(0,2).sort((a,b)=> {
+                    if(a.date > b.date) return 1;
+                    else if(a.date < b.date) return -1;
+                    else return 0;
+                  }).map((item, index) => (
                     <Upcoming key={index} meeting={item} state={"Upcoming Meeting"}/>
                   ))
                 }
             </div>
             <div className={styles.recent}>
             {
-                  sortedMeetings.slice(0,3).filter(meeting => meeting.date < Date.now()).map((item, index) => (
+                  sortedMeetings.filter(meeting => meeting.date < Date.now()).slice(0,2).map((item, index) => (
                     <Upcoming key={index} meeting={item} state={"Past Meeting"}/>
                   ))
                 }
