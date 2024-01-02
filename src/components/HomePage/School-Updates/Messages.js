@@ -10,32 +10,35 @@ import { useSelector } from 'react-redux'
 export default function Messages() {
   const {setMeeting} = useDatabase()
   const user = useSelector(state => state.Database.value.posts)
+  const [selected, setIndex] = useState(0)
   const {meetingModal} = useDatabase()
 const posts = [...user]
 
-const sortedPosts = posts.filter(item => item.category !== meetingModal.category).sort((a,b) => {
-  if(a.date < b.date){
+const sortedPosts = posts.filter(item => item.category === meetingModal.category).sort((a,b) => {
+  if(a.date_created > b.date_created){
     return -1;
   }
-  else if(a.date > b.date){
+  else if(a.date_created < b.date_created){
     return 1;
   }
   else return 0;
 })
-const date = new Date(sortedPosts[0]?.date_created);
-
+const date = new Date(sortedPosts[selected]?.date_created);
+  if(sortedPosts.length === 0){
+    return (<div style={{display:"flex", justifyContent: "center", alignItems: "center"}}><h1>Your Posts Will Appear Here.</h1></div>)
+  }
   return (
     <div className={styles.cont}>
        <div className={styles.Left}>
         <div className={styles.Header}>
 
 
-       <h3>{sortedPosts[0]?.title}</h3> 
+       <h3>{sortedPosts[selected]?.title}</h3> 
 
-       <h5>{sortedPosts[0]?.description}</h5>
+       <h5>{sortedPosts[selected]?.description}</h5>
 
             <small className={styles.Date}>{`${date.toDateString()}`}</small>
-            <p>{sortedPosts[0]?.post_content.split(" ").slice(0, 40).join(" ")}</p>
+            <p>{sortedPosts[selected]?.post_content.split(" ").slice(0, 40).join(" ")}</p>
 
             <div className={styles.Interactions}>
       <span>
@@ -98,7 +101,7 @@ const date = new Date(sortedPosts[0]?.date_created);
             <p className={styles.RightHeader}>Recent Discussions</p>
               {
                 sortedPosts.map((post, index) => (
-                  <Message key={index} post={post}/>
+                  <Message key={index} post={post} onclick={() => {setIndex(index)}} colors={selected === index ? ["#00f566", "#fdfdfd"]: ["#03a4ff", "#fdfdfd"]}/>
                 ))
               }
         </div>

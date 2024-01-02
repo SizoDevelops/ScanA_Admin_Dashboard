@@ -42,12 +42,12 @@ export default function CreatePost({display}) {
             }).then(resetForm)
           }}
         >
-            {({handleChange, handleSubmit, values})=>(
-                <Form className={styles.formHolder}>
-                    <TextField className={styles.formInputs} type="text" name="title" label="Title" onChange={handleChange} value={values.title}/>
-                    <TextField className={styles.formInputs} type="text" name="description" label="Description" onChange={handleChange} value={values.description}/>
-                    <TextField className={styles.formInputs} minRows={5} name="post_content" type="text" multiline label="Post details" onChange={handleChange} value={values.post_content}/>
-                    <Button variant="outlined" onClick={handleSubmit}>Send</Button>
+            {({handleChange, handleSubmit,isSubmiting, values})=>(
+                <Form className={styles.formHolder} onSubmit={handleSubmit} autoComplete='off' >
+                    <TextField className={styles.formInputs} required type="text" name="title"  label="Title" onChange={handleChange} value={values.title}/>
+                    <TextField className={styles.formInputs} required type="text" name="description"  label="Description" onChange={handleChange} value={values.description}/>
+                    <TextField className={styles.formInputs} required minRows={5} name="post_content"  type="text" multiline label="Post details" onChange={handleChange} value={values.post_content}/>
+                    <Button type='submit' variant="outlined" >{isSubmiting ? "Sending" : "Send"}</Button>
                 </Form>
             )}
         </Formik>

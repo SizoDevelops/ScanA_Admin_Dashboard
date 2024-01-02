@@ -9,7 +9,7 @@
 }
 
 .message{
-    border: 1px solid #03a4ff;
+    border: 1px solid ;
     width: 350px;
     display: flex;
     flex-direction: column;

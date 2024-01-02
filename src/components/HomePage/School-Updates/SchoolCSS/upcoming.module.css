@@ -6,6 +6,7 @@
     border-radius: 5px;
     padding: 5px;
     position: relative;
+    margin-bottom: 10px;
 }
 .header{
     display: inline-flex;

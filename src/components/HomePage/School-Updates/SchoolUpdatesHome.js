@@ -8,12 +8,34 @@ import Meetings from './Meetings'
 import { useDatabase } from '@/components/features/dbContext'
 import Messages from './Messages'
 import Categories from './Categories'
+import { useSelector } from 'react-redux'
 
 
 
 export default function SchoolUpdatesHome() {
 const {meetingModal, setMeeting} = useDatabase()
-
+const userPosts = useSelector(state => state.Database.value.posts)
+const userMeetings = useSelector(state => state.Database.value.school_meetings)
+const posts = [...userPosts]
+const meetings = [...userMeetings]
+const sortedPosts = posts.filter(item => item.category !== meetingModal.category).sort((a,b) => {
+if(a.date_created > b.date_created){
+  return -1;
+}
+else if(a.date_created < b.date_created){
+  return 1;
+}
+else return 0;
+})
+const sortedMeetings = meetings.sort((a,b) => {
+if(a.date > b.date){
+  return -1;
+}
+else if(a.date < b.date){
+  return 1;
+}
+else return 0;
+})
 
 return(
   <>
@@ -36,18 +58,12 @@ return(
         </div>
         {/* Messages Search Panel */}
         <div className={styles.messagesPanel} >
-            <div className={styles.search}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-            </svg>
-            <input type="text" placeholder='Search Messages'/>
-            </div>
-            <Message/>
-            <Message/>
-            <Message/>
-            <Message/>
-            <Message/>
-            <Message/>
+        <h4 className={styles.RightHeader}>Recent Discussions</h4>
+            {
+              sortedPosts.slice(0, 4).map((post, index) => (
+                <Message key={index} post={post} />
+              ))
+            }
         </div>
         {/* Schedule Meetings */}
         <div className={styles.Meetings} onClick={() => setMeeting({name: "Meetings", catergory: ""})}>
@@ -76,10 +92,18 @@ return(
         {/* Events Timeline */}
         <div className={styles.Timeline}>
             <div className={styles.upcoming}>
-                <Upcoming/>
+                {
+                  sortedMeetings.slice(0,3).filter(meeting => meeting.date > Date.now()).map((item, index) => (
+                    <Upcoming key={index} meeting={item} state={"Upcoming Meeting"}/>
+                  ))
+                }
             </div>
             <div className={styles.recent}>
-                <Upcoming/>
+            {
+                  sortedMeetings.slice(0,3).filter(meeting => meeting.date < Date.now()).map((item, index) => (
+                    <Upcoming key={index} meeting={item} state={"Past Meeting"}/>
+                  ))
+                }
             </div>
         </div>  
     </div>

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import styles from '@/components/HomePage/School-Updates/SchoolCSS/message.module.css'
-export default function Message({post}) {
+export default function Message({post, onclick, colors}) {
   const date = new Date(post?.date_created);
 
   return (
-    <div className={styles.Container}>
+    <div className={styles.Container} onClick={onclick}>
          <div className={styles.cont}>
-        <div className={styles.message}>
+        <div className={styles.message} style={colors ? {borderColor:colors[0]} : {borderColor:"#03a4ff"}}>
         <div className={styles.profile}>
             <div className={styles.Image}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
