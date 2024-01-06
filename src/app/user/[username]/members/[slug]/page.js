@@ -46,7 +46,7 @@ export default function Member({params}) {
             <div className={styles.Contacts}>
               <div>
                 <p>Role</p>
-                <p>{member ? member.position : "Loading Position"}</p>
+                <p>{member ? member.position.join(", ") : "Loading Position"}</p>
               </div>
               <div>
                 <p>Phone Number</p>
