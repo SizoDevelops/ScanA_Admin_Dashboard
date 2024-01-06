@@ -21,9 +21,11 @@ const Page = () => {
 
     
   if(session && session.user){
-      if(session.user?.school_name !== undefined){
-        redirect(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
-      }
+    if(session.user?.school_name){
+     
+      router.push(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
+      return <Loader />;
+    }
       else {
         signOut()
       }
