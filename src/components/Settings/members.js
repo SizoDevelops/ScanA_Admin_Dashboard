@@ -31,13 +31,8 @@ return (
         <div className={styles.profileDetails}>
           <h4>{`${title} ${initial} ${last_name}`}</h4>
 
-          <p>{`Position: ${position}`}</p>
+          <p>{`Position: ${position[0]+"..."}`}</p>
           <p>{`Persal: ${persal || "N/A"}`}</p>
-          <p>{`Subjects: `}</p>
-          <ol>
-            <li>English Fal</li>
-            <li>English Fal</li>
-          </ol>
         </div>
       </div>
 

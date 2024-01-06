@@ -8,7 +8,15 @@ import { useSelector } from "react-redux";
 import { useModal } from "./modalCont";
 import { Field, Form, Formik } from "formik";
 import { validate } from "./validate";
+import CreatableSelect from 'react-select/creatable';
 
+const components = {
+  DropdownIndicator: null,
+};
+const createOption = (label) => ({
+  label,
+  value: label,
+});
 
 const UpdateMembers = () => {
   const { data: session } = useSession();
@@ -113,6 +121,36 @@ const UpdateMembers = () => {
 const Modal = () => {
 const {userData, updateUser, setUserData} = useModal()
 const {data: session} = useSession()
+const [inputValue, setInputValue] = useState('');
+const [value, setValue] = useState([]);
+const positions = []
+
+useEffect(() => {
+  userData.position.forEach(elem => {
+    setValue(prep => [...prep, {label: elem, value: elem}])
+  })
+}, [])
+
+const handleKeyDown = (event) => {
+  if (!inputValue) return;
+  switch (event.key) {
+    case 'Enter':
+    case 'Tab':
+      setValue((prev) => [...prev, createOption(inputValue)]);
+      setInputValue('');
+      event.preventDefault();
+  }
+};
+const fillHiddenFieldValue = (values) => {
+  value.forEach(val => {
+    positions.push(val.value)
+})
+  const updatedValues = {
+    ...values,
+    position: positions
+  };
+  return updatedValues;
+};
   return (
     <div className={styles.modalContainer}>
         <div className={styles.modal}>
@@ -124,12 +162,13 @@ const {data: session} = useSession()
         <Formik
             initialValues={userData}
             validate={validate}
-            onSubmit={async (values, {resetForm, setSubmitting }) => {
+            onSubmit={async (values) => {
+              let newValues = fillHiddenFieldValue(values)
                 await updateUser({
                   key: session?.user.key,
-                  user_details: values
+                  user_details: newValues
                 })
-                  setUserData(values)
+                  setUserData(newValues)
                 // resetForm(userData)
             }}
         >
@@ -194,7 +233,20 @@ const {data: session} = useSession()
             <div className={styles.coordinates}>
    
                     <p>{errors.position && touched.position? <span style={{color: "red"}}>{errors.position}</span> : "Position*"}</p>
-                    <Field type="text" placeholder='e.g Teacher or HOD' name="position" style={errors.position && touched.position? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    <CreatableSelect
+                        className={styles.positions}
+                        components={components}
+                        inputValue={inputValue}
+                        isClearable
+                        isMulti
+                        required
+                        menuIsOpen={false}
+                        onChange={(newValue) => setValue(newValue)}
+                        onInputChange={(newValue) => setInputValue(newValue)}
+                        onKeyDown={handleKeyDown}
+                        placeholder="Type a position and press enter..."
+                        value={value}
+    />
                     <ul className={styles.listIns}>
                         <li>Position of the member</li>
                        

@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 import { Field, Form, Formik, useFormikContext } from 'formik';
 import { validate } from './validate';
 import { useSelector } from 'react-redux';
+import CreatableSelect from 'react-select/creatable';
 
 const voucher_codes = require('voucher-code-generator')
 
@@ -16,7 +17,7 @@ const initialState = {
     first_name: '',
     last_name: '',
     initial: '',
-    position: '', 
+    position: [], 
     persal: '',
     email: '',
     code: '',
@@ -35,15 +36,37 @@ const initialState = {
     },
     subjects: []
 }
-
-  
+const components = {
+    DropdownIndicator: null,
+  };
+  const createOption = (label) => ({
+    label,
+    value: label,
+  });
 const AddMember = () => {
     const {data: session} = useSession()
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
     const schema = useSelector(state => state.Database.value)
+    const [inputValue, setInputValue] = useState('');
+    const [value, setValue] = useState([]);
+    const positions = []
+
+    const handleKeyDown = (event) => {
+        if (!inputValue) return;
+        switch (event.key) {
+          case 'Enter':
+          case 'Tab':
+            setValue((prev) => [...prev, createOption(inputValue)]);
+            setInputValue('');
+            event.preventDefault();
+        }
+      };
 
     const fillHiddenFieldValue = (values) => {
+        value.forEach(val => {
+            positions.push(val.value)
+        })
         const code = voucher_codes.generate({
             count: 1,
             length: 6,
@@ -61,7 +84,8 @@ const AddMember = () => {
         const updatedValues = {
           ...values,
           id: id,
-          code: code
+          code: code,
+          position: positions
         };
         return updatedValues;
       };
@@ -105,13 +129,13 @@ const AddMember = () => {
                     setUsers(prep => [...prep, newValues])
                 }
                 resetForm()
+                setValue([])
             }}
         >
 
         {({
-         isSubmitting,
          errors,
-         touched
+         touched,
        }) => (
         <Form className={styles.Form} >
    
@@ -169,9 +193,26 @@ const AddMember = () => {
             <div className={styles.coordinates}>
    
                     <p>{errors.position && touched.position? <span style={{color: "red"}}>{errors.position}</span> : "Position*"}</p>
-                    <Field type="text" placeholder='e.g Teacher or HOD' name="position" style={errors.position && touched.position? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/>
+                    {/* <Field type="text" placeholder='e.g Teacher or HOD' name="position" style={errors.position && touched.position? {outline: "1px solid red"} : {outline: "1px solid #03a4ff"}}/> */}
+                    <CreatableSelect
+                        className={styles.positions}
+                        components={components}
+                        inputValue={inputValue}
+                        isClearable
+                        isMulti
+                        required
+                        menuIsOpen={false}
+                        onChange={(newValue) => setValue(newValue)}
+                        onInputChange={(newValue) => setInputValue(newValue)}
+                        onKeyDown={handleKeyDown}
+                        placeholder="Type a position and press enter..."
+                        value={value}
+    />
                     <ul className={styles.listIns}>
-                        <li>Position of the member</li>
+                        <li>Position(s) of the member.</li>
+                        <li>You can enter as many positions as you want.</li>
+                        <li>Double check the spellings of the positions.</li>
+                        <li>Press Enter or Tab to add a position to the list.</li>
                        
                     </ul>
             </div> 

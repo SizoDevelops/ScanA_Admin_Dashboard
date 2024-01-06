@@ -81,7 +81,7 @@
 
   .containerProfile{
     width: 300px;
-    height: 190px;
+    height: 150px;
     background-color: #111115; 
     border-radius: 10px;
     display: flex;
@@ -93,7 +93,7 @@
 }
 
 .profileImage{
-    background: #03a4ff;
+    background: #1e6c99;
     width: 40%;
     height: 100%;
     margin-right: 10px;
@@ -110,10 +110,12 @@
 .profileDetails > p{
     font-size: min(12px, 3vw);
     color:#cccccc;
+    width: 80%;
 }
 .profileDetails ol li {
     font-size: min(12px, 3vw);
     color:#cccccc;
+
 }
 .Links{
     text-decoration: none;

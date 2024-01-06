@@ -2,8 +2,8 @@
 import Login from '@/components/HomePage/Home/Login';
 import { useDatabase } from '@/components/features/dbContext';
 import Loader from '@/components/shared/Loader';
-import { useSession } from 'next-auth/react';
-import {useRouter } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
+import {redirect, useRouter } from 'next/navigation';
 
 
 const Page = () => {
@@ -21,8 +21,13 @@ const Page = () => {
 
     
   if(session && session.user){
-
-          router.push("/")
+      if(session.user?.school_name !== undefined){
+        redirect(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
+      }
+      else {
+        signOut()
+      }
+        
           
     }
   else return (

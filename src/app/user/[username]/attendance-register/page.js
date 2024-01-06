@@ -39,9 +39,10 @@ export default function ExcelPage() {
     setMembers([{value: "All", label: "ALL"}])
     const membered = []
     membersCopy.forEach(elem => {
-      if(!membered.find(item => item.value.toUpperCase() === elem.position.toUpperCase()))
-              membered.push({value: elem.position, label: elem.position.toUpperCase()})
-      
+      elem.position.forEach(elem => {
+          if(!membered.find(item => item.value.toUpperCase() === elem.toUpperCase()))
+              membered.push({value: elem, label: elem.toUpperCase()})
+      })
     })
 
     const Weeks = []

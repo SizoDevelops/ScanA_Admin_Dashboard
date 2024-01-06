@@ -101,31 +101,31 @@ export const DatabaseProvider = ({children}) => {
     
         const monday = voucher_codes.generate({
           count: 1,
-          length: 8,
+          length: 4,
           prefix: "SCNA-",
           charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
       })[0].toUpperCase()
         const tuesday = voucher_codes.generate({
           count: 1,
-          length: 8,
+          length: 4,
           prefix: "SCNA-",
           charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
       })[0].toUpperCase()
         const wednesday = voucher_codes.generate({
           count: 1,
-          length: 8,
+          length: 4,
           prefix: "SCNA-",
           charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
       })[0].toUpperCase()
         const thursday = voucher_codes.generate({
           count: 1,
-          length: 8,
+          length: 4,
           prefix: "SCNA-",
           charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
       })[0].toUpperCase()
         const friday = voucher_codes.generate({
           count: 1,
-          length: 8,
+          length: 4,
           prefix: "SCNA-",
           charset: "1234567890abcdefghijklmnopqrstuvwxxyz"
       })[0].toUpperCase()

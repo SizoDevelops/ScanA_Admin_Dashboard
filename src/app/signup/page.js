@@ -1,7 +1,7 @@
 "use client"
 import SignUp from '@/components/HomePage/Home/SignUp';
 import { redirect } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useDatabase } from '@/components/features/dbContext';
@@ -17,7 +17,13 @@ const Page = () => {
   }
   else{
     if(session && session.user){
-          router.push("/")
+      if(session.user?.school_name !== undefined){
+        redirect(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
+      }
+      else {
+        signOut()
+      }
+        
     }
     else return (
       <>

@@ -28,7 +28,9 @@ export default function TableHeader({week, position, year}) {
   useEffect(() => {
       setMembers(membersCopy)
       if(position !== ""){
-       setMembers( membersCopy.filter(items => items.position.toUpperCase() === position.toUpperCase()))
+       setMembers( membersCopy.filter(items => {
+       return items.position.some(elem => elem.toUpperCase() === position.toUpperCase())
+       }))
       }
       if(position === "All"){
         setMembers(membersCopy)
