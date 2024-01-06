@@ -22,7 +22,7 @@ export default function DashProfile({image, slug, title, initial, last_name, pos
     <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}></div>
   </div>
         <div className={styles.profileDetails}>
-          <h4>{`${position[0]}`}</h4>
+          <h4>{`${position ? position[0] : "Position"}`}</h4>
           <p className={styles.Name}>{`${title} ${initial} ${last_name}`}</p>
           <p>{`Persal No:  ${persal ? persal : "N/A"}`}</p>
           <p>{`School:  ${center}`}</p>

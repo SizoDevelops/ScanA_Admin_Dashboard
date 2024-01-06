@@ -22,9 +22,9 @@ const Page = () => {
     
   if(session && session.user){
     if(session.user?.school_name){
-     
+      () => <Loader />
       router.push(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
-      return <Loader />;
+      
     }
       else {
         signOut()
