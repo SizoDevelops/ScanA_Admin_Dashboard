@@ -1,39 +1,35 @@
 "use client"
-import SignUp from '@/components/HomePage/Home/SignUp';
-import { redirect } from 'next/navigation';
-import { signOut, useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { redirect, useRouter } from 'next/navigation';
+import { useSession, signOut } from 'next-auth/react';
 import { useDatabase } from '@/components/features/dbContext';
 import Loader from '@/components/shared/Loader';
+import SignUp from '@/components/HomePage/Home/SignUp';
 
 const Page = () => {
-    const {data: session} = useSession()
-    const {loading} = useDatabase()
-    const router = useRouter()
-  
-  if(loading) {
-    return <Loader/>
-  }
-  else{
-    if(session && session.user){
-      if(session.user?.school_name){
-        () => <Loader />
-        router.push(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
-       
+  const { data: session, status } = useSession();
+  const { loading } = useDatabase();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'authenticated' && session && session.user) {
+      if (session.user.school_name) {
+        redirect(`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}`);
+      } else {
+        signOut();
       }
-      else {
-        signOut()
-      }
-        
     }
-    else return (
-      <>
-        <SignUp/>
-      </>
-    );
-    
-}
-}
+  }, [status, session]);
+
+  if (loading || status === 'loading') {
+    return <Loader />;
+  }
+
+  if (!session || !session.user || !session.user.school_name) {
+    return <SignUp />;
+  }
+
+  return <Loader/>;  // Or render a default component if needed
+};
 
 export default Page;
