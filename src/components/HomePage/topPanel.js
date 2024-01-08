@@ -15,7 +15,7 @@ export default function TopPanel() {
 
   return (
     <div className={styles.sidePanel}>
-    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}`} replace>
+    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}`} replace>
 
       <div className={styles.sideIcon}>
       {/* <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/> */}
@@ -30,7 +30,7 @@ export default function TopPanel() {
     {/* <Link href={"/updates"} >
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/attendance-register`}>
+    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/attendance-register`}>
    
     <div className={styles.sideIcon}>
  {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -44,7 +44,7 @@ export default function TopPanel() {
     <p>Attendance Register</p>
     </Link>
     {/*Matric Learners */}
-    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/school-updates`}>
+    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/school-updates`}>
    
     <div className={styles.sideIcon}>
  {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -60,7 +60,7 @@ export default function TopPanel() {
     {/* <Link href={"/absentees"} >
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={`/user/${session?.user?.school_name?.split(" ")[0]}${session?.user?.school_name?.split(" ")[1]}/settings`} >
+    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/settings`} >
 
     <div className={styles.sideIcon}>
     {/* <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>
