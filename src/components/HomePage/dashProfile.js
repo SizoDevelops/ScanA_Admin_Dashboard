@@ -2,13 +2,14 @@
 import React from 'react'
 import styles from '../HomePageCSS/dashProfile.module.css'
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
+import { useSelector } from 'react-redux'
 
 
 export default function DashProfile({image, slug, title, initial, last_name, position, center, persal, }) {
-  const {data: session} = useSession()
+
+  const user = useSelector(state => state.Database.value)
   return (
-    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/members/${slug}`} className={styles.Links}>
+    <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/members/${slug}`} className={styles.Links}>
         {/* <div className={styles.profileImage} style={image ? {backgroundImage: `url(${image})`} : {backgroundImage: ""}}></div>
         <div className={styles.profileDetails}>
           <h4>{`Name: ${title} ${initial} ${last_name}`}</h4>

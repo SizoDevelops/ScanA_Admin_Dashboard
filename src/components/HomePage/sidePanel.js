@@ -4,14 +4,15 @@ import styles from '@/components/HomePageCSS/homePage.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import { useSelector } from 'react-redux'
 
 
 export default function SidePanel() {
-  const {data: session, status} = useSession()
+  const user = useSelector(state => state.Database.value)
 
   return (
     <div className={styles.sidePanel}>
-    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}`} replace>
+    <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}`} replace>
 
       <div className={styles.sideIcon}>
       {/* <Image sizes='30' fill src={"/icons/bi_folder.png"} alt="Folder Icon"/> */}
@@ -26,7 +27,7 @@ export default function SidePanel() {
     {/* <Link href={"/updates"} >
     <Image sizes='30' fill src={"/icons/carbon_calendar.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/attendance-register`}>
+    <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/attendance-register`}>
    
     <div className={styles.sideIcon}>
  {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -40,7 +41,7 @@ export default function SidePanel() {
     <p>Attendance Register</p>
     </Link>
     {/*Matric Learners */}
-    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/school-updates`}>
+    <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/school-updates`}>
    
     <div className={styles.sideIcon}>
  {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -56,7 +57,7 @@ export default function SidePanel() {
     {/* <Link href={"/absentees"} >
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>
     </Link> */}
-    <Link href={`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}/settings`} >
+    <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/settings`} >
 
     <div className={styles.sideIcon}>
     {/* <Image sizes='30' fill src={"/icons/settings.png"} alt="Folder Icon"/>
