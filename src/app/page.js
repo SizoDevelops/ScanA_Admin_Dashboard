@@ -12,9 +12,9 @@ const Page = () => {
 
 
   useEffect(() => {
-    if (status === 'authenticated' && session && session.user) {
-      if (session.user.school_name) {
-        redirect(`/user/${session.user.school_name.toLowerCase().replace(/\s+/g, '-')}`);
+    if (status === 'authenticated' && session && session?.user) {
+      if (session?.user.school_name) {
+        redirect(`/user/${session?.user.school_name.toLowerCase().replace(/\s+/g, '-')}`);
       } else {
         signOut();
       }
@@ -25,7 +25,7 @@ const Page = () => {
     return <Loader />;
   }
 
-  if (!session || !session.user || !session.user.school_name) {
+  if (!session || !session?.user || !session?.user.school_name) {
     return <Home />;
   }
 
