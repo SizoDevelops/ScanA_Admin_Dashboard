@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import styles from '@/components/HomePageCSS/HomeStyles/Features.module.css'
 import 'aos/dist/aos.css'; // You can also use <link> for styles
