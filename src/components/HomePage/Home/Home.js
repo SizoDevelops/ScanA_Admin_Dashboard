@@ -7,9 +7,12 @@ import Image from 'next/image';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Aos from 'aos';
 import Features from './HomeComponents/Features';
-Aos.init()
+import { useEffect } from 'react';
+
 const Home = () => {
-    
+    useEffect(() => {
+        Aos.init()
+}, [])
     return (
         <body className={styles.container}>
             <NavBar/>

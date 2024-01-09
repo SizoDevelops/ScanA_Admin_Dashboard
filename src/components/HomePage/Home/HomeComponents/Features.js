@@ -1,12 +1,15 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '@/components/HomePageCSS/HomeStyles/Features.module.css'
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Aos from 'aos';
 import Image from 'next/image';
-Aos.init()
+
 
 export default function Features() {
+    useEffect(() => {
+        Aos.init()
+}, [])
   return (
     <div className={styles.cont}>
         <div className={styles.divs}>
