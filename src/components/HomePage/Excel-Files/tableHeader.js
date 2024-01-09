@@ -115,17 +115,7 @@ const UserAttendanceTable = ({ userData, week, year }) => {
     <table className={styles.table}>
     
       <thead className={styles.head}>
-        <tr>
-         <td colspan="6" className={styles.title}>
-       <h1>Attendance Register</h1>
-        </td> 
-        </tr>
-        
-      <tr>
-      <td colspan="6">
-        <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the organisation.</p>
-        </td>
-      </tr>
+
    
 
         <tr className={styles.headingNames}>

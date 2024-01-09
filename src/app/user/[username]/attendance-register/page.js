@@ -6,7 +6,6 @@ import styles from '@/components/HomePageCSS/topPannel.module.css'
 import TableHeader from '@/components/HomePage/Excel-Files/tableHeader'
 import Selector from '@/components/Absence/Select'
 import { useSelector } from 'react-redux'
-import { usePDF } from 'react-to-pdf'
 import Loader from '@/components/shared/Loader'
 import { useDatabase } from '@/components/features/dbContext'
 import * as XLSX from 'xlsx';
@@ -115,7 +114,7 @@ export default function ExcelPage() {
   };
 
  
-  if(loading) {
+  if(loading || membersCopy.length === 0) {
     return <Loader/>
   }
 
@@ -125,7 +124,9 @@ export default function ExcelPage() {
         <TopPanel/>
 
         <div className={styles.SelectorCont}>
-    
+     
+     
+     
     <div className={styles.selector}>
         <p>Members</p>
         <Selector options={member} onChange={selectedPosition} defaultV={member[0]}/>
@@ -167,10 +168,24 @@ export default function ExcelPage() {
         <div  className={styles.DownloadActions}>
             <p className={styles.Date}>{"Week " + sWeek.value + " - " +year.value}</p> 
                 <div className={styles.buttons} onClick={exportToExcel}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+</svg>
                         <p>Download Excel</p>   
 
                     </div>
                 </div> 
+                <div  className={styles.title}>
+       <h1>Attendance Register</h1>
+       <p className={styles.para}>This register is signed electronically. Thus the result are 100% authententic and adhare to the attendance policy of the organisation.</p>
+        </div> 
+    
+        
+      
+
+        
+     
                 <table   id="data-table"  className={styles.TableHolder}>
                   <TableHeader   week={sWeek.value} position={sPosition.value} year={year.value}/> 
                 </table>

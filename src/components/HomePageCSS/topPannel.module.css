@@ -129,7 +129,19 @@
     padding:10px;
 
   }
-
+  .title{
+    width:90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .title p {
+    width: 60%;
+    font-size: min(14px, 3vw);
+  }
   .data{
     margin: auto;
     width: 20%;
@@ -178,7 +190,7 @@
     justify-content: center;
     display: flex;
     cursor: pointer;
-   
+   gap: 5px;
   }
 .buttons:active{
   background: #68696A;

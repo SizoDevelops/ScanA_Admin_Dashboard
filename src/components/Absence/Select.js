@@ -36,10 +36,10 @@ export default function Selector({
       theme={(theme) => ({
         ...theme,
         borderRadius: 0,
-
+        cursor: "pointer",
         colors: {
-          primary25: "#68696a",
-          primary: "#68696a",
+          primary25: "#fafafa",
+          primary: "#03a4ff",
           neutral0: "#FFFFFF",
         },
       })}
