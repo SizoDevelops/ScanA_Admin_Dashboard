@@ -1,0 +1,94 @@
+.cont{
+    width: min(100vw, 1440px);
+    margin: 50px auto;
+    
+}
+.image{
+    position: relative;
+    width: 278px;
+    height: 450px;
+
+}
+
+.divs{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+       justify-content: right;
+    width: 100%;
+    margin: auto;
+    gap: 100px;
+}
+
+.divs:nth-child(even){
+    flex-direction: row;
+    justify-content: left;
+}
+.details{
+    margin-left: 30px;
+}
+.details h2{
+    font-size: min(60px, 10vw);
+    text-align: center;
+   
+}
+
+.details h2 span, .earthDetails h2 span{
+    color: #03a4ff;
+}
+.details p{
+    font-size: min(14px, 4vw);
+    width: 700px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.EarthImage{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    -webkit-animation:spin 20s linear infinite;
+    -moz-animation:spin 20s linear infinite;
+    animation:spin 20s linear infinite;
+    margin-left: 20px;
+}
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+.Earth{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.earthDetails{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.earthDetails h2{
+    font-size: min(35px, 9vw);
+   text-align: center;
+   width: 80%;
+}
+.earthDetails p{
+    font-size: min(15px, 3vw);
+   text-align: center;
+   width: 70%;
+}

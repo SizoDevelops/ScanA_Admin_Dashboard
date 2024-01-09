@@ -1,0 +1,60 @@
+.cont{
+    width: min(100vw, 1440px);
+    margin: auto;
+}
+
+.cont h2{
+    font-size: min(50px, 10vw);
+    font-weight: bold;
+    text-align: center;
+    width: 70%;
+    margin:auto;
+    margin: 100px auto;
+}
+.cont h2 span{
+    color: #03a4ff;
+}
+.Image{
+    position: relative;
+    width: 1376px;
+    height: 616px;
+    margin: auto;
+}
+
+.secondLayer{
+    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: min(1440px, 100vw);
+  
+}
+
+.mainImage{
+    position: relative;
+    width: 578px;
+    height: 720px;
+    margin: auto;
+}
+
+.meetings{
+    position: absolute;
+    width: 429px;
+    height: 178px;
+    top: 160px;
+    left: 50px;
+}
+.posts{
+    position: absolute;
+    width: 515px;
+    height: 146px;
+    margin: auto;
+    right: 60px;
+}
+.discuss{
+    position: absolute;
+    width: 429px;
+    height: 178px;
+    bottom:160px;
+    left: 50px;
+}
