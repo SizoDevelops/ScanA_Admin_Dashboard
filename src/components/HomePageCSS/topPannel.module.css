@@ -150,10 +150,11 @@
 
 
 
-  .headers span{
+  .headers  span{
     padding: 5px;
- color: #00850b;
+    color: #00850b;
   }
+
   .credecials td{
     text-align: left;
     font-size: min(3vw, 15px);

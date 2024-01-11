@@ -86,13 +86,13 @@ const UserAttendanceTable = ({ userData, week, year }) => {
                       entry.absent === true ? <span style={{width: "350px", wordWrap:"unset", wordBreak: "keep-all", textAlign: "center", textTransform: "capitalize", color: "red"}}>{entry.reason}</span>
                       :
                    
-                       <div>
+                       <div className={styles.times}>
                           <span style={{color:"#00850b"}}>{entry.timein}</span>
-                          <span style={{display: "none"}}>{"-"}</span>
+                          <span style={{display: "none"}}>{"--"}</span>
                           <span style={{color:"#00850b"}}>{entry.initial}</span>
-                           <span style={{display: "none"}}> {"-"}  </span>
+                           <span style={{display: "none"}}> {"--"}  </span>
                           <span style={{color:"#00850b"}}>{entry.timeout}</span>
-                           <span style={{display: "none"}}>  {"-"} </span>
+                           <span style={{display: "none"}}>  {"--"} </span>
                           <span style={{color:"#00850b"}}>{entry.initial}</span> 
                       </div>
                   
@@ -129,54 +129,53 @@ const UserAttendanceTable = ({ userData, week, year }) => {
         <tr className={styles.header}>
           <th></th>
           <th>
-            <td>In</td>
+            <span>In</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Out</td>
+            <span>Out</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
 
           </th>
           <th>
-            <td>In</td>
+            <span>In</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Out</td>
+            <span>Out</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
 
           </th>
           <th>
-            <td>In</td>
+            <span>In</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Out</td>
+            <span>Out</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
 
           </th>
           <th>
-            <td>In</td>
+            <span>In</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Out</td>
+            <span>Out</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
 
           </th>
           <th>
-            <td>In</td>
+            <span>In</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
+            <span>Initial</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Out</td>
+            <span>Out</span>
             <span style={{display: "none"}}> {"-"}  </span>
-            <td>Initial</td>
-
+            <span>Initial</span>
           </th>
         </tr>
       </thead>

@@ -45,13 +45,22 @@
 
 .EarthImage{
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     -webkit-animation:spin 20s linear infinite;
     -moz-animation:spin 20s linear infinite;
     animation:spin 20s linear infinite;
     margin-left: 20px;
 }
+
+.LeafImage{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    left: 350px;
+    bottom: 30px;
+}
+
 
 @-moz-keyframes spin { 
     100% { -moz-transform: rotate(360deg); } 
@@ -70,12 +79,13 @@
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 100px;
     width: 100%;
+    position: relative;
 }
 
 .earthDetails{
-    width: 1000px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,10 +95,164 @@
 .earthDetails h2{
     font-size: min(35px, 9vw);
    text-align: center;
-   width: 80%;
+   width: 90%;
 }
 .earthDetails p{
     font-size: min(15px, 3vw);
    text-align: center;
    width: 70%;
+   line-height: 25px;
 }
+
+.Feature{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.mainFImage{
+    position: relative;
+    width: 602px;
+    height: 387px;
+}
+
+.holder1, .holder2{
+    display: inline-flex;
+    width: 98%;
+    margin: auto;
+    
+}
+.holder1{
+    flex-direction: row-reverse;
+    
+}
+
+.featureImageh{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.FImage{
+    position: absolute;
+    width: 360px;
+    height: 84px;
+}
+
+.holder1 .featureImageh .FImage:nth-child(even){
+    right: 60px;
+    
+}
+.holder1 .featureImageh .FImage:nth-child(2){
+    right: 10px;
+    top: 60px
+}
+.holder1 .featureImageh .FImage:nth-child(3){
+    right: 10px;
+    bottom: 60px;
+}
+
+.holder2 .featureImageh .FImage:nth-child(odd){
+    right: -130px;
+    bottom: 50px;
+}
+.holder2 .featureImageh .FImage:nth-child(even){
+    right: -130px;
+    top: 170px;
+}
+
+.LImage{
+    position: relative;
+    width: 837px;
+    height: 435px;
+}
+.CImage{
+    position: relative;
+    width: 620px;
+    height: 388px;
+}
+.locate{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+.locate .earthDetails{
+    width: 700px;
+    padding: 0;
+    margin: 0;
+    }
+.locate .earthDetails p{
+    width: 80%;
+    padding: 0;
+    margin: 0;
+    }
+
+    .Button a{
+        background-color: #03a4ff;
+        font-size: min(14px, 4vw);
+        width: 240px;
+        height: 50px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        cursor: pointer;
+    
+    }
+    
+    .Button a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .Button a:active{
+        color: #111115;
+        background: #ffffff;
+    }
+    .Button a:hover{
+        background-color: #008ddf;
+    }
+
+    .para{
+        width: 80%;
+        line-height: 45px;
+        margin: auto;
+        text-align: center;
+        font-size: min(16px, 3vw);
+ 
+    }
+
+    .fCTA{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
+
+    .fCTA p{
+        text-align: center;
+        line-height: 35px;
+   
+    }
+
+    .para span{
+        color: #03a4ff;
+        font-size: min(22px, 6vw);
+        font-weight: bolder;
+    }
+
+    .para svg{
+        color: #03a4ff;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #03a4ff;
+        padding: 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }

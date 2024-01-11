@@ -8,6 +8,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Aos from 'aos';
 import Features from './HomeComponents/Features';
 import { useEffect } from 'react';
+import Convos from './HomeComponents/Convos';
 
 const Home = () => {
     useEffect(() => {
@@ -50,6 +51,7 @@ const Home = () => {
 
             <SecondSection/>
             <Features/>
+            <Convos/>
         </body>
     );
 }

@@ -9,6 +9,9 @@ import { useSelector } from 'react-redux'
 import Loader from '@/components/shared/Loader'
 import { useDatabase } from '@/components/features/dbContext'
 import * as XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
+const voucher_codes = require('voucher-code-generator')
+
 export default function ExcelPage() {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
@@ -85,32 +88,74 @@ export default function ExcelPage() {
   }
 
 
-  const   exportToExcel = () => {
+  const exportToExcel = async () => {
+    // Create a new ExcelJS workbook
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('AttendanceSheet');
+
     // Get the HTML table element by its ID
     const table = document.getElementById('data-table');
-
-    // Convert the HTML table to a worksheet
-     const ws = XLSX.utils.table_to_sheet(table)
-    ws['!cols'] = [
-      { wch: 30 }, // Width for the first column (Name)
-      { wch: 25 }, // Width for Monday
-      { wch: 25 }, // Width for Tuesday
-      { wch: 25 }, // Width for Wednesday
-      { wch: 25 }, // Width for Thursday
-      { wch: 25 }, // Width for Friday
-    ];
   
-
-    // Apply styles to each cell
-
-    Object.keys(ws).forEach(cell => {
-      if (cell !== '!ref' && typeof ws[cell].v === 'string') {
-        ws[cell].v = ws[cell].v.split(/-/g).join('  ').replace("-", "  "); // Add double space between words
-      }
+    // Iterate through the rows of the table and add them to the Excel worksheet
+    const rows = table.querySelectorAll('tr');
+    rows.forEach((row) => {
+      const rowData = [];
+      const cells = row.querySelectorAll('td, th');
+  
+      cells.forEach((cell) => {
+        // Replace "-" with spaces in the cell content
+        const cellContent = cell.textContent.replace(/-/g, '  ');
+  
+        rowData.push(cellContent);
+      });
+  
+      worksheet.addRow(rowData);
     });
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'AttendanceSheet');
-    XLSX.writeFile(wb, `UserAttendance_Week_${sWeek.value}_${year.value}.xlsx`);
+  
+    // Customize header row styles in ExcelJS
+    const headerRow = worksheet.getRow(1);
+    headerRow.eachCell((cell) => {
+      cell.font = { color: { argb: 'FFFFFF' } }; // Text color
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '03A4FF' } }; // Background color
+      cell.alignment = { horizontal: 'center', vertical: 'middle' }; // Center the text
+    });
+    headerRow.height = 30; // Adjust the height of the header row
+  
+    // Set a password for the Excel file
+    const password = voucher_codes.generate({
+      count: 1,
+      length: 11,
+  })[0]
+  
+    // Set uniform width for every cell
+    const columnCount = worksheet.columns.length;
+    for (let i = 1; i <= columnCount; i++) {
+      worksheet.getColumn(i).width = 30;
+      worksheet.getRow(i).height = 20;
+    }
+  
+    // Center the text in each cell
+    worksheet.eachRow({ startingRow: 2 }, (row) => {
+      row.eachCell((cell, num) => {
+        if(num !== 1){
+           cell.alignment = { horizontal: 'center', vertical: 'middle' }; // Center the text
+        }
+       
+      });
+    });
+  
+    // Protect the workbook with a password
+    await worksheet.protect(password, {selectLockedCells: false});
+   
+    // Save or serve the file as needed
+    workbook.xlsx.writeBuffer().then((buffer) => {
+      const blob = new Blob([buffer], { type: 'application/octet-stream' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `UserAttendance_Week_${sWeek.value}_${year.value}.xlsx`;
+      link.click();
+    });
+    alert(password)
   };
 
  

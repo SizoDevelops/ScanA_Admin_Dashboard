@@ -5,6 +5,7 @@
     color: #111115;
     position: relative;
     width: min(1440px, 100vw);
+    padding-bottom: 20px;
 }
 
 .NavBar{

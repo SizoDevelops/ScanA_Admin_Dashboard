@@ -1,0 +1,103 @@
+.cont{
+    width: min(100vw, 1440px);
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.cont h2{
+    font-size: min(60px, 9vw);
+    width: 80%;
+    text-align: center;
+}
+
+.cont h2 span{
+    color: #03a4ff;
+}
+
+.convoCont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 550px;
+
+}
+
+.image1{
+    width: 634px;
+    height: 206px;
+    position: absolute;
+    top: 10px;
+    left: 0px;
+}
+.image2{
+    width: 645px;
+    height: 206px;
+    position: absolute;
+    top: -20px;
+    right: 0px;
+}
+.image3{
+    width: 645px;
+    height: 206px;
+    position: absolute;
+}
+.image4{
+    width: 645px;
+    height: 206px;
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+}
+.image5{
+    width: 645px;
+    height: 206px;
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+}
+
+.benefits{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 95%;
+    margin:130px auto;
+    row-gap: 40px;
+    column-gap: 30px;
+    
+}
+
+.ben{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.ben svg{
+    color: #03a4ff;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #03a4ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.ben p{
+    line-height: 30px;
+    font-size: min(14px 3vw);
+    padding: 0;
+    margin: 0;
+}
+
+.ben h3{
+    padding: 0;
+    margin: 10px 0;
+}
