@@ -160,10 +160,10 @@ export default function Convos() {
                     <h3>Transform Your School Today with ScanA!</h3>
                       <div className={styles.Button}><Link href={"/signup"} >Try ScanA For Free</Link></div>  
             </div>
-            <div className={styles.image1}>
+            <div className={styles.imageD1}>
             <Image fill src={"/assets/bubble1.svg"}/>
         </div>
-        <div className={styles.image2}>
+        <div className={styles.imageD2}>
             <Image fill src={"/assets/bubble2.svg"}/>
         </div>
         </div>
