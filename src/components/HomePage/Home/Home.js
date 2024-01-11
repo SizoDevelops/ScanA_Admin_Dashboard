@@ -9,6 +9,7 @@ import Aos from 'aos';
 import Features from './HomeComponents/Features';
 import { useEffect } from 'react';
 import Convos from './HomeComponents/Convos';
+import Footer from './HomeComponents/Footer';
 
 const Home = () => {
     useEffect(() => {
@@ -52,6 +53,7 @@ const Home = () => {
             <SecondSection/>
             <Features/>
             <Convos/>
+            <Footer/>
         </body>
     );
 }

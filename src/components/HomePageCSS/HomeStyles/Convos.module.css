@@ -92,7 +92,7 @@
 
 .ben p{
     line-height: 30px;
-    font-size: min(14px 3vw);
+    font-size: min(14px, 3vw);
     padding: 0;
     margin: 0;
 }
@@ -100,4 +100,132 @@
 .ben h3{
     padding: 0;
     margin: 10px 0;
+}
+
+.lastCTA{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lastCTA p {
+    line-height: 30px;
+    font-size: min(16px, 3vw);
+    text-align: center;
+    width: 90%;
+}
+
+.FAQ{
+    width: 98%;
+    min-height: 500px;
+    
+    background: #BCE4FF;
+    gap: 5px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+}
+.faqCont {
+    padding: 25px;
+}
+.faqCont p{
+    line-height: 30px;
+    font-size: min(14px, 3vw);
+}
+
+.faqCont h3{
+    font-size: min(18px, 5vw);
+    
+}
+
+.lastCall{
+    width: 98%;
+    min-height: 350px;
+    border: 1px solid #03a4ff;
+    border-radius: 5px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.lastCall div{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width: 60%;
+    text-align: center;
+}
+.lastCall div h2{
+    font-size: min(30px, 10vw);
+}
+.lastCall div h2 span{
+    color: #03a4ff;
+}
+
+
+.Button a{
+    background-color: #03a4ff;
+    font-size: min(14px, 4vw);
+    width: 240px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.Button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.Button a:active{
+    color: #111115;
+    background: #ffffff;
+}
+.Button a:hover{
+    background-color: #008ddf;
+}
+
+
+.image1{
+    width: 213px;
+    height: 171px;
+    position: absolute;
+    left: -10%;
+    top: 50%;
+}
+.image2{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    right:-10%;
+    top: 50%;
+}
+
+.CTA{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    align-items: center;
+    min-height: 150px;
+}
+
+.CTA p{
+    width: 50%;
+    text-align: center;
+    font-size: min(16px, 4vw);
+    line-height: 25px;
 }
