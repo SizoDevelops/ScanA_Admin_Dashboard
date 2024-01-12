@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './SchoolCSS/meetings.module.css'
 import { Form, Formik, Field } from 'formik'
 import { Button, Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
@@ -32,7 +32,22 @@ const MenuProps = {
 export default function Meetings() {
     const {setMeeting} = useDatabase()
     const user = useSelector(state => state.Database.value)
+    const [members, setMembers] = useState([
+    "All",
+    "Teacher",
+    "SMT",
+    "SGB",
+    "HOD",])
+
     const [file, setFile] = useState("")
+
+    useEffect(() => {
+      setMembers([])
+      user.members.forEach(member => {
+        setMembers(prep => Array.from(new Set([...prep, ...member.position])))
+      })
+    },[user])
+
   return (
     <div className={styles.cont}>
         <Button className={styles.Close} variant="contained" color='primary' onClick={() => setMeeting({name: "", catergory: ""})}>Back</Button>
@@ -41,7 +56,7 @@ export default function Meetings() {
               title: "",
               venue: "",
               participants: [],
-              date: "",
+              date: null,
               agenda_text: "",
               fileName:""
             }}
@@ -118,7 +133,7 @@ export default function Meetings() {
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
+          {members.map((name) => (
             <MenuItem key={name} value={name}>
               <Checkbox checked={values.participants.indexOf(name) > -1} />
               <ListItemText primary={name} />
@@ -129,7 +144,7 @@ export default function Meetings() {
     
         <LocalizationProvider dateAdapter={AdapterDayjs}>
                <div className={styles.Time}>
-            <DateTimePicker className={styles.Inp} label="Date and Time" disablePast name="date"   onChange={(date) => setFieldValue("date", Date.parse(date))} />
+            <DateTimePicker className={styles.Inp} label="Date and Time" disablePast name="date" value={values.date}   onChange={(date) => setFieldValue("date", Date.parse(date))} />
     
             </div>
         </LocalizationProvider>

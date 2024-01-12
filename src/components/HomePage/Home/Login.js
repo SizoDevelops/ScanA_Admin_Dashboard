@@ -65,17 +65,20 @@ const StepOne =({setCode}) => {
     e.preventDefault()
     setSubmitting(true)
    await signIn("credentials", {
-      school_code: code,
-      school_email: email,
+      school_code: code.trim(),
+      school_email: email.trim(),
       password,
       redirect: false,
    }).then(err => {
     setSubmitting(false)
-    setCode({
+    if(err.error){
+        setCode({
       title: "Incorrect Credentials",
-      message: "The you credentials entered may be incorrect please re-check and retry.",
+      message: "The credentials entered may be incorrect please re-check and retry.",
       type: "Error"
     });
+    }
+  
    })
 
   }
