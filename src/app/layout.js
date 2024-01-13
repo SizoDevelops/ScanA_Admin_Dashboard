@@ -1,4 +1,3 @@
-import { DataProvider } from '@/components/HomePage/Excel-Files/tableContext'
 import './globals.css'
 import Providers from '@/components/Providers'
 

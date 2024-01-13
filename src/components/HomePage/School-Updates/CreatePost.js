@@ -29,8 +29,10 @@ export default function CreatePost({display}) {
             },
             category: meetingModal.category,
           }}
-          onSubmit={(values, {resetForm}) => {
-            fetch("/api/posts", {
+          onSubmit={(values, {resetForm, setSubmitting}) => {
+            if(user){
+              setSubmitting(true)
+              fetch("/api/posts", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
@@ -40,14 +42,19 @@ export default function CreatePost({display}) {
                 post: values
               })
             }).then(resetForm)
+            .then(() => {
+              setSubmitting(false)
+            })
+            }
+            
           }}
         >
-            {({handleChange, handleSubmit,isSubmiting, values})=>(
+            {({handleChange, handleSubmit,isSubmitting, values})=>(
                 <Form className={styles.formHolder} onSubmit={handleSubmit} autoComplete='off' >
                     <TextField className={styles.formInputs} required type="text" name="title"  label="Title" onChange={handleChange} value={values.title}/>
                     <TextField className={styles.formInputs} required type="text" name="description"  label="Description" onChange={handleChange} value={values.description}/>
-                    <TextField className={styles.formInputs} required minRows={5} name="post_content"  type="text" multiline label="Post details" onChange={handleChange} value={values.post_content}/>
-                    <Button type='submit' variant="outlined" >{isSubmiting ? "Sending" : "Send"}</Button>
+                    <TextField className={styles.formInputs} required minRows={5}  name="post_content"  type="text" multiline label="Post details" onChange={handleChange} value={values.post_content}/>
+                    <Button type='submit' variant="outlined" >{isSubmitting ? "Sending" : "Send"}</Button>
                 </Form>
             )}
         </Formik>
