@@ -12,6 +12,7 @@ export async function POST(request) {
                 let meeting;
                 let keyId;
                 let file;
+              
                 for (const [key, value] of formData.entries()) {
                
                     if (key === 'key') {
@@ -31,7 +32,6 @@ export async function POST(request) {
                 const drive = deta.Drive(keyId);
                 const data = await base.get(keyId);
                 const meetings = data ? data.school_meetings || [] : [];
-          
                 meetings.push(meeting);
            
               
