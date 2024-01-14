@@ -219,7 +219,7 @@ export const DatabaseProvider = ({children}) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        }).then(setLoading(false))
+        }).then(()=>setLoading(false))
         }
        
       }
@@ -278,7 +278,8 @@ export const DatabaseProvider = ({children}) => {
         sendSignUp,
         meetingModal,
         setMeeting,
-        getCurrentWeek
+        getCurrentWeek,
+        getUser
          
     };
 
