@@ -87,7 +87,7 @@ export const DatabaseProvider = ({children}) => {
         return currentDay;
       }
       function getCurrentWeek() {
-        const today = new Date();
+        const today = new Date(Date.now());
         const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
         const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000));
         const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
@@ -135,8 +135,9 @@ export const DatabaseProvider = ({children}) => {
     if(day === "tuesday") {
         data  = {
           key: session?.user.key,
+          currentDay: 2,
           currentWeek: getCurrentWeek(),
-          monday: null,
+          monday,
           tuesday,
           wednesday,
           thursday,
@@ -146,9 +147,10 @@ export const DatabaseProvider = ({children}) => {
        else if (day === "wednesday") {
         data  = {
            key: session?.user.key,
+           currentDay: 3,
            currentWeek: getCurrentWeek(),
-          monday:null,
-          tuesday:null,
+          monday,
+          tuesday,
           wednesday,
           thursday,
           friday
@@ -157,28 +159,7 @@ export const DatabaseProvider = ({children}) => {
        else if(day === "thursday"){
         data  = {
           key: session?.user.key,
-          currentWeek: getCurrentWeek(),
-          monday:null,
-          tuesday:null,
-          wednesday:null,
-          thursday,
-          friday
-        }
-       }
-       else if(day === "friday"){
-        data  = {
-          key: session?.user.key,
-          currentWeek: getCurrentWeek(),
-          monday:null,
-          tuesday:null,
-          wednesday:null,
-          thursday:null,
-          friday
-        }
-       }
-       else if(day==="monday") {
-        data  = {
-          key: session?.user.key,
+          currentDay: 4,
           currentWeek: getCurrentWeek(),
           monday,
           tuesday,
@@ -187,9 +168,22 @@ export const DatabaseProvider = ({children}) => {
           friday
         }
        }
-       else if(day === "sunday") {
+       else if(day === "friday"){
         data  = {
           key: session?.user.key,
+          currentDay: 5,
+          currentWeek: getCurrentWeek(),
+          monday,
+          tuesday,
+          wednesday,
+          thursday,
+          friday
+        }
+       }
+       else if(day==="monday") {
+        data  = {
+          key: session?.user.key,
+          currentDay: 1,
           currentWeek: getCurrentWeek(),
           monday,
           tuesday,
@@ -199,9 +193,10 @@ export const DatabaseProvider = ({children}) => {
         }
        }
        else {
-        data  = {
+        data  = { 
           key: session?.user.key,
-          currentWeek: getCurrentWeek() + 1,
+          currentDay: 1,
+          currentWeek: getCurrentWeek(),
           monday,
           tuesday,
           wednesday,
@@ -277,7 +272,8 @@ export const DatabaseProvider = ({children}) => {
         loadingCode,
         sendSignUp,
         meetingModal,
-        setMeeting
+        setMeeting,
+        getCurrentWeek
          
     };
 

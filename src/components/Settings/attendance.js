@@ -7,10 +7,11 @@ import { usePDF } from 'react-to-pdf';
 import { useDatabase } from '../features/dbContext';
 import { useSelector } from 'react-redux';
 import Loader from '../shared/Loader';
+import { Fab } from '@mui/material';
 
 
 const Attendance = () => {
-    const {setAttendance, loading} = useDatabase()
+    const {setAttendance, loading, getCurrentWeek} = useDatabase()
     const { SVG } = useQRCode();
     const { toPDF, targetRef } = usePDF({filename: `Week-QRCODES.pdf`});
     const schema = useSelector(state => state.Database.value.attendance)
@@ -36,13 +37,18 @@ const Attendance = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       },[schema])
 
-    if(loading){
+    if(loading || !schema.currentWeek){
         return <Loader/>
     }
     else return (
         <body className={styles.container}>
          <div className={styles.formHolder} ref={targetRef}>
             <h2 className={styles.heading}>{getCurrentMonthAndYear()}</h2>
+            <h4 className={styles.heading}>{"WEEK " + getCurrentWeek()}</h4>
+            <Fab onClick={setAttendance} title="Refresh" color='info'> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+  <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+</svg></Fab>
             <p className={styles.details}>Scan the code for the day. If scanning does not work try entering the code.</p>
              <div className={styles.Grid}>
                 <div className={styles.QRCont} style={schema?.monday ? {display: "flex"} : {display: "none"}}>
@@ -78,9 +84,9 @@ const Attendance = () => {
                     {schema?.tuesday ?  <SVG
                          text={schema?.tuesday}
                                 options={{
-                                    errorCorrectionLevel: 'M',
-                                    margin: 3,
-                                    scale: 4,
+                                    errorCorrectionLevel: 'H',
+                                    margin: 2,
+                                    scale: 1,
                                     width: 200,
                                     color: {
                                     dark: '#111115',
@@ -104,9 +110,9 @@ const Attendance = () => {
                     {schema?.wednesday ? <SVG
                          text={schema?.wednesday}
                                 options={{
-                                    errorCorrectionLevel: 'M',
-                                    margin: 3,
-                                    scale: 4,
+                                    errorCorrectionLevel: 'H',
+                                    margin: 2,
+                                    scale: 1,
                                     width: 200,
                                     color: {
                                     dark: '#111115',
@@ -130,9 +136,9 @@ const Attendance = () => {
                    {schema?.thursday ? <SVG
                          text={schema?.thursday}
                                 options={{
-                                    errorCorrectionLevel: 'M',
-                                    margin: 3,
-                                    scale: 4,
+                                    errorCorrectionLevel: 'H',
+                                    margin: 2,
+                                    scale: 1,
                                     width: 200,
                                     color: {
                                     dark: '#111115',
@@ -156,9 +162,9 @@ const Attendance = () => {
                    {schema?.friday ? <SVG
                          text={schema?.friday}
                                 options={{
-                                    errorCorrectionLevel: 'M',
-                                    margin: 3,
-                                    scale: 4,
+                                    errorCorrectionLevel: 'H',
+                                    margin: 2,
+                                    scale: 1,
                                     width: 200,
                                     color: {
                                     dark: '#111115',

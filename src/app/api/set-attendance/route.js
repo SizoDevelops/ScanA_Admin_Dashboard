@@ -11,6 +11,7 @@ export async function POST(request) {
     let data = base.attendance
     
     if(parseInt(data.currentWeek) !== body.currentWeek){
+      data.currentDay= body.currentDay
       data.currentWeek = body.currentWeek
       data.monday = body.monday
       data.tuesday = body.tuesday
