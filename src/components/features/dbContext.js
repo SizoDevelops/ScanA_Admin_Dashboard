@@ -135,9 +135,8 @@ export const DatabaseProvider = ({children}) => {
     if(day === "tuesday") {
         data  = {
           key: session?.user.key,
-          currentDay: 2,
           currentWeek: getCurrentWeek(),
-          monday,
+          monday: null,
           tuesday,
           wednesday,
           thursday,
@@ -147,10 +146,9 @@ export const DatabaseProvider = ({children}) => {
        else if (day === "wednesday") {
         data  = {
            key: session?.user.key,
-           currentDay: 3,
            currentWeek: getCurrentWeek(),
-          monday,
-          tuesday,
+          monday:null,
+          tuesday:null,
           wednesday,
           thursday,
           friday
@@ -159,11 +157,10 @@ export const DatabaseProvider = ({children}) => {
        else if(day === "thursday"){
         data  = {
           key: session?.user.key,
-          currentDay: 4,
           currentWeek: getCurrentWeek(),
-          monday,
-          tuesday,
-          wednesday,
+          monday:null,
+          tuesday:null,
+          wednesday:null,
           thursday,
           friday
         }
@@ -171,7 +168,17 @@ export const DatabaseProvider = ({children}) => {
        else if(day === "friday"){
         data  = {
           key: session?.user.key,
-          currentDay: 5,
+          currentWeek: getCurrentWeek(),
+          monday:null,
+          tuesday:null,
+          wednesday:null,
+          thursday:null,
+          friday
+        }
+       }
+       else if(day==="monday") {
+        data  = {
+          key: session?.user.key,
           currentWeek: getCurrentWeek(),
           monday,
           tuesday,
@@ -180,10 +187,9 @@ export const DatabaseProvider = ({children}) => {
           friday
         }
        }
-       else if(day==="monday") {
+       else if(day === "sunday") {
         data  = {
           key: session?.user.key,
-          currentDay: 1,
           currentWeek: getCurrentWeek(),
           monday,
           tuesday,
@@ -193,10 +199,9 @@ export const DatabaseProvider = ({children}) => {
         }
        }
        else {
-        data  = { 
+        data  = {
           key: session?.user.key,
-          currentDay: 1,
-          currentWeek: getCurrentWeek(),
+          currentWeek: getCurrentWeek() + 1,
           monday,
           tuesday,
           wednesday,
