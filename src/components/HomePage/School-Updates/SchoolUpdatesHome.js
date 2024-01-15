@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import SidePanel from '../sidePanel'
 import styles from '@/components/HomePageCSS/schoolsUpdates.module.css'
 import Message from './Message'
@@ -9,31 +9,15 @@ import { useDatabase } from '@/components/features/dbContext'
 import Messages from './Messages'
 import Categories from './Categories'
 import { useSelector } from 'react-redux'
-import Loader from '@/components/shared/Loader'
 
 
 
 export default function SchoolUpdatesHome() {
-const {meetingModal, setMeeting, loading} = useDatabase()
+const {meetingModal, setMeeting} = useDatabase()
 const userPosts = useSelector(state => state.Database.value.posts)
 const userMeetings = useSelector(state => state.Database.value.school_meetings)
 const posts = [...userPosts]
 const meetings = [...userMeetings]
-const [sortedMeetings, setSortedMeetings] = useState([])
-
-useEffect(() => {
-  setSortedMeetings([])
-  const met = meetings.sort((a,b) => {
-    if(a.date > b.date){
-      return -1;
-    }
-    else if(a.date < b.date){
-      return 1;
-    }
-    else return 0;
-    })
-    setSortedMeetings(met)
-},[meetings])
 const sortedPosts = posts.filter(item => item.category !== meetingModal.category).sort((a,b) => {
 if(a.date_created > b.date_created){
   return -1;
@@ -43,10 +27,18 @@ else if(a.date_created < b.date_created){
 }
 else return 0;
 })
+const sortedMeetings = meetings.sort((a,b) => {
+if(a.date > b.date){
+  return -1;
+}
+else if(a.date < b.date){
+  return 1;
+}
+else return 0;
+})
 
-
- return(
-  <div className={styles.container}>
+return(
+  <>
     {
   meetingModal.name === "Meetings" ? <Meetings/>
   : meetingModal.name === "Messages" ? <Messages/> 
@@ -125,5 +117,5 @@ else return 0;
     </>
   )
 }
-  </div>
+  </>
   )}
