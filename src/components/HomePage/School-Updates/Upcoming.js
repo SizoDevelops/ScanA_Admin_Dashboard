@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@/components/HomePage/School-Updates/SchoolCSS/upcoming.module.css'
 import { useDatabase } from '@/components/features/dbContext'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteMeeting } from '@/components/shared/DatabaseSlice'
 export default function Upcoming({meeting, state}) {
-  const {setMeeting} = useDatabase()
+  const dispatch = useDispatch()
   const user = useSelector(state => state.Database.value)
+  const  [deleting, setDeleting] = useState(false)
+
+
   return (
     <div className={styles.container} style={state === "Past Meeting" ? {background: "#ffb31044", borderColor: "#ffb310"} : {background:"#00d17044", borderColor: "#00d170"}} >
                   <div className={styles.header}>
@@ -18,8 +22,10 @@ export default function Upcoming({meeting, state}) {
 
             <p className={styles.label} style={state === "Past Meeting" ? {color: "#ffb310"} : {color:"#00d170"}}>{state}</p>
 
-            <span className={styles.edit} style={state === "Past Meeting" ? {background: "#ffb310"} : {background:"#00d170"}} onClick={async () => {
-                await fetch("/api/delete-meeting", {
+            <span className={styles.edit} style={state === "Past Meeting" ? {background: "#ffb310"} : {background:"#00d170"}} aria-disabled={deleting} onClick={async () => {
+              setDeleting(true)
+              dispatch(deleteMeeting(meeting))
+               let res = await fetch("/api/delete-meeting", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json"
@@ -30,7 +36,9 @@ export default function Upcoming({meeting, state}) {
                     id: meeting.id
                   })
                 })
-            }}  >Delete</span>
+
+            
+            }}  >{deleting ? "Deleting" : "Delete"}</span>
     </div>
   )
 }

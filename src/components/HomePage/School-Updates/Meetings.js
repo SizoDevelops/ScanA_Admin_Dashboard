@@ -7,7 +7,8 @@ import {  DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Image from 'next/image'
 import { useDatabase } from '@/components/features/dbContext'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { uploadMeetings } from '@/components/shared/DatabaseSlice'
 const voucher_codes = require('voucher-code-generator')
 
   const ITEM_HEIGHT = 48;
@@ -25,9 +26,9 @@ export default function Meetings() {
     const {setMeeting, meetingModal} = useDatabase()
     const user = useSelector(state => state.Database.value)
     const [members, setMembers] = useState([])
- 
+    const [loading, setLoading] = useState(false)
     const [file, setFile] = useState("")
-
+    const dispatch = useDispatch()
     useEffect(() => {
       setMembers([])
       user.members.forEach(member => {
@@ -51,21 +52,28 @@ export default function Meetings() {
             }}
 
             onSubmit={ async (values, { resetForm, setSubmitting}) => {
+
               const code = voucher_codes.generate({
                 count: 1,
                 length: 12,
             })[0] 
+            const filename = voucher_codes.generate({
+              count: 1,
+              length: 10,
+              
+          })[0]
             const updated = {
                 ...values,
-                id: code
+                id: code,
+                fileName: filename+".pdf"
               }
             
               const formData = new FormData();
               formData.append("key", user.key);
               formData.append("meeting", JSON.stringify(updated));
-              formData.append("agenda_file", file); // Append the actual file
+              formData.append("agenda_file", file, file.name); // Append the actual file
             
-              setSubmitting(true)
+              setLoading(true)
                fetch("/api/set-meetings", {
                 method: "POST",
                 body: formData,
@@ -79,7 +87,8 @@ export default function Meetings() {
                 fileName:""
               }))
                .then(() => {
-                setSubmitting(false)
+                dispatch(uploadMeetings(updated))
+                setLoading(false)
                })
             }
             }
@@ -175,7 +184,6 @@ export default function Meetings() {
   <input className={styles.visuallyHidden} accept='.pdf' multiple={false} type="file" name="fileName"  onChange={ (e) => {
      setFieldValue("fileName", e.target.value.slice(e.target.value.lastIndexOf("\\")+1))
      const selectedFile = e.target.files[0];
-                                    // Ensure a file is selected
       setFile(selectedFile)
  
   }} />
@@ -204,7 +212,7 @@ required
               variant={"contained"}
               type="submit"
               >
-                        { isSubmitting ? "Sending" : "Send"}
+                        { loading ? "Sending" : "Send"}
                         </Button>    
                   
                     </Form>

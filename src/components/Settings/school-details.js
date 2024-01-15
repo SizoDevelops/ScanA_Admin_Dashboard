@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 import Loader from "../shared/Loader";
 import { validate } from "./validateUpdateSchool";
 
-let image =
-  "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/school-logo-design-template-b3bfdceb55d1cbc48f1ce50fd4e1ef24_screen.jpg?ts=1629941736";
+let image = "https://i.pinimg.com/474x/3c/e1/96/3ce196b55fd63cba9f7387a298cdc96e.jpg";
 const SchoolDetails = () => {
   const schema = useSelector((state) => state.Database.value);
   if (schema.school_name === "") return <Loader />;
@@ -155,7 +154,7 @@ const SchoolDetails = () => {
                     style={
                       image
                         ? {
-                            backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwDbMW-icogTrPt2RnDqXJ_cs3eCZpVYISMe6nTTj_8eDQPu6im5D7FsM0xHgiyIRCaGo&usqp=CAU")`,
+                            backgroundImage: `url("https://i.ibb.co/0csMj5v/Rectangle-353.png")`,
                           }
                         : { backgroundImage: "" }
                     }

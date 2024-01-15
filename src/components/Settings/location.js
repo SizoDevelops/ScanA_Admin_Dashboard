@@ -3,15 +3,20 @@ import React, { useEffect, useState } from 'react';
 import styles from "@/components/Settings/SettingsCSS/location.module.css"
 import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
+import Loader from '../shared/Loader';
+import { useDatabase } from '../features/dbContext';
 
 const Location = () => {
     const {data: session} = useSession()
     const [latitude, setLat] = useState("")
     const [longitude, setLong] = useState("")
     const [distance, setDistance] =useState(200)
+    const {loading} = useDatabase()
     const schema = useSelector(state => state.Database.value)
+    const [loader, setLoading] = useState(false)
 
     const setLocation = async (data) =>{
+        setLoading(true)
         await fetch("/api/set-location", {
             method: "POST",
             cache: "force-cache",
@@ -20,6 +25,8 @@ const Location = () => {
             },
             body: JSON.stringify(data)
         })
+
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -28,6 +35,9 @@ const Location = () => {
         setDistance(schema?.coordinates.distance)
     }, [schema])
 
+    if(loading){
+        return <Loader/>
+    }
     return (
         <body className={styles.container}>
             <h2 className={styles.intro}>Please enter the longitude and latitude in the boxes below, make sure it`s precise or follow the instructions below to get your coordinates.</h2>
@@ -47,7 +57,7 @@ const Location = () => {
                     <input type="number" placeholder=' 200' value={distance} onChange={e => setDistance(e.target.value)}/>
                 </div>
 
-                <div className={styles.submit} onClick={() => {
+                <div className={styles.submit} disabled={loader} onClick={() => {
                     if(!latitude || !longitude){
                         alert("Please Supply Both Coordinates.")
                     }
@@ -59,7 +69,7 @@ const Location = () => {
                             distance: distance <= 0 ? 200 : distance
                         })
                     }
-                }}>Save</div>
+                }}>{loader ? "Saving" : "Save"}</div>
             </div>
 
 

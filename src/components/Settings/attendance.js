@@ -44,7 +44,7 @@ const Attendance = () => {
     }
     else return (
         <body className={styles.container}>
-              <Fab style={{float: "right"}} onClick={async () => {
+              <Fab style={{float: "right", position: "absolute", top: "40px", right: "100px"}} onClick={async () => {
                     await setAttendance()
                     if(session){
                         getUser({key:session?.user.key}) 

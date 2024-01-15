@@ -49,28 +49,39 @@ const DatabaseSlice = createSlice({
             state.value.members.push(action.payload)
         },
         updateMember: (state, action) => {
-           state.value.members.map(items => {
-            if(items.id === action.payload.id){
-                if(action.payload.pause_register === true || action.payload.pause_register === false){
-                    items.pause_register = action.payload.pause_register
+           if(state.value.members.find(elem => elem.id === action.payload.id)){
+            let member = state.value.members.find(elem => elem.id === action.payload.id)
+            for(const key in member){
+                let item = member[key]
+                for(const items in action.payload){
+                    let i = action.payload[items]
+                    if(item !== i){
+                      let lem =  state.value.members.filter(items => items.id !== action.payload.id)
+                      lem.push(action.payload)
+                      return;
+                    }
                 }
-                
-                if(action.payload.block_user === true || action.payload.block_user === false){
-                    items.block_user = action.payload.block_user
-                }
-                
             }
-           })
+           }
         },
         deleteUser: (state, action) => {
             if(action.payload.delete_user === true){
                state.value.members.filter(elem => elem.id !== action.payload.id) 
             }
-        }
+        },
+        uploadMeetings: (state, action) => {
+            if(!state.value.school_meetings.find(elem => elem.id === action.payload.id)){
+                state.value.school_meetings.push(action.payload)
+            }
+        },
+        deleteMeeting: (state, action) => {
+            state.value.school_meetings.filter(items => items.id !== action.payload.id)
+        },
+
 
     }
 })
 
 
-export const {setSchool, updateSchool,setMember,updateMember,deleteUser} = DatabaseSlice.actions
+export const {setSchool, updateSchool,setMember,updateMember,deleteUser,uploadMeetings,deleteMeeting} = DatabaseSlice.actions
 export default DatabaseSlice.reducer

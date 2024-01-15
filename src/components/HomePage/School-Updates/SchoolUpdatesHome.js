@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SidePanel from '../sidePanel'
 import styles from '@/components/HomePageCSS/schoolsUpdates.module.css'
 import Message from './Message'
@@ -9,15 +9,31 @@ import { useDatabase } from '@/components/features/dbContext'
 import Messages from './Messages'
 import Categories from './Categories'
 import { useSelector } from 'react-redux'
+import Loader from '@/components/shared/Loader'
 
 
 
 export default function SchoolUpdatesHome() {
-const {meetingModal, setMeeting} = useDatabase()
+const {meetingModal, setMeeting, loading} = useDatabase()
 const userPosts = useSelector(state => state.Database.value.posts)
 const userMeetings = useSelector(state => state.Database.value.school_meetings)
 const posts = [...userPosts]
 const meetings = [...userMeetings]
+const [sortedMeetings, setSortedMeetings] = useState([])
+
+useEffect(() => {
+  setSortedMeetings([])
+  const met = meetings.sort((a,b) => {
+    if(a.date > b.date){
+      return -1;
+    }
+    else if(a.date < b.date){
+      return 1;
+    }
+    else return 0;
+    })
+    setSortedMeetings(met)
+},[meetings])
 const sortedPosts = posts.filter(item => item.category !== meetingModal.category).sort((a,b) => {
 if(a.date_created > b.date_created){
   return -1;
@@ -27,18 +43,10 @@ else if(a.date_created < b.date_created){
 }
 else return 0;
 })
-const sortedMeetings = meetings.sort((a,b) => {
-if(a.date > b.date){
-  return -1;
-}
-else if(a.date < b.date){
-  return 1;
-}
-else return 0;
-})
 
-return(
-  <>
+
+ return(
+  <div className={styles.container}>
     {
   meetingModal.name === "Meetings" ? <Meetings/>
   : meetingModal.name === "Messages" ? <Messages/> 
@@ -96,7 +104,7 @@ return(
         <div className={styles.Timeline}>
             <div className={styles.upcoming}>
                 {
-                  sortedMeetings.filter(meeting => meeting.date > Date.now()).slice(0,2).sort((a,b)=> {
+                  sortedMeetings.filter(meeting => meeting.date > Date.now()).sort((a,b)=> {
                     if(a.date > b.date) return 1;
                     else if(a.date < b.date) return -1;
                     else return 0;
@@ -107,7 +115,7 @@ return(
             </div>
             <div className={styles.recent}>
             {
-                  sortedMeetings.filter(meeting => meeting.date < Date.now()).slice(0,2).map((item, index) => (
+                  sortedMeetings.filter(meeting => meeting.date < Date.now()).map((item, index) => (
                     <Upcoming key={index} meeting={item} state={"Past Meeting"}/>
                   ))
                 }
@@ -117,5 +125,5 @@ return(
     </>
   )
 }
-  </>
+  </div>
   )}
