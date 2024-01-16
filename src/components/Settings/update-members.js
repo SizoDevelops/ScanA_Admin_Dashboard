@@ -43,11 +43,10 @@ const UpdateMembers = () => {
     const members = [];
     membersCopy.forEach((elem) => {
       if (
-        elem.last_name.includes(search) ||
-        elem.first_name.includes(search) ||
-        elem.position.includes(search) ||
-        elem.title.includes(search) ||
-        elem.initial.includes(search)
+        elem.last_name.toUpperCase().includes(search.toUpperCase()) ||
+        elem.first_name.toUpperCase().includes(search.toUpperCase()) ||
+        elem.title.toUpperCase().includes(search.toUpperCase()) ||
+        elem.initial.toUpperCase().includes(search.toUpperCase())
       ) {
         members.push(elem);
         setMembers(members);

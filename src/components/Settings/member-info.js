@@ -7,7 +7,7 @@ const MemberInfo = ({title, position, code, initial, last_name, dlt,key}) => {
           <div className={styles.profileDetails}>
             <p className={styles.delete} onClick={() => dlt(code)}>Delete</p>
             <h4>{title} {initial} {last_name}</h4>
-            <p>{position[0]+ "..."}</p>
+            <p>{position[0]}</p>
             <p>{code}</p>
           </div>
         </div>

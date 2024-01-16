@@ -23,7 +23,7 @@ useEffect(() => {
   setUsers(schema.members)
   const members = []
   schema.members.forEach(elem => {
-    if(elem.last_name.toUpperCase().includes(search.toUpperCase()) || elem.first_name.toUpperCase().includes(search.toUpperCase()) || elem.position.toUpperCase().includes(search.toUpperCase()) || elem.title.toUpperCase().includes(search.toUpperCase()) || elem.initial.toUpperCase().includes(search.toUpperCase())){
+    if(elem.last_name.toUpperCase().includes(search.toUpperCase()) || elem.first_name.toUpperCase().includes(search.toUpperCase())  || elem.title.toUpperCase().includes(search.toUpperCase()) || elem.initial.toUpperCase().includes(search.toUpperCase())){
         members.push(elem)
         setUsers(members)
     }

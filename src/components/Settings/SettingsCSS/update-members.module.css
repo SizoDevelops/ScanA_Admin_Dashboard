@@ -64,7 +64,7 @@
     color: #111115;
   }
   .cat{
-    padding: 5px 14px;
+    padding: 5px 0px;
     background-color: #111115;
     display: flex;
     justify-content: center;
@@ -80,7 +80,7 @@
   /* ///////////////////////////// */
 
   .containerProfile{
-    width: 300px;
+    width: 350px;
     height: 150px;
     background-color: #111115; 
     border-radius: 10px;
@@ -110,7 +110,7 @@
 .profileDetails > p{
     font-size: min(12px, 3vw);
     color:#cccccc;
-    width: 80%;
+    
 }
 .profileDetails ol li {
     font-size: min(12px, 3vw);

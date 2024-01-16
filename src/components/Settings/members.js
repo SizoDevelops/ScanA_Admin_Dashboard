@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '../Settings/SettingsCSS/update-members.module.css'
 import { useDatabase } from '../features/dbContext'
 import { useDispatch } from 'react-redux'
-import { deleteUser, updateMember } from '../shared/DatabaseSlice'
+import { deleteUser } from '../shared/DatabaseSlice'
 import { useModal } from './modalCont'
 
 
@@ -12,7 +12,6 @@ export default function MemberProfile({image,title, initial, last_name, position
   const {updateUser} = useDatabase()
   const dispatch = useDispatch()
   const {setUserData} = useModal()
-  const {loading} = useDatabase()
   
 
 return (
@@ -29,15 +28,15 @@ return (
     
         </div>
         <div className={styles.profileDetails}>
-          <h4>{`${title} ${initial} ${last_name}`}</h4>
+          <h4>{`${title.toUpperCase()} ${initial.toUpperCase()} ${last_name.toUpperCase()}`}</h4>
 
-          <p>{`Position: ${position[0]+"..."}`}</p>
+          <p>{`Position: ${position[0].toUpperCase()}`}</p>
           <p>{`Persal: ${persal || "N/A"}`}</p>
         </div>
       </div>
 
         <div className = {styles.options}>
-            <p className={styles.Name}>{`${title} ${initial} ${last_name}`}</p>
+            <p className={styles.Name}>{`${title.toUpperCase()} ${initial.toUpperCase()} ${last_name.toUpperCase()}`}</p>
 
             <div className={styles.Option}>
                 <p onClick={async() =>{ 
@@ -52,9 +51,9 @@ return (
                   }}>{blocked ? "Unblock User" :"Block User"}</p> */}
 
                 <p onClick={async() =>{ 
-                  
-                  await updateUser({key: keyID, user_details:{id}, delete_user: true})
                   dispatch(deleteUser({delete_user: true}))
+                  await updateUser({key: keyID, user_details:{id}, delete_user: true})
+                  
                   }}>{"Delete User Information"}</p>
             </div>
         </div>

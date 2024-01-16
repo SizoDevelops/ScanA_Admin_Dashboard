@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import { useContext } from 'react'
 import { createContext } from 'react'
+import { useDispatch } from 'react-redux'
+import { updateMember } from '../shared/DatabaseSlice'
 const initialState = {
     id: '',
     title: '',
@@ -34,6 +36,7 @@ export const useModal = () => {
 }
 export const ModalProvider = ({children}) => {
     const [userData, setUserData] = useState(initialState)
+    const dispatch = useDispatch()
     const updateUser = async (data) => {
         let res = await fetch("/api/update-user", {
             method: "POST",
@@ -45,7 +48,8 @@ export const ModalProvider = ({children}) => {
 
         })
 
-        if(res){
+        if(res.ok){
+            dispatch(updateMember(data))
             return "Successful"
         }
         else {
