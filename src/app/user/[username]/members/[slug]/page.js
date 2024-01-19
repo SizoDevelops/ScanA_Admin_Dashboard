@@ -46,11 +46,11 @@ export default function Member({params}) {
             <div className={styles.Contacts}>
               <div>
                 <p>Role</p>
-                <p>{member ? member.position.join(", ") : "Loading Position"}</p>
+                <p>{ member?.position.join(", ") || "Loading Position"}</p>
               </div>
               <div>
                 <p>Phone Number</p>
-                <p>{member ? member.phone_number : "No Number"} </p>
+                <p>{member?.phone_number || "No Number"} </p>
               </div>
               <div>
                 <p>Email Address</p>

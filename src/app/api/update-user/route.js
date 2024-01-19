@@ -37,6 +37,7 @@ else {
     updated_user.phone_number = body.user_details.phone_number
     updated_user.persal = body.user_details.persal
     updated_user.subjects  = body.user_details.subjects
+    updated_user.block_user = body.user_details.block_user
     }
     const members = user.members.filter(item => item.id !== body.user_details.id)
     const newM = members.concat([updated_user])

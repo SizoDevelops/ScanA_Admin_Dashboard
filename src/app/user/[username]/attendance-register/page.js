@@ -155,11 +155,11 @@ export default function ExcelPage() {
       link.download = `UserAttendance_Week_${sWeek.value}_${year.value}.xlsx`;
       link.click();
     });
-    alert(password)
+    // alert(password)
   };
 
  
-  if(loading || membersCopy.length === 0) {
+  if(loading) {
     return <Loader/>
   }
 

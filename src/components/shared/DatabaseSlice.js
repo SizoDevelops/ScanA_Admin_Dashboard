@@ -42,9 +42,6 @@ const DatabaseSlice = createSlice({
             state.value = action.payload
      
         },
-        updateSchool: (state, action) => {
-
-        },
         setMember: (state, action) => {
             state.value.members.push(action.payload)
         },

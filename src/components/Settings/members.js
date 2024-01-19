@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../Settings/SettingsCSS/update-members.module.css'
 import { useDatabase } from '../features/dbContext'
-import { useDispatch } from 'react-redux'
-import { deleteUser } from '../shared/DatabaseSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteUser, updateMember } from '../shared/DatabaseSlice'
 import { useModal } from './modalCont'
 
 
@@ -12,8 +12,12 @@ export default function MemberProfile({image,title, initial, last_name, position
   const {updateUser} = useDatabase()
   const dispatch = useDispatch()
   const {setUserData} = useModal()
-  
+  const user = useSelector(state => state.Database.value.members)
+  const [member, setMember] = useState(user.find(member => member.id === id))
 
+  useEffect(() => {
+    setMember(user.find(member => member.id === id))
+  },[user])
 return (
   
     <div className={styles.Links}>
@@ -44,17 +48,21 @@ return (
                   setUserData(data)
              
                   }}>Update Profile</p>
-                {/* <p onClick={async() => {
+                <p onClick={async() => {
+                  const newData = {
+                    ...member,
+                    block_user: member.block_user ? false : true,
+                  }
+                  dispatch(updateMember(newData))
+                  await updateUser({key: keyID, user_details: newData})
                   
-                  await updateUser({key: keyID, id: id, block_user: !blocked})
-                  dispatch(updateMember({block_user: !blocked}))
-                  }}>{blocked ? "Unblock User" :"Block User"}</p> */}
+                  }}>{member.block_user ? "Unblock User" :"Block User"}</p>
 
                 <p onClick={async() =>{ 
                   dispatch(deleteUser({delete_user: true}))
-                  await updateUser({key: keyID, user_details:{id}, delete_user: true})
+                  await updateUser({key: keyID, user_details:data, delete_user: true})
                   
-                  }}>{"Delete User Information"}</p>
+                  }}>{"Delete User"}</p>
             </div>
         </div>
 
