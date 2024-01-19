@@ -165,7 +165,17 @@
   border-left: 1px solid #2e393a;
 }
 
-
+.visuallyHidden{
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  white-space: nowrap;
+  width: 1;
+}
   .subHeadings{
 
     border-bottom: 1px solid #2e393a;
@@ -192,6 +202,13 @@
     display: flex;
     cursor: pointer;
    gap: 5px;
+   margin-bottom: 10px;
+  }
+  .buttons:nth-child(even){
+    visibility: hidden;
+  }
+  .btns:hover .buttons:nth-child(even){
+      visibility: visible;
   }
 .buttons:active{
   background: #68696A;
