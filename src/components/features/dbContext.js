@@ -52,8 +52,9 @@ export const DatabaseProvider = ({children}) => {
       }
 
     useEffect(() => {
-      setLoading(true)
+      
         if(session){
+        
           getUser({key:session?.user.key}) 
         }
         else {

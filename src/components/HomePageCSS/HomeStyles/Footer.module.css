@@ -1,12 +1,14 @@
 .cont{
-    width: min(98vw, 1440px);
-    min-height: 300px;
+    width: min(100vw, 1440px);
+    min-height: 80px;
     margin: auto;
     position: relative;
     justify-content: space-evenly;
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
+    align-items: center;
+    display: inline-flex;
     border-top: 1px solid #dddddd;
     margin-top: 30px;
+    color: #b6b6b6;
+    background: #1f1f1f;
+    font-size: min(3vw, 16px);
 }
