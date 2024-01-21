@@ -10,7 +10,7 @@ const NavBar = () => {
             </div>
             <ul className={styles.navList}>
                 <li><Link href={"/"}>Home</Link></li>
-                <li>Pricing</li>
+                <li><Link href={"/pricing"}>Pricing</Link></li>
                 
                 <li>About</li>
                 <li onClick={signIn}>Login</li>
