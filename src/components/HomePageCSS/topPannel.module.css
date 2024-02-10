@@ -225,11 +225,12 @@
     flex-direction: row;
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .Select{
     padding: 7px 20px;
-    width: min(480px, 40vw);
+    width: min(380px, 40vw);
     height: 60px;
     outline: none;
     border: none;

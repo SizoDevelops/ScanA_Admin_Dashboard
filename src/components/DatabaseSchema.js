@@ -1,54 +1,89 @@
-"use client"
-
+"use client";
 
 export const DataBaseFunc = () => {
-    const MySchema = {
-            id: "SCNA-ICHSS-WDWDWDWD", // Unique identifier for the chat session
-            participants: ["SCNA-SDWDW", "SCNA-WDWDWD"], // Array of user IDs participating in the chat
-            createdAt: 123324121244, // Date and time the chat session was created
-          
-            // Messages
-            messages: [
-              {
-                id: String, // Unique identifier for each message
-                sender: String, // User ID of the message sender
-                recipient: String, // User ID of the message recipient (null if sent to all participants)
-                content: String, // Message text
-                timestamp: Date, // Date and time the message was sent
-                read: Boolean, // Whether the message is read by the recipient
-                reactions: { // Object containing emojis and user IDs who reacted
-                  thumbsUp: [String], // Array of user IDs who upvoted
-                  thumbsDown: [String], // Array of user IDs who downvoted
-                  // Add other emoji reactions as needed
-                },
-              },
-            ],
-          
-            // Additional data (optional)
-            unreadCount: { // Object mapping user IDs to their unread message count
-              user1: 2,
-              user2: 0,
-            },
-            lastMessage: { // Object containing details of the most recent message
-              id: String,
-              sender: String,
-              content: String,
-              timestamp: Date,
-            },
-          };
-          
-          // Example usage:
-          const myChat = {
-            id: "chat123",
-            participants: ["user1", "user2"],
-            messages: [
-              // ... individual messages ...
-            ],
-            // ... other chat details ...
-          };
-          
-     
-  
+  const MySchema = [
+    {
+      last_name: "Gumbi",
+      initial: "PO",
+      code: "SCNA-EFERG-HEIOEH",
+      day: "Monday",
+      date: "2024-04-05",
+      reason: "Moderation",
+      week: 1,
+    },
+    {
+      last_name: "Resting",
+      initial: "RE",
+      code: "SCNA-EFERG-HEFEH",
+      day: "Monday",
+      date: "2023-04-05",
+      reason: "Moderation",
+      week: 2,
+    },
+    {
+      last_name: "Mhlanga",
+      initial: "SM",
+      code: "SCNA-EFERG-HFHEH",
+      day: "Monday",
+      date: "2024-04-05",
+      reason: "Moderation",
+      week: 2,
+    },
+    {
+      last_name: "Baker",
+      initial: "QW",
+      code: "SCNA-EFERG-HEFHE",
+      day: "Monday",
+      date: "2024-04-05",
+      reason: "Moderation",
+      week: 3,
+    },
+    {
+      last_name: "Baker",
+      initial: "QW",
+      code: "SCNA-EFERG-HEFHE",
+      day: "Tuesday",
+      date: "2024-04-06",
+      reason: "Moderation",
+      week: 3,
+    },
+    {
+      last_name: "Baker",
+      initial: "QW",
+      code: "SCNA-EFERG-HEFHE",
+      day: "Wednesday",
+      date: "2024-04-07",
+      reason: "Moderation",
+      week: 3,
+    },
+    {
+      last_name: "Mhlongo",
+      initial: "SM",
+      code: "SCNA-EFERG-HYFHEH",
+      day: "Monday",
+      date: "2024-04-05",
+      reason: "Moderation",
+      week: 1,
+    },
+    {
+      last_name: "Mhlongo",
+      initial: "SM",
+      code: "SCNA-EFERG-HYFHEH",
+      day: "Friday",
+      date: "2024-04-10",
+      reason: "Moderation",
+      week: 1,
+    },
+    {
+      last_name: "Bongo",
+      initial: "SV",
+      code: "SCNA-EFERG-FHEH",
+      day: "Monday",
+      date: "2024-04-05",
+      reason: "Moderation",
+      week: 1,
+    },
+  ];
 
-     return {MySchema}
-}
+  return { MySchema };
+};
