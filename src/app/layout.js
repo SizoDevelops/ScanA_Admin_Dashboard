@@ -1,3 +1,4 @@
+import { StrictMode } from 'react'
 import './globals.css'
 import Providers from '@/components/Providers'
 
@@ -9,6 +10,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <StrictMode>
+
+   
     <html lang="en">
       
 
@@ -17,7 +21,7 @@ export default function RootLayout({ children }) {
         </Providers>
      
     </html>
-
+    </StrictMode>
    
   )
 }

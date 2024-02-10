@@ -81,12 +81,12 @@ const UserAttendanceTable = ({ userData, week, year }) => {
         if(attendanceDetails.length > 0){
         return  attendanceDetails.map(entry => (
        
-            <div key={entry.date} className={styles.headers}>
+            <span key={entry.date} className={styles.headers}>
               {
                       entry.absent === true ? <span style={{width: "350px", wordWrap:"unset", wordBreak: "keep-all", textAlign: "center", textTransform: "capitalize", color: "red"}}>{entry.reason}</span>
                       :
                    
-                       <div className={styles.times}>
+                       <span className={styles.times}>
                           <span style={{color:"#00850b"}}>{entry.timein}</span>
                           <span style={{display: "none"}}>{"--"}</span>
                           <span style={{color:"#00850b"}}>{entry.initial}</span>
@@ -94,10 +94,10 @@ const UserAttendanceTable = ({ userData, week, year }) => {
                           <span style={{color:"#00850b"}}>{entry.timeout}</span>
                            <span style={{display: "none"}}>  {"--"} </span>
                           <span style={{color:"#00850b"}}>{entry.initial}</span> 
-                      </div>
+                      </span>
                   
                     }
-            </div>
+            </span>
     
 
           )); 

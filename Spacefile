@@ -1,10 +1,8 @@
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
-  - name: scana-admin-dashboard
+  - name: ScanaDashboard
     src: ./
     engine: next
     primary: true
     dev: npm run dev
-    presets:
-        api_keys: true

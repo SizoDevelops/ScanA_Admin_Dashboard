@@ -212,7 +212,7 @@
 
 .free {
     width: min(1000px, 95vw);
-    min-height: 200px;
+    min-height: 300px;
     display: flex;
     margin: auto;
     justify-content: center;

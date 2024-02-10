@@ -39,24 +39,24 @@ export default function DashProfile({image, slug, title, initial, last_name, pos
   <path d="M237 88.9712V44.9856M237 88.9712V144H175.301L237 70.2539M237 88.9712V70.2539M237 44.9856V1H156.02L237 70.2539M237 44.9856V70.2539M1 1V50.4136L33.7778 1H1ZM1 93.089V141.754H33.7778L1 93.089Z" stroke="#04A3FF"/>
   <defs>
     <linearGradient id="paint0_linear_2847_263" x1="119" y1="42" x2="86.9643" y2="125.986" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#04A3FF"/>
-      <stop offset="1" stop-color="#00101A"/>
+      <stop stopColor="#04A3FF"/>
+      <stop offset="1" stopColor="#00101A"/>
     </linearGradient>
     <linearGradient id="paint1_linear_2847_263" x1="119" y1="42" x2="86.9643" y2="125.986" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#04A3FF"/>
-      <stop offset="1" stop-color="#00101A"/>
+      <stop stopColor="#04A3FF"/>
+      <stop offset="1" stopColor="#00101A"/>
     </linearGradient>
     <linearGradient id="paint2_linear_2847_263" x1="119" y1="42" x2="86.9643" y2="125.986" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#04A3FF"/>
-      <stop offset="1" stop-color="#00101A"/>
+      <stop stopColor="#04A3FF"/>
+      <stop offset="1" stopColor="#00101A"/>
     </linearGradient>
     <linearGradient id="paint3_linear_2847_263" x1="119" y1="42" x2="86.9643" y2="125.986" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#04A3FF"/>
-      <stop offset="1" stop-color="#00101A"/>
+      <stop stopColor="#04A3FF"/>
+      <stop offset="1" stopColor="#00101A"/>
     </linearGradient>
     <linearGradient id="paint4_linear_2847_263" x1="119" y1="42" x2="86.9643" y2="125.986" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#04A3FF"/>
-      <stop offset="1" stop-color="#00101A"/>
+      <stop stopColor="#04A3FF"/>
+      <stop offset="1" stopColor="#00101A"/>
     </linearGradient>
   </defs>
 </svg>
