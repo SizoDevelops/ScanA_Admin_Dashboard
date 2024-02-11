@@ -1,89 +1,84 @@
 "use client";
 
-export const DataBaseFunc = () => {
-  const MySchema = [
-    {
-      last_name: "Gumbi",
-      initial: "PO",
-      code: "SCNA-EFERG-HEIOEH",
-      day: "Monday",
-      date: "2024-04-05",
-      reason: "Moderation",
-      week: 1,
-    },
-    {
-      last_name: "Resting",
-      initial: "RE",
-      code: "SCNA-EFERG-HEFEH",
-      day: "Monday",
-      date: "2023-04-05",
-      reason: "Moderation",
-      week: 2,
-    },
-    {
-      last_name: "Mhlanga",
-      initial: "SM",
-      code: "SCNA-EFERG-HFHEH",
-      day: "Monday",
-      date: "2024-04-05",
-      reason: "Moderation",
-      week: 2,
-    },
-    {
-      last_name: "Baker",
-      initial: "QW",
-      code: "SCNA-EFERG-HEFHE",
-      day: "Monday",
-      date: "2024-04-05",
-      reason: "Moderation",
-      week: 3,
-    },
-    {
-      last_name: "Baker",
-      initial: "QW",
-      code: "SCNA-EFERG-HEFHE",
-      day: "Tuesday",
-      date: "2024-04-06",
-      reason: "Moderation",
-      week: 3,
-    },
-    {
-      last_name: "Baker",
-      initial: "QW",
-      code: "SCNA-EFERG-HEFHE",
-      day: "Wednesday",
-      date: "2024-04-07",
-      reason: "Moderation",
-      week: 3,
-    },
-    {
-      last_name: "Mhlongo",
-      initial: "SM",
-      code: "SCNA-EFERG-HYFHEH",
-      day: "Monday",
-      date: "2024-04-05",
-      reason: "Moderation",
-      week: 1,
-    },
-    {
-      last_name: "Mhlongo",
-      initial: "SM",
-      code: "SCNA-EFERG-HYFHEH",
-      day: "Friday",
-      date: "2024-04-10",
-      reason: "Moderation",
-      week: 1,
-    },
-    {
-      last_name: "Bongo",
-      initial: "SV",
-      code: "SCNA-EFERG-FHEH",
-      day: "Monday",
-      date: "2024-04-05",
-      reason: "Moderation",
-      week: 1,
-    },
-  ];
-
-  return { MySchema };
+const generateRandomCode = () => {
+  // Generate a random alphanumeric code (you may need a more sophisticated method)
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const codeLength = 16;
+  let code = "";
+  for (let i = 0; i < codeLength; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    code += characters.charAt(randomIndex);
+  }
+  return code;
 };
+
+const generateRandomDate = () => {
+  // Generate a random date (you may need a more sophisticated method)
+  const startDate = new Date("2022-01-01");
+  const endDate = new Date("2024-02-28");
+  const randomDate = new Date(
+    startDate.getTime() +
+      Math.random() * (endDate.getTime() - startDate.getTime())
+  );
+  return randomDate.toISOString().split("T")[0];
+};
+
+const generateRandomReason = () => {
+  const reasons = [
+    "Moderation",
+    "Excused Absence",
+    "Family Emergency",
+    "Appointment",
+    "Other",
+  ];
+  const randomIndex = Math.floor(Math.random() * reasons.length);
+  return reasons[randomIndex];
+};
+const generateRandomLastName = () => {
+  const lastNames = [
+    "Gumbi",
+    "Smith",
+    "Jones",
+    "Johnson",
+    "Brown",
+    "Williams",
+    "Lee",
+    "Kim",
+  ];
+  const randomIndex = Math.floor(Math.random() * lastNames.length);
+  return lastNames[randomIndex];
+};
+const generateRandomDay = () => {
+  const lastNames = ["Monday", "Tuesday", "Wednesday", "Friday", "Thursday"];
+  const randomIndex = Math.floor(Math.random() * lastNames.length);
+  return lastNames[randomIndex];
+};
+
+const generateRandomData = () => {
+  const lastName = generateRandomLastName();
+  const uniqueCode = generateRandomCode();
+
+  return {
+    last_name: `${lastName}`, // Combining last name with unique code
+    initial: "PO",
+    code: uniqueCode,
+    day: generateRandomDay(),
+    date: generateRandomDate(),
+    reason: generateRandomReason(),
+    week: Math.floor(Math.random() * 4) + 1, // Generate a random week (1 to 4)
+  };
+};
+
+const generateUniqueDataArray = (count) => {
+  const dataArray = [];
+  const uniqueCodes = new Set();
+
+  while (dataArray.length < count) {
+    const data = generateRandomData();
+    dataArray.push(data);
+  }
+
+  return dataArray;
+};
+
+export const uniqueDataArray = generateUniqueDataArray(200);

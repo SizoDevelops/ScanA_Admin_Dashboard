@@ -4,18 +4,18 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../HomePageCSS/table.module.css";
 import { useSelector } from "react-redux";
-import { DataBaseFunc } from "@/components/DatabaseSchema";
+import {uniqueDataArray } from "@/components/DatabaseSchema";
 
 export default function MovementTable({ week, position, year }) {
   const [memberArray, setMembers] = useState([]);
   const schema = useSelector((state) => state.Database.value.members);
-  const membersCopy = DataBaseFunc().MySchema;
-
+  const membersCopy = uniqueDataArray;
+  const regex = new RegExp(year);
   useEffect(() => {
     let filteredMembers = membersCopy;
     setMembers([]);
     if (position !== "" && position !== "All") {
-      filteredMembers = membersCopy.filter((item) => item.code === position);
+      filteredMembers = membersCopy.filter((elem) => elem.code === position && regex.test(elem.date));
     }
     setMembers(filteredMembers);
   }, [position, schema]);
@@ -47,7 +47,7 @@ const UserAttendanceTable = ({ userData, week, year }) => {
               <td>{user.code}</td>
               <td>{user.day}</td>
               <td>{user.date}</td>
-              <td>{"Week " + user.week}</td>
+              <td>{ user.week < 10 ? "Week " + "0" + user.week : "Week " + user.week}</td>
               <td>{user.reason}</td>
             </tr>
           ));

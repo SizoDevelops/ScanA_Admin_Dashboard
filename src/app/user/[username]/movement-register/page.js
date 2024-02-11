@@ -11,7 +11,7 @@ import { useDatabase } from "@/components/features/dbContext";
 
 import ExcelJS from "exceljs";
 import MovementTable from "@/components/HomePage/Excel-Files/movementTable";
-import { DataBaseFunc } from "@/components/DatabaseSchema";
+import { uniqueDataArray } from "@/components/DatabaseSchema";
 const voucher_codes = require("voucher-code-generator");
 
 export default function Page() {
@@ -21,7 +21,7 @@ export default function Page() {
   const [week, setWeek] = useState([]);
   const [years, setYears] = useState([]);
   const schema = useSelector((state) => state.Database.value.members);
-  const members = DataBaseFunc().MySchema;
+  const members = uniqueDataArray;
   const [sWeek, selectedWeek] = useState({
     value: getCurrentWeek(),
     label: "Week " + getCurrentWeek(),
@@ -32,6 +32,7 @@ export default function Page() {
     label: currentYear,
   });
   const { loading } = useDatabase();
+  
 
   const membersCopy = members.sort((a, b) => {
     if (a.last_name < b.last_name) {
@@ -42,6 +43,7 @@ export default function Page() {
     return 0;
   });
   useEffect(() => {
+    const regex = new RegExp(year.value);
     setMembers([{ value: "All", label: "All" }]);
     const membered = [];
     membersCopy.forEach((elem) => {
@@ -50,16 +52,19 @@ export default function Page() {
           (item) => item.value.toUpperCase() === elem.code.toUpperCase()
         )
       )
-        membered.push({
-          value: elem.code,
-          label: elem.last_name + " " + elem.initial,
-        });
+      if(regex.test(elem.date)){
+           membered.push({
+            value: elem.code,
+            label: elem.last_name + " " + elem.initial,
+          });
+      }
+       
     });
 
     const Weeks = [];
     const Years = [];
 
-    const value = DataBaseFunc().MySchema;
+    const value = members;
     if (value !== null) {
       value.forEach((item) => {
         if (!Weeks.find((i) => i.value === item.week))
@@ -92,7 +97,7 @@ export default function Page() {
 
     setWeek(Weeks.sort((a, b) => a.value - b.value));
     setYears(Years.sort((a, b) => a.value - b.value));
-  }, [schema]);
+  }, [schema, year]);
 
   function getCurrentWeek() {
     const today = new Date();
@@ -171,7 +176,7 @@ export default function Page() {
       const blob = new Blob([buffer], { type: "application/octet-stream" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `UserAttendance_Week_${sWeek.value}_${year.value}.xlsx`;
+      link.download = `Movement_Register_${year.value}.xlsx`;
       link.click();
     });
     // alert(password)
@@ -217,7 +222,7 @@ export default function Page() {
         <div className={styles.content}>
           <div className={styles.DownloadActions}>
             <p className={styles.Date}>
-              {"Week " + sWeek.value + " - " + year.value}
+              {/* {"Week " + sWeek.value + " - " + year.value} */}
             </p>
             <div className={styles.btns}>
               <div className={styles.buttons} onClick={exportToExcel}>
@@ -251,20 +256,6 @@ export default function Page() {
               year={year.value}
             />
           </table>
-
-          {week.map((item, index) => (
-            <table
-              key={item.value}
-              id={"data-table" + item.value}
-              className={styles.visuallyHidden}
-            >
-              <MovementTable
-                week={item.value}
-                position={sPosition.value}
-                year={year.value}
-              />
-            </table>
-          ))}
         </div>
       </body>
     );
