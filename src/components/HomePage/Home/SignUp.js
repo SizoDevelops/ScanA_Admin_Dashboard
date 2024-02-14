@@ -12,12 +12,14 @@ import { useSession } from "next-auth/react";
 const voucher_codes = require("voucher-code-generator");
 
 const generateUniqueCode = (prefix) => {
-  return voucher_codes.generate({
-    count: 1,
-    length: 5,
-    prefix: prefix,
-    charset: "alphabetic"
-  })[0].toUpperCase();
+  return voucher_codes
+    .generate({
+      count: 1,
+      length: 5,
+      prefix: prefix,
+      charset: "alphabetic",
+    })[0]
+    .toUpperCase();
 };
 const schoolCode = generateUniqueCode("SCNA-");
 const userCode = generateUniqueCode(schoolCode + "-");
@@ -26,8 +28,6 @@ const SignUp = () => {
   const { sendSignUp, errCode, setCode } = useDatabase();
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
-
-
 
   function areSomeFieldsEmpty(obj) {
     for (let key in obj) {
@@ -38,10 +38,9 @@ const SignUp = () => {
     return false; // No empty or falsy fields found
   }
   const handleFormSubmit = async (values, { resetForm }) => {
-
     values.school_code = schoolCode;
     values.school_admin.admin_code = userCode;
-      if (areSomeFieldsEmpty(values)) {
+    if (areSomeFieldsEmpty(values)) {
       return;
     }
 
@@ -57,7 +56,8 @@ const SignUp = () => {
           body: JSON.stringify({
             data: values,
             password: values.password,
-            school_email: values.school_email
+            school_email: values.school_email,
+            school_emis: values.school_emis,
           }),
         });
 
@@ -65,47 +65,46 @@ const SignUp = () => {
 
         if (data === "User Already Exists") {
           setCode({
-            title: "School Email Already Registered!",
-            message: "This user email has already been used, please try a new email or login instead.",
-            type: "Error"
+            title: "Email Or Emis Number Already Registered.",
+            message:
+              "These user details are in use, Please re-check and try again, or log in instead.",
+            type: "Error",
           });
-         
-          setLoading(false);
 
+          setLoading(false);
         } else if (data === undefined) {
           setCode({
             title: "Oops our bad please try again!",
-            message: "We messed up on that one. Please click submit again to sign up.",
-            type: "Other"
+            message:
+              "We messed up on that one. Please click submit again to sign up.",
+            type: "Other",
           });
           setLoading(false);
-  
         } else {
           await sendSignUp({
             name: `${data.school_admin.admin_name}`,
             page: `https://scana-dashboard.netlify.app/login?code=${data.school_code}&email=${data.school_email}`,
             user: [data.school_admin.admin_email, data.school_email],
             code: data.school_code,
-            user_mail: data.school_email
+            user_mail: data.school_email,
           });
 
-          
           setLoading(false);
-          resetForm(initValues)
+          resetForm(initValues);
         }
       } catch (err) {
         setLoading(false);
         setCode({
           title: "Something Went Wrong!",
           message: "Please check your connection and try registering again.",
-          type: "Error"
+          type: "Error",
         });
       }
     }
   };
   const initValues = {
     school_name: "",
-    school_slogan: "",
+    school_emis: "",
     school_email: "",
     school_number: "",
     school_meetings: [],
@@ -137,40 +136,35 @@ const SignUp = () => {
     },
     password: "",
     confirm_password: "",
+    reset_tokens: {
+      token: "",
+      used: false
+    },
   };
 
-  if (status === "loading") {
-    return <Loader />;
-  } else if (status === "authenticated")
-    redirect(
-      `/user/${session.user?.school_name?.split(" ")[0]}${
-        session.user?.school_name?.split(" ")[1]
-      }`
-    );
- 
- else return (
-    <body className={styles.Body}>
-      <NavBar />
-      <div className={styles.container}>
-        {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
-        <div className={styles.textHolder}>
-          <h1>
-            Register Your <span>School</span>
-          </h1>
-        </div>
-        <div className={styles.BodyCont}>
-          <div className={styles.Images}>
-            <div className={styles.image1}></div>
-            <div className={styles.image2}></div>
+    return (
+      <body className={styles.Body}>
+        <NavBar />
+        <div className={styles.container}>
+          {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
+          <div className={styles.textHolder}>
+            <h1>
+              Register Your <span>School</span>
+            </h1>
           </div>
-       
+          <div className={styles.BodyCont}>
+            <div className={styles.Images}>
+              <div className={styles.image1}></div>
+              <div className={styles.image2}></div>
+            </div>
+
             <Formik
               initialValues={initValues}
               validate={validate}
               onSubmit={handleFormSubmit}
             >
               {() => (
-                <Form className={styles.formHolder} >
+                <Form className={styles.formHolder}>
                   <div className={styles.Steps}>
                     <h2>School Details</h2>
 
@@ -179,17 +173,16 @@ const SignUp = () => {
                       type="text"
                       name="school_name"
                       placeholder="School-Name Secondary School"
-                    
                     />
 
                     <ErrorMessage name="school_name" component="span" />
-                    <label htmlFor="school_slogan">School Slogan</label>
+                    <label htmlFor="school_emis">School Emis No.</label>
                     <Field
                       type="text"
-                      name="school_slogan"
-                      placeholder="We breathe and breed prosperity."
+                      name="school_emis"
+                      placeholder="400032323"
                     />
-
+                    <ErrorMessage name="school_emis" component="span" />
                     <label htmlFor="school_email">Email Address</label>
                     <Field
                       name="school_email"
@@ -302,11 +295,10 @@ const SignUp = () => {
                 </Form>
               )}
             </Formik>
-
+          </div>
         </div>
-      </div>
-    </body>
-  );
+      </body>
+    );
 };
 function Span() {
   return (

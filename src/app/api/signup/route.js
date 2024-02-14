@@ -9,7 +9,7 @@ const db = deta.Base("schools_db");
 export async function POST(request) {
   const body = await request.json();
 
-   const schoolSearch = await db.fetch([{"school_email": body.school_email}])
+   const schoolSearch = await db.fetch([{"school_email": body.school_email}, {"school_emis": body.school_emis}])
 
   const data = body.data
 

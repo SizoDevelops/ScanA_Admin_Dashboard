@@ -52,7 +52,7 @@ export default function SidePanel() {
 </div>
    
     {/* <RiFileExcel2Line /> */}
-    <p>Movemwent Register</p>
+    <p>Movement Register</p>
     </Link>
     {/*Matric Learners */}
     <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/school-updates`}>

@@ -2,7 +2,11 @@
     background: #ffffff;
     color: #111115;
 }
-
+.Steps span{
+    font-size: 10px;
+    margin-bottom: 20px;
+    color: #ff879b;
+}
 .container{
     width: min(1440px, 100vw);
     display: flex;

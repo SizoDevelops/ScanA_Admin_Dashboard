@@ -233,12 +233,16 @@ export const DatabaseProvider = ({children}) => {
           body: JSON.stringify(data)
         }).then(data => data.json())
         .then(data => {
-     
-          setCode({title: data, message: "The email has been successfully sent to the user.", type: "Success"})
+          if(data === "Email Sent Successfully"){
+            setCode({title: data, message: "The email has been successfully sent to the user.", type: "Success"}) 
+          }
+         else if (data === "Invalid Request"){
+          setCode({title: "User not found", message: "Oops! Seems like this user does not exist. Please make sure the details are correct.", type: "Error"}) 
+         }
           setCodeLoading(false)
         })
         .catch((err) => {
-          setCode({title: err.message,message: "Looks like we were unable to send the email to the user please try again.", type: "Error"})
+          setCode({title: err.message, message: "Looks like we were unable to send the email to the user please try again.", type: "Error"})
           setCodeLoading(false)
         })
       }

@@ -2,22 +2,16 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 import styles from '../../HomePageCSS/login.module.css'
-import { signIn, useSession} from 'next-auth/react';
-import { redirect, useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Loader from '@/components/shared/Loader';
+import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useDatabase } from '@/components/features/dbContext';
 import Modal from '../Modal';
 
 
 const Login = () => {
-  const {data: session, status} = useSession()
-  const { errCode, setCode } = useDatabase();
-if(status === "loading") {
-  return <Loader/>
-}
-else if (status === "authenticated") redirect(`/user/${session.user?.school_name?.split(" ")[0]}${session.user?.school_name?.split(" ")[1]}`)
-else return (
+const { errCode, setCode } = useDatabase();
+ return (
         <body className={styles.Body}>
         <NavBar/>
         <div className={styles.container}>
@@ -33,7 +27,7 @@ else return (
 
         <div className={styles.formHolder}>
             <StepOne setCode={setCode}/>
-            <p className={styles.Links}>Do not have an account? <Link href={"/signup"}>Sign Up</Link></p>
+            <p className={styles.Links}>Do not have an account? <Link href={"/signup"}>Sign Up</Link> or <Link href={"/forgot-password"}>Reset Password</Link></p>
         </div>
          </div>
       
