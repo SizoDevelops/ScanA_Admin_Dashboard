@@ -14,7 +14,7 @@ import Modal from "@/components/HomePage/Modal"
 
 export default function Member({params}) {
   const router = useParams()
-  const { loadingCode,errCode, sendEmail} = useDatabase()
+  const { loadingCode,errCode, sendUserEmail} = useDatabase()
   const member = useSelector(state => state.Database.value.members.filter(item => item.id === router.slug)[0])
   const {data: session} = useSession()
 
@@ -67,7 +67,7 @@ export default function Member({params}) {
  <div className={styles.Buttons}>
 
             <div className={styles.btn} onClick={async () =>{
-             await sendEmail({
+             await sendUserEmail({
                 name: `${member.title} ${member.last_name}`,
                 page: `https://scana.netlify.app?code=${session?.user.key}&usercode=${member.code}`,
                 user: member.email,

@@ -246,6 +246,26 @@ export const DatabaseProvider = ({children}) => {
           setCodeLoading(false)
         })
       }
+      const sendUserEmail = async (data) => {
+        setCodeLoading(true)
+        await fetch("/api/send-user-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then(data => data.json())
+        .then(data => {
+          if(data === "Email Sent Successfully"){
+            setCode({title: data, message: "The email has been successfully sent to the user.", type: "Success"}) 
+          }
+          setCodeLoading(false)
+        })
+        .catch((err) => {
+          setCode({title: err.message, message: "Looks like we were unable to send the email to the user please try again.", type: "Error"})
+          setCodeLoading(false)
+        })
+      }
       const sendSignUp = async (data) => {
         setCodeLoading(true)
         await fetch("/api/send-signup", {
@@ -282,7 +302,8 @@ export const DatabaseProvider = ({children}) => {
         meetingModal,
         setMeeting,
         getCurrentWeek,
-        getUser
+        getUser,
+        sendUserEmail
          
     };
 
