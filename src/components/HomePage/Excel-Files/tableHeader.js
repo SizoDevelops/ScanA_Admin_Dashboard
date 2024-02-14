@@ -70,6 +70,7 @@ const UserAttendanceTable = ({ userData, week, year }) => {
     const getAttendanceDetails = (user, day) => {
       const regex = new RegExp(year);
       const dayData = user.attendance[day];
+      console.log(dayData);
       if (dayData) {
         const attendanceDetails = dayData.filter(
           (entry) => regex.test(entry.date) && entry.week === week
@@ -94,7 +95,7 @@ const UserAttendanceTable = ({ userData, week, year }) => {
                 <span className={styles.times}>
                   <span style={{ color: "#00850b" }}>{entry.timein}</span>
                   <span style={{ display: "none" }}>{"--"}</span>
-                  <span style={{ color: "#00850b" }}>{entry.initial}</span>
+                  <span style={{ color: "#00850b" }}>{user.initial}</span>
                   <span style={{ display: "none" }}> {"--"} </span>
                   {entry.timeout ? (
                     <span style={{ color: "#00850b" }}>{entry.timeout}</span>
@@ -103,7 +104,7 @@ const UserAttendanceTable = ({ userData, week, year }) => {
                   )}
                   <span style={{ display: "none" }}> {"--"} </span>
                   {entry.timeout ? (
-                    <span style={{ color: "#00850b" }}>{entry.initial}</span>
+                    <span style={{ color: "#00850b" }}>{user.initial}</span>
                   ) : (
                     <span style={{ color: "#00850b" }}>N/A</span>
                   )}
