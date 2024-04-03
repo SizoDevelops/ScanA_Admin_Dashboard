@@ -2,12 +2,11 @@
 import React, { useState } from "react";
 import styles from "../../HomePageCSS/signup.module.css";
 import NavBar from "./NavBar";
-import { Form, Formik, Field, ErrorMessage, FormikProvider } from "formik";
+import { Form, Formik, Field, ErrorMessage} from "formik";
 import { validate } from "@/lib/validate";
 import { useDatabase } from "@/components/features/dbContext";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
 import Modal from "../Modal";
-import Loader from "@/components/shared/Loader";
+
 import { useSession } from "next-auth/react";
 const voucher_codes = require("voucher-code-generator");
 
@@ -26,7 +25,6 @@ const userCode = generateUniqueCode(schoolCode + "-");
 
 const SignUp = () => {
   const { sendSignUp, errCode, setCode } = useDatabase();
-  const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
 
   function areSomeFieldsEmpty(obj) {
@@ -67,7 +65,7 @@ const SignUp = () => {
           setCode({
             title: "Email Or Emis Number Already Registered.",
             message:
-              "These user details are in use, Please re-check and try again, or log in instead.",
+              "These user details are already in use, Please re-check and try again, or log in instead.",
             type: "Error",
           });
 

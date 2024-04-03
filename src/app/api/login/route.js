@@ -18,8 +18,8 @@ export async function POST(request) {
     
     if (user.count > 0 && (await bcrypt.compare(body.password, user.items[0].password))) {
 
-        const { password, members, attendance, school_address,school_code,school_email,school_number, school_slogan,coordinates,school_admin, posts, school_meetings, user_faces,  ...userWithoutPass } = user.items[0];
-        console.log(userWithoutPass)
+        const { password, members, attendance, school_address,school_code,school_email,school_number, school_slogan,coordinates,school_admin, posts, reset_tokens, school_meetings, user_faces,  ...userWithoutPass } = user.items[0];
+ 
         const accessToken = signJwtAccessToken(userWithoutPass);
         const result = {
           ...userWithoutPass,
