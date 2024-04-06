@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "@/components/Settings/SettingsCSS/movement.module.css";
-const CodeContainer = () => {
+const CodeContainer = ({code, date, color}) => {
   return (
-    <div className={styles.codeCont}>
+    <div className={styles.codeCont} style={color === 0 ? {background: "#03a4ff", color: "#ffffff"} : {background: "#ffffff", color: "#03a4ff"}}>
       <div className={styles.header}>
         <div className={styles.heading}>
           <span className={styles.Hicon}>
@@ -23,9 +23,9 @@ const CodeContainer = () => {
           <p>Movement Code</p>
         </div>
 
-        <p>11 May 2024</p>
+        <p>{date}</p>
       </div>
-      <p className={styles.code}>SCANA-MCODE</p>
+      <p className={styles.code}>{code}</p>
 
       <div className={styles.actions}>
         <span>
@@ -45,7 +45,7 @@ const CodeContainer = () => {
           </svg>
         </span>
       </div>
-    </div>
+   </div>
   );
 };
 

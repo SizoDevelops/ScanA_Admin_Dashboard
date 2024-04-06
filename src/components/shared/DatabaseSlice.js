@@ -31,6 +31,7 @@ const DatabaseSlice = createSlice({
             zip_code:''
         },
         members: [],
+        movementCodes: [],
         school_admin: {
             admin_name: '',
             admin_email: '',

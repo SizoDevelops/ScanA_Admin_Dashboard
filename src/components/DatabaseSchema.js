@@ -66,6 +66,7 @@ const generateRandomData = () => {
     date: generateRandomDate(),
     reason: generateRandomReason(),
     week: Math.floor(Math.random() * 4) + 1, // Generate a random week (1 to 4)
+    
   };
 };
 
