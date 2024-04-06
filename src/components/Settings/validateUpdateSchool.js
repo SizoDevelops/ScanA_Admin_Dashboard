@@ -20,8 +20,8 @@ try {
   // School Number
   if (!values.school_number) {
       errors.school_number = 'Field Required';
-    } else if (values.school_number.replace(/\s/g, "").trim().length > 10 || values.school_number.replace(/\s/g, "").trim().length < 10) {
-      errors.school_number = 'Number must be 10 digits long.';
+    } else if (values.school_number.replace(/\s/g, "").trim().length < 10) {
+      errors.school_number = 'Number must be at least 10 digits long.';
     }
     else if(values.school_number.replace(/\s/g, "").trim().match(/[\D]/g)){
       errors.school_number = "Number must be all digits."

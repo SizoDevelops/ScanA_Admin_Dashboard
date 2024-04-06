@@ -20,7 +20,7 @@ const Home = () => {
             <NavBar/>
             <div className={styles.homeBody}>
                 <div className={styles.heroText}>
-                    <h1>The best <span>solution</span> for stuff attendance.</h1>
+                    <h1>The best <span>solution</span> for staff attendance.</h1>
                     <p>Streamlining school management for efficiency and success. Join ScanA for seamless attendance, smart scheduling, and effective communication - Empowering school staff, revolutionizing education.</p>
                     <div className={styles.Button}><Link href={"/signup"} >Get Started For Free</Link></div>
                 </div>
