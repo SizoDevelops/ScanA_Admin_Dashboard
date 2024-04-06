@@ -13,15 +13,15 @@
 
 .cardContainer{
     min-height: 200px;
-    max-height: 600px;
+    
     padding-bottom: 30px;
     display: inline-flex;
-
+    position: relative;
    flex-wrap: wrap;
    gap: 15px;
    padding-top: 20px;
    justify-content: center;
-   overflow-y: auto;
+
 }
 
 .codeCont{
@@ -34,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     color: #03a4ff;
-    
+    position: relative;
 }
 
 .header{
@@ -92,4 +92,66 @@
     border-radius: 10px;
     color: #ffffff;
     margin-top: 10px;
+}
+
+.users{
+    position: absolute;
+    width: min(500px, 95vw); 
+    min-height: 10px;
+    max-height: 300px;
+    background-color: #03a4ff;
+    top: 90%;
+    border-radius: 15px;
+    z-index: 5;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding-top: 30px;
+    overflow-y: auto;
+}
+
+
+.userProfile{
+    width: 90%;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 5px;
+}
+
+.profileImage{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+ 
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.userDetails{
+    height: 100px;
+    padding: 5px;
+    display: inline-flex;
+    color: #03a4ff;
+    align-items: center;
+    gap: 10px
+}
+
+.userDetails p{
+    font-weight: 600;
+    font-size: min(14px, 4vw);
+    color: #3f3f4e;
+    text-transform: uppercase;
+}
+
+.userDetails h5{
+    font-size: min(12px, 3vw)
 }

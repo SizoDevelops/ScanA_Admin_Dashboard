@@ -2,17 +2,21 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/components/Settings/SettingsCSS/movement.module.css";
 import CodeContainer from "./codeContainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovementCode } from "../shared/DatabaseSlice";
 const codesGen = require("voucher-code-generator");
 
 const MovementCodes = () => {
   const userData = useSelector((state) => state.Database.value);
   const [codes, setCodes] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch()
+  
   useEffect(() => {
     setCodes([...userData.movementCodes]);
   }, [userData]);
+
+
   const formatDate = (milliseconds) => {
     const date = new Date(milliseconds);
     const day = date.getDate();
@@ -35,6 +39,7 @@ const MovementCodes = () => {
     const data = {
       code,
       date: milliseconds,
+      users: []
     };
     setLoading(true);
     fetch("/api/set-movement-codes", {
@@ -43,16 +48,17 @@ const MovementCodes = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        key: userData.school_code,
+        key: userData?.school_code,
         data,
+        method: "add"
       }),
     }).then(data => data ? data.json() : null)
-    .then(data => {
-      if(data === "Code Generated"){
-        setCodes((prep) => [data, ...prep]);
+    .then(d => {
+      if(d.message === "Code Generated"){
+        dispatch(addMovementCode(data))
       }
-      setLoading(false);
-    })
+      
+    }).finally(() => setLoading(false))
 
     
     
@@ -71,12 +77,13 @@ const MovementCodes = () => {
                   code={item.code}
                   date={formatDate(item.date)}
                   color={index}
+                  data={item.users ? item.users : []}
                 />
               </span>
             );
           })}
       </div>
-      <div className={styles.btn} onClick={generateCode}>
+      <div className={styles.btn} onClick={generateCode} >
         {loading ? <p>Generating...</p> : <p>Generate New</p>}
       </div>
     </body>

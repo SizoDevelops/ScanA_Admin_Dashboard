@@ -11,7 +11,13 @@ export async function POST(request) {
     const dbMovementCodes = userDB.movementCodes || [];
 
     try {
-        if(dbMovementCodes.find(item => item.code === body.data.code)){
+        if(body.method === "remove"){
+            let newData = dbMovementCodes.filter(item => item.code !== body.code)
+            await db.update({movementCodes: newData}, body.key)
+            return NextResponse.json({message: "Code Removed", status: 200})
+        }
+        else if(body.method === "add" && dbMovementCodes.find(item => item.code === body.data.code)){
+      
             return NextResponse.json({message: "Code Already Generated", status: 200})
         }
         else {
