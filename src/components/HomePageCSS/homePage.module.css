@@ -274,6 +274,10 @@
     .sidePanel a p{
       display: none;
     }
+    .sidePanel a:hover{
+      background-color: transparent;
+    }
+    
     .searchContainer {
       width: 98%;
       margin: auto;

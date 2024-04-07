@@ -7,13 +7,21 @@
     background-color: #ffffff;
 }
   
-.cont span {
-    height: 150%;
-    width: 30px;
-    background: #00a2ff50;
+.cont .scan1 {
+    height: 100%;
+    width: 20px;
+    background: #00b3ff56;
     position: absolute;
-    border-radius: 5px;
-    animation: scan 1.5s ease-in-out infinite alternate;
+    border-radius: 0px;
+    animation: scan 500ms ease-in-out infinite alternate;
+}
+.cont .scan2 {
+    height: 100%;
+    width: 20px;
+    background: #00b3ff56;
+    position: absolute;
+    border-radius: 0px;
+    animation: scan2 500ms ease-in-out infinite alternate;
 }
 
 .dashProfile{
@@ -31,9 +39,22 @@
 @keyframes scan{
   0%{
       left: 0%;
+      
   }
   100%{
       left: 90%;
+   
+  }
+
+}
+@keyframes scan2{
+  100%{
+      left: 0%;
+      
+  }
+  0%{
+      left: 90%;
+   
   }
 
 }
@@ -49,12 +70,3 @@
     border-radius: 5px;
 }
 
-@keyframes scan{
-    0%{
-        left: 10%;
-    }
-    100%{
-        left: 90%;
-    }
-
-}

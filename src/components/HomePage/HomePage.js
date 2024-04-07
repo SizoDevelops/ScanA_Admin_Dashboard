@@ -47,7 +47,7 @@ else return (
         
 <div className={styles.searchContainer}>
   <div className={styles.nameHolder}>
-    <div className={styles.imageHolder}></div>
+    <a className={styles.imageHolder} href='/' ></a>
     <div className={styles.name}>
       <p>Hello</p>
       <h4>{schema?.school_admin?.admin_name.toUpperCase() || "User Name"}</h4>

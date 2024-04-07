@@ -1,6 +1,7 @@
 .sidePanel a{
   display: block;
   width: fit-content;
+  color: #ffffff;
 }
 .sidePanel {
   height: 60px;
