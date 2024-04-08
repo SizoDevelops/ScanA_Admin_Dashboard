@@ -21,17 +21,7 @@ export default function Page() {
   const [week, setWeek] = useState([]);
   const [years, setYears] = useState([]);
   const schema = useSelector((state) => state.Database.value.members);
-  const getMovement = () => {
-    const register = [];
-    schema?.forEach(user => {
-      user?.movement?.map(item => {
-        register.push(item);
-      })
-    })
-   
-    return register;
-  }
-const [members, setMovement] = useState([])
+  const [members, setMovement] = useState([])
   const [sWeek, selectedWeek] = useState({
     value: getCurrentWeek(),
     label: "Week " + getCurrentWeek(),
@@ -42,8 +32,31 @@ const [members, setMovement] = useState([])
     label: currentYear,
   });
   const { loading } = useDatabase();
-  
 
+
+
+  useEffect(() => {
+    const getMovement = () => {
+      const register = [];
+      schema?.forEach(user => {
+        user?.movement?.map(item => {
+          register.push(item);
+        })
+      })
+     
+      return register;
+    }
+    let movement = getMovement()
+    setMovement(movement)
+
+ 
+  }, [schema])
+
+  useEffect(() => {
+    const regex = new RegExp(year.value);
+    setMembers([{ value: "All", label: "All" }]);
+    const membered = [];
+    
   const membersCopy = members.sort((a, b) => {
     if (a.last_name < b.last_name) {
       return -1;
@@ -52,12 +65,6 @@ const [members, setMovement] = useState([])
     }
     return 0;
   });
-  useEffect(() => {
-    let movement = getMovement()
-    setMovement(movement)
-    const regex = new RegExp(year.value);
-    setMembers([{ value: "All", label: "All" }]);
-    const membered = [];
     membersCopy.forEach((elem) => {
       if (
         !membered.find(
@@ -109,7 +116,7 @@ const [members, setMovement] = useState([])
 
     setWeek(Weeks.sort((a, b) => a.value - b.value));
     setYears(Years.sort((a, b) => a.value - b.value));
-  }, [schema, year]);
+  }, [members, year]);
 
   function getCurrentWeek() {
     const today = new Date();
