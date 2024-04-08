@@ -9,10 +9,24 @@ const codesGen = require("voucher-code-generator");
 const MovementCodes = () => {
   const userData = useSelector((state) => state.Database.value);
   const [codes, setCodes] = useState([]);
+  const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch()
-  
+
+  const getMovement = () => {
+    const register = [];
+    userData?.members?.forEach(user => {
+      user?.movement?.map(item => {
+        register.push(item);
+      })
+    })
+   
+    return register;
+  }
+
   useEffect(() => {
+    let userD = getMovement()
+    setUsers(userD)
     setCodes([...userData.movementCodes]);
   }, [userData]);
 
@@ -77,7 +91,7 @@ const MovementCodes = () => {
                   code={item.code}
                   date={formatDate(item.date)}
                   color={index}
-                  data={item.users ? item.users : []}
+                  data={users.filter(items => items.movement_code === item.code)}
                 />
               </span>
             );

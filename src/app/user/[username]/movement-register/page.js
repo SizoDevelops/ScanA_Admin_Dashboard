@@ -21,7 +21,17 @@ export default function Page() {
   const [week, setWeek] = useState([]);
   const [years, setYears] = useState([]);
   const schema = useSelector((state) => state.Database.value.members);
-  const members = uniqueDataArray;
+  const getMovement = () => {
+    const register = [];
+    schema?.forEach(user => {
+      user?.movement?.map(item => {
+        register.push(item);
+      })
+    })
+   
+    return register;
+  }
+const [members, setMovement] = useState([])
   const [sWeek, selectedWeek] = useState({
     value: getCurrentWeek(),
     label: "Week " + getCurrentWeek(),
@@ -43,6 +53,8 @@ export default function Page() {
     return 0;
   });
   useEffect(() => {
+    let movement = getMovement()
+    setMovement(movement)
     const regex = new RegExp(year.value);
     setMembers([{ value: "All", label: "All" }]);
     const membered = [];
@@ -78,8 +90,8 @@ export default function Page() {
       });
 
       selectedWeek({
-        value: Weeks.sort((a, b) => a.value - b.value)[Weeks.length - 1].value,
-        label: Weeks.sort((a, b) => a.value - b.value)[Weeks.length - 1].label,
+        value: Weeks.sort((a, b) => a.value - b.value)[Weeks.length - 1]?.value,
+        label: Weeks.sort((a, b) => a.value - b.value)[Weeks.length - 1]?.label,
       });
     }
 

@@ -79,7 +79,7 @@ const CodeContainer = ({ code, date, color, data }) => {
       <div className={styles.users} style={ show ? {display: "flex"} : {display: "none"}}>
        {
         data.map((item, index) => {
-          return  <UserProfile key={index} image={"https://i.ibb.co/0csMj5v/Rectangle-353.png"} />
+          return  <UserProfile key={index} data={item} image={"https://i.ibb.co/0csMj5v/Rectangle-353.png"} />
         })
        }
      
@@ -91,7 +91,7 @@ const CodeContainer = ({ code, date, color, data }) => {
 
 export default CodeContainer;
 
-const UserProfile = ({ image }) => {
+const UserProfile = ({ image, data }) => {
   return (
     <div className={styles.userProfile}>
       <div
@@ -120,8 +120,8 @@ const UserProfile = ({ image }) => {
         )}
       </div>
       <div className={styles.userDetails}>
-        <p>{`${last_name} ${initial} `}</p>
-        <h5>{code}</h5>
+        <p>{`${data?.last_name} ${data?.initial} `}</p>
+        <h5>{data?.code}</h5>
       </div>
     </div>
   );

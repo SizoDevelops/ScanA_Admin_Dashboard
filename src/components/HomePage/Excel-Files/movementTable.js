@@ -11,11 +11,25 @@ export default function MovementTable({ week, position, year }) {
   const schema = useSelector((state) => state.Database.value.members);
   const membersCopy = uniqueDataArray;
   const regex = new RegExp(year);
+
+  const getMovement = () => {
+    const register = [];
+    schema?.forEach(user => {
+      user?.movement?.map(item => {
+        register.push(item);
+      })
+    })
+   
+    return register;
+  }
+
   useEffect(() => {
-    let filteredMembers = membersCopy;
+
+    
+    let filteredMembers = getMovement();
     setMembers([]);
     if (position !== "" && position !== "All") {
-      filteredMembers = membersCopy.filter((elem) => elem.code === position && regex.test(elem.date));
+      filteredMembers = getMovement().filter((elem) => elem.code === position && regex.test(elem.date));
     }
     setMembers(filteredMembers);
   }, [position, schema]);
