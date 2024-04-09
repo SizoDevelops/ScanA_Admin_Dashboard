@@ -8,6 +8,7 @@
     flex-direction: column;
     padding-bottom: 70px;
     background-color: #FFFFFF;
+    margin-bottom: 30px;
     }
     .textHolder{
         margin: auto;
@@ -109,4 +110,33 @@
 
 .Steps label{
     margin-bottom: 10px;
+}
+
+.navigation{
+    display: inline-flex;
+    width: 100%;
+
+}
+
+.navigation div{
+    display: inline-flex;
+    
+    align-items: center;
+}
+
+.navigation div :nth-child(1){
+    width: min(200px, 30vw);
+    border-bottom: 1px solid #111115;
+}
+.navigation div :nth-child(2){
+    width: 20%;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #111115;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  color: #111115;
+  cursor: pointer;
 }

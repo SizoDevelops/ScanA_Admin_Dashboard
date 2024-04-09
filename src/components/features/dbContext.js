@@ -20,6 +20,7 @@ export const DatabaseProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
     const [loadingCode, setCodeLoading] = useState(false)
     const {data: session} = useSession()
+    const [step, setStep] = useState(1)
     const dispatch = useDispatch()
     const [errCode, setCode] = useState({title: "" , message: "", type: ""})
     const [meetingModal, setMeeting] = useState({name: "", category: ""})
@@ -303,7 +304,9 @@ export const DatabaseProvider = ({children}) => {
         setMeeting,
         getCurrentWeek,
         getUser,
-        sendUserEmail
+        sendUserEmail,
+        setStep,
+        step
          
     };
 

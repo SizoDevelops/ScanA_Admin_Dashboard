@@ -8,6 +8,7 @@ import { useDatabase } from "@/components/features/dbContext";
 import Modal from "../Modal";
 
 import { useSession } from "next-auth/react";
+import Footer from "./HomeComponents/Footer";
 const voucher_codes = require("voucher-code-generator");
 
 const generateUniqueCode = (prefix) => {
@@ -24,7 +25,7 @@ const schoolCode = generateUniqueCode("SCNA-");
 const userCode = generateUniqueCode(schoolCode + "-");
 
 const SignUp = () => {
-  const { sendSignUp, errCode, setCode } = useDatabase();
+  const { sendSignUp, errCode, setCode, step, setStep } = useDatabase();
   const [loading, setLoading] = useState(false);
 
   function areSomeFieldsEmpty(obj) {
@@ -149,58 +150,125 @@ const SignUp = () => {
             <h1>
               Register Your <span>School</span>
             </h1>
+   
           </div>
           <div className={styles.BodyCont}>
             <div className={styles.Images}>
               <div className={styles.image1}></div>
               <div className={styles.image2}></div>
             </div>
-
+ 
             <Formik
               initialValues={initValues}
               validate={validate}
               onSubmit={handleFormSubmit}
             >
-              {() => (
+    
+              {
+              
+              () => (
                 <Form className={styles.formHolder}>
+                           <div className={styles.navigation}>
+                <div>
+                  <span style={step >= 1  ? {borderBottom: "2px solid #03a4ff"} : {borderBottom: "1px solid #111115"}}></span>
+                  <span     onClick={() => setStep(1)} style={step >= 1 ? {background: "#03a4ff", color: "#ffffff", border: "1px solid #03a4ff"} : {background: "transparent", color: "#111115", border: "1px solid #111115"}}>1</span>
+                </div>
+                <div>
+                  <span style={step >= 2 ? {borderBottom: "2px solid #03a4ff"} : {borderBottom: "1px solid #111115"}}></span>
+                  <span     onClick={() => setStep(2)} style={step >= 2 ? {background: "#03a4ff", color: "#ffffff", border: "1px solid #03a4ff"} : {background: "transparent", color: "#111115", border: "1px solid #111115"}} >2</span>
+                </div>
+                <div>
+                  <span style={step >= 3 ? {borderBottom: "2px solid #03a4ff"} : {borderBottom: "1px solid #111115"}}></span>
+                  <span     onClick={() => setStep(3)} style={step >= 3 ? {background: "#03a4ff", color: "#ffffff", border: "1px solid #03a4ff"} : {background: "transparent", color: "#111115", border: "1px solid #111115"}}>3</span>
+                </div>
+              </div>
                   <div className={styles.Steps}>
-                    <h2>School Details</h2>
-
-                    <label htmlFor="school_name">School Name</label>
-                    <Field
-                      type="text"
-                      name="school_name"
-                      placeholder="School-Name Secondary School"
-                    />
-
-                    <ErrorMessage name="school_name" component="span" />
-                    <label htmlFor="school_emis">School Emis No.</label>
-                    <Field
-                      type="text"
-                      name="school_emis"
-                      placeholder="400032323"
-                    />
-                    <ErrorMessage name="school_emis" component="span" />
-                    <label htmlFor="school_email">Email Address</label>
-                    <Field
-                      name="school_email"
-                      type="email"
-                      placeholder="schoolname@emaildomain.co.za"
-                    />
-                    <ErrorMessage name="school_email" component="span" />
-
-                    <label htmlFor="school_number">Phone Number</label>
-                    <Field
-                      type="text"
-                      name="school_number"
-                      placeholder="+27732456789"
-                    />
-
-                    <ErrorMessage name="school_number" component="span" />
+                   {
+                    step === 2 ? <StepTwo/> : step === 3 ? <StepThree loading={loading}/> : <StepOne/>
+                   }
                   </div>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </div>
+        <Footer/>
+      </body>
+    );
+};
+function Back() {
+  const { step, setStep } = useDatabase()
+  return (
+    <div
+    className={styles.Button}
+    onClick={() => setStep(step - 1)}
+  >
+    Back
+  </div>
+  );
+}
+function Next() {
+  const { step, setStep } = useDatabase()
+  return (
+    <div
+    className={styles.Button}
+    onClick={() => setStep(step + 1)}
+  >
+   Next
+  </div>
+  );
+}
 
-                  <div className={styles.Steps}>
-                    <h2>School Address</h2>
+export default SignUp;
+
+
+const StepOne = () => {
+
+
+  return(
+    <>
+       <h2>School Details</h2>
+
+<label htmlFor="school_name">School Name</label>
+<Field
+  type="text"
+  name="school_name"
+  placeholder="School-Name Secondary School"
+/>
+
+<ErrorMessage name="school_name" component="span" />
+<label htmlFor="school_emis">School Emis No.</label>
+<Field
+  type="text"
+  name="school_emis"
+  placeholder="400032323"
+/>
+<ErrorMessage name="school_emis" component="span" />
+<label htmlFor="school_email">Email Address</label>
+<Field
+  name="school_email"
+  type="email"
+  placeholder="schoolname@emaildomain.co.za"
+/>
+<ErrorMessage name="school_email" component="span" />
+
+<label htmlFor="school_number">Phone Number</label>
+<Field
+  type="text"
+  name="school_number"
+  placeholder="+27732456789"
+/>
+
+<ErrorMessage name="school_number" component="span" />
+{Next()}
+    </>
+  )
+}
+
+const StepTwo = () => {
+  return(
+    <>
+                <h2>School Address</h2>
                     <label htmlFor="school_address.line_one">
                       Address Line 1
                     </label>
@@ -248,10 +316,19 @@ const SignUp = () => {
                       name="school_address.zip_code"
                       component="span"
                     />
-                  </div>
+           
+ <div style={{width: "min(300px, 97vw)", display: "inline-flex", gap: "10px"}}>
+             {Back()}
+ {Next()}
+    </div>
+    </>
+  )
+}
 
-                  <div className={styles.Steps}>
-                    <h2>Admin (Your) Details</h2>
+const StepThree = ({loading}) => {
+  return(
+    <>
+                  <h2>Admin (Your) Details</h2>
                     <label htmlFor="school_admin.admin_name">Full Name</label>
                     <Field
                       type="text"
@@ -281,29 +358,18 @@ const SignUp = () => {
                     <label htmlFor="confirm_password">Confirm Password</label>
                     <Field type="password" name="confirm_password" />
                     <ErrorMessage name="confirm_password" component="span" />
-                  </div>
-
-                  <button
+     
+                  <div style={{width: "min(300px, 97vw)", display: "inline-flex",  gap: "10px"}}>
+                    {Back()}
+                    <button
                     type="submit"
                     className={styles.Button}
                     disabled={loading}
                   >
                     {loading ? "Loading..." : "Submit"}
                   </button>
-                </Form>
-              )}
-            </Formik>
-          </div>
-        </div>
-      </body>
-    );
-};
-function Span() {
-  return (
-    <span
-      style={{ fontSize: "10px", color: "pink", marginBottom: "10px" }}
-    ></span>
-  );
+                  </div>
+                  
+    </>
+  )
 }
-
-export default SignUp;
