@@ -120,12 +120,12 @@
 
 .navigation div{
     display: inline-flex;
-    
+    width: 100%;
     align-items: center;
 }
 
 .navigation div :nth-child(1){
-    width: min(200px, 30vw);
+    width: 100%;
     border-bottom: 1px solid #111115;
 }
 .navigation div :nth-child(2){
