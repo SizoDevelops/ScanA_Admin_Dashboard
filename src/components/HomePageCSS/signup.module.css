@@ -125,15 +125,15 @@
 }
 
 .navigation div :nth-child(1){
-    width: 100%;
+    width: 95%;
     border-bottom: 1px solid #111115;
 }
 .navigation div :nth-child(2){
-    width: 20%;
+ 
     width: 20px;
     height: 20px;
     border: 1px solid #111115;
-    border-radius: 50%;
+    border-radius: 100%;
     align-items: center;
     justify-content: center;
     display: flex;
