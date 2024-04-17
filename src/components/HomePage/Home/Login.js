@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useDatabase } from '@/components/features/dbContext';
 import Modal from '../Modal';
+import Footer from './HomeComponents/Footer';
 
 
 const Login = () => {
@@ -32,7 +33,7 @@ const { errCode, setCode } = useDatabase();
          </div>
       
         </div>
- 
+        <Footer/>
      </body>
     );
 }
