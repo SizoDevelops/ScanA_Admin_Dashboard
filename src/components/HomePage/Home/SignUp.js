@@ -227,7 +227,7 @@ const StepOne = () => {
 
   return(
     <>
-       <h2>School Details</h2>
+       <h2 className={styles.heading}>School Details</h2>
 
 <label htmlFor="school_name">School Name</label>
 <Field
@@ -260,7 +260,11 @@ const StepOne = () => {
 />
 
 <ErrorMessage name="school_number" component="span" />
-{Next()}
+
+<div className={{width: "min(300px, 97vw)", display: "inline-flex", gap: "10px"}}>
+  {Next()}
+</div>
+
     </>
   )
 }
@@ -268,7 +272,7 @@ const StepOne = () => {
 const StepTwo = () => {
   return(
     <>
-                <h2>School Address</h2>
+                <h2 className={styles.heading}>School Address</h2>
                     <label htmlFor="school_address.line_one">
                       Address Line 1
                     </label>
@@ -328,7 +332,7 @@ const StepTwo = () => {
 const StepThree = ({loading}) => {
   return(
     <>
-                  <h2>Admin (Your) Details</h2>
+                  <h2 className={styles.heading}>Admin (Your) Details</h2>
                     <label htmlFor="school_admin.admin_name">Full Name</label>
                     <Field
                       type="text"

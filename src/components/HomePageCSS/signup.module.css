@@ -11,10 +11,14 @@
     margin-bottom: 30px;
     }
     .textHolder{
-        margin: auto;
+        margin: 50px auto;
+
+    }
+    .heading{
+        margin: 50px 0;
     }
 .textHolder h1{
-    font-size: min(55px, 5vw);
+    font-size: min(78px, 5vw);
 
 }
 .textHolder h1 span{

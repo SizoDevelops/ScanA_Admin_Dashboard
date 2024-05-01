@@ -7,9 +7,9 @@
     align-items: center;
     display: inline-flex;
     border-top: 1px solid #dddddd;
-    margin-top: 30px;
+    margin-top: 50px;
     color: #b6b6b6;
-    background: #1f1f1f;
+    /* background: #1f1f1f; */
     font-size: min(3vw, 16px);
     gap: 20px;
     padding: 0 10px;
@@ -17,4 +17,5 @@
 
 .cont p{
     font-size: min(3vw, 14px);
+    color: #4c4c4e
 }
