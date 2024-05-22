@@ -12,6 +12,12 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const hasTouch = "maxTouchPoints" in navigator && navigator.maxTouchPoints > 0;
+
+    if(hasTouch){
+      redirect("https://scana.co.za")
+    }
     if (status === 'authenticated' && session && session?.user) {
       if (session?.user.school_name) {
         redirect(`/user/${session?.user.school_name.toLowerCase().replace(/\s+/g, '-')}`);

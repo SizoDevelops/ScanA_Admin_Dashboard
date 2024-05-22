@@ -10,9 +10,16 @@ import Features from './HomeComponents/Features';
 import { useEffect } from 'react';
 import Convos from './HomeComponents/Convos';
 import Footer from './HomeComponents/Footer';
+import { redirect } from 'next/navigation';
 
 const Home = () => {
     useEffect(() => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        const hasTouch = "maxTouchPoints" in navigator && navigator.maxTouchPoints > 0;
+    
+        if(-hasTouch){
+          redirect("https://scana.co.za")
+        }
         Aos.init()
 }, [])
     return (

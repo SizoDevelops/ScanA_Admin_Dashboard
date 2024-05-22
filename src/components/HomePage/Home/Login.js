@@ -65,15 +65,18 @@ const StepOne =({setCode}) => {
       password,
       redirect: false,
    }).then(err => {
-    setSubmitting(false)
+  
     if(err.error){
+      setSubmitting(false)
         setCode({
       title: "Incorrect Credentials",
       message: "The credentials entered may be incorrect please re-check and retry.",
       type: "Error"
     });
     }
-  
+  else {
+    setSubmitting(false)
+  }
    })
 
   }

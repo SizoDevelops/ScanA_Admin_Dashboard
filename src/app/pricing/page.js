@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '@/components/HomePageCSS/pricing.module.css'
 import NavBar from '@/components/HomePage/Home/NavBar'
 import Footer from '@/components/HomePage/Home/HomeComponents/Footer'
+import { redirect } from 'next/navigation'
 export default function Page() {
     const [SUsers, setSUsers] = useState(10)
     const [PUsers, setPUSers] = useState(35)
@@ -17,6 +18,12 @@ export default function Page() {
     const y = 35;
 
  useEffect(() => {
+ 
+    const hasTouch = "maxTouchPoints" in navigator && navigator.maxTouchPoints > 0;
+
+    if( hasTouch){
+      redirect("https://scana.co.za")
+    }
     if(SBilling === "yearly" && SUsers > 9){
         setYearlyPrice((y*SUsers))
     }

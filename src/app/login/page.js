@@ -9,9 +9,18 @@ import Loader from '@/components/shared/Loader';
 const Page = () => {
   const { data: session, status } = useSession();
   const { loading } = useDatabase();
-  
+
 
   useEffect(() => {
+
+    
+   
+    const hasTouch = "maxTouchPoints" in navigator && navigator.maxTouchPoints > 0;
+
+    if(hasTouch){
+      redirect("https://scana.co.za")
+    }
+
     if (status === 'authenticated' && session && session?.user) {
       if (session?.user.school_name) {
         redirect(`/user/${session?.user.school_name.toLowerCase().replace(/\s+/g, '-')}`);

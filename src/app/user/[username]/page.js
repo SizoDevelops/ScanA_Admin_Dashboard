@@ -10,6 +10,13 @@ import React, { useEffect, useState } from 'react'
 export default function Page({params}) {
     const {data: session, status} = useSession()
     const {loading} = useDatabase()
+useEffect(() => {
+  const hasTouch = "maxTouchPoints" in navigator && navigator.maxTouchPoints > 0;
+
+  if(hasTouch){
+    redirect("https://scana.co.za")
+  }
+}, [status])
 
 if(status === "loading" || loading) return <Loader/>
 else if(status === "authenticated" && `${session?.user.school_name.toLowerCase().replace(/\s+/g, '-')}` !== params.username) redirect("/_error")
