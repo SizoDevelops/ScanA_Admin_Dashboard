@@ -26,7 +26,7 @@ export default function DashProfile({image, slug, title, initial, last_name, pos
           <h4>{`${position ? position[0] : "Position"}`}</h4>
           <p className={styles.Name}>{`${title} ${initial} ${last_name}`}</p>
           <p>{`Persal No:  ${persal ? persal : "N/A"}`}</p>
-          <p>{`School:  ${center}`}</p>
+          <p>{`Company:  ${center}`}</p>
           </div>
  </div>
 </div>

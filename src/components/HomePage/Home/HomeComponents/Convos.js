@@ -59,7 +59,7 @@ export default function Convos() {
   <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
 </svg>
                 <h3>Go Green, Stay Smart</h3>
-                <p>Save paper, reduce printing, and contribute to a sustainable school environment. ScanA&apos;s digital solutions are good for the planet and good for your budget.</p>
+                <p>Save paper, reduce printing, and contribute to a sustainable company environment. ScanA&apos;s digital solutions are good for the planet and good for your budget.</p>
             </div>
 
             <div className={styles.ben} data-aos="fade-left">
@@ -68,7 +68,7 @@ export default function Convos() {
   <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
 </svg>
                 <h3>Location-Based Security Measures:</h3>
-                <p>Ensures attendance is recorded within school premises using location-based tracking, enhancing campus security.</p>
+                <p>Ensures attendance is recorded within company premises using location-based tracking, enhancing campus security.</p>
             </div>
 
 
@@ -96,7 +96,7 @@ export default function Convos() {
 
         <div className={styles.lastCTA} data-aos="fade-up">
         <h2>Upgrade to <span>ScanA</span> Today!</h2>
-        <p>Ready to transform your school&apos;s attendance management? Upgrade to ScanA now for streamlined processes, enhanced security, and unparalleled efficiency. Elevate your institution&apos;s standards and join the future of attendance tracking. </p>
+        <p>Ready to transform your company&apos;s attendance management? Upgrade to ScanA now for streamlined processes, enhanced security, and unparalleled efficiency. Elevate your institution&apos;s standards and join the future of attendance tracking. </p>
         </div>
         <h2>FAQ</h2>
         <div className={styles.FAQ} data-aos="fade-up">
@@ -106,15 +106,15 @@ export default function Convos() {
                 </div>
                 <div className={styles.faqCont}>
                     <h3>Q: How does ScanA work?</h3>
-                    <p>A: ScanA uses unique codes and QR code scanning to record staff attendance. Location-based verification ensures that attendance is marked only when staff members are within the school premises.</p>
+                    <p>A: ScanA uses unique codes and QR code scanning to record staff attendance. Location-based verification ensures that attendance is marked only when staff members are within the company premises.</p>
                 </div>
                 <div className={styles.faqCont}>
                     <h3>Q: Is ScanA suitable for different types of schools??</h3>
                     <p>A: Yes, ScanA is designed to cater to the attendance management needs of various educational institutions, including schools of different sizes and types.</p>
                 </div>
                 <div className={styles.faqCont}>
-                    <h3>Q: Can ScanA be integrated with other school management systems?</h3>
-                    <p>A: Yes, ScanA offers integration capabilities with other school management systems, providing a seamless and comprehensive solution.</p>
+                    <h3>Q: Can ScanA be integrated with other company management systems?</h3>
+                    <p>A: Yes, ScanA offers integration capabilities with other company management systems, providing a seamless and comprehensive solution.</p>
                 </div>
                 <div className={styles.faqCont}>
                     <h3>Q: How does ScanA ensure data security?</h3>
@@ -126,7 +126,7 @@ export default function Convos() {
                 </div>
                 <div className={styles.faqCont}>
                     <h3>Q: What are the advantages of the location-based tracking feature?</h3>
-                    <p>A: Location-based tracking enhances security by ensuring that attendance is recorded only when staff members are physically present within the school premises.</p>
+                    <p>A: Location-based tracking enhances security by ensuring that attendance is recorded only when staff members are physically present within the company premises.</p>
                 </div>
                 <div className={styles.faqCont}>
                     <h3>Q: Is ScanA suitable for large educational institutions?</h3>
@@ -154,10 +154,10 @@ export default function Convos() {
      
             <div>
                 <h2>Unlock <span>Efficiency</span> and <span>Security</span> with ScanA</h2>
-                <p>ScanA empowers educators. Say goodbye to manual errors and hello to a new era of secure, efficient, and accountable attendance management. Elevate your school&apos;s operations with ScanA!</p>
+                <p>ScanA empowers educators. Say goodbye to manual errors and hello to a new era of secure, efficient, and accountable attendance management. Elevate your company&apos;s operations with ScanA!</p>
             </div>
             <div>
-                    <h3>Transform Your School Today with ScanA!</h3>
+                    <h3>Transform Your company Today with ScanA!</h3>
                       <div className={styles.Button}><Link href={"/signup"} >Try ScanA For Free</Link></div>  
             </div>
             <div className={styles.imageD1}>
@@ -169,7 +169,7 @@ export default function Convos() {
         </div>
         
         <div className={styles.CTA}>
-        <p data-aos="fade-right">ScanA empowers educators. Say goodbye to manual errors and hello to a new era of secure, efficient, and accountable attendance management. Elevate your school&apos;s operations with ScanA!</p>
+        <p data-aos="fade-right">ScanA empowers educators. Say goodbye to manual errors and hello to a new era of secure, efficient, and accountable attendance management. Elevate your company&apos;s operations with ScanA!</p>
      
                       <div className={styles.Button} data-aos="fade-left"><Link href={"/signup"} >Try ScanA For Free</Link></div>  
           

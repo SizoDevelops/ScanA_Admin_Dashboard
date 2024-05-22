@@ -93,8 +93,8 @@ export default function TopPanel() {
       <Link
         href={`/user/${user.school_name
           .toLowerCase()
-          .replace(/\s+/g, "-")}/school-updates`}
-          title="School Updates"
+          .replace(/\s+/g, "-")}/company-updates`}
+          title="Company Updates"
       >
         <div className={styles.sideIcon}>
           {/* <Image sizes='30' fill src={"/icons/excel.png"} alt="Folder Icon"/> */}
@@ -112,7 +112,7 @@ export default function TopPanel() {
         </div>
 
         {/* <RiFileExcel2Line /> */}
-        <p>School Updates</p>
+        <p>Company Updates</p>
       </Link>
       {/* <Link href={"/absentees"} >
     <Image sizes='30' fill src={"/icons/iconoir_missing-font.png"} alt="Folder Icon"/>

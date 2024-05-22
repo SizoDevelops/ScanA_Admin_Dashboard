@@ -17,7 +17,7 @@ export default function Reply() {
         </div>
 
         <p className={styles.message}>
-        That`s a great idea! Building a platform for schools to engage with parents and other stakeholders through updates, discussions, and problem-solving can significantly improve communication and collaboration within the school community. Here are some key elements to consider when building such a platform
+        That`s a great idea! Building a platform for schools to engage with parents and other stakeholders through updates, discussions, and problem-solving can significantly improve communication and collaboration within the company community. Here are some key elements to consider when building such a platform
         </p>
 
         <div className={styles.interactions}>

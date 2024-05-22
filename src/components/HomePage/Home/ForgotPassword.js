@@ -104,14 +104,14 @@ const StepOne = () => {
   };
   return (
     <form className={styles.Steps} onSubmit={submit}>
-      <label htmlFor="School Code">Company Code</label>
+      <label htmlFor="Company Code">Company Code</label>
       <input
         type="text"
         value={code}
         className={styles.Inputs}
         required
         placeholder="Enter the company code from your email"
-        name="School Code"
+        name="Company Code"
         onChange={(e) => setUserCode(e.target.value)}
       />
       <label htmlFor="Email">Email Address</label>
@@ -192,7 +192,7 @@ const StepTwo = ({ setCode, token }) => {
       onSubmit={handleSubmit}
     >
       <Form className={styles.Steps}>
-        <label htmlFor="School Code">New Password</label>
+        <label htmlFor="Company Code">New Password</label>
         <ErrorMessage name="password" component="span" />
         <Field
           type="password"

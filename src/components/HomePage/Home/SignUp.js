@@ -148,7 +148,7 @@ const SignUp = () => {
           {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
           <div className={styles.textHolder}>
             <h1>
-              Register Your <span>School</span>
+              Register Your <span>Company</span>
             </h1>
    
           </div>
@@ -227,17 +227,17 @@ const StepOne = () => {
 
   return(
     <>
-       <h2 className={styles.heading}>School Details</h2>
+       <h2 className={styles.heading}>Company Details</h2>
 
-<label htmlFor="school_name">School Name</label>
+<label htmlFor="school_name">Company Name</label>
 <Field
   type="text"
   name="school_name"
-  placeholder="School-Name Secondary School"
+  placeholder="Full Company Name"
 />
 
 <ErrorMessage name="school_name" component="span" />
-<label htmlFor="school_emis">School Emis No.</label>
+<label htmlFor="school_emis">School Emis No Or Company Reg. No</label>
 <Field
   type="text"
   name="school_emis"
@@ -248,7 +248,7 @@ const StepOne = () => {
 <Field
   name="school_email"
   type="email"
-  placeholder="schoolname@emaildomain.co.za"
+  placeholder="name@host.domain"
 />
 <ErrorMessage name="school_email" component="span" />
 
@@ -272,7 +272,7 @@ const StepOne = () => {
 const StepTwo = () => {
   return(
     <>
-                <h2 className={styles.heading}>School Address</h2>
+                <h2 className={styles.heading}>Company Address</h2>
                     <label htmlFor="school_address.line_one">
                       Address Line 1
                     </label>

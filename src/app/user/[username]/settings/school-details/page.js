@@ -1,4 +1,4 @@
-import SchoolDetails from '@/components/Settings/school-details';
+import SchoolDetails from '@/components/Settings/company-details';
 import React from 'react';
 
 const Page = () => {

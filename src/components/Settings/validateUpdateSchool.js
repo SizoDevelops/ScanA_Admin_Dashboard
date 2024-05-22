@@ -2,7 +2,7 @@ export const validate = values => {
     const errors = {};
 
    
-    // School name
+    // Company name
 try {
   if (!values.school_name) {
     errors.school_name = 'Field Required';
@@ -10,14 +10,14 @@ try {
     errors.school_name = 'Incorrect name format';
   }
 
-  // School Email
+  // Company Email
   if (!values.school_email) {
     errors.school_email = 'Field Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.school_email.trim())) {
-    errors.school_email = 'Invalid school email address';
+    errors.school_email = 'Invalid company email address';
   }
 
-  // School Number
+  // Company Number
   if (!values.school_number) {
       errors.school_number = 'Field Required';
     } else if (values.school_number.replace(/\s/g, "").trim().length < 10) {
@@ -27,7 +27,7 @@ try {
       errors.school_number = "Number must be all digits."
     }
   
-  // School Address
+  // Company Address
 if(!values.school_address){
   errors.school_address = {};
 }else {

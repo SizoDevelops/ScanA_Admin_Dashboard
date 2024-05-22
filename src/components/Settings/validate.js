@@ -36,6 +36,6 @@ if(/[\D]/g.test(values.persal)){
     errors.persal = "Invalid Persal"
 }
 
-//  Validate Update School
+//  Validate Update Company
     return errors;
 }

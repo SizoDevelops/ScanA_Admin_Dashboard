@@ -11,7 +11,7 @@ export default function SecondSection() {
 }, [])
   return (
     <div className={styles.cont}>
-        <h2><span>Simplifying</span> school management and <span>enhancing</span> productivity.</h2>
+        <h2><span>Simplifying</span> company management and <span>enhancing</span> productivity.</h2>
         <div className={styles.Image} data-aos="fade-up">
             <Image fill src={"/assets/simplify.svg"}/>
         </div>

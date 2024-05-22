@@ -81,8 +81,8 @@ const StepOne =({setCode}) => {
     return(
          <form className={styles.Steps} onSubmit={handleSubmit}>
            
-            <label htmlFor='School Code'>Company Code</label>
-            <input type="text" value={code} className={styles.Inputs} required placeholder='Enter the company code from your email' name='School Code' onChange={e => setUserCode(e.target.value)}/>
+            <label htmlFor='Company Code'>Company Code</label>
+            <input type="text" value={code} className={styles.Inputs} required placeholder='Enter the company code from your email' name='Company Code' onChange={e => setUserCode(e.target.value)}/>
 
             <label htmlFor='Email'>Email Address</label>
            

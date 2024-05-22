@@ -19,7 +19,7 @@ export default function Features() {
             </div>
             <div className={styles.details} data-aos="fade-right">
                 <h2><span>QR</span> Code Scanning</h2>
-                <p>{"ScanA\'s QR Code scanning feature redefines staff attendance management. With simplicity at its core, it offers an effortless and secure way for teachers to check in and out, ensuring accurate records with just a scan. This innovative technology streamlines administrative tasks, fostering a more efficient and modernized school environment while enhancing accountability and compliance."}</p>
+                <p>{"ScanA\'s QR Code scanning feature redefines staff attendance management. With simplicity at its core, it offers an effortless and secure way for teachers to check in and out, ensuring accurate records with just a scan. This innovative technology streamlines administrative tasks, fostering a more efficient and modernized company environment while enhancing accountability and compliance."}</p>
             </div>
         </div>
         <div className={styles.divs}>
@@ -59,8 +59,8 @@ export default function Features() {
             </div>
 
            <div className={styles.earthDetails} data-aos="fade-up">
-           <h2>ScanA`s <span>Eco-Friendly</span> Attendance <span>Revolutionizes</span> Your School</h2>
-            <p>{"Pencils to pixels, paper to progress! ScanA's digital attendance saves trees, streamlines your day, and empowers your school to go green. One click, a greener future.  ♻️"}</p>
+           <h2>ScanA`s <span>Eco-Friendly</span> Attendance <span>Revolutionizes</span> Your company</h2>
+            <p>{"Pencils to pixels, paper to progress! ScanA's digital attendance saves trees, streamlines your day, and empowers your company to go green. One click, a greener future.  ♻️"}</p>
            </div>
         </div>
 
@@ -121,7 +121,7 @@ export default function Features() {
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
   <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-</svg><span>ScanA</span> revolutionizes school management by offering a comprehensive solution for <span>attendance </span>and <span>communication</span>. With intuitive features such as <span>QR code</span> check-ins, <span>accurate attendance tracking</span>, and <span>seamless absence reporting</span>, it simplifies administrative tasks for educators while fostering transparency and accountability</p>
+</svg><span>ScanA</span> revolutionizes company management by offering a comprehensive solution for <span>attendance </span>and <span>communication</span>. With intuitive features such as <span>QR code</span> check-ins, <span>accurate attendance tracking</span>, and <span>seamless absence reporting</span>, it simplifies administrative tasks for educators while fostering transparency and accountability</p>
            
            <div className={styles.locate}>
            <div className={styles.CImage} data-aos="fade-left">
@@ -138,7 +138,7 @@ export default function Features() {
             <div className={styles.fCTA} data-aos="fade-up">
                 <h2>Try ScanA Now!</h2>
                 <div className={styles.Button}><Link href={"/signup"} >Get Started For Free</Link></div>
-                <p>{"ScanA isn't just attendance, it's a staff management revolution. Ditch paper trails, empower your team with one-click check-ins, unlock data-driven insights, and foster seamless collaboration - all at your fingertips. Boost efficiency, maximize productivity, and watch your school staff flourish, one scan at a time. Join the digital leap, try ScanA today!"}</p>
+                <p>{"ScanA isn't just attendance, it's a staff management revolution. Ditch paper trails, empower your team with one-click check-ins, unlock data-driven insights, and foster seamless collaboration - all at your fingertips. Boost efficiency, maximize productivity, and watch your company staff flourish, one scan at a time. Join the digital leap, try ScanA today!"}</p>
             </div>
    
         </div>
