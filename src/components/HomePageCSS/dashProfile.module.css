@@ -55,14 +55,14 @@
     text-transform: uppercase;
     font-weight: bold;
     width: 100px;
-    line-height:15px;
+   
 }
 .profileDetails > .Name{
     font-size: min(9px, 3vw);
     text-transform: uppercase;
     font-weight: bold;
     width: 100px;
-    line-height: 25px;
+  
 }
 
 
