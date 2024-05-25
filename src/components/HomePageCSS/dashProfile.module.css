@@ -36,14 +36,14 @@
     text-align: center;
     text-transform: uppercase;
     font-family: "Inter";
-    margin-top: 10px;
+
 }
 .cardDetails{
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
     align-items: flex-start;
-    margin-top: 20px;
+   
 }
 
 .profileDetails{
