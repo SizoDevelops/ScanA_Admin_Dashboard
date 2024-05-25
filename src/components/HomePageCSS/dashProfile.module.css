@@ -36,12 +36,14 @@
     text-align: center;
     text-transform: uppercase;
     font-family: "Inter";
+    margin-top: 10px;
 }
 .cardDetails{
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
     align-items: flex-start;
+    margin-top: 20px;
 }
 
 .profileDetails{
@@ -53,19 +55,16 @@
     text-transform: uppercase;
     font-weight: bold;
     width: 100px;
+    line-height:15px;
 }
 .profileDetails > .Name{
     font-size: min(9px, 3vw);
     text-transform: uppercase;
     font-weight: bold;
     width: 100px;
+    line-height: 25px;
 }
-.profileDetails > p{
-    font-size: min(7px, 3vw);
-    text-transform: uppercase;
-    font-weight: bold;
-    width: 110px;
-}
+
 
 .profileDetails h4{
     font-weight: 900;
