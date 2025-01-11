@@ -6,7 +6,9 @@ import store from "./shared/store";
 import { DatabaseProvider } from "./features/dbContext";
 import ThemeProvider from "./features/themeContext";
 
+
 const Providers = ({ children }) => {
+
   return <>
 
   <Provider store={store}>

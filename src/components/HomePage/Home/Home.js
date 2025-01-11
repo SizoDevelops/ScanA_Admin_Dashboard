@@ -17,7 +17,7 @@ const Home = () => {
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
         const hasTouch = "maxTouchPoints" in navigator && navigator.maxTouchPoints > 0;
     
-        if(-hasTouch){
+        if(hasTouch){
           redirect("https://scana.co.za")
         }
         Aos.init()

@@ -39,6 +39,7 @@ export const DatabaseProvider = ({children}) => {
           body: JSON.stringify(dat)
         }).then(data => data.json())
         .then(data => {
+          
           if(data) dispatch(setSchool(data))
           else {
             signOut()
@@ -56,7 +57,7 @@ export const DatabaseProvider = ({children}) => {
       
         if(session){
         
-          getUser({key:session?.user.key}) 
+          getUser({key:session?.user.school_code})
         }
         else {
           setLoading(false)
@@ -74,7 +75,7 @@ export const DatabaseProvider = ({children}) => {
           body: JSON.stringify(data)
         })
         
-        getUser({key:session?.user.key})
+        getUser({key:session?.user.school_code})
         setLoading(false)
       }
 

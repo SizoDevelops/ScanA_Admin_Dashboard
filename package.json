@@ -21,6 +21,7 @@
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "exceljs": "^4.4.0",
+    "firebase": "^11.1.0",
     "formik": "^2.4.2",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.1",

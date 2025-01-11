@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server";
 const nodemailer = require("nodemailer");
-import { Deta } from "deta";
-const deta = Deta(process.env.DETA_PROJECT_KEY);
 var path = require("path");
 var Mailgen = require("mailgen");
-import * as bcrypt from "bcrypt";
-const base = deta.Base("schools_db");
 const crypto = require("crypto");
+
+import { collection, doc, setDoc, where, query, getDocs, CACHE_SIZE_UNLIMITED } from "firebase/firestore"; 
+import app from "@/lib/firebase";
+import { initializeFirestore} from "firebase/firestore";
+
+
+
+const db = initializeFirestore(app,{
+  cacheSizeBytes: CACHE_SIZE_UNLIMITED
+})
+
 
 let userName = "";
 const token = crypto.randomBytes(20).toString("hex");
@@ -57,7 +64,7 @@ export async function POST(request) {
   var transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.USER,
+      user: process.env.USER_EMAIL,
       pass: process.env.PASS,
     },
     tls: {

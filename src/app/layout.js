@@ -11,8 +11,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <StrictMode>
-
-   
+      
+    
     <html lang="en">
       
 
