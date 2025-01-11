@@ -98,7 +98,7 @@ const AddMember = () => {
         setLoading(true)
        const data = {
             data: users,
-            key: session?.user.key,
+            key: session?.user.school_code,
 
         }
 
