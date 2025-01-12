@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import { collection, doc, setDoc, where, query, getDocs, CACHE_SIZE_UNLIMITED, getDoc, updateDoc } from "firebase/firestore"; 
 import app from "@/lib/firebase";
 import { initializeFirestore} from "firebase/firestore";
+import { getUserCollection, updateCollectionMembers } from '@/components/features/databaseFunctions';
 
 
 
@@ -14,11 +15,11 @@ const db = initializeFirestore(app,{
 export async function POST(request) {
     const body = await request.json();
 
-    const user = await getDoc(doc(db, "users", body.key))
+    const user = await getUserCollection(body.key)
     
-    if(user.exists()){
-      const members = user.data().members.concat(body.data)  
-      const updateUser = await  updateDoc(doc(db, "users", body.key), {members: members})
+    if(user){
+      const members = user.members.concat(body.data)  
+      const updateUser =  await updateCollectionMembers(body.key, members)
       return NextResponse.json(updateUser)
     }
     

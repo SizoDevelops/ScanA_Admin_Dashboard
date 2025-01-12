@@ -69,7 +69,7 @@ export default function Member({params}) {
             <div className={styles.btn} onClick={async () =>{
              await sendUserEmail({
                 name: `${member.title} ${member.last_name}`,
-                page: `https://scana.co.za/login?code=${session?.user.key}&usercode=${member.code}`,
+                page: `https://scana.co.za/login?code=${session?.user.school_code}&usercode=${member.code}`,
                 user: member.email,
                 code: session?.user.key,
                 user_code: member.code

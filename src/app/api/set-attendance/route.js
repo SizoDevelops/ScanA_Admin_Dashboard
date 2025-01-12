@@ -1,13 +1,11 @@
-import { Deta } from 'deta'
-import { NextResponse } from 'next/server';
+import { getUserCollection, updateCollectionAttendance } from '@/components/features/databaseFunctions';
 
-const deta = Deta(process.env.DETA_PROJECT_KEY)
-const db = deta.Base("schools_db")
+import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     const body = await request.json();
 
-    let base = await db.get(body.key)
+    let base = await getUserCollection(body.key)
     let data = base.attendance
     
     if(parseInt(data.currentWeek) !== body.currentWeek){
@@ -19,10 +17,10 @@ export async function POST(request) {
       data.friday = body.friday
     
     
-    let updated = await db.update({attendance: data}, body.key)
+    let updated = updateCollectionAttendance(body.key, data)
     
     
-    return NextResponse.json(base)
+    return NextResponse.json(updated)
     }
     return NextResponse.json("Already Signed")
 }

@@ -1,19 +1,9 @@
+import { updateCollectionToken } from "@/components/features/databaseFunctions";
 import { NextResponse } from "next/server";
 const nodemailer = require("nodemailer");
 var path = require("path");
 var Mailgen = require("mailgen");
 const crypto = require("crypto");
-
-import { collection, doc, setDoc, where, query, getDocs, CACHE_SIZE_UNLIMITED } from "firebase/firestore"; 
-import app from "@/lib/firebase";
-import { initializeFirestore} from "firebase/firestore";
-
-
-
-const db = initializeFirestore(app,{
-  cacheSizeBytes: CACHE_SIZE_UNLIMITED
-})
-
 
 let userName = "";
 const token = crypto.randomBytes(20).toString("hex");
@@ -82,28 +72,19 @@ export async function POST(request) {
   // });;
   async function sendEmail() {
     try {
-      const data = await base.fetch({
-        school_email: body.user,
-        school_code: body.code,
-      });
-
-      if (data.count > 0 && data.items[0].reset_tokens) {
-        await base.update(
+         updateCollectionToken(
+          data.school_code,
           {
-            reset_tokens: {
-              token: token,
-              expires: Date.now() + 60 * 60 * 1000,
-              used: false,
-            },
-          },
-          data.items[0].school_code
+            token: token,
+            expires: Date.now() + 60 * 60 * 1000,
+            used: false,
+          }
+          
         );
 
         await transporter.sendMail(message);
         return NextResponse.json("Email Sent Successfully");
-      } else {
-        return NextResponse.json("Invalid Request");
-      }
+
     } catch (error) {
       return NextResponse.json(error.message);
     }

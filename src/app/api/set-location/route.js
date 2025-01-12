@@ -1,14 +1,12 @@
-import { Deta } from 'deta'
-import { NextResponse } from 'next/server';
+import { getUserCollection, updateCollectionLocation } from '@/components/features/databaseFunctions';
 
-const deta = Deta(process.env.DETA_PROJECT_KEY)
-const db = deta.Base("schools_db")
+import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     const body = await request.json();
 
  
-    let base = await db.get(body.key)
+    let base = await getUserCollection(body.key)
     let data = base.coordinates
 
     if(body.latitude !== "" && body.longitude !== "" && body.distance !== 0){
@@ -20,7 +18,7 @@ export async function POST(request) {
       return NextResponse.json("Invalid Information")
     }
     
-    let updated = await db.update({coordinates: data}, body.key)
+    let updated = updateCollectionLocation(body.key, data)
 
 
    

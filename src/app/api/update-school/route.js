@@ -1,14 +1,13 @@
-import { Deta } from 'deta'
+import { getUserCollection, setUserCollection } from '@/components/features/databaseFunctions';
+
 import { NextResponse } from 'next/server';
 
-const deta = Deta(process.env.DETA_PROJECT_KEY)
-const db = deta.Base("schools_db")
 const lodash = require('lodash')
 
 export async function POST(request) {
     const body = await request.json();
 
-    const user = await db.get(body.key)
+    const user = await getUserCollection(body.key)
 
     if(lodash.isEqual(body.user, user)){
         return NextResponse.json("User Details Unchanged")
@@ -20,7 +19,7 @@ export async function POST(request) {
         user.school_address = body.user.school_address
         user.school_admin = body.user.school_admin
     }
-    const updateUser = await  db.put(user, body.key)
+    const updateUser = setUserCollection(body.key, user)
     
 
     return NextResponse.json(updateUser)

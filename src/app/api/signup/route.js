@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import * as bcrypt from "bcrypt";
-import { collection, doc, setDoc, where, query, getDocs, CACHE_SIZE_UNLIMITED } from "firebase/firestore"; 
+import { collection, where, query, getDocs, CACHE_SIZE_UNLIMITED } from "firebase/firestore"; 
 import app from "@/lib/firebase";
 import { initializeFirestore} from "firebase/firestore";
+import { setUserCollection } from "@/components/features/databaseFunctions";
 
 
 
@@ -22,11 +23,16 @@ export async function POST(request) {
 if(schoolSearch.empty){
   const {confirm_password, ...user} = data
 
-  await setDoc(doc(db, "users", data.school_code), user);
+  let uses = setUserCollection(body.school_code, user)
   
   const {password, ...result} = user;
-  console.log(result)
-  return NextResponse.json(result)
+  
+  if(uses){
+    return NextResponse.json(result)
+  }
+  else{
+    return null
+  }
 }
 
 else {

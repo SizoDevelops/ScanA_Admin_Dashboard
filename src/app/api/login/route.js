@@ -1,29 +1,19 @@
 import { signJwtAccessToken } from "@/lib/jwt";
 import { NextResponse } from 'next/server'
 import * as bcrypt from "bcrypt";
-import { collection, doc, setDoc, where, query, getDocs, CACHE_SIZE_UNLIMITED, getDoc } from "firebase/firestore"; 
-import app from "@/lib/firebase";
-import { initializeFirestore} from "firebase/firestore";
-
-
-
-const db = initializeFirestore(app,{
-  cacheSizeBytes: CACHE_SIZE_UNLIMITED
-})
-
+import { DB, getUserCollection } from "@/components/features/databaseFunctions";
 
 export async function POST(request) {
     const body = await request.json();
     
    
     
-    const user = await getDoc(doc(db, "users", body.school_code))
-
+    const user = await getUserCollection(body.school_code)
 
     
-    if ((user.exists() && user.data().school_email === body.school_email) && (await bcrypt.compare(body.password, user.data().password))) {
+    if ((user && user.school_email === body.school_email) && (await bcrypt.compare(body.password, user.password))) {
 
-        const { password, members, attendance, school_address,school_email,school_number, school_slogan,coordinates,school_admin, posts, reset_tokens, school_meetings, user_faces,  ...userWithoutPass } = user.data();
+        const { password, members, attendance, school_address,school_email,school_number, school_slogan,coordinates,school_admin, posts, reset_tokens, school_meetings, user_faces,  ...userWithoutPass } = user;
  
         const accessToken = signJwtAccessToken(userWithoutPass);
         const result = {
