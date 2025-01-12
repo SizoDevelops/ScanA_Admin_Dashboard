@@ -23,16 +23,13 @@ export async function POST(request) {
 if(schoolSearch.empty){
   const {confirm_password, ...user} = data
 
-  let uses = setUserCollection(body.school_code, user)
+  let uses = await setUserCollection(user.school_code, user)
   
   const {password, ...result} = user;
+
   
-  if(uses){
     return NextResponse.json(result)
-  }
-  else{
-    return null
-  }
+ 
 }
 
 else {
