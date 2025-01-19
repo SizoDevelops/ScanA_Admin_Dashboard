@@ -51,6 +51,56 @@ else return (
         <Summary/>
         <Summary/>
       </div>
+
+
+      <div className={styles.search}>
+        <div className={styles.searchBar}>
+        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	        <path d="m19.485 20.154l-6.262-6.262q-.75.639-1.725.989q-.975.35-1.96.35q-2.402 0-4.066-1.663q-1.664-1.664-1.664-4.065T5.47 5.436q1.663-1.667 4.064-1.667q2.402 0 4.068 1.664q1.666 1.664 1.666 4.067q0 1.042-.369 2.017q-.37.975-.97 1.668l6.262 6.261l-.707.708ZM9.538 14.23q1.99 0 3.361-1.37q1.37-1.37 1.37-3.361q0-1.99-1.37-3.36q-1.37-1.37-3.36-1.37q-1.99 0-3.361 1.37q-1.37 1.37-1.37 3.36q0 1.99 1.37 3.36q1.37 1.37 3.36 1.37Z" fill="#111115"/>
+        </svg>
+          <input type="text" placeholder='Search' onChange={(e) => setSearch(e.target.value)}/>
+        </div>
+
+        {/* Legend */}
+
+        <div className={styles.legend}>
+          <div className={styles.legendItem}>
+            <div className={styles.legendColor} style={{background: "#FFB800"}}></div>
+            <p className={styles.legendText}>Pending</p>
+            </div>
+          <div className={styles.legendItem}>
+            <div className={styles.legendColor} style={{background: "#00FF57"}}></div>
+            <p className={styles.legendText}>Present</p>
+            </div>
+          <div className={styles.legendItem}>
+            <div className={styles.legendColor} style={{background: "#DD0000"}}></div>
+            <p className={styles.legendText}>Absent</p>
+            </div>
+        </div>
+
+        
+
+      </div>
+      {/* Members */}
+      <div className={styles.members}>
+          <div className={styles.membersHeader}>
+            <p>Code</p>
+            <p>User Name</p>
+            <p>Gender</p>
+            <p>Email Address</p>
+            <p>Days Absent</p>
+            <p>Days Present</p>
+            <p>Status</p>
+            <p>Send Login</p>
+          </div>
+
+          <DashProfile/>
+          <DashProfile/>
+          <DashProfile/>
+          <DashProfile/>
+          <DashProfile/>
+          <DashProfile/>
+        </div>
       </div>
      
 
