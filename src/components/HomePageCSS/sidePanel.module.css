@@ -1,0 +1,69 @@
+.sidePanel{
+    width:90px;
+    height: 100%;
+    background-color: #03a4ff;
+    padding:40px 10px;
+
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    
+}
+/* Style the links */
+.sidePanel a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100px;
+    width: 100%;
+}
+
+/* Style the link paragraphs */
+.sidePanel a>p{
+
+    color: #ffffff;
+    position: absolute;
+    background: #0075a7;
+    border-radius: 5px;
+    font-size: min(13px, 3vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 60px;
+    top: 50%;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    display: none;
+    z-index: 1;
+}
+
+/* Display paragraph on hover */
+
+.sidePanel a:hover>p{
+    display: flex;
+}
+
+/* Style the icons */
+.sideIcon{
+    width: min(25px, 5vw);
+    height: min(25px, 5vw);
+    background: transparent;
+    margin: 20px 0;
+}
+
+.sideIcon svg{
+    width: min(25px, 5vw);
+    height: min(25px, 5vw);
+    background: transparent;
+    margin: 20px 0;
+    position: relative;
+    fill: #FFFFFF;
+    
+    stroke-width: 1px;
+}
