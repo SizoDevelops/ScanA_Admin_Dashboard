@@ -19,13 +19,14 @@
     justify-content: center;
     background-color: #00578a8e;
     z-index: 900;
+    
 }
 .container .Button {
     margin-top: 40px;
     background-color: #0582ff;
     color: #ffffff;
     width: 80%;
-    height: 20px;
+    height: 50px;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -41,10 +42,12 @@
     background-color: #00578a;
 }
 .para{
+    margin-top: 20px;
     color: #111115;
     font-size: 14px;
 }
 .title{
+    margin-top: 20px;
     color: #111115;
     font-size: 16px;
 }

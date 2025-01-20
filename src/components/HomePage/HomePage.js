@@ -6,15 +6,16 @@ import SidePanel from '@/components/HomePage/sidePanel'
 import { useSelector } from 'react-redux'
 import { signOut } from 'next-auth/react'
 import Loader from '../shared/Loader'
-import Image from 'next/image'
 import Logo from '../shared/Logo'
+import Modal from './Modal'
+import { useDatabase } from '../features/dbContext'
 
 export default function HomePage() {
 
   const schema = useSelector(state => state.Database.value)
   const [users, setUsers] = useState([{}])
   const [search, setSearch] = useState("")
-
+  const { errCode} = useDatabase()
 
 useEffect(() => {
   setUsers(schema.members)
@@ -34,15 +35,19 @@ if(schema.school_name === "" || !users) {
   return <Loader/>
 }
 else return (
-
+  <React.Fragment>
+     {
+              errCode.message.length < 1 ? <></> : <Modal errCode={errCode}/>
+      }
     <div className={styles.container}>
+     
       <SidePanel/>
       <div className={styles.content}>
          <div className={styles.menu}>
         <div className={styles.intro}>
           <Logo bgColor={"#0099F1"} widthV={400} heightV={120} width={100} height={30}/>
           <div className={styles.logout}>
-            <button onClick={() => {}}>Logout</button>
+            <button onClick={() => signOut()}>Logout</button>
           </div>
         </div>
       </div>
@@ -94,18 +99,19 @@ else return (
             <p>Send Login</p>
           </div>
 
-          <DashProfile/>
-          <DashProfile/>
-          <DashProfile/>
-          <DashProfile/>
-          <DashProfile/>
-          <DashProfile/>
+          {
+            users.map((elem, index) => {
+              return (
+                <DashProfile key={index} {...elem} />
+              )
+            })
+          }
         </div>
       </div>
      
 
     </div>
-
+</React.Fragment>
     
   ) 
 }
