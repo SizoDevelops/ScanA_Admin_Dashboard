@@ -13,10 +13,12 @@ import Footer from './HomeComponents/Footer';
 const Login = () => {
 const { errCode, setCode } = useDatabase();
  return (
-        <body className={styles.Body}>
+  <React.Fragment>
+    {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
+        <div className={styles.Body}>
         <NavBar/>
         <div className={styles.container}>
-        {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
+        
          <div className={styles.textHolder}>
          <h1>Login to <span>ScanA</span></h1>
         </div>
@@ -34,7 +36,8 @@ const { errCode, setCode } = useDatabase();
       
         </div>
         <Footer/>
-     </body>
+     </div>
+     </React.Fragment>
     );
 }
 

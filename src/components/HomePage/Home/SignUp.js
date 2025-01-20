@@ -142,10 +142,12 @@ const SignUp = () => {
   };
 
     return (
+      <React.Fragment>
+        {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
       <body className={styles.Body}>
         <NavBar />
         <div className={styles.container}>
-          {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
+          
           <div className={styles.textHolder}>
             <h1>
               Register Your <span>Company</span>
@@ -194,6 +196,8 @@ const SignUp = () => {
         </div>
         <Footer/>
       </body>
+
+      </React.Fragment>
     );
 };
 function Back() {
