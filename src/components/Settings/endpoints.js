@@ -1,7 +1,7 @@
 const endpoints = [
     {
         title: "App Settings",
-        description: "These setting will update and generate registration QR codes",
+        description: "These setting will update location and generate attendance QR codes",
         details: [
 
             {
@@ -11,11 +11,7 @@ const endpoints = [
               </svg>,
                 name: "Location",
             },
-            {
-                endpoint: "movement-codes",
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 32 32"><path fill="currentColor" d="m24 20l-1.41 1.41L26.17 25H10a4 4 0 0 1 0-8h12a6 6 0 0 0 0-12H5.83l3.58-3.59L8 0L2 6l6 6l1.41-1.41L5.83 7H22a4 4 0 0 1 0 8H10a6 6 0 0 0 0 12h16.17l-3.58 3.59L24 32l6-6Z"/></svg>,
-                name: "Movement Codes",
-            },
+          
             {
                 endpoint: "attendance",
                 icon: <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
