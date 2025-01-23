@@ -135,7 +135,7 @@ export const DatabaseProvider = ({children}) => {
 
     if(day === "tuesday") {
         data  = {
-          key: session?.user.key,
+          key: session?.user.school_code,
           currentWeek: getCurrentWeek(),
           monday: null,
           tuesday,
@@ -146,7 +146,7 @@ export const DatabaseProvider = ({children}) => {
        }
        else if (day === "wednesday") {
         data  = {
-           key: session?.user.key,
+           key: session?.user.school_code,
            currentWeek: getCurrentWeek(),
           monday:null,
           tuesday:null,
@@ -157,7 +157,7 @@ export const DatabaseProvider = ({children}) => {
        }
        else if(day === "thursday"){
         data  = {
-          key: session?.user.key,
+          key: session?.user.school_code,
           currentWeek: getCurrentWeek(),
           monday:null,
           tuesday:null,
@@ -168,7 +168,7 @@ export const DatabaseProvider = ({children}) => {
        }
        else if(day === "friday"){
         data  = {
-          key: session?.user.key,
+          key: session?.user.school_code,
           currentWeek: getCurrentWeek(),
           monday:null,
           tuesday:null,
@@ -179,7 +179,7 @@ export const DatabaseProvider = ({children}) => {
        }
        else if(day==="monday") {
         data  = {
-          key: session?.user.key,
+          key: session?.user.school_code,
           currentWeek: getCurrentWeek(),
           monday,
           tuesday,
@@ -190,7 +190,7 @@ export const DatabaseProvider = ({children}) => {
        }
        else if(day === "sunday") {
         data  = {
-          key: session?.user.key,
+          key: session?.user.school_code,
           currentWeek: getCurrentWeek(),
           monday,
           tuesday,
@@ -201,7 +201,7 @@ export const DatabaseProvider = ({children}) => {
        }
        else {
         data  = {
-          key: session?.user.key,
+          key: session?.user.school_code,
           currentWeek: getCurrentWeek() + 1,
           monday,
           tuesday,
@@ -212,7 +212,7 @@ export const DatabaseProvider = ({children}) => {
        }
     
 
-        if(session?.user.key){  
+        if(session?.user.school_code){  
         await fetch("/api/set-attendance", {
             method: "POST",
             cache: "no-cache",

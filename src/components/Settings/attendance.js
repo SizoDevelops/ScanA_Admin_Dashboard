@@ -71,14 +71,14 @@ const Attendance = () => {
                                     scale: 1,
                                     width: 200,
                                     color: {
-                                    dark: '#111115',
+                                    dark: '#03a4ff',
                                     light: '#FFFFFF',
                                     },
                                     
                                 }}
                          />: <></>}
                     <div>
-                        <h2>OR ENTER CODE</h2>
+                        <h3>OR ENTER CODE</h3>
                         <p className={styles.para}>{schema?.monday}</p>
                     </div>
                     </div>
@@ -97,14 +97,14 @@ const Attendance = () => {
                                     scale: 1,
                                     width: 200,
                                     color: {
-                                    dark: '#111115',
+                                    dark: '#03a4ff',
                                     light: '#FFFFFF',
                                     },
                                     
                                 }}
                          />: <></>}
                     <div>
-                        <h2>OR ENTER CODE</h2>
+                        <h3>OR ENTER CODE</h3>
                         <p className={styles.para}>{schema?.tuesday}</p>
                     </div>
                     </div>
@@ -123,14 +123,14 @@ const Attendance = () => {
                                     scale: 1,
                                     width: 200,
                                     color: {
-                                    dark: '#111115',
+                                        dark: '#03a4ff',
                                     light: '#FFFFFF',
                                     },
                                     
                                 }}
                          /> : <></>}
                     <div>
-                        <h2>OR ENTER CODE</h2>
+                        <h3>OR ENTER CODE</h3>
                         <p className={styles.para}>{schema?.wednesday}</p>
                     </div>
                     </div>
@@ -149,14 +149,14 @@ const Attendance = () => {
                                     scale: 1,
                                     width: 200,
                                     color: {
-                                    dark: '#111115',
+                                        dark: '#03a4ff',
                                     light: '#FFFFFF',
                                     },
                                     
                                 }}
                          /> : <></>}
                     <div>
-                        <h2>OR ENTER CODE</h2>
+                        <h3>OR ENTER CODE</h3>
                         <p className={styles.para}>{schema?.thursday}</p>
                     </div>
                     </div>
@@ -175,14 +175,14 @@ const Attendance = () => {
                                     scale: 1,
                                     width: 200,
                                     color: {
-                                    dark: '#111115',
+                                        dark: '#03a4ff',
                                     light: '#FFFFFF',
                                     },
                                     
                                 }}
                          /> : <></>}
                     <div>
-                        <h2>OR ENTER CODE</h2>
+                        <h3>OR ENTER CODE</h3>
                         <p className={styles.para}>{schema?.friday}</p>
                     </div>
                     </div>

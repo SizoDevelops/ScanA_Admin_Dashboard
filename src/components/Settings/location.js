@@ -63,7 +63,7 @@ const Location = () => {
                     }
                     else {
                         setLocation({
-                            key: session?.user.key,
+                            key: session?.user.school_code,
                             latitude: latitude,
                             longitude: longitude,
                             distance: distance <= 0 ? 200 : distance
