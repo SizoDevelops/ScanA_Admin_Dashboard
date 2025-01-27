@@ -1,18 +1,8 @@
-.container{
-    border: 1px solid #03a4ff;
-    width: min(1440px, 90vw);
-    height: 98vh;
-    margin: auto;
-    border-radius: 20px;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: row;
+
+
+.panel{
+  height: 100%;
 }
-
-
   
 .title{
     margin: 30px 20px;
@@ -31,6 +21,7 @@
     width: fit-content;
     text-align: center;
     margin-left: 30px;
+
 }
 
 /* Style the intro panel */
@@ -77,4 +68,100 @@
   color: #111115;
   background: #ffffff;
   border: #03a4ff 1px solid;
+}
+
+
+.container{
+  border: 1px solid #03a4ff;
+  width: min(1440px, 90vw);
+  height: 98vh;
+  margin: auto;
+  border-radius: 20px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.content{
+  width: 100%;
+  height: 100%;
+}
+/* Style the menu */
+.menu{
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top-right-radius: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2);
+}
+
+/* Style the intro panel */
+.intro{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Style Logout*/
+.logout{
+  margin-right: 20px;
+}
+
+.logout button{
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #03a4ff;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Button Onclick */
+.logout button:active{
+  color: #111115;
+  background: #ffffff;
+  border: #03a4ff 1px solid;
+}
+
+/*  Style the summary section  */
+
+/* Members */
+.membersPeople{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  height: 100%;
+
+}
+
+.membersPeople::-webkit-scrollbar{
+  width: 5px;
+}
+.membersPeople::-webkit-scrollbar-thumb{
+  background: #03a4ff;
+  border-radius: 5px;
+}
+
+/* Position scrollbar absolute */
+
+.membersPeople::-webkit-scrollbar-track{
+  background: transparent;
+  
 }

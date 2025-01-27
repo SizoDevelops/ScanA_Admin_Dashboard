@@ -34,7 +34,7 @@ const Attendance = () => {
       }
 
       useEffect(() => {
-        setAttendance()
+       setAttendance()
         
       // eslint-disable-next-line react-hooks/exhaustive-deps
       },[schema])
@@ -45,9 +45,9 @@ const Attendance = () => {
     else return (
         <body className={styles.container}>
               <Fab style={{float: "right", position: "absolute", top: "40px", right: "100px"}} onClick={async () => {
-                    await setAttendance()
+                    setAttendance()
                     if(session){
-                        getUser({key:session?.user.key}) 
+                        getUser({key:session?.user.school_code}) 
                       }
               }} title="Refresh" color='info'> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
   <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>

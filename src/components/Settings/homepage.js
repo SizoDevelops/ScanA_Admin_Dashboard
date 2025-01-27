@@ -14,24 +14,34 @@ const Settings = () => {
     return <Loader/>
   }
   else return ( 
-        <body className={styles.container}>
-           <div className={styles.panel}>
-         <SidePanel />
-      </div>
-      <div style={{flex: 1}}>
-         <div className={styles.menu}>
-        <div className={styles.intro}>
-          <Logo bgColor={"#0099F1"} widthV={400} heightV={120} width={100} height={30}/>
-          <div className={styles.logout}>
-            <button onClick={() => signOut()}>Logout</button>
-          </div>
-        </div>
-      </div>
-        <Menu/>
-      </div>
+    <React.Fragment>
+    
+   <div className={styles.container}>
+    
+     <SidePanel/>
+     <div className={styles.content}>
+        <div className={styles.menu}>
+       <div className={styles.intro}>
+         <Logo bgColor={"#0099F1"} widthV={400} heightV={120} width={100} height={30}/>
+         <div className={styles.logout}>
+           <button onClick={() => signOut()}>Logout</button>
+         </div>
+       </div>
+     </div>
+
      
 
-        </body>
+     
+     {/* Members */}
+      <div className={styles.membersPeople}>
+        <Menu/> 
+      </div>
+      
+     </div>
+    
+      
+   </div>
+</React.Fragment>
     );
 }
 
