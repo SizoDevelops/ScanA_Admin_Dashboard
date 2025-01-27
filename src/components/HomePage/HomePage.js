@@ -52,11 +52,7 @@ else return (
         </div>
       </div>
 
-      <div className={styles.summary}>
-        <Summary/>
-        <Summary/>
-      </div>
-
+      
 
       <div className={styles.search}>
         <div className={styles.searchBar}>
@@ -88,6 +84,7 @@ else return (
       </div>
       {/* Members */}
       <div className={styles.members}>
+          
           <div className={styles.membersHeader}>
             <p>Code</p>
             <p>User Name</p>
@@ -98,15 +95,20 @@ else return (
             <p>Status</p>
             <p>Send Login</p>
           </div>
-
-          {
-            users.map((elem, index) => {
-              return (
-                <DashProfile key={index} {...elem} />
-              )
-            })
-          }
-        </div>
+          <div className={styles.membersPeople}>
+           {
+             users.map((item, index) => {
+               return (
+                <DashProfile key={index} {...item}/>
+               )
+             })
+           }
+          </div>
+          
+          
+          
+          </div>
+        
       </div>
      
 
