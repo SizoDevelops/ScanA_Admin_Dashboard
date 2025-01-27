@@ -5,6 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { setSchool} from "../shared/DatabaseSlice";
 import { useDispatch} from "react-redux";
+import moment from "moment";
 const voucher_codes = require("voucher-code-generator")
 
 
@@ -81,20 +82,16 @@ export const DatabaseProvider = ({children}) => {
 
 
       function getCurrentDayOfWeek() {
-        const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-        const today = new Date();
-        const dayOfWeek = today.getDay();
-        const currentDay = daysOfWeek[dayOfWeek];
-        return currentDay;
+        const today = moment();
+        return today.format('dddd').toLowerCase();
       }
+
+
       function getCurrentWeek() {
-        const today = new Date(Date.now());
-        const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-        const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000));
-        const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7);
-        return currentWeek;
+        const today = moment();
+        return today.week();
       }
-    
+      
 
       const setAttendance = async () => {
         setLoading(true)
