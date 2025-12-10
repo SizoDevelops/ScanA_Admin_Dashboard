@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "@/components/HomePageCSS/pricing.module.css";
 import NavBar from "@/components/HomePage/Home/NavBar";
 import Footer from "@/components/HomePage/Home/HomeComponents/Footer";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 
 export default function Page() {
   const [SUsers, setSUsers] = useState(10);

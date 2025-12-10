@@ -1,11 +1,10 @@
 "use client";
 import { useEffect } from "react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useDatabase } from "@/components/features/dbContext";
 import Login from "@/components/HomePage/Home/Login";
 import Loader from "@/components/shared/Loader";
-import { useRouter } from "next/router";
 
 const Page = () => {
   const { data: session, status } = useSession();

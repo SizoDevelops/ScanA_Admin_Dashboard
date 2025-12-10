@@ -3,8 +3,8 @@ import HomePage from '@/components/HomePage/HomePage'
 import { useDatabase } from '@/components/features/dbContext'
 import Loader from '@/components/shared/Loader'
 import { useSession } from 'next-auth/react'
-import { redirect, useParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { redirect, useParams, useRouter } from 'next/navigation'
+
 
 import React, { useEffect, useState } from 'react'
 
