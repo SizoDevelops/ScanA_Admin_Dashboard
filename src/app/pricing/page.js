@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "@/components/HomePageCSS/pricing.module.css";
 import NavBar from "@/components/HomePage/Home/NavBar";
 import Footer from "@/components/HomePage/Home/HomeComponents/Footer";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
+
 export default function Page() {
   const [SUsers, setSUsers] = useState(10);
   const [PUsers, setPUSers] = useState(35);
@@ -13,11 +14,11 @@ export default function Page() {
   const [PyearlyPrice, setPYearlyPrice] = useState(1300);
   const [SBilling, setSBilling] = useState("yearly");
   const [PBilling, setPBilling] = useState("yearly");
-
+  const router = useRouter();
   const m = 50;
   const y = 35;
 
-  const router = useRouter();
+  
 
   useEffect(() => {
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);

@@ -1,9 +1,17 @@
-import Home from '@/components/HomePage/Home/Home';
+import Home from "@/components/HomePage/Home/Home";
+import { useRouter } from "next/router";
 
 const Page = () => {
+  const router = useRouter();
+  useEffect(() => {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    return <Home />;
+    if (isMobile) {
+      router.push("https://scana.co.za");
+    }
+  }, []);
 
+  return <Home />;
 };
 
 export default Page;
