@@ -1,7 +1,6 @@
 "use client"
 import React from 'react';
 import styles from './SettingsCSS/settingsCat.module.css'
-import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 const SettingCats = ({title, points}) => {
@@ -13,8 +12,12 @@ const SettingCats = ({title, points}) => {
 
                 {
                     points.map((item, index) => {
-                        return(
-                           <Link href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/settings/${item.endpoint}` } prefetch={false} legacyBehavior  key={item + index}>
+                        return (
+                            <Link
+                                href={`/user/${user.school_name.toLowerCase().replace(/\s+/g, '-')}/settings/${item.endpoint}` }
+                                prefetch={false}
+                                key={item + index}>
+                    
                                 <div className={styles.Container}>
                                 <div className={styles.Icon}>
                                     {/* <Image sizes='40' fill src={ item.icon !== "" ? item.icon : "/icons/re.png"} alt="Folder Icon"/> */}
@@ -23,8 +26,7 @@ const SettingCats = ({title, points}) => {
                                 <p className={styles.Name}>{item.name}</p>
                                 </div>
                             </Link>
- 
-                        )
+                        );
                     })
                     
                     
@@ -32,9 +34,6 @@ const SettingCats = ({title, points}) => {
                     
 
             </div>
-       
-
-            
         </div>
     );
 }
