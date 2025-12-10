@@ -103,7 +103,6 @@ const SignUp = () => {
   };
   const initValues = {
     school_name: "",
-    school_emis: "",
     school_email: "",
     school_number: "",
     school_meetings: [],
@@ -144,7 +143,7 @@ const SignUp = () => {
     return (
       <React.Fragment>
         {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
-      <body className={styles.Body}>
+      <div className={styles.Body}>
         <NavBar />
         <div className={styles.container}>
           
@@ -195,7 +194,7 @@ const SignUp = () => {
           </div>
         </div>
         <Footer/>
-      </body>
+      </div>
 
       </React.Fragment>
     );
@@ -241,13 +240,7 @@ const StepOne = () => {
 />
 
 <ErrorMessage name="school_name" component="span" />
-<label htmlFor="school_emis">School Emis No Or Company Reg. No</label>
-<Field
-  type="text"
-  name="school_emis"
-  placeholder="400032323"
-/>
-<ErrorMessage name="school_emis" component="span" />
+
 <label htmlFor="school_email">Email Address</label>
 <Field
   name="school_email"
