@@ -49,6 +49,12 @@
     "os": false,
     "path": false
   },
+
+"engines": {
+  "node": ">=20.19.0"
+}
+
+,
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@swc/core": "^1.15.3",
