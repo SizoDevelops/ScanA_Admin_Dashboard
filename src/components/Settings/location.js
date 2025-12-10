@@ -39,7 +39,7 @@ const Location = () => {
         return <Loader/>
     }
     return (
-        <body className={styles.container}>
+        <div className={styles.container}>
             <h2 className={styles.intro}>Please enter the longitude and latitude in the boxes below, make sure it`s precise or follow the instructions below to get your coordinates.</h2>
 
 
@@ -82,7 +82,7 @@ const Location = () => {
                     <li><strong><i>Left-Click</i></strong> on the coordinates to copy them.</li>
                 </ul>
             </div>
-        </body>
+        </div>
     );
 }
 

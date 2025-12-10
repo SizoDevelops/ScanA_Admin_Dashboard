@@ -100,11 +100,6 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     position: relative;
-    background-image: url("");
-    background-position: center;
-    background-clip: border-box;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .profileDetails > p{

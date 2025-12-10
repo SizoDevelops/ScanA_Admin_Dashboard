@@ -119,7 +119,7 @@ const AddMember = () => {
 
     
     return (
-        <body className={styles.container}>
+        <div className={styles.container}>
         <Formik
             initialValues={initialState}
             validate={validate}
@@ -240,7 +240,7 @@ const AddMember = () => {
             {
                 users.map((item, index) => (
                     <div key={item.id}>
-                           <MemberInfo key={item.id} position={item.position} code={item.code} title={item.title} last_name={item.last_name} initial={item.initial} dlt={removeUser}/>
+                           <MemberInfo  position={item.position} code={item.code} title={item.title} last_name={item.last_name} initial={item.initial} dlt={removeUser}/>
                     </div>
                  
                 ))
@@ -261,7 +261,7 @@ const AddMember = () => {
         </Form>
        )}
         </Formik>
-        </body>
+        </div>
     );
 }
 

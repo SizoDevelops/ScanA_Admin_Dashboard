@@ -4,7 +4,7 @@
 import { signOut, useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { setSchool} from "../shared/DatabaseSlice";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import moment from "moment";
 const voucher_codes = require("voucher-code-generator")
 
@@ -25,7 +25,7 @@ export const DatabaseProvider = ({children}) => {
     const dispatch = useDispatch()
     const [errCode, setCode] = useState({title: "" , message: "", type: ""})
     const [meetingModal, setMeeting] = useState({name: "", category: ""})
-    const [visiblePost, setVisiblePost] = useState("")
+    const user = useSelector(state => state.user)
 
 
 
@@ -209,7 +209,7 @@ export const DatabaseProvider = ({children}) => {
        }
     
 
-        if(session?.user.school_code){  
+        if(session?.user.school_code ){  
         await fetch("/api/set-attendance", {
             method: "POST",
             cache: "no-cache",
@@ -217,6 +217,7 @@ export const DatabaseProvider = ({children}) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
+
         }).then(()=>setLoading(false))
         }
        

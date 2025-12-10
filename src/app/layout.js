@@ -12,15 +12,16 @@ export default function RootLayout({ children }) {
   return (
     <StrictMode>
       
-    
     <html lang="en">
+    <body>
       
 
         <Providers>
           {children}
         </Providers>
      
-    </html>
+   </body>
+   </html>
     </StrictMode>
    
   )

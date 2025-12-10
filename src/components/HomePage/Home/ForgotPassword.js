@@ -54,7 +54,7 @@ const ForgotPassword = () => {
   if (loading) return <Loader />;
   else
     return (
-      <body className={styles.Body}>
+      <div className={styles.Body}>
         <NavBar />
         <div className={styles.container}>
           {errCode.message.length < 1 ? <></> : <Modal errCode={errCode} />}
@@ -78,7 +78,7 @@ const ForgotPassword = () => {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     );
 };
 

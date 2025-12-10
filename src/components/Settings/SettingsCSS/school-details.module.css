@@ -14,11 +14,7 @@
     margin-right: 10px;
     border-radius: 10px;
     position: relative;
-    background-image: url("");
-    background-position: center;
-    background-clip: border-box;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: #00137c3f;
     cursor: pointer;
 }
 .Profile{
@@ -28,6 +24,7 @@
     margin-left: 10px;
     align-items: center;
     flex-wrap: wrap;
+    
 }
 
 .details{

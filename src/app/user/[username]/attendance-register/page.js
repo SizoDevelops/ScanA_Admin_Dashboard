@@ -259,7 +259,7 @@ export default function ExcelPage() {
     return <Loader />;
   } else
     return (
-      <body className={styles.Table}>
+      <div className={styles.Table}>
         <TopPanel />
 
         <div className={styles.SelectorCont}>
@@ -340,16 +340,16 @@ export default function ExcelPage() {
             </p>
           </div>
 
-          <table id={"data" + sWeek.value} className={styles.TableHolder}>
+          <div id={"data" + sWeek.value} className={styles.TableHolder}>
             <TableHeader
               week={sWeek.value}
               position={sPosition.value}
               year={year.value}
             />
-          </table>
+          </div>
 
           {week.map((item, index) => (
-            <table
+            <div
               key={item.value}
               id={"data-table" + item.value}
               className={styles.visuallyHidden}
@@ -359,9 +359,9 @@ export default function ExcelPage() {
                 position={sPosition.value}
                 year={year.value}
               />
-            </table>
+            </div>
           ))}
         </div>
-      </body>
+      </div>
     );
 }

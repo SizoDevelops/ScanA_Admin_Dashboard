@@ -28,7 +28,22 @@ useEffect(() => {
   });
 }, [schema, search])
 
+const getCurrentDate = () => {
+  const today = new Date()
+  const formatted = today.toISOString().split("T")[0]
+  return formatted
+}
+const getCurrentDayOfWeek = () => {
+  const today = new Date()
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  return daysOfWeek[today.getDay()]
+}
 
+const isPresent = (user) => {
+  if(!user?.attendance) return false
+  return user?.attendance[getCurrentDayOfWeek().toLowerCase()]
+    .some(elem => elem.date === getCurrentDate());
+};
 
 
 if(schema.school_name === "" || !users) {
@@ -66,10 +81,6 @@ else return (
 
         <div className={styles.legend}>
           <div className={styles.legendItem}>
-            <div className={styles.legendColor} style={{background: "#FFB800"}}></div>
-            <p className={styles.legendText}>Pending</p>
-            </div>
-          <div className={styles.legendItem}>
             <div className={styles.legendColor} style={{background: "#00FF57"}}></div>
             <p className={styles.legendText}>Present</p>
             </div>
@@ -99,7 +110,7 @@ else return (
            {
              users.map((item, index) => {
                return (
-                <DashProfile key={index} {...item}/>
+                <DashProfile key={index} {...item} present={isPresent(item)}/>
                )
              })
            }

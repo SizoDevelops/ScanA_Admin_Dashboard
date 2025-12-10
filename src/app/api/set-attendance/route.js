@@ -7,7 +7,6 @@ export async function POST(request) {
 
     let base = await getUserCollection(body.key)
     let data = base.attendance
-    console.log(body)
 
     if(parseInt(data.currentWeek) !== body.currentWeek ){
       data.currentWeek = body.currentWeek
@@ -24,7 +23,7 @@ export async function POST(request) {
     return NextResponse.json(updated)
     }
 
-    else if(parseInt(data.currentWeek) === body.currentWeek && (data.monday === null || data.tuesday === null || data.wednesday === null || data.thursday === null || data.friday === null)){
+    else if(parseInt(data.currentWeek) === body.currentWeek && (data.monday === null && data.tuesday === null && data.wednesday === null && data.thursday === null && data.friday === null)){
       data.currentWeek = body.currentWeek
       data.monday = body.monday
       data.tuesday = body.tuesday

@@ -6,19 +6,19 @@ import { useDatabase } from '../features/dbContext'
 import { useSession } from 'next-auth/react'
 
 
-export default function DashProfile({code, slug, title, first_name, last_name, position, email, persal, }) {
+export default function DashProfile({code, slug, title, first_name, last_name, position, email, persal,present }) {
   const { errCode, sendUserEmail} = useDatabase()
   const {data: session} = useSession()
   const [loading, setLoading] = React.useState(false)
   return (
     <div className={styles.userContainer}>
-      <p style={{fontSize: "min(12px, 0.95vw)"}}>{code}</p>
+      <p style={{fontSize: "min(12px, 0.95vw)", marginLeft: "10px"}}>{code}</p>
       <p>{first_name + " " + last_name}</p>
       <p>{title?.toLowerCase() === "mr" ? "Male" : "Female"}</p>
-      <p>{email}</p>
+      <p style={{fontSize: "min(12px, 0.95vw)", wordBreak: "break-all"}}>{email?.split("@")[0]}</p>
       <p>0</p>
       <p>200</p>
-      <p style={{width: "10px", height: "10px", backgroundColor: "#00FF57", borderRadius: "50%", margin:"auto"}}>
+      <p style={{width: "10px", height: "10px", backgroundColor: present == true ? "#00FF57" : "#DD0000", borderRadius: "50%", margin:"auto"}}>
         
       </p>
       <div className={styles.btn} onClick={async () =>{

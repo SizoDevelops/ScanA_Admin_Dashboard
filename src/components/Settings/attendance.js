@@ -33,20 +33,14 @@ const Attendance = () => {
         return `${month} ${year}`;
       }
 
-      useEffect(() => {
-       setAttendance()
-        
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      },[schema])
-
     if(loading || !schema.currentWeek){
         return <Loader/>
     }
     else return (
-        <body className={styles.container}>
+        <div className={styles.container}>
               <Fab style={{float: "right", position: "absolute", top: "40px", right: "100px"}} onClick={async () => {
-                    setAttendance()
                     if(session){
+                        setAttendance()
                         getUser({key:session?.user.school_code}) 
                       }
               }} title="Refresh" color='info'> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
@@ -200,7 +194,7 @@ const Attendance = () => {
             </div>
 
             <div className={styles.submit} onClick={() => toPDF()}>Download PDF</div>
-        </body>
+        </div>
     );
 }
 

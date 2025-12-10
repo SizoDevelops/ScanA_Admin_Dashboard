@@ -10,6 +10,7 @@ export default function TableHeader({ week, position, year }) {
   const [memberArray, setMembers] = useState([]);
   const schema = useSelector((state) => state.Database.value.members);
   const members = [...schema];
+  const [details, setDetails] = useState(null);
 
   function compareFn(a, b) {
     if (a.last_name < b.last_name) {
@@ -48,7 +49,44 @@ export default function TableHeader({ week, position, year }) {
 
 const UserAttendanceTable = ({ userData, week, year }) => {
   const [tableData, setTableData] = useState([]);
+  const [details, setDetails] = useState([]);
 
+function getWeekdaysOfWeek(year, weekNumber) {
+  // ISO weeks: Monday is the first day of the week
+  const simpleDate = new Date(year, 0, 4); // Jan 4 is always in week 1
+  const dayOfWeek = simpleDate.getDay() || 7; // Sunday = 0, fix to 7
+  // Move to Monday of week 1
+  simpleDate.setDate(simpleDate.getDate() - (dayOfWeek - 2));
+  
+  // Calculate Monday of target week
+  const targetMonday = new Date(simpleDate);
+  targetMonday.setDate(simpleDate.getDate() + (weekNumber - 1) * 7);
+
+  const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  const result = {};
+
+  weekdays.forEach((day, i) => {
+    const d = new Date(targetMonday);
+    d.setDate(targetMonday.getDate() + i);
+    result[day] = d.toISOString().split("T")[0]; // format YYYY-MM-DD
+  });
+
+  return result;
+}
+
+function getCurrentYear() {
+  return new Date().getFullYear();
+}
+
+const getCurrentWeek = () => {
+  const today = new Date()
+  const firstDayOfYear = new Date(today.getFullYear(), 0, 1)
+  const daysSinceFirstDay = Math.floor((today - firstDayOfYear) / (24 * 60 * 60 * 1000))
+  const currentWeek = Math.ceil((daysSinceFirstDay + 1) / 7)
+  return currentWeek
+}
+
+ 
   useEffect(() => {
     const generateTableRows = () => {
       const rows = userData.map((user, index) => (
@@ -65,7 +103,10 @@ const UserAttendanceTable = ({ userData, week, year }) => {
         </tr>
       ));
       setTableData(rows);
+      console.log(getWeekdaysOfWeek(getCurrentYear(), getCurrentWeek()))
     };
+
+    
 
     const getAttendanceDetails = (user, day) => {
       const regex = new RegExp(year);
@@ -75,7 +116,9 @@ const UserAttendanceTable = ({ userData, week, year }) => {
         const attendanceDetails = dayData.filter(
           (entry) => regex.test(entry.date) && entry.week === week
         );
+        
         if (attendanceDetails.length > 0) {
+          
           return attendanceDetails.map((entry) => (
             <span key={entry.date} className={styles.headers}>
               {entry.absent === true ? (
@@ -125,11 +168,14 @@ const UserAttendanceTable = ({ userData, week, year }) => {
       <thead className={styles.head}>
         <tr className={styles.headingNames}>
           <th>Member Name</th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thursday</th>
-          <th>Friday</th>
+          {
+           Object.keys(getWeekdaysOfWeek(getCurrentYear(), getCurrentWeek())).map((day) => (
+            <th key={day}>
+              <span > {day} - </span>
+              <span > {getWeekdaysOfWeek(getCurrentYear(), getCurrentWeek())[day]} </span>
+            </th>
+           ))
+          }
         </tr>
         <tr className={styles.header}>
           <th></th>

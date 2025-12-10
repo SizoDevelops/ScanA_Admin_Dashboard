@@ -6,11 +6,11 @@ export const metadata = {
   
   export default function PricingLayout({ children }) {
     return (
-      <html lang="en">
+      <div>
     
           {children}
        
-      </html>
+      </div>
   
      
     )

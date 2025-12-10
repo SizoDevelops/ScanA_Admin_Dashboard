@@ -57,7 +57,7 @@ const UpdateMembers = () => {
  
 
   return (
-    <body className={styles.container}>
+    <div className={styles.container}>
       {userData.id !== ""? <Modal/> : (<div className={styles.Cont}>
         <div className={styles.categories}>
           <div className={styles.searchBar}>
@@ -113,7 +113,7 @@ const UpdateMembers = () => {
           <li>Some actions here are irreversable so be careful.</li>
         </ul>
       </div>)}
-    </body>
+    </div>
   );
 };
 

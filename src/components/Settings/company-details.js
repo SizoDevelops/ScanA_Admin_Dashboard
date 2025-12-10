@@ -12,7 +12,7 @@ const SchoolDetails = () => {
   if (schema.school_name === "") return <Loader />;
   else
     return (
-      <body className={styles.Container}>
+      <div className={styles.Container}>
         <Formik
           initialValues={schema}
           validate={validate}
@@ -39,7 +39,7 @@ const SchoolDetails = () => {
                     className={styles.profileImage}
                     style={
                       image
-                        ? { backgroundImage: `url(${image})` }
+                        ? { backgroundImage: `` }
                         : { backgroundImage: "" }
                     }
                   >
@@ -154,7 +154,7 @@ const SchoolDetails = () => {
                     style={
                       image
                         ? {
-                            backgroundImage: `url("https://i.ibb.co/0csMj5v/Rectangle-353.png")`,
+                            backgroundImage: `")`,
                           }
                         : { backgroundImage: "" }
                     }
@@ -342,7 +342,7 @@ const SchoolDetails = () => {
             </Form>
           )}
         </Formik>
-      </body>
+      </div>
     );
 };
 

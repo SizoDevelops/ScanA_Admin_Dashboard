@@ -23,7 +23,7 @@ const Home = () => {
         Aos.init()
 }, [])
     return (
-        <body className={styles.container}>
+        <div className={styles.container}>
             <NavBar/>
             <div className={styles.homeBody}>
                 <div className={styles.heroText}>
@@ -61,7 +61,7 @@ const Home = () => {
             <Features/>
             <Convos/>
             <Footer/>
-        </body>
+        </div>
     );
 }
 
